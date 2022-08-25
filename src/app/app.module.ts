@@ -4,15 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-engine/search-bar/search-bar.component';
+import { SearchEngineModule } from './search-engine/search-engine.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SearchBarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SearchEngineModule
   ],
   providers: [],
   bootstrap: [AppComponent]
