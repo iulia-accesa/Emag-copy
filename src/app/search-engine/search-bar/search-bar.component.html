@@ -1,2 +1,22 @@
-<label for="search-bar">Search Bar:</label>
-<input type="text" id="search-bar" >
+<!-- <div class="container__search-bar">
+  <input type="text" class="input__search-bar"  />
+  <ul>
+    <li>de</li>
+  </ul>
+</div> -->
+
+<div class="container__search-bar">
+<input type="text"
+       placeholder="Pick one"
+       aria-label="Number"
+       matInput
+       
+       (input)="onInputChanged($event)"
+       [matAutocomplete]="auto">
+       <mat-autocomplete #auto="matAutocomplete" class="">
+        <mat-option *ngFor="let option of options$ | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    
+</div>
