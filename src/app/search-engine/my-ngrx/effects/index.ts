@@ -13,7 +13,11 @@ export class SearchEffects {
                 ofType(fromSearchActions.inputChanged),
                 tap(action =>{
                 
-                    let result:SearchBarProduct[] =  [];
+                    let result:SearchBarProduct[] = [];
+                     this._searchBarService.getProductsForSearchBar(action.input)
+                     .then(response => {
+                        result = response;
+                     });
                     fromSearchActions.updateSearchResult({payload:result})
                 })
             )
