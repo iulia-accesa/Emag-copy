@@ -13,6 +13,7 @@ export class SearchEffects {
                 
                 take(1),
                 ofType(fromSearchActions.inputChanged),
+                
                 tap(action =>{
                    
                     let result:SearchBarProduct[] = [{id:1,title:"mens",category:"mesn",rating:{rate:0,count:0}}];
@@ -21,7 +22,8 @@ export class SearchEffects {
                     //     result = response;
                     //  });
                      console.log(result)
-                    fromSearchActions.updateSearchResult({payload:result})
+                  fromSearchActions.updateSearchResult({payload:result})
+                   
                 })
             )
     );

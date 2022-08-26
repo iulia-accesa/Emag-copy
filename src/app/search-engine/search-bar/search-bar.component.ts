@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { AppState } from 'src/app/app.state';
+
 import { SearchBarProduct } from '../models/search-bar.product';
 import { SearchBarService } from '../services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
 
 
 
-  constructor(private _searchBarService: SearchBarService,private _store: Store<AppState>) { 
+  constructor(private _searchBarService: SearchBarService,private _store: Store) { 
    
     this.options$ = this._store.select(fromSearchSelectors.searchResult);
    
