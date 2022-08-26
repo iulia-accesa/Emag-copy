@@ -1,22 +1,25 @@
-<!-- <div class="container__search-bar">
-  <input type="text" class="input__search-bar"  />
-  <ul>
-    <li>de</li>
-  </ul>
-</div> -->
+<div
+  class="navbar-searchbox"
+  matAutocompleteOrigin
+  #origin="matAutocompleteOrigin"
+>
+  <input
+    type="search"
+    name="query"
+    class="searchbox"
+    placeholder="Începe o nouă căutare"
+    [matAutocomplete]="auto"
+    [matAutocompleteConnectedTo]="origin"
+    (input)="onInputChanged($event)"
+  />
 
-<div class="container__search-bar">
-<input type="text"
-       placeholder="Pick one"
-       aria-label="Number"
-       matInput
-       
-       (input)="onInputChanged($event)"
-       [matAutocomplete]="auto">
-       <mat-autocomplete #auto="matAutocomplete" class="">
-        <mat-option *ngFor="let option of options$ | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options$ | async" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
+
+  <button class="search-button">
+    <mat-icon>search</mat-icon>
+  </button>
 </div>

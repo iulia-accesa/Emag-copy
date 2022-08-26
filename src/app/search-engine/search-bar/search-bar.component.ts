@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
+import { AppState } from 'src/app/app.state';
 import { SearchBarProduct } from '../models/search-bar.product';
 import { SearchBarService } from '../services/search-bar.service';
+import * as fromSearchActions from '../my-ngrx/actions';
 
 @Component({
   selector: 'app-search-bar',
@@ -24,7 +27,7 @@ export class SearchBarComponent implements OnInit {
 
 
 
-  constructor(private _searchBarService: SearchBarService) { 
+  constructor(private _searchBarService: SearchBarService,private _store: Store<AppState>) { 
     this.value  = ['fae'];
     this.options$ = of();
    
@@ -51,6 +54,8 @@ export class SearchBarComponent implements OnInit {
    
    
    this.updateDebounceText(event.target.value);
+   this._store.dispatch(fromSearchActions.inputChanged({input:event.target.value}));
+    
   }
 
 

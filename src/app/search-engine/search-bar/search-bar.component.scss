@@ -1,0 +1,32 @@
+@import "/src/styles.scss";
+
+.search-button {
+  color: #3382dc;
+  position: absolute;
+  height: 37px;
+  top: 0px;
+  right: 0px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    border-radius: 0 26px 26px 0;
+    opacity: 80%;
+    background: #b2d7ff;
+  }
+}
+
+.navbar-searchbox {
+  position: relative;
+  flex: 1;
+}
+
+input[type="search"] {
+  background: transparent;
+  width: 100%;
+  padding: 10px 10px 10px 15px;
+  border: 1px solid #005eb8;
+  outline: none;
+  border-radius: 26px;
+}

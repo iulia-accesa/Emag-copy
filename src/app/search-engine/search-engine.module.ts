@@ -6,13 +6,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import { searchResultFeatureKey } from './my-ngrx/features';
+import { StoreModule } from '@ngrx/store';
+import * as fromSearch from './my-ngrx/reducers'
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
   imports: [
     CommonModule,
    MatAutocompleteModule,
-   HttpClientModule
+   HttpClientModule,
+   MatIconModule,
+   StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer)
   ],
   providers: [
     SearchBarService
