@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { searchResultFeatureKey } from './my-ngrx/features';
 import { StoreModule } from '@ngrx/store';
 import * as fromSearch from './my-ngrx/reducers'
+import { SearchEffects } from './my-ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
@@ -16,7 +18,8 @@ import * as fromSearch from './my-ngrx/reducers'
    MatAutocompleteModule,
    HttpClientModule,
    MatIconModule,
-   StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer)
+   StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer),
+   EffectsModule.forFeature([SearchEffects])
   ],
   providers: [
     SearchBarService

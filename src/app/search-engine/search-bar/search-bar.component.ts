@@ -20,15 +20,15 @@ export class SearchBarComponent implements OnInit {
   private timeout:any;
   updateDebounceText = this.debounce((text:string) => {
     this._store.dispatch(fromSearchActions.inputChanged({input:text}));
-    this.options$ = this._store.select(fromSearchSelectors.searchResult);//fac un select din store pentru products search result
+   
  });
 
 
 
 
   constructor(private _searchBarService: SearchBarService,private _store: Store<AppState>) { 
-    
-    this.options$ = of();
+   
+    this.options$ = this._store.select(fromSearchSelectors.searchResult);
    
   }
 
