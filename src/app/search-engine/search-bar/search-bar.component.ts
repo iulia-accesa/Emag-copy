@@ -15,12 +15,12 @@ export class SearchBarComponent implements OnInit {
 
 
   options$: Observable<String[]> | undefined;
-  value: String[]
+
   
   private timeout:any;
   updateDebounceText = this.debounce((text:string) => {
     console.log(text);
-    this._searchBarService.getProductsForSearchBar(text);
+   
     this.options$ = of([text]);//fac un select din store pentru products search result
  });
 
@@ -28,7 +28,7 @@ export class SearchBarComponent implements OnInit {
 
 
   constructor(private _searchBarService: SearchBarService,private _store: Store<AppState>) { 
-    this.value  = ['fae'];
+    
     this.options$ = of();
    
   }
