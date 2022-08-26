@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+$background-color: #f2f2f7;
+
+$blue-gradient: linear-gradient(to right,#4a60c1 10%,#3985e0);
+
+$red-gradient: linear-gradient(to right,#cf3f50,#fe2d34);
+
+$nav-gradient: linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6 70%);
+
+$price-color: #ef2809;
+
+$rating-color: #0082e6;
+
+
+
+html {
+
+    font-size: 62.5%;
+
+    background-color: $background-color;
+
+}
+
+
+
+body{
+
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+
+    font-size: 1.4rem;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
