@@ -5,7 +5,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
-
+import { searchResultFeatureKey } from './my-ngrx/features';
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
