@@ -12,5 +12,6 @@ export const initState: State = {
     searchResult:[]
 }
 export const reducer = createReducer(
-
+    initState,
+    
 );
