@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+html {
+  font-size: 62.5%;
+
+  background-color: $background-color;
+}
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+html,
+body {
+  height: 100%;
+}
