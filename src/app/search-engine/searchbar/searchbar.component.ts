@@ -8,8 +8,8 @@ import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index'
 @Component({
   selector: 'app-search-bar',
-  templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss']
+  templateUrl: './searchbar.component.html',
+  styleUrls: ['./searchbar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
 
