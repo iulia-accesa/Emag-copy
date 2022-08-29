@@ -39,7 +39,7 @@ export class SearchBarComponent implements OnInit {
 
 
  
-  private debounce(cb:any,delay = 800){
+  private debounce(cb:any,delay = 300){
       
     return (...args:any) => {
         clearTimeout(this.timeout);
