@@ -13,25 +13,28 @@ export class SearchBarService {
     return this.http.get<Product[]>(fromApi.ALL_PRODUCTS);
   }
 
-  //populates the store with the available products for search
-  getProductsForSearchBar(text: string):Observable<SearchBarProduct[]> {
+  /**
+   *
+   *{string} @param text
+   * @returns 5 SearchBarProduct wich have titles starting with  @param text
+   */
+  getProductsForSearchBar(text: string): Observable<SearchBarProduct[]> {
     return this.getAllProducts().pipe(
       take(1),
-      map((products: Product[]) => products
-        .filter(product => product.title.toLowerCase().startsWith(text))
-        .map(product =>
-            {
-            let searchProduct: SearchBarProduct = {id:product.id,
-              title:product.title,
-              category:product.category,
-              rating:product.rating
-            }
+      map((products: Product[]) =>
+        products
+          .filter((product) => text !== "" && product.title.toLowerCase().startsWith(text))
+          .slice(0, 5)
+          .map((product) => {
+            let searchProduct: SearchBarProduct = {
+              id: product.id,
+              title: product.title,
+              category: product.category,
+              rating: product.rating,
+            };
             return searchProduct;
-          }
-        
-        )
+          })
       )
     );
-    
   }
 }
