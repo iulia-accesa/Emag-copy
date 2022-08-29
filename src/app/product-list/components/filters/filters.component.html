@@ -1,0 +1,201 @@
+<div fxFlex="100%" class="product-list-filters">
+  <form [formGroup]="filterForm">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ordoneaza dupa </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field
+          fxFlex="100%"
+          class="filters__order-by-price"
+          appearance="fill"
+        >
+          <mat-select
+            fxFlex="100%"
+            formControlName="order"
+            placeholder="Selecteaza ordinea"
+          >
+            <mat-option (click)="onFilterChange()" value="asc">
+              Pret crescator
+            </mat-option>
+            <mat-option (click)="onFilterChange()" value="desc">
+              Pret descrescator
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="disable-hover-bg">
+          <mat-panel-title> Pret </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form
+          fxFlex="100%"
+          fxLayout="column"
+          class="filters__filter-by-price"
+          [formGroup]="sliderForm"
+        >
+          <ngx-slider
+            fxFlex="100%"
+            [options]="priceFilterOptions"
+            (value)="(priceFilterMinValue)"
+            (highValue)="(priceFilterMaxValue)"
+            (userChange)="onSliderChange()"
+            formControlName="priceSlider"
+          ></ngx-slider>
+          <div
+            class="filter-by-price__inputs"
+            fxFlex="100%"
+            fxLayout="column"
+            fxLayout.gt-xs="row"
+            fxLayoutAlign="center center"
+          >
+            <mat-form-field appearance="fill">
+              <input
+                (change)="onSliderInput()"
+                matInput
+                type="number"
+                formControlName="minVal"
+                min="{{ priceFilterMinValue }}"
+                max="{{ priceFilterMaxValue }}"
+              />
+            </mat-form-field>
+            <div class="dash">-</div>
+            <mat-form-field appearance="fill">
+              <input
+                (change)="onSliderInput()"
+                matInput
+                type="number"
+                formControlName="maxVal"
+                min="{{ priceFilterMinValue }}"
+                max="{{ priceFilterMaxValue }}"
+              />
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header class="disable-hover-bg">
+          <mat-panel-title> Brand </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <form class="filters__filter-by-brand" [formGroup]="brandsForm">
+          <div fxLayout="column">
+            <mat-checkbox formControlName="brand1">
+              <span class="brand">Brand</span>
+              <span class="count">(123)</span></mat-checkbox
+            >
+            <mat-checkbox formControlName="brand1">
+              <span class="brand">Brand</span>
+              <span class="count">(123)</span></mat-checkbox
+            >
+            <mat-checkbox formControlName="brand1">
+              <span class="brand">Brand</span>
+              <span class="count">(123)</span></mat-checkbox
+            >
+            <mat-checkbox formControlName="brand1">
+              <span class="brand">Brand</span>
+              <span class="count">(123)</span></mat-checkbox
+            >
+            <mat-checkbox formControlName="brand1">
+              <span class="brand">Brand</span>
+              <span class="count">(123)</span></mat-checkbox
+            >
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="disable-hover-bg">
+          <mat-panel-title> Rating minimum </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <form class="filters__filter-by-rating" [formGroup]="ratingsForm">
+          <div fxLayout="column">
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              formControlName="rating1"
+            >
+              <span class="stars">
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+              </span>
+              <span class="count">(231)</span>
+            </mat-checkbox>
+
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              formControlName="rating2"
+            >
+              <span class="stars">
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+              </span>
+              <span class="count">(231)</span>
+            </mat-checkbox>
+
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              formControlName="rating3"
+            >
+              <span class="stars">
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+              </span>
+              <span class="count">(231)</span>
+            </mat-checkbox>
+
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              formControlName="rating4"
+            >
+              <span class="stars">
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+              </span>
+              <span class="count">(231)</span>
+            </mat-checkbox>
+
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              formControlName="rating5"
+            >
+              <span class="stars">
+                <mat-icon class="filled">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+                <mat-icon class="empty">star_rate</mat-icon>
+              </span>
+              <span class="count">(231)</span>
+            </mat-checkbox>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>
