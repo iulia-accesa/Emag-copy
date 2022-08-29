@@ -7,7 +7,7 @@ import { SearchBarService } from '../services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index'
 @Component({
-  selector: 'app-search-bar',
+  selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss']
 })
