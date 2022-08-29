@@ -8,7 +8,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SearchEngineModule } from "./search-engine/search-engine.module";
 
-
 @NgModule({
   declarations: [
     AppComponent
