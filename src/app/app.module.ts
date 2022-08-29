@@ -1,3 +1,4 @@
+
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { EffectsModule } from "@ngrx/effects";
@@ -7,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SearchEngineModule } from "./search-engine/search-engine.module";
+
 
 @NgModule({
   declarations: [
