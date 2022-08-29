@@ -10,3 +10,9 @@ export const updateSearchResult = createAction(
     "[Searchbar Input] Update search result",
     props<{payload: SearchBarProduct[]}>()
 )
+
+
+export const userSelectedOption = createAction(
+    "[Searchbar options] User selected and option",
+    props<{payload: SearchBarProduct}>()
+)

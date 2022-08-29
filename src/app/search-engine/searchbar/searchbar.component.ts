@@ -58,6 +58,11 @@ export class SearchBarComponent implements OnInit {
   }
 
 
+  redirectPage(option:SearchBarProduct){
+    console.log(option);
+    
+  }
+
 
 
 
