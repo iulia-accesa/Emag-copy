@@ -1,0 +1,97 @@
+$nav-gradient: linear-gradient(
+  to right,
+  #ff1d25 5%,
+  #a0328c 35%,
+  #7040a4 45%,
+  #4359c7 55%,
+  #0082e6 70%
+);
+
+
+////////////////////// Menu ///////////////////////////
+.menu-container {
+  background-image: $nav-gradient;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  list-style: none;
+  display: flex;
+  margin: 0 10rem;
+}
+
+.burgermenu-icon{
+    height: 1.2rem;
+}
+
+.btn-account {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.btn-account:hover {
+  border: 2px white solid;
+  border-radius: 10rem;
+}
+
+.btn-products,
+.btn-account {
+  padding: 6px 10px;
+  margin: 0.5rem 1rem 0 1rem;
+}
+
+.btn-dropdown {
+  background-color: #fff;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: block;
+  color: #222222;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+mat-icon {
+  padding: 0rem 0.2rem;
+}
+
+// //////////////////////Products Category Menu ////////////////////
+.content{
+    display: flex;
+    gap: 0;
+   
+}
+
+.product-category{
+    margin-left: 11rem;
+    padding: 0.5rem 1rem 0 1rem;
+    background-color: #fff;
+    width: 24rem;
+   
+}
+
+.category-list{
+    list-style: none;
+    padding: 0rem;
+}
+
+.list-group-item{
+    margin: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.list-group-a{
+    text-decoration: none;
+    line-height: 3.5;
+    font-size: 1.3rem;
+
+}
+
+.carousel{
+    margin-right: 11rem;
+    width: 140rem;
+}

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="menu-container">
+    <div class="menu-list">
+      <a class="btn-products btn-dropdown">
+        <img
+          src="../../assets/img/burgermenu.png"
+          alt="burger menu icon"
+          class="burgermenu-icon"
+        />
+        Products</a>
+      <a class="btn-account">Account</a>
+    </div>
+  </div>
+  <div class="content">
+    <!-- <div class="product-category">
+      <ul class="category-list list-group">
+        <li *ngFor="let categ of categories" class="list-group-item">
+          <mat-icon>phone_iphone</mat-icon>
+          <a class="list-group-a">{{ categ }}</a>
+        </li>
+      </ul>
+    </div> -->
+
+      <span class="product-category">
+        <button 
+            mat-button 
+            [matMenuTriggerFor]="menu"
+            *ngFor="let categ of categories" 
+            class="list-group-item"
+            id={{categ}}>
+             <mat-icon>phone_iphone</mat-icon>
+            {{categ}}
+        </button>
+        
+        <mat-menu #menu="matMenu">
+            <button 
+                mat-menu-item 
+                *ngFor="let prod of products">
+                {{ prod }}
+            </button>
+          </mat-menu>
+        <!-- <button>test</button> -->
+      </span>
+
+    <div class="carousel">
+      <app-carousel></app-carousel>
+    </div>
+  </div>
+</div>
