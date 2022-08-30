@@ -6,3 +6,12 @@ export interface SearchBarProduct {
     category: string,
     rating: ProductRating
 }
+
+
+export const defaultSearchBarProduct:SearchBarProduct = {
+    id:-1,
+    title:"",
+    category:"",
+    rating:{rate:0,
+            count:0}
+}

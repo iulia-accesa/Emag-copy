@@ -44,12 +44,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   redirectPage(option: SearchBarProduct) {
-    console.log(option);
-    let userSearch = '';
-    this._store
-      .select(fromSearchSelectors.userInput)
-      .pipe(first())
-      .subscribe((text) => (userSearch = text));
+    //console.log(option);
    
+   this._store.dispatch(fromSearchActions.userSelectedOption({payload:option}))
   }
 }
