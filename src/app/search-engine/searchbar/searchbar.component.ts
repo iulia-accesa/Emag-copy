@@ -7,6 +7,7 @@ import { SearchBarService } from '../services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index';
 import { myTestWhat } from '../models/product';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
@@ -28,7 +29,8 @@ export class SearchBarComponent implements OnInit {
 
   constructor(
     private _searchBarService: SearchBarService,
-    private _store: Store
+    private _store: Store,
+    private _router:Router
   ) {
     this.options$ = this._store.select(fromSearchSelectors.searchResult);
   }
@@ -51,8 +53,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   redirectPage(option: SearchBarProduct) {
-    //console.log(option);
-   
+
    this._store.dispatch(fromSearchActions.userSelectedOption({payload:option}))
+
   }
 }
