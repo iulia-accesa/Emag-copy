@@ -7,6 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 /**
  * Other modules, will be included in app.module later
@@ -26,6 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NgxSliderModule,
     FlexLayoutModule,
     MatIconModule,
+    MatCardModule,
   ],
   exports: [
     MatExpansionModule,
@@ -36,6 +38,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NgxSliderModule,
     FlexLayoutModule,
     MatIconModule,
+    MatCardModule,
   ],
 })
 export class MaterialModule {}

@@ -9,12 +9,13 @@
 
 .page-container {
   padding: 0 2rem;
-
-  @media only screen and (min-width: 1279.9px) {
+}
+@media only screen and (min-width: 1279.9px) {
+  .page-container {
     width: 1270px;
   }
 }
 
 .main-container {
   width: 100%;
-}
+}/*# sourceMappingURL=product-list-page.component.css.map */
