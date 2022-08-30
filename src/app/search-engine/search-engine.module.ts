@@ -11,9 +11,8 @@ import * as fromSearch from './my-ngrx/reducers'
 import { SearchEffects } from './my-ngrx/effects';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchbarProductsPageModule } from './searchbar-products-page/searchbar-products-page.module';
-
-import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
@@ -24,6 +23,8 @@ import { AppRoutingModule } from '../app-routing.module';
    SearchbarProductsPageModule,
    MatIconModule,
    StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer),
+   AppRoutingModule,
+   
    EffectsModule.forFeature([SearchEffects])
   ],
   providers: [

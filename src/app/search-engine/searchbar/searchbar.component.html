@@ -11,7 +11,7 @@
     [matAutocomplete]="auto"
     [matAutocompleteConnectedTo]="origin"
     (input)="onInputChanged($event)"
-    
+    (keyup.enter)="onEnter()"
   />
 
   <mat-autocomplete #auto="matAutocomplete" >

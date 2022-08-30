@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+
 import { SearchbarProductsPageComponent } from "./searchbar-products-page.component";
 
 
 export const searchRoutes:  Routes = [
   {
-      path: 'results',
+      path: 'search-results',
       component: SearchbarProductsPageComponent
      
   } 

@@ -54,7 +54,11 @@ export class SearchBarComponent implements OnInit {
 
   redirectPage(option: SearchBarProduct) {
 
-   this._router.navigateByUrl("results")
+ 
     console.log("here");
+  }
+
+  onEnter(){
+    this._router.navigateByUrl("search-results")
   }
 }

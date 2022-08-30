@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarProductsPageComponent implements OnInit {
 
+  
+
+
+
   constructor() { }
 
   ngOnInit(): void {
