@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+// @import "../../../../styles.scss";
 
 .breadcrumb {
   display: flex;
@@ -28,6 +28,7 @@
   }
 
   &.el--active {
-    color: $rating-color;
+    // color: $rating-color;
+    color: blue;
   }
 }
