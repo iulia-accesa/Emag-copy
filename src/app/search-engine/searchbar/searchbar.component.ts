@@ -6,7 +6,7 @@ import { SearchBarProduct } from '../models/search-bar.product';
 import { SearchBarService } from './services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index';
-import { myTestWhat } from '../models/product';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-searchbar',
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchbar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-  @Input() product: myTestWhat = {id:0,a:0,c:0,d:0};
+
 
   options$: Observable<SearchBarProduct[]>;
   
@@ -36,7 +36,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.product)
+   
   }
 
   private debounce(cb: any, delay = 300) {

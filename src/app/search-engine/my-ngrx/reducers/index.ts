@@ -4,41 +4,27 @@ import { defaultSearchBarProduct, SearchBarProduct } from "../../models/search-b
 import { SearchBarService } from "../../searchbar/services/search-bar.service";
 import * as fromSearchActions from '../actions/index';
 export interface State{
-    searchResult:SearchBarProduct[],
-    userInput: string,
-    userSelectedOption:SearchBarProduct
+    searchResult:SearchBarProduct[]
 }
 
 
 
 export const initState: State = {
-    searchResult:[],
-    userInput:"",
-    userSelectedOption:defaultSearchBarProduct
+    searchResult:[]
+   
 }
 export const reducer = createReducer(
     initState,
     on(fromSearchActions.inputChanged,(state,action) => {
         
         return {
-            searchResult:state.searchResult,
-            userInput:action.input,
-            userSelectedOption:state. userSelectedOption
+            searchResult:state.searchResult
         }
     })
     ,
     on(fromSearchActions.updateSearchResult,(state,action) => {
         return {
-            searchResult: action.payload,
-            userInput:state.userInput,
-            userSelectedOption:state. userSelectedOption
-        }
-    }),
-    on(fromSearchActions.userSelectedOption,(state,action) => {
-        return {
-            searchResult:state.searchResult,
-            userInput:state.userInput,
-            userSelectedOption:{...action.payload}
+            searchResult: action.payload
         }
     })
 

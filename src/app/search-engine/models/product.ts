@@ -16,10 +16,3 @@ export interface Product{
 }
 
 
-
-export interface myTestWhat {
-    id:number,
-    a:number,
-    c:number,
-    d:number
-}

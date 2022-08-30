@@ -8,7 +8,3 @@ export const searchResult = createSelector(
     result => result.searchResult
 )
 
-export const userInput = createSelector(
-    selectSearchResultState,
-    result => result.userInput
-)
