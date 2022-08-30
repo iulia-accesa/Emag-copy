@@ -8,16 +8,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { HomepageCategoriesModule } from './homepage-categories/homepage-categories.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    HomepageCategoriesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
