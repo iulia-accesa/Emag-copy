@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, map, take, first } from 'rxjs';
 
 import { SearchBarProduct } from '../models/search-bar.product';
-import { SearchBarService } from '../services/search-bar.service';
+import { SearchBarService } from './services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index';
 import { myTestWhat } from '../models/product';
