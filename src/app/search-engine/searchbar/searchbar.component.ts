@@ -55,6 +55,6 @@ export class SearchBarComponent implements OnInit {
   redirectPage(option: SearchBarProduct) {
 
    this._store.dispatch(fromSearchActions.userSelectedOption({payload:option}))
-
+    console.log(option)
   }
 }
