@@ -10,8 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import * as fromSearch from './my-ngrx/reducers'
 import { SearchEffects } from './my-ngrx/effects';
 import { EffectsModule } from '@ngrx/effects';
+import { SearchbarProductsPageComponent } from './searchbar-products-page/searchbar-products-page.component';
 @NgModule({
-  declarations: [ SearchBarComponent],
+  declarations: [ SearchBarComponent, SearchbarProductsPageComponent],
   exports: [SearchBarComponent],
   imports: [
     CommonModule,
