@@ -16,7 +16,7 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              type="email" 
+              type="text" 
               [formControl]="email"
               placeholder="Email"
               />
@@ -44,6 +44,10 @@
           </mat-form-field>
 
           <button type="submit" mat-flat-button>Login</button>
+
+          <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+
+          <mat-error *ngIf="loginErrors$ | async"> {{ errors }}</mat-error>
         </form>
       </mat-card-content>
     </mat-card>

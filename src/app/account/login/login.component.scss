@@ -153,6 +153,14 @@ app-login {
           background-color: #0065b3;
         }
       }
+
+      .mat-spinner {
+        margin: 20px auto;
+      }
+
+      .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #0082e6;
+      }
       
 }
 
