@@ -13,9 +13,9 @@
     (input)="onInputChanged($event)"
   />
 
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="redirectPage($event.option.value)">
-    <mat-option *ngFor="let option of options$ | async" [value]="option">
-      {{ option.title }}
+  <mat-autocomplete #auto="matAutocomplete" >
+    <mat-option  *ngFor="let option of options$ | async"  (onSelectionChange)="redirectPage(option)"  [value]="option.title" >
+    {{ option.title }}
     </mat-option>
   </mat-autocomplete>
 
