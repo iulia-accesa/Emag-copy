@@ -6,19 +6,24 @@ import { SearchBarProduct } from '../models/search-bar.product';
 import { SearchBarService } from '../services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index';
+import { myTestWhat } from '../models/product';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-  @Input() selectedOption: any;
+  @Input() product: myTestWhat = {id:0,a:0,c:0,d:0};
 
   options$: Observable<SearchBarProduct[]>;
-
+  
   private timeout: any;
   updateDebounceText = this.debounce((text: string) => {
+    if(text.length > 2){
     this._store.dispatch(fromSearchActions.inputChanged({ input: text }));
+    }else{
+      this._store.dispatch(fromSearchActions.inputChanged({ input: "" }));
+    }
   });
 
   constructor(
@@ -28,7 +33,9 @@ export class SearchBarComponent implements OnInit {
     this.options$ = this._store.select(fromSearchSelectors.searchResult);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.product)
+  }
 
   private debounce(cb: any, delay = 300) {
     return (...args: any) => {

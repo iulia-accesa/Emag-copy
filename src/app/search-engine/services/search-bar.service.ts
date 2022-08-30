@@ -23,7 +23,7 @@ export class SearchBarService {
       take(1),
       map((products: Product[]) =>
         products
-          .filter((product) => text !== "" && (product.title.toLowerCase().startsWith(text) || product.title.toLowerCase().split(" ").includes(text)) )
+          .filter((product) => text !== "" && (product.title.toLowerCase().startsWith(text.toLowerCase()) || product.title.toLowerCase().split(" ").includes(text.toLowerCase())) )
           .slice(0, 5)
           .map((product) => {
            
