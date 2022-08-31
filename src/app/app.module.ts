@@ -9,11 +9,11 @@ import { AppComponent } from './app.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductCardComponent,
+    
 
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
