@@ -9,7 +9,7 @@ export class SearchbarProductsPageService {
 
     constructor(private http: HttpClient) {}
 
-    getAllProducts(): Observable<Product[]> {
+    private getAllProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(ALL_PRODUCTS);
       }
 

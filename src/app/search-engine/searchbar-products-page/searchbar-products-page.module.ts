@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { SearchbarProductsPageComponent } from "./searchbar-products-page.component";
+import { SearchbarProductsPageService } from "./searchbar-products-page.service";
 
 
 export const searchRoutes:  Routes = [
@@ -24,7 +25,7 @@ export const searchRoutes:  Routes = [
      RouterModule.forChild(searchRoutes)
     ],
     providers: [
-        
+        SearchbarProductsPageService
     ]
   })
   export class SearchbarProductsPageModule { }
