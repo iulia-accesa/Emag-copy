@@ -1,20 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map, Observable, take } from 'rxjs';
-import { Product } from '../models/product';
-import { SearchBarProduct } from '../models/search-bar.product';
-import * as fromApi from '../resources/api-endpoints';
+import { Injectable } from "@angular/core";
+import { map, take } from "rxjs";
+import { ProductApiService } from "../product-api.service";
 
 @Injectable()
 export class SearchBarService {
-  constructor(private http: HttpClient) {}
+  constructor(private _productApiService: ProductApiService ) {}
 
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(fromApi.ALL_PRODUCTS);
-  }
-
-
-  
 
 
   /**
@@ -23,7 +14,7 @@ export class SearchBarService {
    * @returns 5 SearchBarProduct wich have titles starting with  @param text
    */
   getProductsForSearchBar(text: string): Observable<SearchBarProduct[]> {
-    return this.getAllProducts().pipe(
+    return this._productApiService.getAllProducts().pipe(
       take(1),
       map((products: Product[]) =>
         products

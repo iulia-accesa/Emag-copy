@@ -11,4 +11,6 @@ export class ProductApiService {
   constructor() {}
 
   //TODO: create here all needed API calls for products
+
+  
 }
