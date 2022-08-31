@@ -7,13 +7,13 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ProductCardComponent } from "./shared/components/product-card/product-card.component";
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,ProductCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -12,11 +12,11 @@ export class ProductApiService {
   constructor(private _httpClient: HttpClient) {}
 
   getAll(): Observable<IProductApi[]> {
-    return this._httpClient.get<IProductApi[]>(this._apiUrl + '/product');
+    return this._httpClient.get<IProductApi[]>(`${this._apiUrl}/products`);
   }
 
   getAllCategories(): Observable<string[]> {
-    return this._httpClient.get<string[]>(this._apiUrl + '/categories');
+    return this._httpClient.get<string[]>(`${this._apiUrl}/categories`);
   }
 
   /**
@@ -26,7 +26,7 @@ export class ProductApiService {
    */
   getByCategory(category: string): Observable<IProductApi[]> {
     return this._httpClient.get<IProductApi[]>(
-      this._apiUrl + '/products/category/' + category
+      `${this._apiUrl}/products/category/`
     );
   }
 }
