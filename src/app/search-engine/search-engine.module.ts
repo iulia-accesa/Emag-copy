@@ -39,7 +39,8 @@ import { SearchbarProductsPageComponent } from './searchbar-products-page/search
    AppRoutingModule,
   // RouterModule.forChild(routes),
    
-   EffectsModule.forFeature([SearchEffects])
+   EffectsModule.forFeature([SearchEffects]),
+   
   ],
   providers: [
     SearchBarService

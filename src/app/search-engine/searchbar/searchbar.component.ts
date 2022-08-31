@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, of, map, take, first } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { SearchBarProduct } from '../models/search-bar.product';
 import { SearchBarService } from '../services/search-bar.service';

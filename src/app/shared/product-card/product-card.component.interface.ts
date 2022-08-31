@@ -10,3 +10,17 @@ export interface IProduct {
         "count": number,
     }
 }
+
+
+export const defaultIProduct :IProduct = {
+    id:-1,
+    title: "",
+    price:0,
+    description:"",
+    category: "",
+    image: "",
+    rating: {
+        rate:0,
+        count:0
+    }
+}
