@@ -1,0 +1,13 @@
+
+<div *ngIf = "anyResults">
+
+<product-card-component *ngFor = "let product of products$ | async" [product] = "product">
+
+</product-card-component>
+    
+</div>
+
+
+<div *ngIf = "!anyResults">
+    <p>Product not found page</p>
+</div>
