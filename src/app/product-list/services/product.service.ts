@@ -17,23 +17,5 @@ export class ProductService {
     >;
   }
 
-  getPriceRange() {
-    this.getAll().subscribe((products: ProductModel[]) => {
-      let priceRange = { min: 1, max: 19999999 };
-
-      let minPrice = products[0].price;
-      let maxPrice = minPrice;
-
-      products.forEach((product) => {
-        console.log(product);
-        if (product.price < minPrice) minPrice = product.price;
-        if (product.price > maxPrice) maxPrice = product.price;
-      });
-
-      priceRange.min = minPrice;
-      priceRange.max = maxPrice;
-
-      return of(priceRange);
-    });
-  }
+  getPriceRange() {}
 }

@@ -1,20 +1,30 @@
-import { NgModule } from '@angular/core';
+/**
+ * Angular modules
+ */
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ProductService } from './services/product.service';
-import { ModuleWithProviders } from '@angular/core';
-
-import { ProductListPageComponent } from './components/product-list-page/product-list-page.component';
-
-import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
-import { FiltersComponent } from './components/filters/filters.component';
-import { ListContainerComponent } from './components/list-container/list-container.component';
-
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+/**
+ * Services
+ */
+import { ProductService } from './services/product.service';
+
+/**
+ * Custom components
+ */
+import { ProductListPageComponent } from './components/product-list-page/product-list-page.component';
+import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
+import { ListContainerComponent } from './components/list-container/list-container.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+
+/**
+ * Custom modules
+ */
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     BreadcrumbNavComponent,
     FiltersComponent,
     ListContainerComponent,
+    ProductCardComponent,
   ],
   imports: [
     FormsModule,

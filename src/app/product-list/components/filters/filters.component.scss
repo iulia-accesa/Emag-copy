@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@import "../../../../variables.scss";
 
 .product-list-filters {
   @media only screen and (min-width: 959.9px) {
@@ -77,7 +77,8 @@
 
   .stars {
     mat-icon {
-      transform: scale(0.8) translateY(0.2rem);
+      transform: scale(0.8) translateY(0.4rem);
+      margin-right: -0.4rem;
 
       &.empty {
         color: #adadad;
