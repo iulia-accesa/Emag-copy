@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, race, take } from 'rxjs';
-import { Product, ProductRating } from '../models/product';
+import { map, Observable, take } from 'rxjs';
+import { Product } from '../models/product';
 import { SearchBarProduct } from '../models/search-bar.product';
 import * as fromApi from '../resources/api-endpoints';
 
@@ -12,6 +12,10 @@ export class SearchBarService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(fromApi.ALL_PRODUCTS);
   }
+
+
+  
+
 
   /**
    *
@@ -31,7 +35,7 @@ export class SearchBarService {
               id: product.id,
               title: product.title,
               category: product.category,
-              rating: product.rating,
+              rating: {...product.rating},
             };
             return searchProduct;
           })
