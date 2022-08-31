@@ -51,17 +51,20 @@
       <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu">Item 1</button>
       <button mat-menu-item>Item 2</button>
     </mat-menu>
-
-    <button mat-button [matMenuTriggerFor]="menu" class="btn">
+    <mat-menu #subMenu="matMenu">
+      <button mat-menu-item>Item 3</button>
+      <button mat-menu-item>Item 4</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="cartmenu" class="btn">
       <mat-icon class="button-icons"> shopping_cart </mat-icon
       ><span class="button-text" fxHide.lt-md>My Cart</span>
       <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu">
+    <mat-menu #cartmenu="matMenu">
       <button mat-menu-item>Item 1</button>
       <button mat-menu-item>Item 2</button>
     </mat-menu>
