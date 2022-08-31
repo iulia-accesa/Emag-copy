@@ -1,8 +1,7 @@
 import { getAuthError, getIsLoading } from './../store/account.selectors';
-import { from, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromAccount from '../store/account.actions';
 import * as fromRoot from '../../app.reducer';
@@ -15,9 +14,9 @@ import { User } from '../user.model';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup = null;
-  email: FormControl = null;
-  password: FormControl = null;
+  loginForm: FormGroup;
+  username: FormControl;
+  password: FormControl;
 
   loginErrors$: Observable<string>;
   isLoading$: Observable<boolean>;
@@ -25,19 +24,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private store: Store<fromRoot.State>
-    ) { 
-    fetch('https://fakestoreapi.com/users')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-  }
+    ) { }
 
   ngOnInit(): void {
-    this.email = new FormControl('', [Validators.required]);
-    this.password = new FormControl('', [Validators.required, 
-      // this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+    this.username = new FormControl('', [
+      Validators.required
+    ]);
+    this.password = new FormControl('', [
+      Validators.required, 
+      this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
     ]);
     this.loginForm = new FormGroup({
-      email: this.email,
+      username: this.username,
       password: this.password,
     });
 
@@ -47,23 +45,23 @@ export class LoginComponent implements OnInit {
   }
 
   passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const template = passwordRegex.test(control.value);
-      if (control.value && control.value.length < 2) 
-        return {template: control.value}
-      return !template ? {template: control.value} : null;
+    return (password: AbstractControl): ValidationErrors | null => {
+      const matchesTemplate = passwordRegex.test(password.value);
+      if (password.value && password.value.length < 2) 
+        return { template: password.value }
+
+      return !matchesTemplate ? { template: password.value } : null;
     };
   }
 
   onSubmit() {
     if (!this.loginForm.valid)
       return;
-    
+
     const user = new User(
-      this.loginForm.value.email, 
+      this.loginForm.value.username, 
       this.loginForm.value.password
     );
     this.store.dispatch(fromAccount.LoginStart({ user }));
-    
   }
 }

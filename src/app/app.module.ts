@@ -1,5 +1,5 @@
 import { appReducers } from './app.reducer';
-import { AccountInterceptorService } from './account/account-interceptor.service';
+import { AccountInterceptor } from './account/account.interceptor';
 import { AccountModule } from './account/account.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,7 +31,7 @@ import { AccountEffects } from './account/store/account.effects';
   providers: [
     {
       provide: HTTP_INTERCEPTORS, 
-      useClass: AccountInterceptorService,
+      useClass: AccountInterceptor,
       multi: true
     }
   ],

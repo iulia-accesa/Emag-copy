@@ -6,7 +6,7 @@ import { exhaustMap, take, tap, map} from 'rxjs/operators';
 import * as fromRoot from '../app.reducer';
 
 @Injectable()
-export class AccountInterceptorService implements HttpInterceptor{
+export class AccountInterceptor implements HttpInterceptor{
 
   constructor(
     private store: Store<fromRoot.State>

@@ -27,7 +27,7 @@ export const accountReducer = createReducer(
 
     on (fromAccount.AuthenticateSucces, (state, action) => {
         const user = new User(
-            action.user.email,
+            action.user.username,
             action.user.password,
             action.user.token
         );

@@ -11,13 +11,13 @@ export interface AccountResponseData {
 }
 
 const handleLogin = (
-    email: string, 
+    username: string, 
     password: string, 
     token: string
 ) => {
-    const user = new User(email, password, token);
+    const user = new User(username, password, token);
     localStorage.setItem('userToken', JSON.stringify(token))
-    return AccountActions.AuthenticateSucces({user: user});
+    return AccountActions.AuthenticateSucces({ user: user });
 };
 
 const handleError = (
@@ -26,12 +26,12 @@ const handleError = (
     let errorMessage = '';
     switch (error.error) {
         case 'username or password is incorrect':
-            errorMessage = 'Username or Password is incorrect';
+            errorMessage = 'Username-ul sau parola sunt incorecte';
             break;
         default:
-            errorMessage = 'An unknown error occurred!';
+            errorMessage = 'Eroare necunoscuta!';
     }
-    return of(AccountActions.AuthenticateFail({authError: errorMessage}));
+    return of(AccountActions.AuthenticateFail({ authError: errorMessage }));
 };
 
 @Injectable()
@@ -50,13 +50,13 @@ export class AccountEffects {
                 return this.http.post<AccountResponseData>(
                     'https://fakestoreapi.com/auth/login', 
                     {
-                        username: accountData.user.email,
+                        username: accountData.user.username,
                         password: accountData.user.password
                     })
                 .pipe (
                     map(resultData => {
                         return handleLogin(
-                            accountData.user.email,
+                            accountData.user.username,
                             accountData.user.password,
                             resultData.token
                         );

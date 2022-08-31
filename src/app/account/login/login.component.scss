@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 @mixin response($breakpoint) {
   @if($breakpoint == md) {
       @media (max-width: 600px) {
@@ -13,27 +15,19 @@
 }
 
 app-login {
+  background: $background-color;
+  font-weight: 400;
+  line-height: 1.42857;
+  color: #000;
+  padding-bottom: 20px;
+  padding-top: 40px;
+  text-align: center;
+  display: block;
+
   * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-  }
-  html {
-    width: 100%;
-    height: 100%;
-  }
-      
-  .container {
-    width: 100%;
-    height: 100%;
-    font-weight: 400;
-    line-height: 1.42857;
-    color: #000;
-    background: #f7f7f7;
-    padding-bottom: 20px;
-    padding-top: 40px;
-    text-align: center;
-    display: block;
   }
       
   .logo-container {
@@ -101,67 +95,68 @@ app-login {
   } 
   
   .mat-card>:last-child:not(.mat-card-footer) {
-    
     margin-bottom: 30px;
   }
       
       
-      mat-form-field {
-        width: 100%;
+  mat-form-field {
+    width: 100%;
 
-        @include response(sm) {
-          width: 90%;
-        }
+    @include response(sm) {
+      width: 90%;
+    }
 
-        .mat-form-field-outline-start.mat-form-field-outline-start {
-          border-radius: 21px 0 0 21px;
-          min-width: 21px;
-        }
-      
-        .mat-form-field-outline-end.mat-form-field-outline-end {
-          border-radius: 0 21px 21px 0;
-        }
+    .mat-form-field-outline-start.mat-form-field-outline-start {
+      border-radius: 21px 0 0 21px;
+      min-width: 21px;
+    }
+  
+    .mat-form-field-outline-end.mat-form-field-outline-end {
+      border-radius: 0 21px 21px 0;
+    }
 
-        .mat-form-field-flex.mat-form-field-flex {
-          height: 40px;
-          padding: 0 0.75em 1em 1.4em;
+    .mat-form-field-flex.mat-form-field-flex {
+      height: 40px;
+      padding: 0 0.75em 1em 1.4em;
 
-        }
+    }
 
-        .mat-form-field-infix.mat-form-field-infix {
-          padding: 0.2em 0;
-      }
-        
-      }
+    .mat-form-field-infix.mat-form-field-infix {
+      padding: 0.2em 0;
+    }
+  }
 
-      button {
-        width: 100%;
-        height: 40px;
+  button {
+    width: 100%;
+    height: 40px;
 
-        @include response(sm) {
-          width: 90%;
-        }
-      }
+    @include response(sm) {
+      width: 90%;
+    }
+  }
 
-      .mat-flat-button.mat-flat-button {
-        border-radius: 21px;
-        background-color: #0082e6;
-        color: #fff;
-        font-weight: 500;
+  .mat-flat-button.mat-flat-button {
+    border-radius: 21px;
+    background-color: #0082e6;
+    color: #fff;
+    font-weight: 500;
 
-        &:hover {
-          background-color: #0065b3;
-        }
-      }
+    &:hover {
+      background-color: #0065b3;
+    }
+  }
 
-      .mat-spinner {
-        margin: 20px auto;
-      }
+  .mat-spinner {
+    margin: 20px auto;
+  }
 
-      .mat-progress-spinner circle, .mat-spinner circle {
-        stroke: #0082e6;
-      }
-      
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #0082e6;
+  }  
+
+  .final-error {
+    margin-top: 15px;
+  }
 }
 
 
