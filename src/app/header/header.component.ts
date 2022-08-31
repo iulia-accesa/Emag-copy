@@ -12,9 +12,14 @@ export class HeaderComponent implements OnInit {
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions!: Observable<string[]>;
+  mobile: boolean = false;
+  filled: boolean = false;
   constructor() {}
 
   ngOnInit(): void {
+    if (window.screen.width === 360) {
+      this.mobile = true;
+    }
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value || ''))

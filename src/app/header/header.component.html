@@ -22,6 +22,10 @@
     #origin="matAutocompleteOrigin"
   >
     <input
+      #search
+      [ngClass]="{ filled: filled }"
+      (click)="filled = true"
+      (blur)="filled = search.value ? true : false"
       type="search"
       name="query"
       class="searchbox"

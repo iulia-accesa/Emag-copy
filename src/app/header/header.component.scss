@@ -88,7 +88,7 @@ header {
     opacity: 80%;
     background: #b2d7ff;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (min-width: 200px) and (max-width: 600px) {
     height: 24px;
     position: right;
     margin-top: -14px;
@@ -115,7 +115,7 @@ input[type="search"] {
   border-radius: 26px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 200px) and (max-width: 600px) {
   .dropdown {
     display: flex;
     flex-direction: row;
