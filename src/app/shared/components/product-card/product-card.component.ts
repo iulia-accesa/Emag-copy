@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from './product-card.component.interface';
+import { IProductApi } from '../../models/product-api.interface';
 
 @Component({
   selector: 'product-card-component',
@@ -7,7 +7,7 @@ import { IProduct } from './product-card.component.interface';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent {
-  @Input() product: IProduct | undefined;
+  @Input() product: IProductApi | undefined;
 
   constructor() {}
 
