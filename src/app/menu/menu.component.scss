@@ -7,7 +7,6 @@ $nav-gradient: linear-gradient(
   #0082e6 70%
 );
 
-
 ////////////////////// Menu ///////////////////////////
 .menu-container {
   background-image: $nav-gradient;
@@ -22,8 +21,8 @@ $nav-gradient: linear-gradient(
   margin: 0 10rem;
 }
 
-.burgermenu-icon{
-    height: 1.2rem;
+.burgermenu-icon {
+  height: 1.2rem;
 }
 
 .btn-account {
@@ -58,40 +57,80 @@ mat-icon {
 }
 
 // //////////////////////Products Category Menu ////////////////////
-.content{
-    display: flex;
-    gap: 0;
-   
+.content {
+  display: flex;
+  gap: 0;
+  
 }
 
-.product-category{
-    margin-left: 11rem;
-    padding: 0.5rem 1rem 0 1rem;
-    background-color: #fff;
-    width: 24rem;
-   
+.product-category {
+  margin-left: 11rem;
+  padding: 0.5rem 1rem 0 1rem;
+  background-color: #fff;
+  width: 20rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
 }
 
-.category-list{
-    list-style: none;
-    padding: 0rem;
+.category-list {
+  list-style: none;
+  padding: 0rem;
 }
 
-.list-group-item{
-    margin: 1rem;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
+.list-group-item {
+  margin: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #333;
+  text-transform: capitalize;
 }
 
-.list-group-a{
-    text-decoration: none;
-    line-height: 3.5;
-    font-size: 1.3rem;
 
+
+.list-group-a {
+  text-decoration: none;
+  line-height: 3.5;
+  font-size: 1.3rem;
 }
 
-.carousel{
-    margin-right: 11rem;
-    width: 140rem;
+.side-container {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-right: 11rem;
+  width: 140rem;
+  background-color: #fff;
+  box-shadow: #333;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
+}
+
+.menu-details{
+  z-index: 1;
+  display: none;
+}
+
+.open{
+  position: absolute;
+  top: 0;
+  width: 140rem;
+  height: 70rem;
+  z-index: 1;
+  display: block;
+  background-color: #fff;
+}
+
+
+.menu-products{
+  list-style: none;
+  line-height: 2.5;
+}
+
+.prod {
+  text-decoration: none;
+  color: #222222;
+}
+
+.prod:hover{
+  text-decoration: underline;
 }

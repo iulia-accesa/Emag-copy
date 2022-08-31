@@ -7,8 +7,9 @@ import { MenuService } from './menu.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
- @Input() categories: any;
+ @Input() categories: any; //trigger
  @Input() products: any;
+ @Input() isRootNode = false;
 
   constructor(private service: MenuService) {}
 
@@ -17,12 +18,19 @@ export class MenuComponent implements OnInit {
       this.categories = response;
     });
 
-    this.service.getProducts().subscribe((response) => {
-      this.products = response;
-    })
+  }
+ isOpen = false;
+  hoverHandler (event: any) {
+    this.isOpen = true;
+    this.service.getProducts(event.target.id).subscribe((response) => {
+      this.products = response as Array<{}>;
+      this.products = this.products.map((product: any) => {
+        return product.title;
+      })
+      });
+  }
 
-    // fetch('https://fakestoreapi.com/products/category/{{categ}}')
-    //         .then(res=>res.json())
-    //         .then(json=>console.log(json))
+  outHandler() {
+    this.isOpen = false;
   }
 }

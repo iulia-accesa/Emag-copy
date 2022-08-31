@@ -7,43 +7,37 @@
           alt="burger menu icon"
           class="burgermenu-icon"
         />
-        Products</a>
+        Products</a
+      >
       <a class="btn-account">Account</a>
     </div>
   </div>
   <div class="content">
-    <!-- <div class="product-category">
-      <ul class="category-list list-group">
-        <li *ngFor="let categ of categories" class="list-group-item">
-          <mat-icon>phone_iphone</mat-icon>
-          <a class="list-group-a">{{ categ }}</a>
-        </li>
-      </ul>
-    </div> -->
+    <span
+      class="product-category"
+      (mouseover)="hoverHandler($event)"
+      (mouseout)="outHandler()"
+    >
+      <button
+        mat-button
+        *ngFor="let categ of categories"
+        class="list-group-item"
+        id="{{ categ }}"
+      >
+        <mat-icon id="{{ categ }}">phone_iphone</mat-icon>
+        {{ categ }}
+      </button>
+    </span>
 
-      <span class="product-category">
-        <button 
-            mat-button 
-            [matMenuTriggerFor]="menu"
-            *ngFor="let categ of categories" 
-            class="list-group-item"
-            id={{categ}}>
-             <mat-icon>phone_iphone</mat-icon>
-            {{categ}}
-        </button>
-        
-        <mat-menu #menu="matMenu">
-            <button 
-                mat-menu-item 
-                *ngFor="let prod of products">
-                {{ prod }}
-            </button>
-          </mat-menu>
-        <!-- <button>test</button> -->
-      </span>
-
-    <div class="carousel">
+    <div class="side-container">
       <app-carousel></app-carousel>
+      <div class="menu-details" [ngClass]="{ open: isOpen }">
+        <ul class="menu-products">
+          <li *ngFor="let prod of products">
+            <a href="" class="prod">{{ prod }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -6,14 +6,16 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    CarouselComponent
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,9 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
-    MatMenuModule,
+    RouterModule,
+    CarouselModule,
+    BrowserModule
   ],
   exports: [MenuComponent]
 })
