@@ -1,8 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { exhaustMap, take, tap, map} from 'rxjs/operators';
+import { exhaustMap, take, map} from 'rxjs/operators';
+
 import * as fromRoot from '../app.reducer';
 
 @Injectable()

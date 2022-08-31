@@ -1,3 +1,4 @@
+import { AccountApiService } from './services/account/account-api.service';
 import { appReducers } from './app.reducer';
 import { AccountInterceptor } from './account/account.interceptor';
 import { AccountModule } from './account/account.module';
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AccountEffects } from './account/store/account.effects';
+import { AccountEffects } from './services/account/account.effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AccountEffects } from './account/store/account.effects';
       provide: HTTP_INTERCEPTORS, 
       useClass: AccountInterceptor,
       multi: true
-    }
+    },
+    AccountApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,13 @@
 import { Router } from '@angular/router';
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import * as AccountActions from './account.actions';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { User } from '../user.model';
 
-export interface AccountResponseData {
-    token: string;
-}
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { catchError, map, of, switchMap, tap } from 'rxjs';
+
+import * as AccountActions from './account.actions';
+import { User } from '../../account/user.model';
+import { AccountApiService } from './account-api.service';
+
 
 const handleLogin = (
     username: string, 
@@ -17,7 +16,7 @@ const handleLogin = (
 ) => {
     const user = new User(username, password, token);
     localStorage.setItem('userToken', JSON.stringify(token))
-    return AccountActions.AuthenticateSucces({ user: user });
+    return AccountActions.authenticateSucces({ user: user });
 };
 
 const handleError = (
@@ -31,7 +30,7 @@ const handleError = (
         default:
             errorMessage = 'Eroare necunoscuta!';
     }
-    return of(AccountActions.AuthenticateFail({ authError: errorMessage }));
+    return of(AccountActions.authenticateFail({ authError: errorMessage }));
 };
 
 @Injectable()
@@ -39,20 +38,19 @@ export class AccountEffects {
 
     constructor (
         private actions$: Actions,
-        private http: HttpClient,
         private router: Router,
+        private accountApiService: AccountApiService
     ) {}
 
     accountLogin$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(AccountActions.LoginStart),
+            
+            ofType(AccountActions.loginStart),
             switchMap((accountData) => {
-                return this.http.post<AccountResponseData>(
-                    'https://fakestoreapi.com/auth/login', 
-                    {
-                        username: accountData.user.username,
-                        password: accountData.user.password
-                    })
+                    return this.accountApiService.login(
+                        accountData.user.username,
+                        accountData.user.password
+                    )
                 .pipe (
                     map(resultData => {
                         return handleLogin(
@@ -72,7 +70,8 @@ export class AccountEffects {
     
     accountAuthenticateSucces$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(AccountActions.AuthenticateSucces),
+
+            ofType(AccountActions.authenticateSucces),
             tap( () => {
                 this.router.navigate(['/']);
             })

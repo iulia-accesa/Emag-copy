@@ -1,6 +1,9 @@
-import { User } from './../user.model';
 import { createReducer, on } from '@ngrx/store';
+
+import { User } from '../../account/user.model';
 import * as fromAccount from './account.actions';
+
+export const accountFeatureKey = 'account';
 
 export interface State {
     user: User;
@@ -17,7 +20,7 @@ const initialState: State = {
 export const accountReducer = createReducer(
     initialState,
 
-    on (fromAccount.LoginStart, (state) => {
+    on (fromAccount.loginStart, (state) => {
         return {
             ...state, 
             authError: null,
@@ -25,7 +28,7 @@ export const accountReducer = createReducer(
         };
     }),
 
-    on (fromAccount.AuthenticateSucces, (state, action) => {
+    on (fromAccount.authenticateSucces, (state, action) => {
         const user = new User(
             action.user.username,
             action.user.password,
@@ -39,7 +42,7 @@ export const accountReducer = createReducer(
         };
     }),
 
-    on (fromAccount.AuthenticateFail, (state, action) => {
+    on (fromAccount.authenticateFail, (state, action) => {
         return {
             ...state, 
             user: null, 

@@ -1,11 +1,13 @@
-import { getAuthError, getIsLoading } from './../store/account.selectors';
-import { Observable } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as fromAccount from '../store/account.actions';
+
+import * as fromAccount from '../../services/account/account.actions';
 import * as fromRoot from '../../app.reducer';
 import { User } from '../user.model';
+import { getAuthError, getIsLoading } from '../../services/account/account.selectors';
 
 @Component({
   selector: 'app-login',
@@ -62,6 +64,6 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.username, 
       this.loginForm.value.password
     );
-    this.store.dispatch(fromAccount.LoginStart({ user }));
+    this.store.dispatch(fromAccount.loginStart({ user }));
   }
 }

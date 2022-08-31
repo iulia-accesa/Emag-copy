@@ -1,5 +1,5 @@
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
-import * as fromAccount from './account/store/account.reducer';
+import * as fromAccount from './services/account/account.reducer';
 
 export interface State {
     account: fromAccount.State;

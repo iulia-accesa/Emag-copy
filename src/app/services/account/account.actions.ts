@@ -1,5 +1,6 @@
-import { User } from './../user.model';
 import { createAction, props } from "@ngrx/store";
+
+import { User } from '../../account/user.model';
 
 export enum AccountActionType {
     LOGIN_START = '[Account] Login Start',
@@ -7,17 +8,17 @@ export enum AccountActionType {
     AUTHENTICATE_FAIL = '[Account] Authenticate Fail'
 }
 
-export const LoginStart = createAction(
+export const loginStart = createAction(
     AccountActionType.LOGIN_START,
     props<{ user: User }>()
 );
 
-export const AuthenticateSucces = createAction(
+export const authenticateSucces = createAction(
     AccountActionType.AUTHENTICATE_SUCCES,
     props<{ user: User }>()
 );
 
-export const AuthenticateFail = createAction(
+export const authenticateFail = createAction(
     AccountActionType.AUTHENTICATE_FAIL,
     props<{ authError: string }>()
 );
