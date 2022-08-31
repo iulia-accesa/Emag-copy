@@ -1,0 +1,41 @@
+<mat-card class="product_price_goToCart">
+    <div class="old_price">
+      Rs.
+      {{ calcOldPrice(product[0].price, product[0].discountPercentage) }}
+    </div>
+    <div class="new_price">Rs. {{ product[0].price }}</div>
+    <div>Stock : {{ product[0].stock }}</div>
+    <div class="ratings">
+      <div
+        *ngFor="
+          let dummy of ' '.repeat(calcRating(product[0].rating)).split('')
+        "
+      >
+        <img
+          class="rating_star"
+          src="../../../assets/images/filled_star.png"
+          alt=""
+        />
+      </div>
+      <div
+        *ngFor="
+          let dummy of ' '
+            .repeat(5 - calcRating(product[0].rating))
+            .split('')
+        "
+      >
+        <img class="rating_star" src="../../../assets/images/empty_star.png" alt="" />
+      </div>
+      <span>{{product[0].rating}} </span>
+    </div>
+    <div class="addToCartV2">
+      <div class="blueQuad"></div>
+      <div class="redQuad"></div>
+      <img
+        class="cartIcon"
+        src="../../assets/clarity_shopping-cart-line.svg"
+        alt=""
+      />
+      <div class="addToCartBtn">Add To Cart</div>
+    </div>
+  </mat-card>

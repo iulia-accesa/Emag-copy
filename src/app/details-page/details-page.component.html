@@ -1,0 +1,33 @@
+<div class="containerForBackground">
+  <div class="component_container">
+    <div class="path">{{ product[0].category }}/{{ product[0].title }}</div>
+    <h1 class="mainTitle">{{ product[0].title }}</h1>
+    <div>Cod produs: 4019238054170</div>
+    <hr />
+    <div class="container">
+      <section class="hero_section">
+        <app-product-photos></app-product-photos>
+        <div class="detailsContainer">
+
+          <section class="product_description">
+            <div class="descriptionItem">{{ product[0].brand }}</div>
+            <div class="descriptionItem">
+              Category : {{ product[0].category }}
+            </div>
+            <div class="descriptionItem">Sold By : {{ product[0].seller }}</div>
+            <div class="descriptionItem">
+              Description : {{ product[0].description }} Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. Accusantium officia dolorum
+              iusto libero ullam asperiores voluptatum, quidem earum,
+              repellendus, laudantium tempore! Tenetur hic dolorum odio nihil ex
+              sit ad enim.
+            </div>
+          </section>
+          <app-add-to-cart-box class="cartBox"></app-add-to-cart-box>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<app-similar-product ></app-similar-product>
+<product-card-component></product-card-component>

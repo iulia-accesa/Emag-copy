@@ -1,0 +1,36 @@
+
+.container_left_side {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.secondary_photo {
+  max-width: 68px;
+  max-height: 68px;
+  padding: 5px;
+}
+
+
+.main_photo {
+  border-radius: 5px;
+  width: 475px;
+  height: 475px;
+}
+
+.list_secondary_photo {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.image_selected{
+    border-color: rgb(4, 0, 255);
+  }
+
+img{
+  border: 2px solid transparent
+}

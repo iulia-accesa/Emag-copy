@@ -1,0 +1,11 @@
+<mat-card class="container_left_side">
+    <section class="detail_photo">
+        <div *ngFor="let prod of product">
+          <img class="main_photo" src="{{ image }}" alt="" datalabel = "main_img" />
+        </div>
+        <div class="list_secondary_photo">
+          <img class="secondary_photo" *ngFor="let prod of product[0].images; let i =index; " src="{{ prod }}" alt="" (click) = "image=prod" datalabel = "secondary_img"
+          [class.image_selected]="prod===image" />
+        </div>
+      </section>
+    </mat-card>
