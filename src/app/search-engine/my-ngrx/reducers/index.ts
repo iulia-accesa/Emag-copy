@@ -1,7 +1,7 @@
 import { createReducer,on } from "@ngrx/store";
 import { from } from "rxjs";
 import { defaultSearchBarProduct, SearchBarProduct } from "../../models/search-bar.product";
-import { SearchBarService } from "../../searchbar/services/search-bar.service";
+import { SearchBarService } from "../../services/search-bar.service";
 import * as fromSearchActions from '../actions/index';
 export interface State{
     searchResult:SearchBarProduct[]

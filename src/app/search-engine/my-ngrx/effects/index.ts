@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import * as fromSearchActions from '../actions/index';
 import { tap, take, switchMap, map, concatMap,mergeMap } from 'rxjs';
-import { SearchBarService } from '../../searchbar/services/search-bar.service';
+import { SearchBarService } from '../../services/search-bar.service';
 import { SearchBarProduct } from '../../models/search-bar.product';
 @Injectable()
 export class SearchEffects {

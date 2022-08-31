@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, race, take } from 'rxjs';
-import { Product, ProductRating } from '../../models/product';
-import { SearchBarProduct } from '../../models/search-bar.product';
-import * as fromApi from '../../resources/api-endpoints';
+import { Product, ProductRating } from '../models/product';
+import { SearchBarProduct } from '../models/search-bar.product';
+import * as fromApi from '../resources/api-endpoints';
 
 @Injectable()
 export class SearchBarService {

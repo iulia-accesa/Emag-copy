@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, map, take, first } from 'rxjs';
 
 import { SearchBarProduct } from '../models/search-bar.product';
-import { SearchBarService } from './services/search-bar.service';
+import { SearchBarService } from '../services/search-bar.service';
 import * as fromSearchActions from '../my-ngrx/actions/index';
 import * as fromSearchSelectors from '../my-ngrx/selectors/index';
 
@@ -17,7 +17,7 @@ export class SearchBarComponent implements OnInit {
 
 
   options$: Observable<SearchBarProduct[]>;
-  
+  _searchInput: string = "";
   private timeout: any;
   updateDebounceText = this.debounce((text: string) => {
     if(text.length > 2){
@@ -49,6 +49,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onInputChanged(event: any) {
+    this._searchInput = event.target.value;
     this.updateDebounceText(event.target.value);
   }
 
@@ -59,6 +60,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onEnter(){
-    this._router.navigateByUrl("search-results")
+    
+    this._router.navigate(["search/products"],{queryParams:{searchKey:this._searchInput}})
   }
 }

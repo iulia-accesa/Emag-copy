@@ -6,16 +6,22 @@ import { SearchbarProductsPageComponent } from "./searchbar-products-page.compon
 
 export const searchRoutes:  Routes = [
   {
-      path: 'search-results',
+      path: 'search/products',
+      
       component: SearchbarProductsPageComponent
      
-  } 
+  }
+  // ,
+  // {
+  //   path: 'products/:id',
+  //   component: undefined //aici vine componenta de product details
+  // }
 ]
 @NgModule({
     declarations: [ SearchbarProductsPageComponent],
     exports: [SearchbarProductsPageComponent],
     imports: [
-      RouterModule.forChild(searchRoutes)
+     RouterModule.forChild(searchRoutes)
     ],
     providers: [
         
