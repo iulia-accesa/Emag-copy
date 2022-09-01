@@ -14,11 +14,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AccountEffects } from './services/account/account.effects';
-
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -39,5 +40,6 @@ import { AccountEffects } from './services/account/account.effects';
     AccountApiService
   ],
   bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class AppModule {}
