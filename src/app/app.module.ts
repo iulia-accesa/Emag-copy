@@ -8,11 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
+import { HomepageCategoriesModule } from './homepage-categories/homepage-categories.module';
+
 @NgModule({
   declarations: [AppComponent, ProductCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomepageCategoriesModule,
     
 
     StoreModule.forRoot({}, {}),
@@ -26,3 +29,4 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
