@@ -1,7 +1,6 @@
 <main class="product-list-page" fxLayoutAlign="center center">
   <div class="page-container">
     <breadcrumb-nav> </breadcrumb-nav>
-    <!-- stretch should be removed in desktop mode -->
     <div
       class="main-container"
       fxLayout.lt-sm="column"
@@ -11,7 +10,7 @@
       fxLayoutGap.lt-sm="0"
       fxLayoutGap.gt-sm="1rem"
     >
-      <filters></filters>
+      <filters [priceRange]="priceRange$ | async"></filters>
       <list-container></list-container>
     </div>
   </div>

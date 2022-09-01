@@ -9,4 +9,5 @@ export interface ProductModel {
     count: number;
     rate: number;
   };
+  favorite: boolean;
 }

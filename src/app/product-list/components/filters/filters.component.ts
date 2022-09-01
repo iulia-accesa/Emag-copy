@@ -1,6 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+  OnChanges,
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
+
+import { IPriceRange } from '../../models/price-range.interface';
 
 @Component({
   selector: 'filters',
@@ -8,9 +17,13 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./filters.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FiltersComponent implements OnInit {
-  readonly priceFilterMinValue = 100;
-  readonly priceFilterMaxValue = 20000;
+export class FiltersComponent implements OnInit, OnChanges {
+  priceFilterMinValue = 1;
+  priceFilterMaxValue = 999999;
+
+  @Input() public priceRange: IPriceRange;
+  @Input() public brandList: string[];
+  @Input() public ratingList: number[];
 
   filterForm: FormGroup;
   brandsForm = new FormGroup({
@@ -51,6 +64,13 @@ export class FiltersComponent implements OnInit {
       priceSlider: this.sliderForm,
       ratingsForm: this.ratingsForm,
     });
+  }
+
+  ngOnChanges(changes) {
+    if (changes.priceRange) {
+      this.priceFilterMinValue = changes.priceRange.min;
+      this.priceFilterMaxValue = changes.priceRange.max;
+    }
   }
 
   onFilterChange() {}
