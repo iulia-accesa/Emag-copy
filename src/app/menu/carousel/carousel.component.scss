@@ -1,19 +1,36 @@
-.owl-nav.disabled.ng-star-inserted {
-  position: relative;
-}
+app-carousel {
+  .owl-carousel.owl-theme.owl-loaded.owl-responsive {
+    position: relative;
+  }
 
-.owl-dots.ng-star-inserted {
-  position: absolute;
-  top: 90%;
-  left: 46%;
-}
+  .owl-dots.ng-star-inserted {
+    position: absolute;
+    top: 95%;
+    left: 46%;
+    margin: 0;
+    padding: 0;
+  }
 
-.owl-nav.ng-star-inserted{
+  .owl-nav.ng-star-inserted {
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.owl-next {
-    position: absolute;
-}
+  .owl-carousel {
+    .owl-nav {
+      .owl-next,
+      .owl-prev {
+        position: absolute;
+        top: 40%;
+      }
+    }
+  }
 
+  .owl-next {
+    right: 0%;
+  }
+
+  .owl-nav.ng-star-inserted {
+    margin: 0;
+  }
+}
