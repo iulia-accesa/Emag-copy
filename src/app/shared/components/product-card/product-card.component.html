@@ -1,6 +1,6 @@
-<div class="cardElement" *ngIf="product">
-  <img class="simCartImg" src="{{ product.image }}" alt="" />
-  <div class="productPrice">Rs. {{ product.price }}</div>
-  <div class="prodTitle">{{ product.title }}</div>
-  <div>Category: {{product.category}} </div>
+<div class="cardElement">
+  <img class="simCartImg" [src]="product?.image" alt="" />
+  <div class="productPrice">Rs. {{ product?.price }}</div>
+  <div class="prodTitle">{{ product?.title }}</div>
+  <div>Category: {{product?.category}} </div>
 </div>

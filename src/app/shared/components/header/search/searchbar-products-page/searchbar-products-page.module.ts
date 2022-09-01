@@ -22,7 +22,7 @@ export const routes:  Routes = [
 ]
 @NgModule({
     declarations: [ SearchbarProductsPageComponent,ProductCardComponent],
-    exports: [SearchbarProductsPageComponent,ProductCardComponent],
+    exports: [SearchbarProductsPageComponent],
     imports: [
      RouterModule.forChild(routes),
      BrowserModule
