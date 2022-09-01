@@ -7,11 +7,12 @@ import { IProductApi } from '../../models/product-api.interface';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent {
-  @Input() product: IProductApi | undefined;
+  @Input() product: any;
+  prodRating: number = 0;
 
   constructor() {}
 
-  calcRating(rat: number) {
-    return Math.round(rat);
+  ngOnInit() {
+    this.prodRating = Math.round(this.product.rating.rate);
   }
 }

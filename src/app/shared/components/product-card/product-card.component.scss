@@ -8,6 +8,15 @@
   width: 220px;
 }
 
+.checked{
+  color: rgba(255, 255, 0, 0.808);
+}
+
+.ratingStars{
+  display: flex;
+  flex-direction: row;
+}
+
 .simCartImg {
   width: 100%;
   height: 70%;
