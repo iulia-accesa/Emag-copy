@@ -16,6 +16,18 @@ import { searchResultFeatureKey } from 'src/app/services/search/search.feature-k
 import * as fromSearch from 'src/app/services/search/search.reducer';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SearchEffects } from 'src/app/services/search/search.effects';
+import { RouterModule, Routes } from '@angular/router';
+import { SearchbarProductsPageComponent } from './searchbar-products-page/searchbar-products-page.component';
+
+
+export const routes:  Routes = [
+  {
+      path: 'search',
+      
+      component: SearchBarComponent
+     
+  }
+]
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
@@ -27,6 +39,7 @@ import { SearchEffects } from 'src/app/services/search/search.effects';
    MatIconModule,
    StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer),
    AppRoutingModule,
+   RouterModule.forChild(routes),
   EffectsModule.forFeature([SearchEffects]),
    
   ],
@@ -35,4 +48,4 @@ import { SearchEffects } from 'src/app/services/search/search.effects';
   
   ]
 })
-export class SearchEngineModule { }
+export class SearchModule { }

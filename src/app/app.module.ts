@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { SearchModule } from "./shared/components/header/search/search.module";
 
 
 
@@ -18,7 +19,7 @@ import { AppComponent } from "./app.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-  
+    SearchModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([])

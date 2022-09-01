@@ -59,6 +59,6 @@ export class SearchBarComponent implements OnInit {
 
   onEnter(){
     
-    this._router.navigate(["search/products"],{queryParams:{searchKey:this._searchInput}})
+    this._router.navigate(["products"],{queryParams:{searchKey:this._searchInput}})
   }
 }

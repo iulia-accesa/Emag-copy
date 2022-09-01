@@ -7,9 +7,9 @@ import { SearchbarProductsPageComponent } from "./searchbar-products-page.compon
 import { SearchbarProductsPageService } from "./searchbar-products-page.service";
 
 
-export const searchRoutes:  Routes = [
+export const routes:  Routes = [
   {
-      path: 'search/products',
+      path: 'products',
       
       component: SearchbarProductsPageComponent
      
@@ -24,7 +24,7 @@ export const searchRoutes:  Routes = [
     declarations: [ SearchbarProductsPageComponent,ProductCardComponent],
     exports: [SearchbarProductsPageComponent,ProductCardComponent],
     imports: [
-     RouterModule.forChild(searchRoutes),
+     RouterModule.forChild(routes),
      BrowserModule
      
     ],
