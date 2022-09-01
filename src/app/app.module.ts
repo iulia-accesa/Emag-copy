@@ -17,7 +17,7 @@ import { ProductCardComponent } from "./shared/components/product-card/product-c
 
 
 @NgModule({
-  declarations: [AppComponent,ProductCardComponent,ProductListSearchEngineComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
