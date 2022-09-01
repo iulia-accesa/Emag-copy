@@ -25,7 +25,6 @@ import { SharedModule } from "./shared/shared.module";
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
-    MatIconModule,
     SharedModule
   ],
   providers: [],
