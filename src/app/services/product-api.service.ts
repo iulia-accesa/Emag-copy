@@ -19,6 +19,13 @@ export class ProductApiService {
     return this._httpClient.get<string[]>(`${this._apiUrl}/categories`);
   }
 
+  getById(id: number): Observable<IProductApi[]> {
+
+    return this._httpClient.get<IProductApi[]>(`${this._apiUrl}/products/${id}`);
+
+  }
+
+
   /**
    *
    * @param category
