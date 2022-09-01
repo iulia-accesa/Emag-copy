@@ -8,8 +8,6 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ProductListSearchEngineComponent } from "./product-list-search-engine/product-list-search-engine.component";
-import { ProductListSearchEngineModule } from "./product-list-search-engine/product-list-search-engine.module";
 import { SearchModule } from "./shared/components/header/search/search.module";
 import { ProductCardComponent } from "./shared/components/product-card/product-card.component";
 
@@ -17,11 +15,11 @@ import { ProductCardComponent } from "./shared/components/product-card/product-c
 
 
 @NgModule({
-  declarations: [AppComponent,ProductCardComponent,ProductListSearchEngineComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductListSearchEngineModule,
+   SearchModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
