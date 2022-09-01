@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AccountEffects } from './services/account/account.effects';
 
+
 @NgModule({
   declarations: [
     AppComponent
