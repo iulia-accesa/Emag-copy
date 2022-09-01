@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 
 import { take } from 'rxjs/operators';
 
-import { AccountService } from './../../services/account/account.service';
+import { AccountService } from '../../services/account/account.service';
 
 @Component({
   selector: 'app-login',
@@ -29,21 +29,25 @@ export class LoginComponent implements OnInit {
         Validators.required
       ]),
       password: new FormControl('', [
-        Validators.required, 
-        this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+        Validators.required,
+        // TODO: Check REGEX (current is not ok) on https://regex101.com/ against some passwords from https://fakestoreapi.com/users as examples
+        // Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+        // TODO: Remove custom patern validation, a default Angular already exists
+        // this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
       ])
     });
   }
-  
-  passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {
-    return (password: AbstractControl): ValidationErrors | null => {
-      const matchesTemplate = passwordRegex.test(password.value);
-      if (password.value && password.value.length < 2) 
-        return { template: password.value }
 
-      return !matchesTemplate ? { template: password.value } : null;
-    };
-  }
+  /// TODO: Remove, check up
+  // passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {
+  //   return (password: AbstractControl): ValidationErrors | null => {
+  //     const matchesTemplate = passwordRegex.test(password.value);
+  //     if (password.value && password.value.length < 2)
+  //       return { template: password.value }
+  //
+  //     return !matchesTemplate ? { template: password.value } : null;
+  //   };
+  // }
 
   onSubmit() {
     if (!this.loginForm.valid)
@@ -51,24 +55,19 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.login(
+    this.accountService.login$(
       this.loginForm.value.username,
       this.loginForm.value.password
     )
-    .pipe(take(1))
-    .subscribe({
-      next: token => {
-        // localStorage.setItem('userToken', JSON.stringify(token));
-        this.router.navigate(['/']);
-      },
-      error: errorMessage => {
-        if (errorMessage === 'username or password is incorrect') 
-          this.errors = 'Username-ul sau parola sunt incorecte';
-        else
-          this.errors = 'Eroare necunoscuta!';
-      }
-    })
-    
+      .pipe(take(1))
+      .subscribe({
+        next: () => this.router.navigate(['/']),
+        error: (error: string) => {
+          this.errors = (error === 'username or password is incorrect') ?
+            'Username-ul sau parola sunt incorecte' : 'Eroare necunoscuta!';
+        }
+      });
+
     this.isLoading = false;
   }
 }

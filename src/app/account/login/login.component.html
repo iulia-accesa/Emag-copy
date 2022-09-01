@@ -15,7 +15,7 @@
       <mat-form-field appearance="outline">
         <input
           matInput
-          type="text" 
+          type="text"
           formControlName="username"
           placeholder="Username"
           />
@@ -27,11 +27,11 @@
       <mat-form-field appearance="outline">
         <input
           matInput
-          type="password" 
+          type="password"
           formControlName="password"
           placeholder="Parola"
           />
-          <mat-error *ngIf="loginForm.get('password')?.hasError('template') && !loginForm.get('password')?.hasError('required')">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('pattern') && !loginForm.get('password')?.hasError('required')">
             Introdu o parola valida
           </mat-error>
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')" >
@@ -43,11 +43,11 @@
 
       <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-      <mat-error *ngIf="errors" class="final-error"> 
+      <mat-error *ngIf="errors" class="final-error">
         {{ errors }}
       </mat-error>
     </form>
   </mat-card-content>
 </mat-card>
-    
+
 
