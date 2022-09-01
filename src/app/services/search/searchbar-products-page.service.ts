@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable,take,map } from "rxjs";
 import { ProductApiService } from "src/app/services/product-api.service";
-import { IProduct } from "src/app/shared/product-card/product-card.component.interface";
+import { IProduct } from "src/app/shared/components/product-card/product-card.component.interface";
 
 
 @Injectable()

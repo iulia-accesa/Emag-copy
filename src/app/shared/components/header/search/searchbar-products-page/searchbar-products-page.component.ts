@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, observable, Observable, of} from 'rxjs';
-import { IProduct } from 'src/app/shared/product-card/product-card.component.interface';
-import { SearchbarProductsPageService } from './searchbar-products-page.service';
+import { IProduct } from 'src/app/shared/components/product-card/product-card.component.interface';
+import { SearchbarProductsPageService } from "src/app/services/search/searchbar-products-page.service";
 
 @Component({
   selector: 'app-searchbar-products-page',
