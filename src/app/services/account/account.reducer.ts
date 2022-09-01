@@ -11,11 +11,14 @@ export interface State {
     loading: boolean;
 };
 
+const nullUser: User = new User ('', '',)
+
 const initialState: State = {
-    user: null,
-    authError: null,
+    user: nullUser,
+    authError: '',
     loading: false
 };
+
 
 export const accountReducer = createReducer(
     initialState,
@@ -23,7 +26,7 @@ export const accountReducer = createReducer(
     on (fromAccount.loginStart, (state) => {
         return {
             ...state, 
-            authError: null,
+            authError: '',
             loading: true
         };
     }),
@@ -37,7 +40,7 @@ export const accountReducer = createReducer(
         return {
             ...state,
             user: user,
-            authError: null,
+            authError: '',
             loading: false
         };
     }),
@@ -45,7 +48,7 @@ export const accountReducer = createReducer(
     on (fromAccount.authenticateFail, (state, action) => {
         return {
             ...state, 
-            user: null, 
+            user: nullUser, 
             authError: action.authError,
             loading: false
         };

@@ -1,18 +1,6 @@
-@import '../../../variables.scss';
+@import '/src/variables.scss';
+@import '/src/app/shared/styles/mixins';
 
-@mixin response($breakpoint) {
-  @if($breakpoint == md) {
-      @media (max-width: 600px) {
-          @content;
-      }
-  }
-
-  @if($breakpoint == sm) {
-      @media (max-width: 500px) {
-          @content;
-      }
-  }
-}
 
 app-login {
   background: $background-color;

@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
 
 import * as fromAccount from '../../services/account/account.actions';
 import * as fromRoot from '../../app.reducer';
@@ -16,13 +17,13 @@ import { getAuthError, getIsLoading } from '../../services/account/account.selec
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  username: FormControl;
-  password: FormControl;
+  loginForm!: FormGroup;
+  username!: FormControl;
+  password!: FormControl;
 
-  loginErrors$: Observable<string>;
-  isLoading$: Observable<boolean>;
-  errors: string;
+  loginErrors$!: Observable<string>;
+  isLoading$!: Observable<boolean>;
+  errors!: string;
 
   constructor(
     private store: Store<fromRoot.State>
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.isLoading$ = this.store.select(getIsLoading);
     this.loginErrors$ = this.store.select(getAuthError);
-    this.loginErrors$.subscribe(error => this.errors = error)
+    this.loginErrors$.pipe(take(1)).subscribe(error => this.errors = error)
   }
 
   passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {

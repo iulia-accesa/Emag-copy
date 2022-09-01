@@ -21,9 +21,8 @@ export class AccountApiService {
   ) {
     return this.httpClient.post<AccountResponseData>(
         `${this.apiUrl}/auth/login`, 
-        {
-            username: username,
-            password: password
+        {   username,
+            password
         })
   }
 }
