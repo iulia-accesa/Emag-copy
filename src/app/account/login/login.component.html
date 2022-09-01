@@ -16,10 +16,10 @@
         <input
           matInput
           type="text" 
-          [formControl]="username"
+          formControlName="username"
           placeholder="Username"
           />
-          <mat-error *ngIf="username.hasError('required')">
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
             Campul este <strong>obligatoriu</strong>
           </mat-error>
       </mat-form-field>
@@ -28,22 +28,22 @@
         <input
           matInput
           type="password" 
-          [formControl]="password"
+          formControlName="password"
           placeholder="Parola"
           />
-          <mat-error *ngIf="password.hasError('template') && !password.hasError('required')">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('template') && !loginForm.get('password')?.hasError('required')">
             Introdu o parola valida
           </mat-error>
-          <mat-error *ngIf="password.hasError('required')" >
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')" >
             Campul este <strong>obligatoriu</strong>
           </mat-error>
       </mat-form-field>
 
       <button type="submit" mat-flat-button>Login</button>
 
-      <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-      <mat-error *ngIf="loginErrors$ | async" class="final-error"> 
+      <mat-error *ngIf="errors" class="final-error"> 
         {{ errors }}
       </mat-error>
     </form>

@@ -7,17 +7,12 @@ export const selectAccountState = createFeatureSelector<fromAccount.State>(
     fromAccount.accountFeatureKey
 );
 
-export const getUser = createSelector(
+export const getUsername = createSelector(
     selectAccountState,
-    account => account.user
+    account => account.username
 );
 
-export const getIsLoading = createSelector(
+export const getToken = createSelector(
     selectAccountState,
-    account => account.loading
-);
-
-export const getAuthError = createSelector(
-    selectAccountState,
-    account => account.authError
+    account => account.token
 );

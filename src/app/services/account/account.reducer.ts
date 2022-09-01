@@ -1,56 +1,33 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { User } from '../../account/user.model';
-import * as fromAccount from './account.actions';
+import * as AccountActions from './account.actions';
 
 export const accountFeatureKey = 'account';
 
 export interface State {
-    user: User;
-    authError: string;
-    loading: boolean;
+    username: string;
+    token: string
 };
-
-const nullUser: User = new User ('', '',)
 
 const initialState: State = {
-    user: nullUser,
-    authError: '',
-    loading: false
+    username: '',
+    token: '',
 };
-
 
 export const accountReducer = createReducer(
     initialState,
 
-    on (fromAccount.loginStart, (state) => {
-        return {
-            ...state, 
-            authError: '',
-            loading: true
-        };
-    }),
-
-    on (fromAccount.authenticateSucces, (state, action) => {
-        const user = new User(
-            action.user.username,
-            action.user.password,
-            action.user.token
-        );
-        return {
+    on (AccountActions.loginStart, state => ({ ...state})),
+    on (AccountActions.authenticateSucces, (state, action) => ({
             ...state,
-            user: user,
-            authError: '',
-            loading: false
-        };
-    }),
-
-    on (fromAccount.authenticateFail, (state, action) => {
-        return {
+            username: action.username,
+            token: action.token,
+        })
+    ),
+    on (AccountActions.authenticateFail, state => ({
             ...state, 
-            user: nullUser, 
-            authError: action.authError,
-            loading: false
-        };
+            username: '',
+            token: '',
     })
+    )
 );

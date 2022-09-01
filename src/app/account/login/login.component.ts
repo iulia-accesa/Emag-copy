@@ -1,14 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 
-import * as fromAccount from '../../services/account/account.actions';
-import * as fromRoot from '../../app.reducer';
-import { User } from '../user.model';
-import { getAuthError, getIsLoading } from '../../services/account/account.selectors';
+import { AccountService } from './../../services/account/account.service';
 
 @Component({
   selector: 'app-login',
@@ -18,35 +14,27 @@ import { getAuthError, getIsLoading } from '../../services/account/account.selec
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  username!: FormControl;
-  password!: FormControl;
 
-  loginErrors$!: Observable<string>;
-  isLoading$!: Observable<boolean>;
-  errors!: string;
+  isLoading: boolean = false;
+  errors: string = '';
 
   constructor(
-    private store: Store<fromRoot.State>
-    ) { }
+    private accountService: AccountService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
-    this.username = new FormControl('', [
-      Validators.required
-    ]);
-    this.password = new FormControl('', [
-      Validators.required, 
-      this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
-    ]);
     this.loginForm = new FormGroup({
-      username: this.username,
-      password: this.password,
+      username: new FormControl('', [
+        Validators.required
+      ]),
+      password: new FormControl('', [
+        Validators.required, 
+        this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+      ])
     });
-
-    this.isLoading$ = this.store.select(getIsLoading);
-    this.loginErrors$ = this.store.select(getAuthError);
-    this.loginErrors$.pipe(take(1)).subscribe(error => this.errors = error)
   }
-
+  
   passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {
     return (password: AbstractControl): ValidationErrors | null => {
       const matchesTemplate = passwordRegex.test(password.value);
@@ -61,10 +49,26 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid)
       return;
 
-    const user = new User(
-      this.loginForm.value.username, 
+    this.isLoading = true;
+
+    this.accountService.login(
+      this.loginForm.value.username,
       this.loginForm.value.password
-    );
-    this.store.dispatch(fromAccount.loginStart({ user }));
+    )
+    .pipe(take(1))
+    .subscribe({
+      next: token => {
+        // localStorage.setItem('userToken', JSON.stringify(token));
+        this.router.navigate(['/']);
+      },
+      error: errorMessage => {
+        if (errorMessage === 'username or password is incorrect') 
+          this.errors = 'Username-ul sau parola sunt incorecte';
+        else
+          this.errors = 'Eroare necunoscuta!';
+      }
+    })
+    
+    this.isLoading = false;
   }
 }

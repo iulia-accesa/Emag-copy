@@ -5,27 +5,29 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { exhaustMap, take, map} from 'rxjs/operators';
 
-import * as fromRoot from '../app.reducer';
+import * as fromRoot from './app.reducer';
+
 
 @Injectable()
-export class AccountInterceptor implements HttpInterceptor{
+export class AppInterceptor implements HttpInterceptor{
 
   constructor(
     private store: Store<fromRoot.State>
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const savedToken = localStorage.getItem('userToken');
     return this.store.select('account').pipe(
       take(1),
       map(accountState => {
-        return accountState.user;
+        return accountState.token;
       }),
-      exhaustMap(user => {
-        if (!user || !localStorage.getItem('userToken')) {
+      exhaustMap(token => {
+        if (!token && savedToken == null) {
           return next.handle(request);
         }
         const modifiedRequest = request.clone({
-          params: new HttpParams().set('Authorization', `Bearer ${user.token}`)
+          params: new HttpParams().set('Authorization', `Bearer ${savedToken}`)
         });
         return next.handle(modifiedRequest);
       })
