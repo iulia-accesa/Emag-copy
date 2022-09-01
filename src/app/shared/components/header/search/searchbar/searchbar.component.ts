@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { SearchBarProduct } from '../models/search-bar.product';
-import { SearchBarService } from '../services/search-bar.service';
-import * as fromSearchActions from '../my-ngrx/actions/index';
-import * as fromSearchSelectors from '../my-ngrx/selectors/index';
+import { SearchBarProduct } from 'src/app/services/search/searchbar-product.interface';
+import { SearchBarService } from 'src/app/services/search/search.service';
 
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
@@ -21,18 +18,19 @@ export class SearchBarComponent implements OnInit {
   private timeout: any;
   updateDebounceText = this.debounce((text: string) => {
     if(text.length > 2){
-    this._store.dispatch(fromSearchActions.inputChanged({ input: text }));
+      this._searchBarService.dispatchInputChangedAction(text)
+ 
     }else{
-      this._store.dispatch(fromSearchActions.inputChanged({ input: "" }));
+      this._searchBarService.dispatchInputChangedAction("")
+     
     }
   });
 
   constructor(
     private _searchBarService: SearchBarService,
-    private _store: Store,
     private _router:Router
   ) {
-    this.options$ = this._store.select(fromSearchSelectors.searchResult);
+    this.options$ = this._searchBarService.selectSearchResult()
   }
 
   ngOnInit(): void {

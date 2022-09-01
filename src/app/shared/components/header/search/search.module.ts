@@ -11,9 +11,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { SearchBarComponent } from './searchbar/searchbar.component';
 import { SearchbarProductsPageModule } from './searchbar-products-page/searchbar-products-page.module';
 import { SearchBarService } from 'src/app/services/search/search.service';
+import { searchResultFeatureKey } from 'src/app/services/search/search.feature-key';
 
-
-
+import * as fromSearch from 'src/app/services/search/search.reducer';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { SearchEffects } from 'src/app/services/search/search.effects';
 @NgModule({
   declarations: [ SearchBarComponent],
   exports: [SearchBarComponent],
@@ -25,9 +27,7 @@ import { SearchBarService } from 'src/app/services/search/search.service';
    MatIconModule,
    StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer),
    AppRoutingModule,
-
-   
-   EffectsModule.forFeature([SearchEffects]),
+  EffectsModule.forFeature([SearchEffects]),
    
   ],
   providers: [

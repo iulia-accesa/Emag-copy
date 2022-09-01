@@ -1,17 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable,take,map } from "rxjs";
+import { ProductApiService } from "src/app/services/product-api.service";
 import { IProduct } from "src/app/shared/product-card/product-card.component.interface";
-import { ALL_PRODUCTS } from "../resources/api-endpoints";
+
 
 @Injectable()
 export class SearchbarProductsPageService {
 
-    constructor(private http: HttpClient) {}
-
-    private getAllProducts(): Observable<IProduct[]> {
-        return this.http.get<IProduct[]>(ALL_PRODUCTS);
-      }
+    constructor(private _productApiService: ProductApiService) {}
 
 
     private productsMatchesSearchKey(product: IProduct,searchKey: string) :boolean {
@@ -24,7 +21,7 @@ export class SearchbarProductsPageService {
     }  
 
     filterProductsBySearchKey(searchKey: string): Observable<IProduct[]>{
-        return this.getAllProducts().pipe(
+        return this._productApiService.getAll().pipe(
             take(1),
             map((products: IProduct[]) => 
                products.filter(product => this.productsMatchesSearchKey(product,searchKey) )

@@ -1,14 +1,25 @@
 import { Injectable } from "@angular/core";
+import { Store } from "@ngrx/store";
 import { map, Observable, take } from "rxjs";
+
 import { IProductApi } from "src/app/shared/models/product-api.interface";
 import { ProductApiService } from "../product-api.service";
 import { SearchBarProduct } from "./searchbar-product.interface";
-
+import * as fromSearchActions from 'src/app/services/search/search.actions';
+import * as fromSearchSelectors from 'src/app/services/search/search.selectors'
 @Injectable()
 export class SearchBarService {
-  constructor(private _productApiService: ProductApiService ) {}
+ 
 
+  constructor(private _productApiService: ProductApiService, private _store: Store, ) {}
 
+  dispatchInputChangedAction(text: string) {
+    this._store.dispatch(fromSearchActions.inputChanged({ input: text }));
+  }
+
+  selectSearchResult(): Observable<SearchBarProduct[]> {
+    return this._store.select(fromSearchSelectors.searchResult);
+  }
 
   /**
    *
