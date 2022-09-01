@@ -1,7 +1,6 @@
 import { IBrand } from './../../models/brand.interface';
 import { IPriceRange } from './../../models/price-range.interface';
 import { createAction, props } from '@ngrx/store';
-import { ProductModel } from '../../models/product.model';
 import { Order } from '../../models/order.type';
 
 export const enter = createAction('[Product List Page] Enter');

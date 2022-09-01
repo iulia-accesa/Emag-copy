@@ -1,15 +1,16 @@
+import { IProduct } from './../../../shared/models/product.interface';
 import { IBrand } from './../../models/brand.interface';
-import { Order } from './../../models/order.type';
 import { IPriceRange } from './../../models/price-range.interface';
+import { Order } from './../../models/order.type';
 
 import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
-import { ProductModel } from '../../models/product.model';
 
 import { Store } from '@ngrx/store';
 import * as ProductListPageActions from '../../ngrx/actions/product-list-page.actions';
+import * as ProductServiceActions from '../../ngrx/actions/product-service.actions';
 
 @Component({
   selector: 'product-list-page',
@@ -17,9 +18,9 @@ import * as ProductListPageActions from '../../ngrx/actions/product-list-page.ac
   styleUrls: ['./product-list-page.component.scss'],
 })
 export class ProductListPageComponent implements OnInit {
-  private productListInitial: ProductModel[];
+  private productListInitial: IProduct[];
 
-  protected productList$: Observable<ProductModel[]>;
+  protected productList$: Observable<IProduct[]>;
   protected priceRange$: Observable<IPriceRange>;
   protected brandList$: Observable<{}>;
   protected ratingList$: Observable<number[]>;
@@ -41,35 +42,68 @@ export class ProductListPageComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService
-      .getAll()
-      .subscribe((products) => (this.productListInitial = products));
+    this.productService.getAll().subscribe((products) => {
+      this.productListInitial = products;
+
+      this.store.dispatch(ProductServiceActions.productsLoaded({ products }));
+    });
     this.productList$ = this.productService.getAll();
   }
 
   getFavoriteProducts(): void {
     const storageFavList = localStorage.getItem('favoriteItemList');
-    const favList = JSON.parse(storageFavList);
+    const productIds: number[] = storageFavList
+      ? JSON.parse(storageFavList)
+      : [];
 
-    this.favoriteItemList$ = storageFavList ? of(favList) : of([]);
+    this.favoriteItemList$ = of(productIds);
+
+    this.store.dispatch(
+      ProductServiceActions.favoriteProductsLoaded({ productIds })
+    );
   }
 
   getCartItemList(): void {
-    /**
-     * fetch local storage...
-     */
+    const storageCartItemList = localStorage.getItem('cartItemList');
+    const productIds: number[] = storageCartItemList
+      ? JSON.parse(storageCartItemList)
+      : [];
+
+    this.cartItemList$ = of(productIds);
+
+    this.store.dispatch(ProductServiceActions.cartItemsLoaded({ productIds }));
   }
 
   getBrandList(): void {
     this.brandList$ = this.productService.getBrands();
+
+    this.productService
+      .getBrands()
+      .subscribe((brands: IBrand[]) =>
+        this.store.dispatch(ProductServiceActions.brandsLoaded({ brands }))
+      );
   }
 
   getPriceRange(): void {
     this.priceRange$ = this.productService.getPriceRange();
+
+    this.productService
+      .getPriceRange()
+      .subscribe((range: IPriceRange) =>
+        this.store.dispatch(ProductServiceActions.priceRangeLoaded({ range }))
+      );
   }
 
   getRatingList(): void {
     this.ratingList$ = this.productService.getRatingCount();
+
+    this.productService
+      .getRatingCount()
+      .subscribe((ratings: number[]) =>
+        this.store.dispatch(
+          ProductServiceActions.ratingCountLoaded({ ratings })
+        )
+      );
   }
 
   markProductAsFavorite(productId: number) {

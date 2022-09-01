@@ -1,4 +1,4 @@
-import { ProductModel } from './../../models/product.model';
+import { IProduct } from './../../../shared/models/product.interface';
 import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { Input } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class ProductCardComponent implements OnInit {
-  @Input() card: ProductModel;
+  @Input() card: IProduct;
   favorite: boolean;
 
   constructor() {}
