@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 #my excluded files
-src/app/shared/product-card
+
