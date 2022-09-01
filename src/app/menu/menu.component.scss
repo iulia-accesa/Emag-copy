@@ -31,7 +31,7 @@ $nav-gradient: linear-gradient(
 }
 
 .btn-account:hover {
-  border: 2px white solid;
+  border: 1px white solid;
   border-radius: 10rem;
 }
 
@@ -64,8 +64,10 @@ mat-icon {
 }
 
 .product-category {
+  display: flex;
+  flex-direction: column;
   margin-left: 11rem;
-  padding: 0.5rem 1rem 0 1rem;
+  padding: 0.5rem 0 0 1rem;
   background-color: #fff;
   width: 20rem;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
@@ -77,7 +79,7 @@ mat-icon {
 }
 
 .list-group-item {
-  margin: 1rem;
+  line-height: 4;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -86,7 +88,9 @@ mat-icon {
   text-transform: capitalize;
 }
 
-
+.phone-icon{
+  height: 2rem;
+}
 
 .list-group-a {
   text-decoration: none;
@@ -102,7 +106,7 @@ mat-icon {
   width: 140rem;
   background-color: #fff;
   box-shadow: #333;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
+  box-shadow: 2px 7px 27px rgba(0, 0, 0, 0.08);
 }
 
 .menu-details{
@@ -134,3 +138,15 @@ mat-icon {
 .prod:hover{
   text-decoration: underline;
 }
+
+
+////////////////////////////
+/// la 1515px trece women's clothes pe alt rand si arata rau
+/// la 1200px bulinele de la carousel se duc prea jos + padding on sides is too big
+/// 
+/// 
+
+
+// @media {
+  
+// }

@@ -7,31 +7,35 @@
           alt="burger menu icon"
           class="burgermenu-icon"
         />
-        Products</a
+        Products {{ hoverIndex }}</a
       >
       <a class="btn-account">Account</a>
     </div>
   </div>
   <div class="content">
-    <span
-      class="product-category"
-      (mouseover)="hoverHandler($event)"
-      (mouseout)="outHandler()"
-    >
-      <button
-        mat-button
-        *ngFor="let categ of categories"
+    <span class="product-category">
+      <a
+       
+        *ngFor="let categ of categories; let i = index"
         class="list-group-item"
         id="{{ categ }}"
-      >
-        <mat-icon id="{{ categ }}">phone_iphone</mat-icon>
+        (mouseover)="onHover(i, $event)"
+        (mouseout)="onBlur(i)"
+        >
+        <!-- (mouseover)="hoverHandler($event)" -->
+      <img src="../../assets/img/smartphone.png" alt="" id="{{ categ }}" class="phone-icon">
         {{ categ }}
-      </button>
+    </a>
     </span>
 
     <div class="side-container">
       <app-carousel></app-carousel>
-      <div class="menu-details" [ngClass]="{ open: isOpen }">
+      <div
+        class="menu-details"
+        (mouseover)="onHoverCheck()"
+        (mouseout)="hoverOut = true"
+        [ngClass]="{ open: isOpen }"
+      >
         <ul class="menu-products">
           <li *ngFor="let prod of products">
             <a href="" class="prod">{{ prod }}</a>

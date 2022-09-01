@@ -7,9 +7,12 @@ import { MenuService } from './menu.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
- @Input() categories: any; //trigger
- @Input() products: any;
- @Input() isRootNode = false;
+  @Input() categories: any; //trigger
+  @Input() products: any;
+  @Input() isRootNode = false;
+  hoverIndex: number;
+  hoverOut: boolean;
+  isOpen = false;
 
   constructor(private service: MenuService) {}
 
@@ -17,20 +20,38 @@ export class MenuComponent implements OnInit {
     this.service.getCategories().subscribe((response) => {
       this.categories = response;
     });
-
   }
- isOpen = false;
-  hoverHandler (event: any) {
-    this.isOpen = true;
+
+
+  onHover(index: number | undefined, event: any) {
     this.service.getProducts(event.target.id).subscribe((response) => {
       this.products = response as Array<{}>;
       this.products = this.products.map((product: any) => {
         return product.title;
-      })
-      });
+    })
+    this.isOpen = true;
+    this.hoverIndex = index;
+  });
+  }
+  
+
+
+  // outHandler() {
+  //   this.isOpen = false;
+  // }
+
+
+  onBlur(index: number | undefined) {
+    setTimeout(() => {
+      if(this.hoverOut !== false){
+        this.hoverIndex = undefined;
+      } else {this.hoverIndex = index}
+    }, 100)
   }
 
-  outHandler() {
-    this.isOpen = false;
+  onHoverCheck() {
+    this.hoverOut = true;
+
   }
+  
 }
