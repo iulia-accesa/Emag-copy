@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, Observable, of} from 'rxjs';
-import { IProduct } from 'src/app/shared/components/product-card/product-card.component.interface';
+
 import { ProductListSearchEngineService } from "src/app/services/product-list-search-engine/product-list-search-engine.service";
+import { IProductApi } from '../shared/models/product-api.interface';
 
 @Component({
   selector: 'app-searchbar-products-page',
@@ -11,7 +12,7 @@ import { ProductListSearchEngineService } from "src/app/services/product-list-se
 })
 export class ProductListSearchEngineComponent implements OnInit {
   private _searchKey: string = '';
-  products$ : Observable<IProduct[]> = of([])
+  products$ : Observable<IProductApi[]> = of([])
   anyResults: boolean = true;
   constructor(private _route: ActivatedRoute,private _service: ProductListSearchEngineService ) {}
 
