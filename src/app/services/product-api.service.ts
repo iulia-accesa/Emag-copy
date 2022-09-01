@@ -8,29 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class ProductApiService {
   private _apiUrl = environment.apiUrl;
-  private _productsUrl = this._apiUrl + "/product";
-  private _categoriesUrl = this._apiUrl + "/categories";
-  private _categoryUrl = this._apiUrl + "/products/category";
-  
-  
 
   constructor(private _httpClient: HttpClient) {}
 
-  getAll(): Observable<IProductApi[]>{
-      return this._httpClient.get<IProductApi[]>(this._productsUrl);
+  getAll(): Observable<IProductApi[]> {
+    return this._httpClient.get<IProductApi[]>(`${this._apiUrl}/products`);
   }
 
-  getAllCategories(): Observable<string[]>  {
-      return this._httpClient.get<string[]>(this._categoriesUrl);
+  getAllCategories(): Observable<string[]> {
+    return this._httpClient.get<string[]>(`${this._apiUrl}/categories`);
   }
 
   /**
-   * 
-   * @param category 
-   * RETURN products included in @parama category  
+   *
+   * @param category
+   * RETURN products included in @parama category
    */
-  getByCategory(category: string): Observable<IProductApi[]>{
-    return this._httpClient.get<IProductApi[]>(this._categoryUrl + "/" + category);
+  getByCategory(category: string): Observable<IProductApi[]> {
+    return this._httpClient.get<IProductApi[]>(
+      `${this._apiUrl}/products/category/${category}`
+    );
   }
 
 }

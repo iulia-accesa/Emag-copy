@@ -18,7 +18,7 @@ import { AppComponent } from "./app.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+  
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([])
