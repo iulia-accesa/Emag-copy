@@ -1,4 +1,5 @@
 import { createAction,props } from "@ngrx/store"
+import { SearchBarProduct } from "./searchbar-product.interface"
 
 export const inputChanged = createAction(
     "[Searchbar] User changed input",

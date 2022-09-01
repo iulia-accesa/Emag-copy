@@ -1,4 +1,6 @@
-
+import { createReducer,on } from "@ngrx/store";
+import { SearchBarProduct } from "./searchbar-product.interface";
+import * as fromActions from './search.actions';
 export interface State{
     searchResult:SearchBarProduct[]
 }
@@ -11,14 +13,14 @@ export const initState: State = {
 }
 export const reducer = createReducer(
     initState,
-    on(fromSearchActions.inputChanged,(state,action) => {
+    on(fromActions.inputChanged,(state,action) => {
         
         return {
             searchResult:state.searchResult
         }
     })
     ,
-    on(fromSearchActions.updateSearchResult,(state,action) => {
+    on(fromActions.updateSearchResult,(state,action) => {
         return {
             searchResult: action.payload
         }
