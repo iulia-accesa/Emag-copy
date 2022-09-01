@@ -29,7 +29,8 @@ export class ProductApiService {
    */
   getByCategory(category: string): Observable<IProductApi[]> {
     return this._httpClient.get<IProductApi[]>(
-      `${this._apiUrl}/products/category/`
+      `${this._apiUrl}/products/category/${category}`
     );
   }
+
 }
