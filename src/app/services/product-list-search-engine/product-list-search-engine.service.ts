@@ -6,7 +6,7 @@ import { IProduct } from "src/app/shared/components/product-card/product-card.co
 
 
 @Injectable()
-export class SearchbarProductsPageService {
+export class ProductListSearchEngineService {
 
     constructor(private _productApiService: ProductApiService) {}
 

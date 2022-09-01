@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { first, observable, Observable, of} from 'rxjs';
+import { first, Observable, of} from 'rxjs';
 import { IProduct } from 'src/app/shared/components/product-card/product-card.component.interface';
-import { SearchbarProductsPageService } from "src/app/services/search/searchbar-products-page.service";
+import { ProductListSearchEngineService } from "src/app/services/product-list-search-engine/product-list-search-engine.service";
 
 @Component({
   selector: 'app-searchbar-products-page',
-  templateUrl: './searchbar-products-page.component.html',
-  styleUrls: ['./searchbar-products-page.component.scss'],
+  templateUrl: './product-list-search-engine.component.html',
+  styleUrls: ['./product-list-search-engine.scss'],
 })
-export class SearchbarProductsPageComponent implements OnInit {
+export class ProductListSearchEngineComponent implements OnInit {
   private _searchKey: string = '';
   products$ : Observable<IProduct[]> = of([])
   anyResults: boolean = true;
-  constructor(private _route: ActivatedRoute,private _service: SearchbarProductsPageService ) {}
+  constructor(private _route: ActivatedRoute,private _service: ProductListSearchEngineService ) {}
 
   ngOnInit(): void {
     this._route.queryParams.pipe(first()).subscribe((params) => {

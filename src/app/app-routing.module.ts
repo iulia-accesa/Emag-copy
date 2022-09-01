@@ -4,8 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 
+
 const routes: Routes = [
-  { path: '', component: AppComponent /* SearchBarComponent*/ },
+  { path: '', component: AppComponent},
   // { path: 'login', component: LoginComponent },
   // { path: 'products', component: ProductListPageComponent },
   // { path: 'products/:id', component: DetailsPageComponent }

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import {MatIconModule} from '@angular/material/icon';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -16,37 +15,21 @@ import { searchResultFeatureKey } from 'src/app/services/search/search.feature-k
 import * as fromSearch from 'src/app/services/search/search.reducer';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SearchEffects } from 'src/app/services/search/search.effects';
-import { RouterModule, Routes } from '@angular/router';
-import { SearchbarProductsPageModule } from './searchbar-products-page/searchbar-products-page.module';
 
 
 
-export const routes:  Routes = [
-  {
-      path: 'search',
-      
-      component: SearchBarComponent
-     
-  }
-]
 @NgModule({
-  declarations: [ SearchBarComponent],
-  exports: [SearchBarComponent],
+  declarations: [SearchBarComponent],
+  exports: [],
   imports: [
     CommonModule,
-   MatAutocompleteModule,
-   HttpClientModule,
-   SearchbarProductsPageModule,
-   MatIconModule,
-   StoreModule.forFeature(searchResultFeatureKey,fromSearch.reducer),
-   AppRoutingModule,
-   RouterModule.forChild(routes),
-  EffectsModule.forFeature([SearchEffects]),
-   
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatIconModule,
+    StoreModule.forFeature(searchResultFeatureKey, fromSearch.reducer),
+    AppRoutingModule,
+    EffectsModule.forFeature([SearchEffects]),
   ],
-  providers: [
-    SearchBarService
-  
-  ]
+  providers: [SearchBarService],
 })
-export class SearchModule { }
+export class SearchModule {}
