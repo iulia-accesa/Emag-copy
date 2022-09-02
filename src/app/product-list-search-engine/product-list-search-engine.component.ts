@@ -19,7 +19,7 @@ export class ProductListSearchEngineComponent implements OnInit {
 
   ngOnInit(): void {
     this._route.queryParams.pipe(first()).subscribe((params) => {
-      this._searchKey = params['searchKey'];
+      this._searchKey = params['key'];
       this.products$ = this._service.filterProductsBySearchKey$(this._searchKey);
       this.checkForResults();
      

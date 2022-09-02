@@ -11,7 +11,7 @@ export class SearchEffects {
   ofType(fromActions.inputChanged),
       concatMap((action) =>
         this._searchBarService
-          .getProductsForSearchBar(action.input)
+          .getProductsForSearchBar$(action.input)
           .pipe(
             map((obsProducts: SearchBarProduct[]) =>
               fromActions.updateSearchResult({ payload: obsProducts })
