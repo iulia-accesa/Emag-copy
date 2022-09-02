@@ -16,7 +16,7 @@ export class ProductApiService {
   }
 
   getAllCategories(): Observable<string[]> {
-    return this._httpClient.get<string[]>(`${this._apiUrl}/categories`);
+    return this._httpClient.get<string[]>(`${this._apiUrl}/products/categories`);
   }
 
   getById(id: number): Observable<IProductApi[]> {
