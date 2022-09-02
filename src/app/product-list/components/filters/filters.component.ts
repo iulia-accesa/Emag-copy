@@ -1,4 +1,3 @@
-import { MatInputModule } from '@angular/material/input';
 import {
   Component,
   Input,
@@ -26,19 +25,7 @@ export class FiltersComponent implements OnInit, OnChanges {
   @Input() public ratingList: number[];
 
   filterForm: FormGroup;
-  brandsForm = new FormGroup({
-    brand1: new FormControl(''),
-    brand2: new FormControl(''),
-    brand3: new FormControl(''),
-    brand4: new FormControl(''),
-    brand5: new FormControl(''),
-  });
 
-  priceFilterOptions: Options = {
-    floor: this.priceFilterMinValue,
-    ceil: this.priceFilterMaxValue,
-    step: 1,
-  };
   sliderForm: FormGroup = new FormGroup({
     priceSlider: new FormControl([
       this.priceFilterMinValue,
@@ -55,12 +42,18 @@ export class FiltersComponent implements OnInit, OnChanges {
     rating5: new FormControl(''),
   });
 
+  priceFilterOptions: Options = {
+    floor: this.priceFilterMinValue,
+    ceil: this.priceFilterMaxValue,
+    step: 1,
+  };
+
   constructor() {}
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
-      order: new FormControl(''),
-      brands: this.brandsForm,
+      priceOrder: new FormControl(''),
+      nameOrder: new FormControl(''),
       priceSlider: this.sliderForm,
       ratingsForm: this.ratingsForm,
     });
