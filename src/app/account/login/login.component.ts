@@ -30,24 +30,10 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required,
-        // TODO: Check REGEX (current is not ok) on https://regex101.com/ against some passwords from https://fakestoreapi.com/users as examples
-        // Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
-        // TODO: Remove custom patern validation, a default Angular already exists
-        // this.passwordTemplateValidator(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{4,}$/)
       ])
     });
   }
-
-  /// TODO: Remove, check up
-  // passwordTemplateValidator(passwordRegex: RegExp): ValidatorFn {
-  //   return (password: AbstractControl): ValidationErrors | null => {
-  //     const matchesTemplate = passwordRegex.test(password.value);
-  //     if (password.value && password.value.length < 2)
-  //       return { template: password.value }
-  //
-  //     return !matchesTemplate ? { template: password.value } : null;
-  //   };
-  // }
 
   onSubmit() {
     if (!this.loginForm.valid)
