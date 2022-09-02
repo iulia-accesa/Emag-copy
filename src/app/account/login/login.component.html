@@ -31,8 +31,10 @@
           formControlName="password"
           placeholder="Parola"
           />
-          
-          <mat-error>{{ passwordError }}</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.invalid">
+            {{ !loginForm.get('password')?.hasError('pattern') ?
+              'Campul este obligatoriu' : 'Introdu o parola valida'}}
+          </mat-error>
       </mat-form-field>
 
       <button type="submit" mat-flat-button>Login</button>

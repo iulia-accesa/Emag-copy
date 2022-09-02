@@ -57,13 +57,4 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-
-  get passwordError(): string {
-    const passowrdField = this.loginForm.get('password');
-    return passowrdField?.hasError('required') ?
-      'Campul este obligatoriu' :
-      passowrdField?.hasError('pattern') ?
-      'Introdu o parola valida':
-      '';
-  }
 }
