@@ -48,8 +48,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProductCardComponent,
     UserAccountComponent,
     HomepageComponent, 
-    HeaderComponent,
-    HomepageComponent,
+    HomepageComponent
+    MenuComponent,
+    CarouselComponent,
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
@@ -70,17 +71,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EffectsModule.forRoot([AccountEffects, SearchEffects]),
 
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+    MatIconModule,
+    RouterModule,
+    CarouselModule,
     MatIconModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatToolbarModule,
+    MatToolbarModule,,
+
+    
   ],
   providers: [
     {
