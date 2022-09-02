@@ -1,7 +1,7 @@
 import { ProductApiService } from './../../services/product-api.service';
 
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 import { IPriceRange } from '../models/price-range.interface';
 import { IProduct } from './../../shared/models/product.interface';
@@ -35,26 +35,6 @@ export class ProductService {
     );
   }
 
-  getBrands(): Observable<{}> {
-    return this.getAll().pipe(
-      map((products: IProduct[]) => {
-        let brands: IBrand[] = [];
-        products.forEach((product) => {
-          const i = brands.findIndex((brand) => brand.name === product.title);
-          if (i === -1) {
-            brands.push({
-              name: product.title,
-              count: 1,
-            });
-          } else {
-            brands[i].count++;
-          }
-        });
-        return brands;
-      })
-    );
-  }
-
   getRatingCount(): Observable<number[]> {
     return this.getAll().pipe(
       map((products: IProduct[]) => {
@@ -69,5 +49,23 @@ export class ProductService {
         return ratingCount;
       })
     );
+  }
+
+  getFavoriteProductIds(): Observable<number[]> {
+    const storageFavList = localStorage.getItem('favoriteItemList');
+    const productIds: number[] = storageFavList
+      ? JSON.parse(storageFavList)
+      : [];
+
+    return of(productIds);
+  }
+
+  getCartItemIds(): Observable<number[]> {
+    const storageCartItemList = localStorage.getItem('cartItemList');
+    const productIds: number[] = storageCartItemList
+      ? JSON.parse(storageCartItemList)
+      : [];
+
+    return of(productIds);
   }
 }

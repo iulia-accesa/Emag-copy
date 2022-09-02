@@ -15,7 +15,7 @@ import { ProductService } from './services/product.service';
 /**
  * Custom components
  */
-import { ProductListPageComponent } from './components/product-list-page/product-list-page.component';
+import { ProductListPageComponent } from './product-list-page.component';
 import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
 import { ListContainerComponent } from './components/list-container/list-container.component';
 import { FiltersComponent } from './components/filters/filters.component';

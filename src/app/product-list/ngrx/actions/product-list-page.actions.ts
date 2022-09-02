@@ -1,31 +1,27 @@
-import { IBrand } from './../../models/brand.interface';
+import { IFilterGroup } from './../../models/filter-group.interface';
 import { IPriceRange } from './../../models/price-range.interface';
 import { createAction, props } from '@ngrx/store';
 import { Order } from '../../models/order.type';
+import { IOrderGroup } from '../../models/order-group.interface';
 
 export const enter = createAction('[Product List Page] Enter');
 
-export const markProductAsFavorite = createAction(
-  '[Product List Page]',
+export const addProductToFavorites = createAction(
+  '[Product List Page] Product Added To Favorite',
   props<{ productId: number }>()
 );
 
-export const orderByPrice = createAction(
-  '[Product List Page]',
-  props<{ order: Order }>()
+export const removeProductFromFavorites = createAction(
+  '[Product List Page] Product Removed From Favorites',
+  props<{ productId: number }>()
 );
 
-export const filterByPrice = createAction(
-  '[Product List Page]',
-  props<{ range: IPriceRange }>()
+export const orderProducts = createAction(
+  '[Prodict List Page] Products Ordered',
+  props<{ orderGroup: IOrderGroup }>()
 );
 
-export const filterByBrands = createAction(
-  '[Product List Page]',
-  props<{ brands: IBrand[] }>()
-);
-
-export const filterByRatings = createAction(
-  '[Product List Page]',
-  props<{ ratings: number[] }>()
+export const filterProducts = createAction(
+  '[Prodict List Page] Products Filtered',
+  props<{ filterGroup: IFilterGroup }>()
 );

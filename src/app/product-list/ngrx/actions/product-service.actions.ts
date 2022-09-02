@@ -3,19 +3,14 @@ import { IPriceRange } from './../../models/price-range.interface';
 import { IProduct } from './../../../shared/models/product.interface';
 import { createAction, props } from '@ngrx/store';
 
-export const productsLoaded = createAction(
-  '[Product Service] Products Loaded Success',
+export const productsInit = createAction(
+  '[Product Service] Products Initialized Success',
   props<{ products: IProduct[] }>()
 );
 
 export const priceRangeLoaded = createAction(
   '[Product Service] Price Range Loaded Success',
   props<{ range: IPriceRange }>()
-);
-
-export const brandsLoaded = createAction(
-  '[Product Service] Brands Loaded Success',
-  props<{ brands: IBrand[] }>()
 );
 
 export const ratingCountLoaded = createAction(
