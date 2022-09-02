@@ -17,7 +17,7 @@ export class SearchBarService {
     this._store.dispatch(fromSearchActions.inputChanged({ input: text }));
   }
 
-  selectSearchResult(): Observable<SearchBarProduct[]> {
+  selectSearchResult$(): Observable<SearchBarProduct[]> {
     return this._store.select(fromSearchSelectors.searchResult);
   }
 
@@ -26,7 +26,7 @@ export class SearchBarService {
    *{string} @param text
    * @returns 5 SearchBarProduct wich have titles starting with  @param text
    */
-  getProductsForSearchBar(text: string): Observable<SearchBarProduct[]> {
+  getProductsForSearchBar$(text: string): Observable<SearchBarProduct[]> {
     return this._productApiService.getAll().pipe(
       take(1),
       map((products: IProductApi[]) =>
