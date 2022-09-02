@@ -61,8 +61,8 @@
           <ngx-slider
             fxFlex="100%"
             [options]="priceFilterOptions"
-            (value)="(priceFilterMinValue)"
-            (highValue)="(priceFilterMaxValue)"
+            (value)="(priceRange.min)"
+            (highValue)="(priceRange.max)"
             (userChange)="onSliderChange()"
             formControlName="priceSlider"
           ></ngx-slider>
@@ -78,8 +78,8 @@
                 matInput
                 type="number"
                 formControlName="minVal"
-                min="{{ priceFilterMinValue }}"
-                max="{{ priceFilterMaxValue }}"
+                min="{{ priceRange.max }}"
+                max="{{ priceRange.max }}"
               />
             </mat-form-field>
             <div class="dash">-</div>
@@ -89,8 +89,8 @@
                 matInput
                 type="number"
                 formControlName="maxVal"
-                min="{{ priceFilterMinValue }}"
-                max="{{ priceFilterMaxValue }}"
+                min="{{ priceRange.min }}"
+                max="{{ priceRange.max }}"
               />
             </mat-form-field>
           </div>
@@ -145,13 +145,13 @@
               formControlName="rating1"
             >
               <span class="stars">
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
+                <mat-icon
+                  *ngFor="let i of [1, 1, 1, 1, 1]"
+                  class="{{ !!i ? 'filled' : 'empty' }}"
+                  >grade</mat-icon
+                >
               </span>
-              <span class="count">(231)</span>
+              <span class="count">({{ ratingList[4] }})</span>
             </mat-checkbox>
 
             <mat-checkbox
@@ -160,13 +160,13 @@
               formControlName="rating2"
             >
               <span class="stars">
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
+                <mat-icon
+                  *ngFor="let i of [1, 1, 1, 1, 0]"
+                  class="{{ !!i ? 'filled' : 'empty' }}"
+                  >grade</mat-icon
+                >
               </span>
-              <span class="count">(231)</span>
+              <span class="count">({{ ratingList[3] }})</span>
             </mat-checkbox>
 
             <mat-checkbox
@@ -175,13 +175,13 @@
               formControlName="rating3"
             >
               <span class="stars">
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
+                <mat-icon
+                  *ngFor="let i of [1, 1, 1, 0, 0]"
+                  class="{{ !!i ? 'filled' : 'empty' }}"
+                  >grade</mat-icon
+                >
               </span>
-              <span class="count">(231)</span>
+              <span class="count">({{ ratingList[2] }})</span>
             </mat-checkbox>
 
             <mat-checkbox
@@ -190,13 +190,13 @@
               formControlName="rating4"
             >
               <span class="stars">
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
+                <mat-icon
+                  *ngFor="let i of [1, 1, 0, 0, 0]"
+                  class="{{ !!i ? 'filled' : 'empty' }}"
+                  >grade</mat-icon
+                >
               </span>
-              <span class="count">(231)</span>
+              <span class="count">({{ ratingList[1] }})</span>
             </mat-checkbox>
 
             <mat-checkbox
@@ -205,13 +205,13 @@
               formControlName="rating5"
             >
               <span class="stars">
-                <mat-icon class="filled">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
-                <mat-icon class="empty">grade</mat-icon>
+                <mat-icon
+                  *ngFor="let i of [1, 0, 0, 0, 0]"
+                  class="{{ !!i ? 'filled' : 'empty' }}"
+                  >grade</mat-icon
+                >
               </span>
-              <span class="count">(231)</span>
+              <span class="count">({{ ratingList[0] }})</span>
             </mat-checkbox>
           </div>
         </form>

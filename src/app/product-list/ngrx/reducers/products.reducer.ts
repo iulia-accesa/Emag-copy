@@ -1,7 +1,6 @@
 import { IOrderGroup } from './../../models/order-group.interface';
 import { IFilterGroup } from './../../models/filter-group.interface';
 import { Order } from './../../models/order.type';
-import { IBrand } from './../../models/brand.interface';
 import { IPriceRange } from './../../models/price-range.interface';
 import { IProduct } from './../../../shared/models/product.interface';
 
@@ -20,7 +19,7 @@ const orderByPrice = (
 ): IProduct[] => {
   if (order) {
     const mark = order === 'asc' ? 1 : -1;
-    return products.sort((a: IProduct, b: IProduct) => {
+    return [...products].sort((a: IProduct, b: IProduct) => {
       if (a.price < b.price) {
         return -1 * mark;
       } else if (a.price > b.price) {
@@ -29,7 +28,7 @@ const orderByPrice = (
       return 0;
     });
   }
-  return products;
+  return [...products];
 };
 
 const orderByTitle = (
@@ -38,7 +37,7 @@ const orderByTitle = (
 ): IProduct[] => {
   if (order) {
     const mark = order === 'asc' ? 1 : -1;
-    return products.sort((a: IProduct, b: IProduct) => {
+    return [...products].sort((a: IProduct, b: IProduct) => {
       if (a.title < b.title) {
         return -1 * mark;
       } else if (a.title > b.title) {
@@ -47,7 +46,7 @@ const orderByTitle = (
       return 0;
     });
   }
-  return products;
+  return [...products];
 };
 
 const filterByPrice = (
@@ -55,12 +54,12 @@ const filterByPrice = (
   priceRange: IPriceRange | undefined
 ): IProduct[] => {
   return priceRange
-    ? products.filter((product) => {
+    ? [...products].filter((product) => {
         return (
           product.price >= priceRange.min && product.price < priceRange.max
         );
       })
-    : products;
+    : [...products];
 };
 
 const filterByRating = (
@@ -68,10 +67,10 @@ const filterByRating = (
   ratings: number[] | undefined
 ): IProduct[] => {
   return ratings
-    ? products.filter((product) => {
+    ? [...products].filter((product) => {
         return ratings.includes(product.rating.rate);
       })
-    : products;
+    : [...products];
 };
 
 const filterAndOrderProducts = (
@@ -81,7 +80,6 @@ const filterAndOrderProducts = (
 ): IProduct[] => {
   products = filterByPrice(products, filterGroup.priceRange);
   products = filterByRating(products, filterGroup.ratings);
-
   products = orderByPrice(products, orderGroup.price);
   products = orderByTitle(products, orderGroup.title);
 
@@ -91,8 +89,6 @@ const filterAndOrderProducts = (
 export interface State {
   productListConstant: IProduct[];
   productList: IProduct[];
-  priceRange: IPriceRange;
-  ratingList: number[];
   favoriteIdList: number[];
   cartIdList: number[];
   filterGroup: IFilterGroup;
@@ -102,11 +98,6 @@ export interface State {
 export const initialState: State = {
   productListConstant: [],
   productList: [],
-  priceRange: {
-    min: 1,
-    max: 9999999,
-  },
-  ratingList: [],
   favoriteIdList: [],
   cartIdList: [],
   filterGroup: {
@@ -166,6 +157,7 @@ export const productReducer = createReducer(
     return {
       ...state,
       productListConstant: action.products,
+      productList: action.products,
     };
   })
 );

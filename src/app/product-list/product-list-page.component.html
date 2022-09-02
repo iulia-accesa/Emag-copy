@@ -10,8 +10,8 @@
       fxLayoutGap.lt-sm="0"
       fxLayoutGap.gt-sm="1rem"
     >
-      <filters [priceRange]="priceRange$ | async"></filters>
-      <list-container></list-container>
+      <filters></filters>
+      <list-container [productList]="productList$ | async"></list-container>
     </div>
   </div>
 </main>

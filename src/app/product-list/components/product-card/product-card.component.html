@@ -3,13 +3,9 @@
     <button class="btn toggle-favorite toggle-favorite--on">
       <mat-icon class="fa"> favorite </mat-icon>
     </button>
-    <img
-      mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
-    />
+    <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" />
     <mat-card-header>
-      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-title>{{ product.title }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="rating">
@@ -20,10 +16,10 @@
           <mat-icon class="rating__star rating__star--filled">grade</mat-icon>
           <mat-icon class="rating__star rating__star--empty">grade</mat-icon>
         </span>
-        <span class="rating__number">4.2</span>
-        <span class="rating__quantity">(10)</span>
+        <span class="rating__number">{{ product.rating.rate }}</span>
+        <span class="rating__quantity">({{ product.rating.count }})</span>
       </div>
-      <div class="price">124,99 Lei</div>
+      <div class="price">{{ product.price }} Ron</div>
     </mat-card-content>
     <mat-card-actions>
       <button class="btn add-to-cart" mat-button>

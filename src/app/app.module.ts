@@ -1,3 +1,4 @@
+import { StateProductListModule } from './product-list/ngrx/state';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import { ProductListModule } from './product-list/product-list.module';
     EffectsModule.forRoot([]),
     ProductListModule.forRoot(),
     BrowserAnimationsModule,
+    StateProductListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

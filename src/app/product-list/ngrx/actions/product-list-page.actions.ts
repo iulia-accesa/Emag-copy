@@ -1,7 +1,5 @@
 import { IFilterGroup } from './../../models/filter-group.interface';
-import { IPriceRange } from './../../models/price-range.interface';
 import { createAction, props } from '@ngrx/store';
-import { Order } from '../../models/order.type';
 import { IOrderGroup } from '../../models/order-group.interface';
 
 export const enter = createAction('[Product List Page] Enter');
