@@ -21,7 +21,7 @@ export class ProductListSearchEngineService {
                                 );
     }  
 
-    filterProductsBySearchKey(searchKey: string): Observable<IProductApi[]>{
+    filterProductsBySearchKey$(searchKey: string): Observable<IProductApi[]>{
         return this._productApiService.getAll().pipe(
             take(1),
             map((products: IProductApi[]) => 
