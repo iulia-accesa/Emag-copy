@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { take } from 'rxjs/operators';
+import { take, finalize } from 'rxjs/operators';
 
 import { AccountService } from '../../services/account/account.service';
 
@@ -45,7 +45,10 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.username,
       this.loginForm.value.password
     )
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        finalize(() => this.isLoading = false)
+      )
       .subscribe({
         next: () => this.router.navigate(['/']),
         error: (error: string) => {
@@ -54,6 +57,6 @@ export class LoginComponent implements OnInit {
         }
       });
 
-    this.isLoading = false;
+    
   }
 }
