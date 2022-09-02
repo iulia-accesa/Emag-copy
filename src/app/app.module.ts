@@ -12,16 +12,15 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { AccountApiService } from './services/account/account-api.service';
 import { AppInterceptor } from './app.interceptor';
 import { AccountModule } from './account/account.module';
 import { AccountService } from './services/account/account.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +30,8 @@ import { AccountService } from './services/account/account.service';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AccountEffects]),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     {
