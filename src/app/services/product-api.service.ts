@@ -16,15 +16,16 @@ export class ProductApiService {
   }
 
   getAllCategories(): Observable<string[]> {
-    return this._httpClient.get<string[]>(`${this._apiUrl}/products/categories`);
+    return this._httpClient.get<string[]>(
+      `${this._apiUrl}/products/categories`
+    );
   }
 
   getById(id: number): Observable<IProductApi[]> {
-
-    return this._httpClient.get<IProductApi[]>(`${this._apiUrl}/products/${id}`);
-
+    return this._httpClient.get<IProductApi[]>(
+      `${this._apiUrl}/products/${id}`
+    );
   }
-
 
   /**
    *
@@ -36,5 +37,4 @@ export class ProductApiService {
       `${this._apiUrl}/products/category/${category}`
     );
   }
-
 }

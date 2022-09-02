@@ -16,34 +16,35 @@ import { AccountApiService } from './services/account/account-api.service';
 import { AppInterceptor } from './app.interceptor';
 import { AccountModule } from './account/account.module';
 import { AccountService } from './services/account/account.service';
-import { SharedModule } from './shared/shared.module';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent, HomepageComponent, ProductCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AccountModule,
-    StoreModule.forRoot(APP_REDUCERS, { metaReducers: [localStorageSyncWrapper] }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot(APP_REDUCERS, {
+      metaReducers: [localStorageSyncWrapper],
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([AccountEffects]),
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppInterceptor,
-      multi: true
+      multi: true,
     },
     AccountApiService,
-    AccountService
+    AccountService,
   ],
-  bootstrap: [AppComponent]
-
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

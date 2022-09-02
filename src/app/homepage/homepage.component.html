@@ -1,9 +1,9 @@
 <div class="homepageCategoriesContainer">
   <div class="categoryContainer" *ngFor="let category of categories$ | async">
+    <span class="categoryTitle">{{ category }}</span>
     <product-card-component
-      *ngFor="let product of products$ | async"
+      *ngFor="let product of categorizedProducts$.get(category) | async"
       [product]="product"
-    >
-    </product-card-component>
+    ></product-card-component>
   </div>
 </div>
