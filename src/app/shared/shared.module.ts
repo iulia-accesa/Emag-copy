@@ -16,6 +16,6 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     MatIconModule,
     BrowserModule
   ],
-  providers: [ProductApiService,SearchBarService],
+  providers: [SearchBarService],
 })
 export class SharedModule {}

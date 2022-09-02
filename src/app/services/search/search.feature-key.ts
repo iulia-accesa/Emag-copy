@@ -1,1 +1,1 @@
-export const searchResultFeatureKey = "searchbar";
+export const searchResultFeatureKey = "search";
