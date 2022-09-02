@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -52,6 +55,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     }),
     EffectsModule.forRoot([SearchEffects, AccountEffects]),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [
     {
@@ -63,14 +75,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AccountService,
     ProductApiService,
     ProductListSearchEngineService,
-    SearchBarService,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule
+    SearchBarService
   ],
   bootstrap: [AppComponent],
 })

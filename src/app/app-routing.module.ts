@@ -11,10 +11,10 @@ import { LoginComponent } from './account/login/login.component';
 
 const routes: Routes = [
 
-  { path: '', component: HomepageComponent },
+  { path: '', component: SearchBarComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'products', component: ProductListPageComponent },
-  // { path: 'products/:id', component: DetailsPageComponent }
+   //{ path: 'products/:id', component: DetailsPageComponent }
   {path: 'search/products',component: ProductListSearchEngineComponent}
 ];
 

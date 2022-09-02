@@ -51,10 +51,10 @@ export class SearchBarComponent implements OnInit {
     this.updateDebounceText(event.target.value);
   }
 
-  redirectPage(option: SearchBarProduct) {
+  onSelectedOption(option: SearchBarProduct) {
 
- 
-    console.log("here");
+    
+    this._router.navigate([`products/${option.id}`]);
   }
 
   onEnter(){
