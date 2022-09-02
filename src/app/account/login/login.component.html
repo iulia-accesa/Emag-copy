@@ -1,0 +1,53 @@
+<div class="logo-container">
+  <a href="">
+    <img src="./assets/images/logo.png" alt="emag" />
+  </a>
+</div>
+
+<mat-card class="login-form-container">
+  <mat-card-header>
+    <mat-card-title>Salut!</mat-card-title>
+    <mat-card-subtitle>Introdu adresa de email si parola</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          />
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Campul este <strong>obligatoriu</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Parola"
+          />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('pattern') && !loginForm.get('password')?.hasError('required')">
+            Introdu o parola valida
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')" >
+            Campul este <strong>obligatoriu</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <button type="submit" mat-flat-button>Login</button>
+
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+      <mat-error *ngIf="errors && !isLoading" class="final-error">
+        {{ errors }}
+      </mat-error>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
