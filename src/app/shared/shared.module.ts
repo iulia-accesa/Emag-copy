@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,3 +20,19 @@ import { ProductCardComponent } from './components/product-card/product-card.com
   providers: [SearchBarService],
 })
 export class SharedModule {}
+=======
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+
+
+
+@NgModule({
+  declarations: [ProductCardComponent],
+  exports:[ProductCardComponent],
+  imports: [
+    CommonModule
+  ]
+})
+export class SharedModule { }
+>>>>>>> develop

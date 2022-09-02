@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, Observable, of} from 'rxjs';
+import { ProductListSearchEngineService } from '../services/product-list-search-engine/product-list-search-engine.service';
 
-import { ProductListSearchEngineService } from "src/app/services/product-list-search-engine/product-list-search-engine.service";
 import { IProductApi } from '../shared/models/product-api.interface';
 
 @Component({
