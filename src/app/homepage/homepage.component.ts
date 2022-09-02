@@ -26,13 +26,12 @@ export class HomepageComponent implements OnInit {
     this.getProductCategories();
     this.productService.getAllCategories().subscribe((categories) => {
       categories.map((category) => {
-        this.categorizedProducts$.set(category, this.getProductsByCategory(category));
+        this.categorizedProducts$.set(
+          category,
+          this.getProductsByCategory(category)
+        );
       });
     });
-
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((json) => console.log(json));
   }
 
   getProducts(): void {
@@ -47,9 +46,11 @@ export class HomepageComponent implements OnInit {
     const actualProducts$ = this.productService.getByCategory(category);
     return actualProducts$.pipe(
       map((products) =>
-        products.sort((p1: IProductApi, p2: IProductApi) => {
-          return p1.rating.rate > p2.rating.rate ? -1 : 1;
-        }).slice(0, 5)
+        products
+          .sort((p1: IProductApi, p2: IProductApi) => {
+            return p1.rating.rate > p2.rating.rate ? -1 : 1;
+          })
+          .slice(0, 5)
       ),
       take(1)
     );
