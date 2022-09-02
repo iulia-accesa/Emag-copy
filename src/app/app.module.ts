@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -63,7 +62,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [
     {
@@ -75,7 +74,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AccountService,
     ProductApiService,
     ProductListSearchEngineService,
-    SearchBarService
+    SearchBarService,
   ],
   bootstrap: [AppComponent],
 })
