@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { IProductApi } from '../../models/product-api.interface';
+import { IProductApi } from 'src/app/shared/models/product-api.interface'; 
 
 @Component({
-  selector: 'product-card-component',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss'],
+  selector: 'app-add-to-cart-box',
+  templateUrl: './add-to-cart-box.component.html',
+  styleUrls: ['./add-to-cart-box.component.scss'],
 })
-export class ProductCardComponent {
+export class AddToCartBoxComponent{
   @Input() set product(value: IProductApi) {
     if (value) {
       this._product = value;
@@ -19,5 +19,6 @@ export class ProductCardComponent {
   constructor() {}
 
   ngOnInit() {
+
   }
 }

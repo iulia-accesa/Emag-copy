@@ -1,0 +1,26 @@
+<mat-card class="productPriceGoToCart" *ngIf="_product">
+    <div class="oldPrice">
+
+    </div>
+    <div class="newPrice">Rs. {{ _product.price }}</div>
+    <div>Stock : </div>
+    <div class="ratings">
+      <div
+      *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
+      [class.checked]="i<prodRating"
+    >
+      <span class="fa fa-star"></span>
+    </div>
+    {{ _product.rating.rate }}
+  </div>
+    <div class="addToCartV2">
+      <div class="blueQuad"></div>
+      <div class="redQuad"></div>
+      <img
+        class="cartIcon"
+        src="../../assets/images/clarity_shopping-cart-line.svg"
+        alt=""
+      />
+      <div class="addToCartBtn">Add To Cart</div>
+    </div>
+  </mat-card>

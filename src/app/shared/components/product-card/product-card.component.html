@@ -1,8 +1,8 @@
-<div class="cardElement">
-  <img class="simCartImg" [src]="product?.image" alt="" />
-  <div class="productPrice">Rs. {{ product?.price }}</div>
-  <div class="prodTitle">{{ product?.title }}</div>
-  <div>Category: {{ product?.category }}</div>
+<div class="cardElement" *ngIf="_product">
+  <img class="simCartImg" [src]="_product.image" alt="" />
+  <div class="productPrice">Rs. {{ _product.price }}</div>
+  <div class="prodTitle">{{ _product.title }}</div>
+  <div>Category: {{ _product.category }}</div>
   <div class="ratingStars">
     <div
       *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
@@ -10,6 +10,6 @@
     >
       <span class="fa fa-star"></span>
     </div>
-    {{ product.rating.rate }}
+    {{ _product.rating.rate }}
   </div>
 </div> 
