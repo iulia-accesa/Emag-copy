@@ -20,7 +20,7 @@
           placeholder="Username"
           />
           <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-            Campul este <strong>obligatoriu</strong>
+            Campul este obligatoriu
           </mat-error>
       </mat-form-field>
 
@@ -31,12 +31,8 @@
           formControlName="password"
           placeholder="Parola"
           />
-          <mat-error *ngIf="loginForm.get('password')?.hasError('pattern') && !loginForm.get('password')?.hasError('required')">
-            Introdu o parola valida
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')" >
-            Campul este <strong>obligatoriu</strong>
-          </mat-error>
+          
+          <mat-error>{{ passwordError }}</mat-error>
       </mat-form-field>
 
       <button type="submit" mat-flat-button>Login</button>
