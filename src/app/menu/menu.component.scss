@@ -7,6 +7,7 @@ $nav-gradient: linear-gradient(
   #0082e6 70%
 );
 
+$breaking-point-big: 1000px;
 ////////////////////// Menu ///////////////////////////
 .menu-container {
   background-image: $nav-gradient;
@@ -31,7 +32,8 @@ $nav-gradient: linear-gradient(
 }
 
 .btn-account:hover {
-  border: 1px white solid;
+  // border: 1px white solid;
+  box-shadow: 0 0 0 1px #fff;
   border-radius: 10rem;
 }
 
@@ -60,14 +62,13 @@ mat-icon {
 .content {
   display: flex;
   gap: 0;
-  
 }
 
 .product-category {
   display: flex;
   flex-direction: column;
   margin-left: 11rem;
-  padding: 0.5rem 0 0 1rem;
+  padding: 0.5rem 0 0 0;
   background-color: #fff;
   width: 20rem;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
@@ -83,12 +84,20 @@ mat-icon {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  padding: 0;
+  padding-left: 1rem;
   color: #333;
   text-transform: capitalize;
 }
 
-.phone-icon{
+.list-group-item:hover {
+  // border-top: 1px solid #f3f3f3;
+  // border-bottom: 1px solid #f3f3f3;
+  box-shadow: 0 0 0 2px #f3f3f3;
+
+  // box-shadow: 1rem 0 rgba(0, 0, 0, 0.09);
+}
+
+.phone-icon {
   height: 2rem;
 }
 
@@ -109,12 +118,17 @@ mat-icon {
   box-shadow: 2px 7px 27px rgba(0, 0, 0, 0.08);
 }
 
-.menu-details{
+.menu-details {
   z-index: 1;
   display: none;
 }
 
-.open{
+.close{
+  z-index: 1;
+  display: none;
+}
+
+.open {
   position: absolute;
   top: 0;
   width: 140rem;
@@ -124,8 +138,7 @@ mat-icon {
   background-color: #fff;
 }
 
-
-.menu-products{
+.menu-products {
   list-style: none;
   line-height: 2.5;
 }
@@ -135,18 +148,19 @@ mat-icon {
   color: #222222;
 }
 
-.prod:hover{
+.prod:hover {
   text-decoration: underline;
 }
 
-
 ////////////////////////////
-/// la 1515px trece women's clothes pe alt rand si arata rau
+/// la 1387px trece women's clothes pe alt rand si arata rau
 /// la 1200px bulinele de la carousel se duc prea jos + padding on sides is too big
-/// 
-/// 
+///
+///
+///
 
-
-// @media {
-  
-// }
+@media (min-width: $breaking-point-big) {
+  .product-category {
+    width: 20rem;
+  }
+}

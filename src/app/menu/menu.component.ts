@@ -22,36 +22,38 @@ export class MenuComponent implements OnInit {
     });
   }
 
-
   onHover(index: number | undefined, event: any) {
     this.service.getProducts(event.target.id).subscribe((response) => {
       this.products = response as Array<{}>;
       this.products = this.products.map((product: any) => {
         return product.title;
-    })
-    this.isOpen = true;
-    this.hoverIndex = index;
-  });
+      });
+      this.isOpen = true;
+      this.hoverIndex = index;
+    });
   }
-  
 
-
-  // outHandler() {
-  //   this.isOpen = false;
-  // }
-
+  outHandler(index: number | undefined) {
+    // this.isOpen = false;
+    this.hoverIndex = index;
+    if (index !== undefined) {
+      this.isOpen = false;
+      this.hoverIndex = undefined;
+    }
+  }
 
   onBlur(index: number | undefined) {
-    setTimeout(() => {
-      if(this.hoverOut !== false){
+  
+      if (this.hoverOut !== false) {
         this.hoverIndex = undefined;
-      } else {this.hoverIndex = index}
-    }, 100)
+        this.isOpen = false;
+      } else {
+        this.hoverIndex = index;
+        this.isOpen = true;
+      }
   }
 
   onHoverCheck() {
     this.hoverOut = true;
-
   }
-  
 }

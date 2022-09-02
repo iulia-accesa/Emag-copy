@@ -20,8 +20,9 @@
         class="list-group-item"
         id="{{ categ }}"
         (mouseover)="onHover(i, $event)"
-        (mouseout)="onBlur(i)"
+        (mouseleave)="outHandler(i)"
         >
+        <!-- (blur)="onBlur(i)" -->
         <!-- (mouseover)="hoverHandler($event)" -->
       <img src="../../assets/img/smartphone.png" alt="" id="{{ categ }}" class="phone-icon">
         {{ categ }}
@@ -32,12 +33,12 @@
       <app-carousel></app-carousel>
       <div
         class="menu-details"
-        (mouseover)="onHoverCheck()"
-        (mouseout)="hoverOut = true"
         [ngClass]="{ open: isOpen }"
-      >
+        >
+        <!-- (blur)="isOpen=false" -->
+        <!-- (mouseover)="onHoverCheck()" -->
         <ul class="menu-products">
-          <li *ngFor="let prod of products">
+          <li *ngFor="let prod of products; let i = index">
             <a href="" class="prod">{{ prod }}</a>
           </li>
         </ul>
