@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -11,7 +10,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { SearchEffects } from 'src/app/services/search/search.effects';
 import { ProductListSearchEngineService } from './services/product-list-search-engine/product-list-search-engine.service';
 import { ProductApiService } from './services/product-api.service';
@@ -23,9 +21,23 @@ import { AccountService } from './services/account/account.service';
 import { AppInterceptor } from './app.interceptor';
 import { LoginComponent } from './account/login/login.component';
 import { ProductListSearchEngineComponent } from './product-list-search-engine/product-list-search-engine.component';
+import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
+import { SearchBarService } from './services/search/search.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [AppComponent, ProductCardComponent, LoginComponent,ProductListSearchEngineComponent],
+  declarations: [
+    AppComponent,
+    ProductCardComponent,
+    LoginComponent,
+    ProductListSearchEngineComponent,
+    SearchBarComponent,
+  ],
 
   imports: [
     BrowserModule,
@@ -39,7 +51,6 @@ import { ProductListSearchEngineComponent } from './product-list-search-engine/p
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([SearchEffects, AccountEffects]),
-
     BrowserAnimationsModule,
   ],
   providers: [
@@ -52,6 +63,14 @@ import { ProductListSearchEngineComponent } from './product-list-search-engine/p
     AccountService,
     ProductApiService,
     ProductListSearchEngineService,
+    SearchBarService,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent],
 })

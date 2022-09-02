@@ -1,4 +1,4 @@
-import { createReducer,on } from "@ngrx/store";
+import { ActionReducerMap, createReducer,on } from "@ngrx/store";
 import { SearchBarProduct } from "./searchbar-product.interface";
 import * as fromActions from './search.actions';
 export interface State{
@@ -28,3 +28,8 @@ export const reducer = createReducer(
 
     
 );
+
+
+export const searchReducers: ActionReducerMap<{search: State}> = {
+    search: reducer
+}
