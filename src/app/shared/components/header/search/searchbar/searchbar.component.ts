@@ -31,7 +31,7 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private debounce(cb: any, delay = 300) {
+  private debounce(cb: Function, delay = 300) {
     return (...args: any) => {
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
