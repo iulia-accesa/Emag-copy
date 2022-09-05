@@ -15,16 +15,18 @@ export class ProductListSearchEngineComponent implements OnInit,OnDestroy {
   products$: Observable<IProductApi[]> = of([]);
   anyResults: boolean = true;
   productsSubscription = new Subscription();
+  queryParamsSubscription = new Subscription();
   constructor(
     private _route: ActivatedRoute,
     private _service: ProductListSearchEngineService
   ) {}
   ngOnDestroy(): void {
     this.productsSubscription.unsubscribe();
+    this.queryParamsSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this._route.queryParams.pipe(first()).subscribe((params) => {
+    this.queryParamsSubscription = this._route.queryParams.subscribe((params) => {
       this._searchKey = params['key'];
       this.products$ = this._service.filterProductsBySearchKey$(
         this._searchKey
