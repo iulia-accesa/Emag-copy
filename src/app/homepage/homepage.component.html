@@ -1,6 +1,6 @@
 <div class="homepageCategoriesContainer">
   <div class="categoryContainer" *ngFor="let category of categories$ | async">
-    <span class="categoryTitle">{{ category }}</span>
+    <h2 class="categoryTitle">{{ category.charAt(0).toUpperCase() + category.slice(1) }}</h2>
     <product-card-component
       *ngFor="let product of categorizedProducts$.get(category) | async"
       [product]="product"
