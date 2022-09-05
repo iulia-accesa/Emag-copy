@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 
 /**
- * Custom components
+ * My components
  */
 import { ProductListPageComponent } from './product-list-page.component';
 import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
@@ -22,9 +22,15 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 
 /**
- * Custom modules
+ * My modules
  */
 import { MaterialModule } from './material.module';
+
+/**
+ * Ngrx
+ */
+import { EffectsModule } from '@ngrx/effects';
+import { ProductServiceEffects } from './ngrx/effects/product-service.effects';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,7 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
+    EffectsModule.forFeature([ProductServiceEffects]),
   ],
   exports: [ProductListPageComponent],
 })

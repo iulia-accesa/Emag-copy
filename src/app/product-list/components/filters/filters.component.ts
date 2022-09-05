@@ -1,3 +1,7 @@
+import { IPriceRange } from './../../models/price-range.interface';
+import { IFilterGroup } from './../../models/filter-group.interface';
+import { IOrderGroup } from './../../models/order-group.interface';
+import { Store } from '@ngrx/store';
 import { ProductService } from './../../services/product.service';
 import {
   Component,
@@ -9,9 +13,11 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 
-import { IPriceRange } from '../../models/price-range.interface';
-
 import { forkJoin } from 'rxjs';
+import {
+  orderProducts,
+  filterProducts,
+} from '../../ngrx/actions/product-list-page.actions';
 
 @Component({
   selector: 'filters',
@@ -23,7 +29,6 @@ export class FiltersComponent implements OnInit {
   public ratingList: number[] = [0, 0, 0, 0, 0];
   public priceRange: IPriceRange = { min: 1, max: 99999 };
 
-  public filterForm: FormGroup;
   public sliderForm: FormGroup = new FormGroup({
     priceSlider: new FormControl([this.priceRange.min, this.priceRange.max]),
     minVal: new FormControl([this.priceRange.min]),
@@ -43,25 +48,29 @@ export class FiltersComponent implements OnInit {
     step: 1,
   };
 
-  constructor(private productService: ProductService) {
+  public filterForm = new FormGroup({
+    priceOrder: new FormControl(''),
+    nameOrder: new FormControl(''),
+    priceSlider: this.sliderForm,
+    ratingsForm: this.ratingsForm,
+  });
+
+  constructor(private productService: ProductService, private store: Store) {
     forkJoin({
       priceRange: this.productService.getPriceRange(),
       ratingList: this.productService.getRatingCount(),
     }).subscribe((result) => {
       const { priceRange, ratingList } = result;
-
       this.ratingList = ratingList;
       this.priceRange = {
         min: Math.floor(priceRange.min),
         max: Math.ceil(priceRange.max),
       };
-
       this.priceFilterOptions = {
         floor: this.priceRange.min,
         ceil: this.priceRange.max,
         step: 1,
       };
-
       this.sliderForm = new FormGroup({
         priceSlider: new FormControl([
           this.priceRange.min,
@@ -70,19 +79,20 @@ export class FiltersComponent implements OnInit {
         minVal: new FormControl([this.priceRange.min]),
         maxVal: new FormControl([this.priceRange.max]),
       });
+      this.filterForm = new FormGroup({
+        priceOrder: new FormControl(''),
+        nameOrder: new FormControl(''),
+        priceSlider: this.sliderForm,
+        ratingsForm: this.ratingsForm,
+      });
+
+      this.filterForm.valueChanges.subscribe((changes) =>
+        this.onFormChange(changes)
+      );
     });
   }
 
-  ngOnInit(): void {
-    this.filterForm = new FormGroup({
-      priceOrder: new FormControl(''),
-      nameOrder: new FormControl(''),
-      priceSlider: this.sliderForm,
-      ratingsForm: this.ratingsForm,
-    });
-  }
-
-  onFilterChange() {}
+  ngOnInit(): void {}
 
   onSliderChange() {
     this.sliderForm.controls['minVal'].setValue(
@@ -95,8 +105,6 @@ export class FiltersComponent implements OnInit {
         ? this.priceRange.max
         : this.sliderForm.controls['priceSlider'].value[1]
     );
-
-    console.log(this.priceRange, this.sliderForm.value);
   }
 
   onSliderInput() {
@@ -120,7 +128,77 @@ export class FiltersComponent implements OnInit {
       min < this.priceRange.max ? min : this.priceRange.max
     );
     this.sliderForm.controls['maxVal'].setValue(max > min ? max : min);
-
-    console.log(this.priceRange, this.sliderForm.value);
   }
+
+  onFormChange(changes: any) {
+    const nameOrder =
+      changes.nameOrder.length > 0 ? changes.nameOrder : undefined;
+    const priceOrder =
+      changes.priceOrder.length > 0 ? changes.priceOrder : undefined;
+    const min = changes.priceSlider.priceSlider[0];
+    const max = changes.priceSlider.priceSlider[1];
+    const ratings = [
+      changes.ratingsForm.rating1,
+      changes.ratingsForm.rating2,
+      changes.ratingsForm.rating3,
+      changes.ratingsForm.rating4,
+      changes.ratingsForm.rating5,
+    ];
+
+    const orderGroup: IOrderGroup = {
+      price: priceOrder,
+      title: nameOrder,
+    };
+
+    const priceRange: IPriceRange = {
+      min,
+      max,
+    };
+
+    const filterGroup: IFilterGroup = {
+      priceRange,
+      ratings,
+    };
+
+    this.store.dispatch(orderProducts({ orderGroup }));
+    this.store.dispatch(filterProducts({ filterGroup }));
+  }
+
+  // onOrderChange(changes: any) {
+  //   const nameOrder =
+  //     changes.nameOrder.length > 0 ? changes.nameOrder : undefined;
+  //   const priceOrder =
+  //     changes.priceOrder.length > 0 ? changes.priceOrder : undefined;
+
+  //   const orderGroup: IOrderGroup = {
+  //     price: priceOrder,
+  //     title: nameOrder,
+  //   };
+
+  //   this.store.dispatch(orderProducts({ orderGroup }));
+  // }
+
+  // onFilterChange(changes: any) {
+  //   const min = changes.priceSlider.priceSlider[0];
+  //   const max = changes.priceSlider.priceSlider[1];
+  //   const ratings = [
+  //     changes.ratingsForm.rating1,
+  //     changes.ratingsForm.rating2,
+  //     changes.ratingsForm.rating3,
+  //     changes.ratingsForm.rating4,
+  //     changes.ratingsForm.rating5,
+  //   ];
+
+  //   const priceRange: IPriceRange = {
+  //     min,
+  //     max,
+  //   };
+
+  //   const filterGroup: IFilterGroup = {
+  //     priceRange,
+  //     ratings,
+  //   };
+
+  //   this.store.dispatch(filterProducts({ filterGroup }));
+  // }
 }

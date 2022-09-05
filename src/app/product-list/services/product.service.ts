@@ -24,6 +24,29 @@ export class ProductService {
     );
   }
 
+  getByCategory(category: string): Observable<IProduct[]> {
+    return this.productApiService.getByCategory(category).pipe(
+      map((products: IProduct[]) => {
+        return products.map((product) => {
+          return {
+            ...product,
+            favorite: false,
+          };
+        });
+      })
+    );
+  }
+
+  getBySearch(query: string): Observable<IProduct[]> {
+    return this.getAll().pipe(
+      map((products: IProduct[]) => {
+        return products.filter((product) => {
+          return product.title.includes(query);
+        });
+      })
+    );
+  }
+
   getPriceRange(): Observable<IPriceRange> {
     return this.getAll().pipe(
       map((products: IProduct[]) => {
@@ -45,7 +68,6 @@ export class ProductService {
           if (i > 0) i--;
           ratingCount[i]++;
         });
-
         return ratingCount;
       })
     );

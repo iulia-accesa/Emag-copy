@@ -16,12 +16,8 @@
               formControlName="priceOrder"
               placeholder="Pret"
             >
-              <mat-option (click)="onFilterChange()" value="asc">
-                Pret crescator
-              </mat-option>
-              <mat-option (click)="onFilterChange()" value="desc">
-                Pret descrescator
-              </mat-option>
+              <mat-option value="asc"> Pret crescator </mat-option>
+              <mat-option value="desc"> Pret descrescator </mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -35,12 +31,8 @@
               formControlName="nameOrder"
               placeholder="Nume"
             >
-              <mat-option (click)="onFilterChange()" value="asc">
-                A - Z
-              </mat-option>
-              <mat-option (click)="onFilterChange()" value="desc">
-                Z - A
-              </mat-option>
+              <mat-option value="asc"> A - Z </mat-option>
+              <mat-option value="desc"> Z - A </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -78,7 +70,7 @@
                 matInput
                 type="number"
                 formControlName="minVal"
-                min="{{ priceRange.max }}"
+                min="{{ priceRange.min }}"
                 max="{{ priceRange.max }}"
               />
             </mat-form-field>
@@ -142,7 +134,7 @@
             <mat-checkbox
               fxLayout="row"
               fxLayoutAlign="start center"
-              formControlName="rating1"
+              formControlName="rating5"
             >
               <span class="stars">
                 <mat-icon
@@ -157,7 +149,7 @@
             <mat-checkbox
               fxLayout="row"
               fxLayoutAlign="start center"
-              formControlName="rating2"
+              formControlName="rating4"
             >
               <span class="stars">
                 <mat-icon
@@ -187,7 +179,7 @@
             <mat-checkbox
               fxLayout="row"
               fxLayoutAlign="start center"
-              formControlName="rating4"
+              formControlName="rating2"
             >
               <span class="stars">
                 <mat-icon
@@ -202,7 +194,7 @@
             <mat-checkbox
               fxLayout="row"
               fxLayoutAlign="start center"
-              formControlName="rating5"
+              formControlName="rating1"
             >
               <span class="stars">
                 <mat-icon

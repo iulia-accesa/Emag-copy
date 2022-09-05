@@ -3,7 +3,9 @@ import { createAction, props } from '@ngrx/store';
 
 export const productsInit = createAction(
   '[Product Service] Products Initialized Success',
-  props<{ products: IProduct[] }>()
+  props<{
+    products: IProduct[];
+  }>()
 );
 
 export const favoriteProductsLoaded = createAction(

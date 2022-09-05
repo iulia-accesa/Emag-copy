@@ -29,18 +29,27 @@ export class ProductListPageComponent implements OnInit {
     this.productList$ = this.store.select(selectAllProducts);
   }
 
-  ngOnInit(): void {
-    this.store.dispatch(ProductListPageActions.enter());
+  getCategoryURL(): string {
+    /**
+     * Extract category from URL
+     */
 
-    this.initProducts();
-    this.getFavoriteProducts();
-    this.getCartItemList();
+    return "men's clothing";
   }
 
-  initProducts(): void {
-    this.productService.getAll().subscribe((products) => {
-      this.store.dispatch(ProductServiceActions.productsInit({ products }));
-    });
+  ngOnInit(): void {
+    /**
+     * Call the enter action with either a query param or a category
+     */
+    this.store.dispatch(
+      ProductListPageActions.enter({
+        category: this.getCategoryURL(),
+        searchQuery: undefined,
+      })
+    );
+
+    this.getFavoriteProducts();
+    this.getCartItemList();
   }
 
   getFavoriteProducts(): void {

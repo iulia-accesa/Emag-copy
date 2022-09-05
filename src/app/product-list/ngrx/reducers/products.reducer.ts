@@ -13,10 +13,7 @@ const removeFromFavorites = (favoriteIdList: number[], favId: number) => {
   return favoriteIdList.filter((id) => id !== favId);
 };
 
-const orderByPrice = (
-  products: IProduct[],
-  order: Order | undefined
-): IProduct[] => {
+const orderByPrice = (products: IProduct[], order: Order | ''): IProduct[] => {
   if (order) {
     const mark = order === 'asc' ? 1 : -1;
     return [...products].sort((a: IProduct, b: IProduct) => {
@@ -28,13 +25,11 @@ const orderByPrice = (
       return 0;
     });
   }
+
   return [...products];
 };
 
-const orderByTitle = (
-  products: IProduct[],
-  order: Order | undefined
-): IProduct[] => {
+const orderByTitle = (products: IProduct[], order: Order): IProduct[] => {
   if (order) {
     const mark = order === 'asc' ? 1 : -1;
     return [...products].sort((a: IProduct, b: IProduct) => {
@@ -51,26 +46,32 @@ const orderByTitle = (
 
 const filterByPrice = (
   products: IProduct[],
-  priceRange: IPriceRange | undefined
+  priceRange: IPriceRange
 ): IProduct[] => {
-  return priceRange
-    ? [...products].filter((product) => {
-        return (
-          product.price >= priceRange.min && product.price < priceRange.max
-        );
-      })
-    : [...products];
+  if (priceRange) {
+    return [...products].filter((product) => {
+      return product.price >= priceRange.min && product.price < priceRange.max;
+    });
+  }
+  return products;
 };
 
-const filterByRating = (
-  products: IProduct[],
-  ratings: number[] | undefined
-): IProduct[] => {
-  return ratings
-    ? [...products].filter((product) => {
-        return ratings.includes(product.rating.rate);
-      })
-    : [...products];
+const filterByRating = (products: IProduct[], ratings: any[]): IProduct[] => {
+  let filteredProducts = [...products];
+  if (ratings) {
+    // if (ratings.every((rating) => rating === '' || rating === false)) {
+    //   // return [...products];
+    //   // console.log('empty', ratings);
+    // }
+
+    filteredProducts = products.filter((product) => {
+      let i = Math.round(product.rating.rate);
+      i--;
+      if (i <= 0) i++;
+      return ratings[i] === true;
+    });
+  }
+  return filteredProducts.length > 0 ? filteredProducts : [...products];
 };
 
 const filterAndOrderProducts = (
@@ -132,6 +133,7 @@ export const productReducer = createReducer(
     };
   }),
   on(ProductListPageActions.filterProducts, (state, action) => {
+    console.log(action);
     return {
       ...state,
       filterGroup: action.filterGroup,

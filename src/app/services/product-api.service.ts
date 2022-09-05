@@ -29,5 +29,4 @@ export class ProductApiService {
       `${this._apiUrl}/products/category/${category}`
     );
   }
-
 }

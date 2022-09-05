@@ -2,7 +2,10 @@ import { IFilterGroup } from './../../models/filter-group.interface';
 import { createAction, props } from '@ngrx/store';
 import { IOrderGroup } from '../../models/order-group.interface';
 
-export const enter = createAction('[Product List Page] Enter');
+export const enter = createAction(
+  '[Product List Page] Enter',
+  props<{ category: string | undefined; searchQuery: string | undefined }>()
+);
 
 export const addProductToFavorites = createAction(
   '[Product List Page] Product Added To Favorite',
