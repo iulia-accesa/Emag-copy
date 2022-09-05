@@ -12,8 +12,3 @@ export class CartService {
 
   //TODO: create here all needed API calls or interaction in state for cart
 }
-
-
-
-
-
