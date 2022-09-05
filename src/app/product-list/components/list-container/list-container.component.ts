@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { IProduct } from 'src/app/shared/models/product.interface';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,9 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListContainerComponent implements OnInit {
   @Input() productList: IProduct[];
-  items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  @Input() categoryName: string = '';
+  @Input() productCount: number = 0;
+  @Input() searchKey = '';
 
-  constructor() {}
+  constructor(store: Store) {}
 
   ngOnInit(): void {}
 }

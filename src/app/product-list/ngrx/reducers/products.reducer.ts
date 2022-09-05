@@ -9,6 +9,9 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as ProductListPageActions from '../actions/product-list-page.actions';
 import * as ProductServiceActions from '../actions/product-service.actions';
 
+/**
+ * Helper functions for the reducers
+ */
 const removeFromFavorites = (favoriteIdList: number[], favId: number) => {
   return favoriteIdList.filter((id) => id !== favId);
 };
@@ -59,11 +62,6 @@ const filterByPrice = (
 const filterByRating = (products: IProduct[], ratings: any[]): IProduct[] => {
   let filteredProducts = [...products];
   if (ratings) {
-    // if (ratings.every((rating) => rating === '' || rating === false)) {
-    //   // return [...products];
-    //   // console.log('empty', ratings);
-    // }
-
     filteredProducts = products.filter((product) => {
       let i = Math.round(product.rating.rate);
       i--;
@@ -87,6 +85,9 @@ const filterAndOrderProducts = (
   return products;
 };
 
+/**
+ * State Shape
+ */
 export interface State {
   productListConstant: IProduct[];
   productList: IProduct[];
@@ -111,6 +112,9 @@ export const initialState: State = {
   },
 };
 
+/**
+ * Reducers
+ */
 export const productReducer = createReducer(
   initialState,
   on(ProductListPageActions.enter, (state) => {

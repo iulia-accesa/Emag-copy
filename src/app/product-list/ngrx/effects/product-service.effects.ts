@@ -1,3 +1,4 @@
+import { IProduct } from './../../../shared/models/product.interface';
 import * as ProductListPageActions from '../actions/product-list-page.actions';
 import * as ProductServiceActions from '../actions/product-service.actions';
 
@@ -5,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductService } from './../../services/product.service';
 import { Injectable } from '@angular/core';
 
-import { mergeMap, map, exhaustMap } from 'rxjs';
+import { mergeMap, map, exhaustMap, Observable } from 'rxjs';
 
 @Injectable()
 export class ProductServiceEffects {
@@ -20,7 +21,7 @@ export class ProductServiceEffects {
       exhaustMap((action) => {
         const { category, searchQuery } = action;
 
-        if (category) {
+        if (category && !searchQuery) {
           return this.productService
             .getByCategory(category)
             .pipe(
@@ -29,7 +30,7 @@ export class ProductServiceEffects {
               )
             );
         }
-        if (searchQuery) {
+        if (searchQuery && !category) {
           return this.productService
             .getBySearch(searchQuery)
             .pipe(
@@ -42,11 +43,9 @@ export class ProductServiceEffects {
          * In case no category and no query was supplied
          */
 
-        return this.productService
-          .getAll()
-          .pipe(
-            map((products) => ProductServiceActions.productsInit({ products }))
-          );
+        return new Observable<IProduct[]>().pipe(
+          map((products) => ProductServiceActions.productsInit({ products }))
+        );
       })
     );
   });

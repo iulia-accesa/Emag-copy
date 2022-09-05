@@ -6,10 +6,29 @@ import { map, Observable, of } from 'rxjs';
 import { IPriceRange } from '../models/price-range.interface';
 import { IProduct } from './../../shared/models/product.interface';
 import { IBrand } from './../models/brand.interface';
+import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Injectable()
 export class ProductService {
   constructor(private productApiService: ProductApiService) {}
+
+  private productsMatchesSearchKey(
+    product: IProductApi,
+    searchKey: string
+  ): boolean {
+    return (
+      searchKey !== '' &&
+      (product.title.toLowerCase().startsWith(searchKey.toLowerCase()) ||
+        product.title
+          .toLowerCase()
+          .split(' ')
+          .includes(searchKey.toLowerCase()) ||
+        product.description
+          .toLowerCase()
+          .split(' ')
+          .includes(searchKey.toLowerCase()))
+    );
+  }
 
   getAll(): Observable<IProduct[]> {
     return this.productApiService.getAll().pipe(
@@ -37,14 +56,16 @@ export class ProductService {
     );
   }
 
-  getBySearch(query: string): Observable<IProduct[]> {
-    return this.getAll().pipe(
-      map((products: IProduct[]) => {
-        return products.filter((product) => {
-          return product.title.includes(query);
-        });
-      })
-    );
+  getBySearch(searchKey: string): Observable<IProduct[]> {
+    return this.productApiService
+      .getAll()
+      .pipe(
+        map((products: IProduct[]) =>
+          products.filter((product) =>
+            this.productsMatchesSearchKey(product, searchKey)
+          )
+        )
+      );
   }
 
   getPriceRange(): Observable<IPriceRange> {

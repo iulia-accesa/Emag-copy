@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
 import { selectAllProducts } from './ngrx/state';
 import { IFilterGroup } from './models/filter-group.interface';
 import { IOrderGroup } from './models/order-group.interface';
 import { IProduct } from './../shared/models/product.interface';
 
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from './services/product.service';
@@ -21,20 +22,41 @@ export class ProductListPageComponent implements OnInit {
   protected productList$: Observable<IProduct[]>;
   protected cartItemList$: Observable<number[]>;
 
-  constructor(private productService: ProductService, private store: Store) {
-    /**
-     * Initialize local Observables
-     */
+  constructor(
+    private productService: ProductService,
+    private store: Store,
+    private router: Router
+  ) {
+    const category = this.getCategoryName();
+    const key = this.getSearchKey();
+
+    if ((category && key) || (!category && !key)) {
+      this.router.navigateByUrl('');
+    }
 
     this.productList$ = this.store.select(selectAllProducts);
   }
 
-  getCategoryURL(): string {
-    /**
-     * Extract category from URL
-     */
+  getCategoryName(): string {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
 
-    return "men's clothing";
+    return category;
+  }
+
+  getSearchKey(): string {
+    const urlParams = new URLSearchParams(window.location.search);
+    const key = urlParams.get('key');
+
+    return key;
+  }
+
+  getProductCount(): Observable<number> {
+    return this.productList$.pipe(
+      map((products: IProduct[]) => {
+        return products.length;
+      })
+    );
   }
 
   ngOnInit(): void {
@@ -43,21 +65,12 @@ export class ProductListPageComponent implements OnInit {
      */
     this.store.dispatch(
       ProductListPageActions.enter({
-        category: this.getCategoryURL(),
-        searchQuery: undefined,
+        category: this.getCategoryName(),
+        searchQuery: this.getSearchKey(),
       })
     );
 
-    this.getFavoriteProducts();
     this.getCartItemList();
-  }
-
-  getFavoriteProducts(): void {
-    this.productService.getFavoriteProductIds().subscribe((productIds) => {
-      this.store.dispatch(
-        ProductServiceActions.favoriteProductsLoaded({ productIds })
-      );
-    });
   }
 
   getCartItemList(): void {

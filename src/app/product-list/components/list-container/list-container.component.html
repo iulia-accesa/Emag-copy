@@ -1,8 +1,22 @@
 <div class="list-container">
   <div class="category-title">
-    <h1>
-      Accesorii monitoare
-      <span class="category-title__count"><span>2310</span> produse</span>
+    <!-- If list is based on category -->
+    <h1 *ngIf="categoryName">
+      <div *ngIf="productCount">
+        {{ categoryName }}
+        <span class="category-title__count"
+          ><span>{{ productCount }}</span> produse</span
+        >
+      </div>
+      <div *ngIf="!productCount">Categoria "{{ categoryName }}" nu exista</div>
+    </h1>
+    <!-- If list is based on search -->
+    <h1 *ngIf="searchKey">
+      <span class="category-title__count">
+        <span>{{ productCount }}</span>
+        rezultate pentru:
+      </span>
+      "{{ searchKey }}"
     </h1>
   </div>
 
