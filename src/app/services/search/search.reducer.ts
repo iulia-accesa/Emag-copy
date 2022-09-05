@@ -24,6 +24,11 @@ export const reducer = createReducer(
         return {
             searchResult: action.payload
         }
+    }),
+    on(fromActions.searchFailed,(state,action) => {
+        return {
+            searchResult: []
+        }
     })
 
     
