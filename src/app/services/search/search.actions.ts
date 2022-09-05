@@ -17,3 +17,8 @@ export const userSelectedOption = createAction(
     "[Searchbar options] User selected and option",
     props<{payload: SearchBarProduct}>()
 )
+
+export const  searchFailed = createAction(
+    "[Searchbar] Search failed",
+    props<{payload: string}>()
+)

@@ -1,21 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, map } from "rxjs";
-import * as fromActions from './search.actions'
+import { catchError, concatMap, map, of } from "rxjs";
+import * as fromSearchActions from './search.actions'
 import { SearchBarService } from "./search.service";
 import { SearchBarProduct } from "./searchbar-product.interface";
 @Injectable()
 export class SearchEffects {
   inputChanged$ = createEffect(() =>
     this._actions$.pipe(
-  ofType(fromActions.inputChanged),
+  ofType(fromSearchActions.inputChanged),
       concatMap((action) =>
         this._searchBarService
           .getProductsForSearchBar$(action.input)
           .pipe(
             map((obsProducts: SearchBarProduct[]) =>
-              fromActions.updateSearchResult({ payload: obsProducts })
-            )
+              fromSearchActions.updateSearchResult({ payload: obsProducts })
+            ),
+            catchError(errorResult => of(fromSearchActions.searchFailed({ payload: errorResult.error})))
           )
       )
     )
