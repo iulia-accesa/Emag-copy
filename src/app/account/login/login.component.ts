@@ -56,7 +56,5 @@ export class LoginComponent implements OnInit {
             'Username-ul sau parola sunt incorecte' : 'Eroare necunoscuta!';
         }
       });
-
-    
   }
 }
