@@ -10,7 +10,7 @@ import { SearchBarService } from 'src/app/services/search/search.service';
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss'],
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
   options$: Observable<SearchBarProduct[]>;
   _searchInput: string = '';
   private timeout: any;
@@ -30,8 +30,6 @@ export class SearchBarComponent implements OnInit {
     this.options$ = this._searchBarService.selectSearchResult$();
   }
 
-  ngOnInit(): void {}
-
   private debounce(cb: Function, delay = 300) {
     return (...args: any) => {
       clearTimeout(this.timeout);
@@ -41,16 +39,16 @@ export class SearchBarComponent implements OnInit {
     };
   }
 
-  onInputChanged(event: any) {
+  onInputChanged(event: any): void {
     this._searchInput = event.target.value;
     this.updateDebounceText(event.target.value);
   }
 
-  onSelectedOption(option: SearchBarProduct) {
+  onSelectedOption(option: SearchBarProduct): void {
     this._router.navigate([`products/${option.id}`]);
   }
 
-  onEnter() {
+  onEnter(): void {
     this._router.navigate(['search/products'], {
       queryParams: { key: this._searchInput },
     });
