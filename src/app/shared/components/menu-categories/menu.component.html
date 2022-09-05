@@ -3,11 +3,11 @@
     <div class="menu-list">
       <a class="btn-products btn-dropdown">
         <img
-          src="../../assets/img/burgermenu.png"
+          src="../../../../assets/img/burgermenu.png"
           alt="burger menu icon"
           class="burgermenu-icon"
         />
-        Products {{ hoverIndex }}</a
+        Products</a
       >
       <a class="btn-account">Account</a>
     </div>
@@ -20,11 +20,8 @@
         class="list-group-item"
         id="{{ categ }}"
         (mouseover)="onHover(i, $event)"
-        (mouseleave)="outHandler(i)"
         >
-        <!-- (blur)="onBlur(i)" -->
-        <!-- (mouseover)="hoverHandler($event)" -->
-      <img src="../../assets/img/smartphone.png" alt="" id="{{ categ }}" class="phone-icon">
+      <img src="../../../../assets/img/smartphone.png" alt="" id="{{ categ }}" class="phone-icon">
         {{ categ }}
     </a>
     </span>
@@ -34,9 +31,8 @@
       <div
         class="menu-details"
         [ngClass]="{ open: isOpen }"
+        (mouseleave)="isOpen=false"
         >
-        <!-- (blur)="isOpen=false" -->
-        <!-- (mouseover)="onHoverCheck()" -->
         <ul class="menu-products">
           <li *ngFor="let prod of products; let i = index">
             <a href="" class="prod">{{ prod }}</a>

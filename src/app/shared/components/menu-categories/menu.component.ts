@@ -33,27 +33,4 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  outHandler(index: number | undefined) {
-    // this.isOpen = false;
-    this.hoverIndex = index;
-    if (index !== undefined) {
-      this.isOpen = false;
-      this.hoverIndex = undefined;
-    }
-  }
-
-  onBlur(index: number | undefined) {
-  
-      if (this.hoverOut !== false) {
-        this.hoverIndex = undefined;
-        this.isOpen = false;
-      } else {
-        this.hoverIndex = index;
-        this.isOpen = true;
-      }
-  }
-
-  onHoverCheck() {
-    this.hoverOut = true;
-  }
 }
