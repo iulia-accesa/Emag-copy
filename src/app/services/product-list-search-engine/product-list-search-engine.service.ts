@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+
 import { Observable,take,map } from "rxjs";
 import { ProductApiService } from "src/app/services/product-api.service";
 import { IProductApi } from "src/app/shared/models/product-api.interface";
@@ -23,7 +23,6 @@ export class ProductListSearchEngineService {
 
     filterProductsBySearchKey$(searchKey: string): Observable<IProductApi[]>{
         return this._productApiService.getAll().pipe(
-            take(1),
             map((products: IProductApi[]) => 
                products.filter(product => this.productsMatchesSearchKey(product,searchKey) )
             )
