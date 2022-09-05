@@ -36,7 +36,7 @@ export class ProductListSearchEngineComponent implements OnInit,OnDestroy {
   /**
    * Checks if there is a match in the product database for the given key and modifies  @var anyResult
    */
-  private checkForResults() {
+  private checkForResults():void {
     this.productsSubscription = this.products$.subscribe((val) => {
       if (val.length === 0) {
         this.anyResults = false;
