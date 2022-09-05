@@ -14,8 +14,9 @@ export class SearchBarComponent implements OnInit {
   options$: Observable<SearchBarProduct[]>;
   _searchInput: string = '';
   private timeout: any;
+  private minimumTextLengthForSearchToStart = 2;
   updateDebounceText = this.debounce((text: string) => {
-    if (text.length > 2) {
+    if (text.length > this.minimumTextLengthForSearchToStart) {
       this._searchBarService.dispatchInputChangedAction(text);
     } else {
       this._searchBarService.dispatchInputChangedAction('');
