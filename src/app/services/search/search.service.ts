@@ -28,7 +28,6 @@ export class SearchBarService {
    */
   getProductsForSearchBar$(text: string): Observable<SearchBarProduct[]> {
     return this._productApiService.getAll().pipe(
-      take(1),
       map((products: IProductApi[]) =>
         products
           .filter((product) => text !== "" && (product.title.toLowerCase().startsWith(text.toLowerCase()) || product.title.toLowerCase().split(" ").includes(text.toLowerCase())) )
