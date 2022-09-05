@@ -1,3 +1,6 @@
+@import "/src/variables.scss";
+@import "/src/app/shared/styles/mixins";
+
 header {
   background-color: #f5f5f5;
   padding: 10px 30px 10px 30px;
@@ -41,7 +44,7 @@ header {
     padding-right: 5px;
     color: #3382dc;
     margin-bottom: -5px;
-    @media screen and (max-width: 600px) {
+    @include response(md) {
       padding-right: 0px;
       margin-bottom: -5px;
     }
@@ -83,7 +86,7 @@ header {
     opacity: 80%;
     background: #b2d7ff;
   }
-  @media screen and (min-width: 200px) and (max-width: 600px) {
+  @include response(md) {
     height: 24px;
     position: right;
     margin-top: -14px;
@@ -110,7 +113,7 @@ input[type="search"] {
   border-radius: 26px;
 }
 
-@media screen and (min-width: 200px) and (max-width: 600px) {
+@include response(md) {
   .dropdown {
     display: flex;
     flex-direction: row;
