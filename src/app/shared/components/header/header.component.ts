@@ -19,9 +19,6 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (window.screen.width === 360) {
-      this.mobile = true;
-    }
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value || ''))
