@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuService } from './menu.service';
+import { MenuService } from '../../../services/menu-category/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,8 +10,7 @@ export class MenuComponent implements OnInit {
   @Input() categories: any; //trigger
   @Input() products: any;
   @Input() isRootNode = false;
-  hoverIndex: number;
-  hoverOut: boolean;
+  hoverIndex: number | undefined;
   isOpen = false;
 
   constructor(private service: MenuService) {}
