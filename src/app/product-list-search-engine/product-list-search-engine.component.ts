@@ -1,9 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { first, Observable, of} from 'rxjs';
+import { first, Observable, of } from 'rxjs';
 import { ProductListSearchEngineService } from '../services/product-list-search-engine/product-list-search-engine.service';
-
 
 import { IProductApi } from '../shared/models/product-api.interface';
 
@@ -14,34 +12,35 @@ import { IProductApi } from '../shared/models/product-api.interface';
 })
 export class ProductListSearchEngineComponent implements OnInit {
   private _searchKey: string = '';
-  products$ : Observable<IProductApi[]> = of([])
+  products$: Observable<IProductApi[]> = of([]);
   anyResults: boolean = true;
-  constructor(private _route: ActivatedRoute,private _service: ProductListSearchEngineService ) {}
+  constructor(
+    private _route: ActivatedRoute,
+    private _service: ProductListSearchEngineService
+  ) {}
 
   ngOnInit(): void {
     this._route.queryParams.pipe(first()).subscribe((params) => {
       this._searchKey = params['key'];
-      this.products$ = this._service.filterProductsBySearchKey$(this._searchKey);
+      this.products$ = this._service.filterProductsBySearchKey$(
+        this._searchKey
+      );
       this.checkForResults();
-     
     });
   }
 
   /**
-   * return false if the content of the products$ observables is an empty list,
-   * true otherwise
+   * Checks if there is a match in the product database for the given key and modifies  @var anyResult
    */
-  checkForResults(){
-    this.products$.pipe(
-      first()
-    ).subscribe(val => {
-      if(val.length === 0){
-          this.anyResults = false
+  private checkForResults() {
+    this.products$.pipe(first()).subscribe((val) => {
+      if (val.length === 0) {
+        this.anyResults = false;
+      } else {
+        if (val.length > 0) {
+          this.anyResults = true;
+        }
       }
-    })
-
+    });
   }
-
-
-
 }
