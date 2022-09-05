@@ -36,6 +36,7 @@ import { CarouselComponent } from './shared/components/menu-categories/carousel/
 import { LoginComponent } from './account/login/login.component';
 import { AppInterceptor } from './app.interceptor';
 import { AccountService } from './services/account/account.service';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
