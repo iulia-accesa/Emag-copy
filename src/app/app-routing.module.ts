@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './account/login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
 
 const routes: Routes = [
-  { path: '', component: SearchBarComponent },
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'products', component: ProductListPageComponent },
   //{ path: 'products/:id', component: DetailsPageComponent }
+
 ];
 
 @NgModule({
