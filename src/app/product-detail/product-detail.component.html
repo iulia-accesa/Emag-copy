@@ -5,7 +5,6 @@
       <h1 class="mainTitle">{{ product?.title }}</h1>
       <div>Cod produs: 4019238054170</div>
       <hr />
-      <div class="container">
         <section class="heroSection">
           <div class="detailsContainer">
             <app-product-photos [product]="product"></app-product-photos>
@@ -27,15 +26,14 @@
             <app-add-to-cart-box [product]="product"></app-add-to-cart-box>
           </div>
         </section>
-      </div>
     </div>
   </div>
 </div>
 
 <div class="containerWidth" *ngIf="productSimilar">
   <h1 class="simProdTitle">Similar Products</h1>
-  <div class="flexDiv">
-    <div class="simProdList" *ngFor="let item of productSimilar">
+  <div class="listSimProd">
+    <div *ngFor="let item of productSimilar">
       <product-card-component
         class="simProdItem"
         [product]="item"
