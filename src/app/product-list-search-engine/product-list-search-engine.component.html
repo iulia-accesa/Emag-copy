@@ -1,6 +1,4 @@
-<div class="header__banner"></div>
-
-<div class="container__products" *ngIf="anyResults">
+<div class="container__products" *ngIf="anyResults; else noResults">
   <product-card-component
     *ngFor="let product of products$ | async"
     [product]="product"
@@ -8,6 +6,6 @@
   </product-card-component>
 </div>
 
-<div *ngIf="!anyResults">
+<ng-template #noResults>
   <p>Product not found page</p>
-</div>
+</ng-template>
