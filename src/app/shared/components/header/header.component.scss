@@ -43,10 +43,10 @@ header {
   .button-icons {
     padding-right: 5px;
     color: #3382dc;
-    margin-bottom: -5px;
+    // margin-bottom: -5px;
     @include response(md) {
       padding-right: 0px;
-      margin-bottom: -5px;
+      margin-top: -5px;
     }
   }
 
