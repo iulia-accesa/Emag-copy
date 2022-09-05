@@ -22,8 +22,8 @@ export class HomepageComponent implements OnInit {
   constructor(public productService: ProductApiService) {}
 
   ngOnInit(): void {
-    this.getProducts();
-    this.getProductCategories();
+    this.products$ = this.productService.getAll();
+    this.categories$ = this.productService.getAllCategories();
     this.productService.getAllCategories().subscribe((categories) => {
       categories.map((category) => {
         this.categorizedProducts$.set(
@@ -32,14 +32,6 @@ export class HomepageComponent implements OnInit {
         );
       });
     });
-  }
-
-  getProducts(): void {
-    this.products$ = this.productService.getAll();
-  }
-
-  getProductCategories(): void {
-    this.categories$ = this.productService.getAllCategories();
   }
 
   getProductsByCategory(category: string): Observable<IProductApi[]> {
