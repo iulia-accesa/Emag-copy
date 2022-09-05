@@ -1,9 +1,6 @@
-export interface SearchBarProduct {
-    id: number,
-    title: string,
-    category: string,
-    rating: {
-        rate:number,
-        count:number
-    }
-}
+import { IProductApi } from 'src/app/shared/models/product-api.interface';
+
+export type SearchBarProduct = Omit<
+  IProductApi,
+  'price' | 'description' | 'image'
+>;
