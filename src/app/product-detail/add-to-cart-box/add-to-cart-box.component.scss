@@ -21,13 +21,10 @@
   
 }
 
-.rating_star {
-  width: 17px;
-  height: 17px;
-}
 .ratings {
   display: flex;
   flex-direction: row;
+  margin-bottom: 8px;
 }
 
 .blueQuad {
@@ -49,21 +46,45 @@
     border-bottom-right-radius: 20px 35px ;
 }
 
+.addBtn{
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
 .cartIcon{
     height: 28px;
     width: 45px;
     position: absolute;
-    transform: translate(3px,-33px)
+    transform: translate(-163px,-33px)
 }
 
 .addToCartBtn{
     color: #fff;
-    transform: translate(20px,-35px);
+    transform: translate(20px,-28px);
 display: flex;
 justify-content: center;
 font-size: 15px;
 }
 
+.myFavorite{
+  width: 100%;
+  height: 40px;
+  color: #005eb8;
+  background-color: #fff;
+  border-color: #005eb8;
+  display: flex;
+  align-items: center;
+}
+
+.favIcon{
+  height: 30px;
+  width: 30px;
+}
+
+.addToFav{
+  width: 70%;
+}
 .checked{
   color: #f9bf3b;
 }

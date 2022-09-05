@@ -42,7 +42,7 @@ export class ProductDetailComponent implements OnInit {
       this.prodCategory = this.product.category;
       this.productSimilar = this.productList.filter((item: any) => {
         return item.category === this.prodCategory;
-      });
+      }).slice(0,5);
     });
   }
 }

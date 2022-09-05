@@ -6,9 +6,14 @@
 }
 
 .containerWidth {
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
   max-width: 1520px;
   padding: 0 25px;
+}
+
+.simProdTitle{
+  font-size: 35px;
+  line-height: 50px;
 }
 
 .componentContainer {
@@ -45,6 +50,13 @@ hr {
 
 .descriptionItem {
   margin-bottom: 15px;
+}
+
+.flexDiv{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
 }
 
 /*    */

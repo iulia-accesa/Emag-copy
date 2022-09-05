@@ -1,7 +1,7 @@
 <div class="containerBackgr">
   <div class="containerWidth">
     <div class="componentContainer">
-      <div class="path">{{ product?.category }}/{{ product?.title }}</div>
+      <div>{{ product?.category }}/{{ product?.title }}</div>
       <h1 class="mainTitle">{{ product?.title }}</h1>
       <div>Cod produs: 4019238054170</div>
       <hr />
@@ -33,8 +33,13 @@
 </div>
 
 <div class="containerWidth" *ngIf="productSimilar">
-  <h1>Similar Products</h1>
-  <div class="simProdList" *ngFor="let item of productSimilar">
-    <product-card-component class="simProdItem" [product]="item"></product-card-component>
+  <h1 class="simProdTitle">Similar Products</h1>
+  <div class="flexDiv">
+    <div class="simProdList" *ngFor="let item of productSimilar">
+      <product-card-component
+        class="simProdItem"
+        [product]="item"
+      ></product-card-component>
+    </div>
   </div>
 </div>
