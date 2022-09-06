@@ -1,13 +1,18 @@
 @mixin response($breakpoint) {
-    @if($breakpoint == md) {
-        @media (max-width: 600px) {
-            @content;
-        }
-    }
-  
-    @if($breakpoint == sm) {
-        @media (max-width: 500px) {
-            @content;
-        }
+  @if ($breakpoint == md) {
+    @media (max-width: 600px) {
+      @content;
     }
   }
+
+  @if ($breakpoint == sm) {
+    @media (max-width: 500px) {
+      @content;
+    }
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
