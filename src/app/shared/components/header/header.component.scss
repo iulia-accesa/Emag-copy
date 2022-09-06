@@ -3,7 +3,6 @@
 
 header {
   background-color: #f5f5f5;
-  padding: 10px 30px 10px 30px;
   @include flexCenter();
   .btn {
     margin-top: -5px;
@@ -47,7 +46,7 @@ header {
   .button-icons {
     padding-right: 5px;
     color: #3382dc;
-    @include response(md) {
+    @include response(sm) {
       padding-right: 0px;
     }
   }
@@ -58,7 +57,7 @@ header {
   }
 
   .navbar-brand {
-    padding: 0px 20px 0px 0px;
+    padding: 0px 25px 0px 0px;
   }
 
   input[type="search"]::-webkit-search-decoration,
@@ -66,6 +65,15 @@ header {
   input[type="search"]::-webkit-search-results-button,
   input[type="search"]::-webkit-search-results-decoration {
     display: none;
+  }
+}
+
+app-searchbar {
+  width: 100%;
+  input[type="search"] {
+    @include response(sm) {
+      display: none;
+    }
   }
 }
 
@@ -84,11 +92,11 @@ header {
     opacity: 80%;
     background: #b2d7ff;
   }
-  @include response(md) {
+  @include response(sm) {
     height: 24px;
     position: right;
-    margin-top: -14px;
-
+    margin-top: -13px;
+    padding: 0px 15px 0px 0px;
     &:hover {
       background: #f5f5f5;
       opacity: 100%;
@@ -116,11 +124,11 @@ input[type="search"] {
   white-space: nowrap;
 }
 
-@include response(md) {
+@include response(sm) {
   .header {
     min-width: 100%;
   }
   .navbar-brand {
-    margin-right: 30px;
+    margin-right: 20px;
   }
 }
