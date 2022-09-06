@@ -15,13 +15,15 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Create ngrx files structure
+
 Run `ng generate @ngrx/schematics:feature services/SERVICE-NAME/PREFIX` to create initial schema to be used in a service
+
 > e.g.
-> 
+>
 > /services/SERVICE-NAME/PREFIX.actions.ts
-> 
+>
 > /services/SERVICE-NAME/PREFIX.effects.ts
-> 
+>
 > /services/SERVICE-NAME/PREFIX.reducer.ts
 >
 > /services/SERVICE-NAME/PREFIX.selectors.ts

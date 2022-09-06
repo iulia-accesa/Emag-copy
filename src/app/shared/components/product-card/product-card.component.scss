@@ -1,7 +1,12 @@
 @import "/src/variables.scss";
 .cardElement {
+  transition: box-shadow 0.3s;
+  border-radius: 10px;
+  background: #fff;
+  display: inline-block;
   height: 350px;
   width: 220px;
+  margin: 0px 10px 10px 0px;
 }
 
 .checked{

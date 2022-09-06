@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { IProductApi } from '../../models/product-api.interface';
 
 @Component({
@@ -15,6 +16,6 @@ export class ProductCardComponent {
   }
   public _product: IProductApi | undefined;
   public prodRating = 0;
-
+  
   constructor() {}
 }
