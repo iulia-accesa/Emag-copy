@@ -1,0 +1,26 @@
+<div
+  class="navbar-searchbox"
+  matAutocompleteOrigin
+  #origin="matAutocompleteOrigin"
+>
+  <input
+    type="search"
+    name="query"
+    class="searchbox"
+    placeholder="&#206;ncepe o nou&#259; c&#259;utare"
+    [matAutocomplete]="auto"
+    [matAutocompleteConnectedTo]="origin"
+    (input)="onInputChanged($event)"
+    (keyup.enter)="onEnter()"
+  />
+
+  <mat-autocomplete #auto="matAutocomplete" >
+    <mat-option  *ngFor="let option of options$ | async"  (onSelectionChange)="onSelectedOption(option)"  [value]="option.title" >
+    {{ option.title }}
+    </mat-option>
+  </mat-autocomplete>
+
+  <button class="search-button">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
