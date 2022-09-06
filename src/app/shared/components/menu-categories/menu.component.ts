@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuService } from '../../../services/menu-category/menu.service';
+import { ProductApiService } from '../../../services/product-api.service';
+import { IProductApi } from '../../models/product-api.interface';
 
 @Component({
   selector: 'app-menu',
@@ -7,23 +8,22 @@ import { MenuService } from '../../../services/menu-category/menu.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  @Input() categories: any; //trigger
-  @Input() products: any;
+  @Input() categories: string[] | undefined;
+  @Input() products: IProductApi[] | undefined;
   @Input() isRootNode = false;
   hoverIndex: number | undefined;
   isOpen = false;
 
-  constructor(private service: MenuService) {}
+  constructor(private service: ProductApiService) {}
 
   ngOnInit(): void {
-    this.service.getCategories().subscribe((response) => {
+    this.service.getAllCategories().subscribe((response) => {
       this.categories = response;
     });
   }
-
   onHover(index: number | undefined, event: any) {
-    this.service.getProducts(event.target.id).subscribe((response) => {
-      this.products = response as Array<{}>;
+    this.service.getByCategory(event.target.id).subscribe((response: Array<IProductApi>) => {
+      this.products = response;
       this.products = this.products.map((product: any) => {
         return product.title;
       });
@@ -31,5 +31,4 @@ export class MenuComponent implements OnInit {
       this.hoverIndex = index;
     });
   }
-
 }
