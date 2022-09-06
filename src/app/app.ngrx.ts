@@ -1,9 +1,15 @@
 import { ActionReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
+
 import { accountReducers } from './services/account/account.reducer';
 import { productListReducer } from './services/product-list/product-list.reducer';
+import { searchReducers } from './services/search/search.reducer';
 
-export const APP_REDUCERS = { ...accountReducers, ...productListReducer };
+export const APP_REDUCERS = {
+  ...accountReducers,
+  ...productListReducer,
+  ...searchReducers,
+};
 
 const SyncLocalStorage = localStorageSync({
   keys: ['account'],
