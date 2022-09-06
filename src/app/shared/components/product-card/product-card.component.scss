@@ -1,9 +1,5 @@
 @import "/src/variables.scss";
 .cardElement {
-  transition: box-shadow 0.3s;
-  border-radius: 10px;
-  background: #fff;
-  float: left;
   height: 350px;
   width: 220px;
 }
@@ -15,6 +11,7 @@
 .ratingStars{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .simCartImg {

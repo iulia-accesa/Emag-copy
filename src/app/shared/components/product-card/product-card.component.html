@@ -1,4 +1,4 @@
-<div class="cardElement" *ngIf="_product">
+<mat-card class="cardElement" *ngIf="_product">
   <img class="simCartImg" [src]="_product.image" alt="" />
   <div class="productPrice">Rs. {{ _product.price }}</div>
   <div class="prodTitle">{{ _product.title }}</div>
@@ -6,10 +6,10 @@
   <div class="ratingStars">
     <div
       *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
-      [class.checked]="i<prodRating"
+      [class.checked]="i < prodRating"
     >
-      <span class="fa fa-star"></span>
+      <span class="material-icons">star_rate</span>
     </div>
     {{ _product.rating.rate }}
   </div>
-</div> 
+</mat-card>

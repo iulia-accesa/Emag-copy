@@ -14,10 +14,7 @@ export class ProductCardComponent {
     }
   }
   public _product: IProductApi | undefined;
-  public prodRating=0;
+  public prodRating = 0;
 
   constructor() {}
-
-  ngOnInit() {
-  }
 }

@@ -24,8 +24,10 @@ import { AppInterceptor } from './app.interceptor';
 import { AccountService } from './services/account/account.service';
 import { LoginComponent } from './account/login/login.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
+import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component'; 
 import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-c
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [
     {

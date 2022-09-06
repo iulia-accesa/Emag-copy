@@ -1,26 +1,21 @@
-<div class="containerBackgr">
+<div class="containerBackgr" *ngIf="product">
   <div class="containerWidth">
     <div class="componentContainer">
-      <div>{{ product?.category }}/{{ product?.title }}</div>
-      <h1 class="mainTitle">{{ product?.title }}</h1>
-      <div>Cod produs: 4019238054170</div>
+      <div>{{ product.category }}/{{ product.title }}</div>
+      <h1 class="mainTitle">{{ product.title }}</h1>
       <hr />
         <section class="heroSection">
           <div class="detailsContainer">
             <app-product-photos [product]="product"></app-product-photos>
 
             <section class="productDescription">
-              <div class="descriptionItem">{{ product?.brand }}</div>
+              <div class="descriptionItem"></div>
               <div class="descriptionItem">
-                Category : {{ product?.category }}
+                Category : {{ product.category }}
               </div>
-              <div class="descriptionItem">Sold By : {{ product?.seller }}</div>
+              <div class="descriptionItem">Sold By : </div>
               <div class="descriptionItem">
-                Description : {{ product?.description }} Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Accusantium officia dolorum
-                iusto libero ullam asperiores voluptatum, quidem earum,
-                repellendus, laudantium tempore! Tenetur hic dolorum odio nihil
-                ex sit ad enim.
+                Description : {{ product.description }}
               </div>
             </section>
             <app-add-to-cart-box [product]="product"></app-add-to-cart-box>
