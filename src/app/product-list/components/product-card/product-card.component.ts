@@ -5,12 +5,12 @@ import { ViewEncapsulation } from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
-  selector: 'product-card',
+  selector: 'product-list-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ProductCardComponent implements OnInit {
+export class ProductListCardComponent implements OnInit {
   @Input() product: IProduct;
   favorite: boolean;
 

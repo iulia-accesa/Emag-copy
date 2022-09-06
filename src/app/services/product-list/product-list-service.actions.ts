@@ -1,4 +1,4 @@
-import { IProduct } from './../../../shared/models/product.interface';
+import { IProduct } from '../../shared/models/product.interface';
 import { createAction, props } from '@ngrx/store';
 
 export const productsInit = createAction(

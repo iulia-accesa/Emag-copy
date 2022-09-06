@@ -1,15 +1,15 @@
-import { ProductApiService } from './../../services/product-api.service';
+import { ProductApiService } from '../product-api.service';
 
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
-import { IPriceRange } from '../models/price-range.interface';
-import { IProduct } from './../../shared/models/product.interface';
-import { IBrand } from './../models/brand.interface';
+import { IPriceRange } from '../../product-list/models/price-range.interface';
+import { IProduct } from '../../shared/models/product.interface';
+import { IBrand } from '../../product-list/models/brand.interface';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Injectable()
-export class ProductService {
+export class ProductListService {
   constructor(private productApiService: ProductApiService) {}
 
   private productsMatchesSearchKey(

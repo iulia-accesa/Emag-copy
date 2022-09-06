@@ -1,13 +1,42 @@
-import { IOrderGroup } from './../../models/order-group.interface';
-import { IFilterGroup } from './../../models/filter-group.interface';
-import { Order } from './../../models/order.type';
-import { IPriceRange } from './../../models/price-range.interface';
-import { IProduct } from './../../../shared/models/product.interface';
+import { IOrderGroup } from '../../product-list/models/order-group.interface';
+import { IFilterGroup } from '../../product-list/models/filter-group.interface';
+import { Order } from '../../product-list/models/order.type';
+import { IPriceRange } from '../../product-list/models/price-range.interface';
+import { IProduct } from '../../shared/models/product.interface';
 
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on, Action, ActionReducerMap } from '@ngrx/store';
 
-import * as ProductListPageActions from '../actions/product-list-page.actions';
-import * as ProductServiceActions from '../actions/product-service.actions';
+import * as ProductListPageActions from './product-list.actions';
+import * as ProductServiceActions from './product-list-service.actions';
+
+export const FEATURE_KEY = 'product_list';
+
+/**
+ * State Shape
+ */
+export interface State {
+  productListConstant: IProduct[];
+  productList: IProduct[];
+  favoriteIdList: number[];
+  cartIdList: number[];
+  filterGroup: IFilterGroup;
+  orderGroup: IOrderGroup;
+}
+
+export const initialState: State = {
+  productListConstant: [],
+  productList: [],
+  favoriteIdList: [],
+  cartIdList: [],
+  filterGroup: {
+    priceRange: undefined,
+    ratings: undefined,
+  },
+  orderGroup: {
+    price: undefined,
+    title: undefined,
+  },
+};
 
 /**
  * Helper functions for the reducers
@@ -86,33 +115,6 @@ const filterAndOrderProducts = (
 };
 
 /**
- * State Shape
- */
-export interface State {
-  productListConstant: IProduct[];
-  productList: IProduct[];
-  favoriteIdList: number[];
-  cartIdList: number[];
-  filterGroup: IFilterGroup;
-  orderGroup: IOrderGroup;
-}
-
-export const initialState: State = {
-  productListConstant: [],
-  productList: [],
-  favoriteIdList: [],
-  cartIdList: [],
-  filterGroup: {
-    priceRange: undefined,
-    ratings: undefined,
-  },
-  orderGroup: {
-    price: undefined,
-    title: undefined,
-  },
-};
-
-/**
  * Reducers
  */
 export const productReducer = createReducer(
@@ -168,6 +170,6 @@ export const productReducer = createReducer(
   })
 );
 
-export function reducer(state: State | undefined, action: Action) {
-  return productReducer(state, action);
-}
+export const productListReducer: ActionReducerMap<{ product_list: State }> = {
+  product_list: productReducer,
+};

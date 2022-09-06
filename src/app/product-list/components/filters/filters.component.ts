@@ -2,7 +2,7 @@ import { IPriceRange } from './../../models/price-range.interface';
 import { IFilterGroup } from './../../models/filter-group.interface';
 import { IOrderGroup } from './../../models/order-group.interface';
 import { Store } from '@ngrx/store';
-import { ProductService } from './../../services/product.service';
+import { ProductListService } from '../../../services/product-list/product-list.service';
 import {
   Component,
   Input,
@@ -17,7 +17,7 @@ import { forkJoin } from 'rxjs';
 import {
   orderProducts,
   filterProducts,
-} from '../../ngrx/actions/product-list-page.actions';
+} from '../../../services/product-list/product-list.actions';
 
 @Component({
   selector: 'filters',
@@ -55,7 +55,10 @@ export class FiltersComponent implements OnInit {
     ratingsForm: this.ratingsForm,
   });
 
-  constructor(private productService: ProductService, private store: Store) {
+  constructor(
+    private productService: ProductListService,
+    private store: Store
+  ) {
     forkJoin({
       priceRange: this.productService.getPriceRange(),
       ratingList: this.productService.getRatingCount(),

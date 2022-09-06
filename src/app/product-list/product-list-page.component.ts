@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { selectAllProducts } from './ngrx/state';
 import { IFilterGroup } from './models/filter-group.interface';
 import { IOrderGroup } from './models/order-group.interface';
 import { IProduct } from './../shared/models/product.interface';
@@ -7,11 +6,12 @@ import { IProduct } from './../shared/models/product.interface';
 import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
-import { ProductService } from './services/product.service';
+import { ProductListService } from '../services/product-list/product-list.service';
 
 import { Store } from '@ngrx/store';
-import * as ProductListPageActions from './ngrx/actions/product-list-page.actions';
-import * as ProductServiceActions from './ngrx/actions/product-service.actions';
+import * as ProductListPageActions from '../services/product-list/product-list.actions';
+import * as ProductServiceActions from '../services/product-list/product-list-service.actions';
+import { selectAllProducts } from '../services/product-list/product-list.selector';
 
 @Component({
   selector: 'product-list-page',
@@ -23,7 +23,7 @@ export class ProductListPageComponent implements OnInit {
   protected cartItemList$: Observable<number[]>;
 
   constructor(
-    private productService: ProductService,
+    private productService: ProductListService,
     private store: Store,
     private router: Router
   ) {

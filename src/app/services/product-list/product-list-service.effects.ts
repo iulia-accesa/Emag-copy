@@ -1,17 +1,17 @@
-import { IProduct } from './../../../shared/models/product.interface';
-import * as ProductListPageActions from '../actions/product-list-page.actions';
-import * as ProductServiceActions from '../actions/product-service.actions';
+import { IProduct } from '../../shared/models/product.interface';
+import * as ProductListPageActions from './product-list.actions';
+import * as ProductServiceActions from './product-list-service.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductService } from './../../services/product.service';
+import { ProductListService } from './product-list.service';
 import { Injectable } from '@angular/core';
 
-import { mergeMap, map, exhaustMap, Observable } from 'rxjs';
+import { map, exhaustMap, Observable } from 'rxjs';
 
 @Injectable()
-export class ProductServiceEffects {
+export class ProductListServiceEffects {
   constructor(
-    private productService: ProductService,
+    private productService: ProductListService,
     private actions$: Actions
   ) {}
 
