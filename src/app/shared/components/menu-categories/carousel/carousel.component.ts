@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class CarouselComponent implements OnInit {
-
+export class CarouselComponent {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -18,32 +18,40 @@ export class CarouselComponent implements OnInit {
     navSpeed: 700,
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       400: {
-        items: 1
+        items: 1,
       },
       740: {
-        items: 1
+        items: 1,
       },
       940: {
-        items: 1
-      }
+        items: 1,
+      },
     },
     nav: true,
     autoplay: true,
-    navText: [ "<i class='fa fa-chevron-left'></i>",
-    "<i class='fa fa-chevron-right'></i>"]
-  }
+    navText: [
+      "<img src='./assets/images/left-arrow.svg' style='height:2rem'/>",
+      "<img src='./assets/images/right-arrow.svg'/>",
+    ],
+  };
 
   slides = [
-    {id: "1", img:"https://tpc.googlesyndication.com/simgad/7573031838953409196?"},
-    {id: "2", img:"https://tpc.googlesyndication.com/simgad/9905076699393245596?"},
-    {id: "3", img:"https://tpc.googlesyndication.com/simgad/1715730311661820279?"},
-  ]
+    {
+      id: '1',
+      img: './assets/images/carousel1.jpeg',
+    },
+    {
+      id: '2',
+      img: './assets/images/carousel2.jpeg',
+    },
+    {
+      id: '3',
+      img: './assets/images/carousel3.jpeg',
+    },
+  ];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 }
