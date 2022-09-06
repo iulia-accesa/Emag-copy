@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { MatIconModule } from '@angular/material/icon';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -53,6 +52,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
+    HeaderComponent
   ],
 
   imports: [
@@ -81,9 +81,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatIconModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatToolbarModule,,
-
-    
+    MatToolbarModule,
   ],
   providers: [
     {
