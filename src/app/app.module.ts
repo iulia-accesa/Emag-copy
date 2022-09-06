@@ -23,12 +23,13 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { AccountApiService } from './services/account/account-api.service';
 import { AppInterceptor } from './app.interceptor';
 import { AccountService } from './services/account/account.service';
 import { LoginComponent } from './account/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     LoginComponent,
     ProductCardComponent,
     HeaderComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.homepageCategoriesContainer {
+    width: 95%;
+    padding: 2.5%;
+}
+
+.categoryContainer {
+    display: block;
+}
+
+.categoryTitle {
+    font-size: 30px;
+    font-weight: 400;
+}
