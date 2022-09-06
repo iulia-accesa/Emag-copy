@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-carousel',
@@ -33,23 +32,23 @@ export class CarouselComponent {
     nav: true,
     autoplay: true,
     navText: [
-      "<img src='./assets/images/left-arrow.svg' style='height:2rem'/>",
-      "<img src='./assets/images/right-arrow.svg'/>",
+      "<img src='./assets/left-arrow.svg''/>",
+      "<img src='./assets/right-arrow.svg'/>",
     ],
   };
 
   slides = [
     {
       id: '1',
-      img: './assets/images/carousel1.jpeg',
+      img: './assets/carousel1.jpeg',
     },
     {
       id: '2',
-      img: './assets/images/carousel2.jpeg',
+      img: './assets/carousel2.jpeg',
     },
     {
       id: '3',
-      img: './assets/images/carousel3.jpeg',
+      img: './assets/carousel3.jpeg',
     },
   ];
 
