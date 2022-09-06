@@ -44,7 +44,7 @@ header {
     padding-right: 5px;
     color: #3382dc;
     // margin-bottom: -5px;
-    @include response(md) {
+    @include response(sm) {
       padding-right: 0px;
       margin-top: -5px;
     }
@@ -82,7 +82,7 @@ header {
     opacity: 80%;
     background: #b2d7ff;
   }
-  @include response(md) {
+  @include response(sm) {
     height: 24px;
     position: right;
     margin-top: -14px;
@@ -109,7 +109,7 @@ input[type="search"] {
   border-radius: 26px;
 }
 
-@include response(md) {
+@include response(sm) {
   .dropdown {
     display: flex;
     flex-direction: row;
