@@ -28,8 +28,10 @@ import { AccountApiService } from './services/account/account-api.service';
 import { AccountService } from './services/account/account.service';
 import { AppInterceptor } from './app.interceptor';
 import { LoginComponent } from './account/login/login.component';
+
 import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
 import { SearchBarService } from './services/search/search.service';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -39,7 +41,8 @@ import { SearchBarService } from './services/search/search.service';
     ProductCardComponent,
     LoginComponent,
     SearchBarComponent,
-
+    ProductCardComponent,
+    HomepageComponent
   ],
 
   imports: [
@@ -70,6 +73,7 @@ import { SearchBarService } from './services/search/search.service';
     AccountService,
     ProductApiService,
     SearchBarService,
+
   ],
   bootstrap: [AppComponent],
 })
