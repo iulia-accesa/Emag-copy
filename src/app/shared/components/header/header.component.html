@@ -19,26 +19,13 @@
   >
     <input
       #search
-      [class.filled]="filled"
-      (click)="filled = true"
-      (blur)="filled = search.value ? true : false"
       type="search"
       name="query"
       class="searchbox"
       placeholder="Începe o nouă căutare"
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-      [matAutocompleteConnectedTo]="origin"
       fxHide.lt-sm
     />
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+
     <button class="search-button">
       <mat-icon>search</mat-icon>
     </button>
