@@ -12,8 +12,8 @@ import { ProductApiService } from '../services/product-api.service';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  products$: Observable<IProductApi[]> | undefined;
-  categories$: Observable<string[]> | undefined;
+  products$: Observable<IProductApi[]> = this.productService.getAll();
+  categories$: Observable<string[]> = this.productService.getAllCategories();
   categorizedProducts$: Map<string, Observable<IProductApi[]>> = new Map<
     string,
     Observable<IProductApi[]>
@@ -22,9 +22,7 @@ export class HomepageComponent implements OnInit {
   constructor(public productService: ProductApiService) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getAll();
-    this.categories$ = this.productService.getAllCategories();
-    this.productService.getAllCategories().subscribe((categories) => {
+    this.categories$.subscribe((categories) => {
       categories.map((category) => {
         this.categorizedProducts$.set(
           category,
