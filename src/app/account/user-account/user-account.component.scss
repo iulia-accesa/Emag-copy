@@ -9,32 +9,32 @@ app-user-account {
         box-sizing: border-box;
     }
 
-    width: 1200px;
     background: $background-color;
     font-weight: 400;
     line-height: 1.42857;
     text-align: center;
     display: block;
-    margin: auto;
 
-    @include response(xl) {
-        width: 1000px;
-    }
-
-    @include response(lg) {
-        width: 800px;
-    }
-
-    @include response(md) {
-        width: 100%;
-        margin: 0;
-    }
+    
 
     .mat-card {
-        margin-top: 100px;
-        margin-bottom: 20px;
+        width: 1200px;
+        // margin-top: 100px;
+        // margin-bottom: 20px;
         border: 1px solid transparent;
         border-radius: 3px;
+        @include response(xl) {
+            width: 1000px;
+        }
+    
+        @include response(lg) {
+            width: 800px;
+        }
+    
+        @include response(md) {
+            width: 100%;
+            margin: 0;
+        }
     }
 
     .mat-card:not([class*=mat-elevation-z]) {
@@ -42,11 +42,11 @@ app-user-account {
         box-shadow: 0 2px 12px -4px rgb(0 0 0 / 10%);
         color: #222;
         padding: 0;
-        margin: 20px;
+        margin: 20px auto;
 
         @include response(md-sm) {
             width: 100%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
     }
 
@@ -181,16 +181,16 @@ app-user-account {
             left: 0;
 
             @include response(sm) {
-                margin-left: 150px;
+                margin-left: 140px;
             }
 
             @include response(xs) {
-                margin-left: 80px;
+                margin-left: 130px;
                 width: 80px;
             }
 
             @include response(xxs) {
-                margin-left: 20px;
+                margin-left: 30px;
             }
         }
 
@@ -232,6 +232,10 @@ app-user-account {
 
     .mat-card-content>:last-child:not(.mat-card-footer) {
         margin-bottom: 10px;
+    }
+
+    .mat-card-actions {
+        margin-right: 0;
     }
 
     .mat-flat-button.mat-flat-button {
