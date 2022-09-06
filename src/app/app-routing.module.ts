@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { LoginComponent } from './account/login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { LoginComponent } from './account/login/login.component';
 
 
 const routes: Routes = [

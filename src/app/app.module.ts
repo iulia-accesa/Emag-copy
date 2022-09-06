@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -28,12 +32,10 @@ import { AccountApiService } from './services/account/account-api.service';
 import { AccountService } from './services/account/account.service';
 import { AppInterceptor } from './app.interceptor';
 import { LoginComponent } from './account/login/login.component';
-
 import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
 import { SearchBarService } from './services/search/search.service';
 import { HomepageComponent } from './homepage/homepage.component';
-
-
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -42,18 +44,27 @@ import { HomepageComponent } from './homepage/homepage.component';
     LoginComponent,
     SearchBarComponent,
     ProductCardComponent,
-    HomepageComponent
+    HeaderComponent,
+    HomepageComponent,
   ],
 
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot(APP_REDUCERS, { metaReducers: [localStorageSyncWrapper] }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AccountEffects,SearchEffects]),
+
+    StoreModule.forRoot(APP_REDUCERS, {
+      metaReducers: [localStorageSyncWrapper],
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([AccountEffects, SearchEffects]),
+
     BrowserAnimationsModule,
     FormsModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -62,6 +73,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatProgressSpinnerModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatMenuModule,
+    MatToolbarModule,
   ],
   providers: [
     {
@@ -73,7 +86,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     AccountService,
     ProductApiService,
     SearchBarService,
-
   ],
   bootstrap: [AppComponent],
 })
