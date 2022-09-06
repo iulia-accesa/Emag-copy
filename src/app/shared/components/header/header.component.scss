@@ -6,6 +6,9 @@ header {
   padding: 10px 30px 10px 30px;
   @include flexCenter();
   .btn {
+    margin-top: -5px;
+    width: 100%;
+    display: flex;
     background: transparent;
     border: none;
     outline: none;
@@ -15,7 +18,8 @@ header {
     .button-descriptions {
       font-size: 14px;
       font-weight: 500;
-      padding-left: 10px;
+      margin-top: 4px;
+      padding-left: 5px;
     }
   }
 
@@ -43,10 +47,8 @@ header {
   .button-icons {
     padding-right: 5px;
     color: #3382dc;
-    // margin-bottom: -5px;
     @include response(md) {
       padding-right: 0px;
-      margin-top: -5px;
     }
   }
 
@@ -108,12 +110,13 @@ input[type="search"] {
   outline: none;
   border-radius: 26px;
 }
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
 
 @include response(md) {
-  .dropdown {
-    display: flex;
-    flex-direction: row;
-  }
   .header {
     min-width: 100%;
   }
