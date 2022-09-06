@@ -1,28 +1,26 @@
+import { map, take, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 
-export interface AccountResponseData {
-    token: string;
-}
 
 @Injectable()
 export class AccountApiService {
-  private apiUrl = environment.apiUrl;
+  private _apiUrl = environment.apiUrl;
 
   constructor(
-    private httpClient: HttpClient
+    private _httpClient: HttpClient
   ) {}
 
   login(
     username: string, 
     password: string
   ) {
-    return this.httpClient.post<AccountResponseData>(
-        `${this.apiUrl}/auth/login`, 
-        {   username,
-            password
-        })
+    return this._httpClient.post<{ token: string }>(
+      `${this._apiUrl}/auth/login`, 
+      {   username,
+          password
+      })
   }
 }

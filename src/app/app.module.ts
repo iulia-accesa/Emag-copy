@@ -23,12 +23,14 @@ import { AccountApiService } from './services/account/account-api.service';
 import { AppInterceptor } from './app.interceptor';
 import { AccountService } from './services/account/account.service';
 import { LoginComponent } from './account/login/login.component';
+import { UserAccountComponent } from './account/user-account/user-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,
