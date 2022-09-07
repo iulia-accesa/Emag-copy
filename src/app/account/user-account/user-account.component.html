@@ -3,32 +3,36 @@
     <mat-card-header>
         <mat-card-title>Datele contului</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-error  *ngIf="error && !isLoading" class="final-error">
+        {{ error }}
+    </mat-error>
+    <mat-card-content *ngIf="!error && !isLoading">
         <div class="avatar-container">
             <div class="thumbnail">
-                <span>BE</span>
+                <span>{{ user?.initials }}</span>
             </div>
         </div>
         <div class="user-data-container">
             <p>
                     <span class="field-name">Nume:</span>
-                    <span class="field-value">Boamba Emilia</span>
+                    <span class="field-value">{{ user?.name }}</span>
             </p>
             <p>
                 <span class="field-name">Username:</span>
-                <span class="field-value">emily-iry</span>
+                <span class="field-value">{{ user?.username }}</span>
             </p>
             <p>
                 <span class="field-name">Email:</span>
-                <span class="field-value">emilia.bmb@gmail.com</span>
+                <span class="field-value">{{ user?.email }}</span>
             </p>
             <p>
                 <span class="field-name">Adresa:</span>
-                <span class="field-value">Falticeni, 13 Decembrie, 725200</span>
+                <span class="field-value">{{ user?.address }}</span>
             </p>
             <p>
                 <span class="field-name">Telefon:</span>
-                <span class="field-value">0712345678</span>
+                <span class="field-value">{{ user?.phone }}</span>
             </p>
         </div>
         <div class="info-client-container">

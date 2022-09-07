@@ -16,3 +16,8 @@ export const getToken = createSelector(
     selectAccountState,
     account => account.token
 );
+
+export const getIsLoggedIn = createSelector(
+    selectAccountState,
+    account => account.token != undefined
+)

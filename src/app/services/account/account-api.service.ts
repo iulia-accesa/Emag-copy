@@ -1,8 +1,10 @@
-import { map, take, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { map, Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
+import { IUserApi } from './user-api.interface';
 
 
 @Injectable()
@@ -22,5 +24,15 @@ export class AccountApiService {
       {   username,
           password
       })
+  }
+
+  getUserByUsername(username: string | undefined): Observable<IUserApi | undefined> {
+    return this._httpClient.get<IUserApi[]>(`${this._apiUrl}/users`)
+      .pipe(
+        map(users => {
+          users = users.filter(user => user.username == username);
+          return users[0];
+        })
+      );
   }
 }
