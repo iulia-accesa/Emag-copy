@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProductApi } from './../shared/models/product-api.interface';
@@ -12,8 +12,8 @@ import { ProductApiService } from '../services/product-api.service';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  products$: Observable<IProductApi[]> | undefined;
-  categories$: Observable<string[]> | undefined;
+  products$: Observable<IProductApi[]> = this.productService.getAll();
+  categories$: Observable<string[]> = this.productService.getAllCategories();
   categorizedProducts$: Map<string, Observable<IProductApi[]>> = new Map<
     string,
     Observable<IProductApi[]>
@@ -22,13 +22,21 @@ export class HomepageComponent implements OnInit {
   constructor(public productService: ProductApiService) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getAll();
-    this.categories$ = this.productService.getAllCategories();
-    this.productService.getAllCategories().subscribe((categories) => {
-      categories.map((category) => {
+    this.categories$ = this.categories$.pipe(
+      map((categories) => {
+        for (let i = 0; i < categories.length; i++) {
+          categories[i] =
+            categories[i].charAt(0).toUpperCase() + categories[i].slice(1);
+        }
+        return categories;
+      })
+    );
+
+    this.categories$.subscribe((categories) => {
+      return categories.map((category) => {
         this.categorizedProducts$.set(
           category,
-          this.getProductsByCategory(category)
+          this.getProductsByCategory(category.toLowerCase())
         );
       });
     });
@@ -43,8 +51,7 @@ export class HomepageComponent implements OnInit {
             return p1.rating.rate > p2.rating.rate ? -1 : 1;
           })
           .slice(0, 5)
-      ),
-      take(1)
+      )
     );
   }
 }
