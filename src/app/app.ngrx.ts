@@ -12,7 +12,7 @@ export const APP_REDUCERS = {
 };
 
 const SyncLocalStorage = localStorageSync({
-  keys: ['account'],
+  keys: ['account', 'cart'],
   rehydrate: true,
   storage: localStorage,
 });

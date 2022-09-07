@@ -4,23 +4,20 @@ import { catchError, map, concatMap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import * as CartActions from './cart.actions';
 
-
 @Injectable()
 export class CartEffects {
-
   loadCarts$ = createEffect(() => {
-    return this.actions$.pipe( 
-
+    return this.actions$.pipe(
       ofType(CartActions.loadCarts),
       concatMap(() =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
         EMPTY.pipe(
-          map(data => CartActions.loadCartsSuccess({ data })),
-          catchError(error => of(CartActions.loadCartsFailure({ error }))))
+          map((data) => CartActions.loadCartsSuccess({ data })),
+          catchError((error) => of(CartActions.loadCartsFailure({ error })))
+        )
       )
     );
   });
-
 
   constructor(private actions$: Actions) {}
 }
