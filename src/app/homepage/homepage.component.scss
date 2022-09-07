@@ -28,11 +28,8 @@
   overflow-x: scroll;
   white-space: nowrap;
   scroll-behavior: smooth;
-
-  // Firefox
   scrollbar-width: thin;
   scrollbar-color: $nav-gradient $background-color;
-  visibility: visible;
 }
 
 .productsContainer::-webkit-scrollbar {
