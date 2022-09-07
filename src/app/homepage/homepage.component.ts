@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable, of, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProductApi } from './../shared/models/product-api.interface';
@@ -22,19 +22,19 @@ export class HomepageComponent implements OnInit {
   constructor(public productService: ProductApiService) {}
 
   ngOnInit(): void {
-
     this.categories$ = this.categories$.pipe(
       map((categories) => {
         for (let i = 0; i < categories.length; i++) {
-          categories[i] = categories[i].charAt(0).toUpperCase() + categories[i].slice(1);
+          categories[i] =
+            categories[i].charAt(0).toUpperCase() + categories[i].slice(1);
         }
-        return categories
+        return categories;
       })
     );
 
     this.categories$.subscribe((categories) => {
       return categories.map((category) => {
-        console.log(category)
+        console.log(category);
         this.categorizedProducts$.set(
           category,
           this.getProductsByCategory(category.toLowerCase())
