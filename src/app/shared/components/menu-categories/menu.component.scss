@@ -167,6 +167,11 @@ mat-icon {
     margin: 0;
     height: max-content;
   }
+
+  .side-container{
+    height: auto;
+  }
+
   .product-category {
     width: 200px;
     margin-left: 50px;
@@ -194,6 +199,10 @@ mat-icon {
     flex-direction: column;
     height: max-content;
     
+  }
+
+  .list-group-item{
+    width: auto;
   }
   
   .side-container{
