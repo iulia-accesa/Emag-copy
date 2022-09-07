@@ -34,8 +34,8 @@ export class AccountEffects {
     accountLoad$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AccountActions.loadAccountStart),
-            switchMap((accountData) => 
-                this.accountApiService.getUserByUsername(accountData.username)
+            switchMap(({ username }) => 
+                this.accountApiService.getUserByUsername(username)
                 .pipe(
                     switchMap(resultData => {
                         if (resultData)
