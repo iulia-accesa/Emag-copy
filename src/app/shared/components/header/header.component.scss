@@ -4,15 +4,14 @@
 header {
   background-color: #f5f5f5;
   @include flexCenter();
+  padding: 10px 0px 0px 20px;
   .btn {
     margin-top: -5px;
-    width: 100%;
     display: flex;
     background: transparent;
     border: none;
     outline: none;
     text-align: center;
-    padding-left: 20px;
     cursor: pointer;
     .button-descriptions {
       font-size: 14px;
@@ -58,6 +57,9 @@ header {
 
   .navbar-brand {
     padding: 0px 25px 0px 0px;
+    @include response(sm) {
+      padding: 0px 5px 0px 0px;
+    }
   }
 
   input[type="search"]::-webkit-search-decoration,
@@ -70,10 +72,8 @@ header {
 
 app-searchbar {
   width: 100%;
-  input[type="search"] {
-    @include response(sm) {
-      display: none;
-    }
+  @include response(sm) {
+    margin-right: 20px;
   }
 }
 
@@ -93,14 +93,17 @@ app-searchbar {
     background: #b2d7ff;
   }
   @include response(sm) {
-    height: 24px;
+    height: 16px;
     position: right;
-    margin-top: -13px;
-    padding: 0px 15px 0px 0px;
+    margin-top: 5px;
+    padding: 0px;
+
     &:hover {
-      background: #f5f5f5;
+      border-radius: 1px 1px 1px 1px;
+      // background: transparent;
+      display: none;
+
       opacity: 100%;
-      border-radius: 20px 20px 20px 20px;
     }
   }
 }
@@ -111,12 +114,23 @@ app-searchbar {
 }
 
 input[type="search"] {
+  float: right;
   background: transparent;
   width: 100%;
   padding: 10px 10px 10px 15px;
   border: 1px solid #005eb8;
   outline: none;
   border-radius: 26px;
+  @include response(sm) {
+    flex-grow: 1;
+    transition: width 300ms ease-in-out;
+    width: 10%;
+    border: none;
+    &:focus-within {
+      width: 200px;
+      border: 1px solid #005eb8;
+    }
+  }
 }
 .dropdown {
   display: flex;
