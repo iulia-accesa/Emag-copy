@@ -34,7 +34,6 @@ export class HomepageComponent implements OnInit {
 
     this.categories$.subscribe((categories) => {
       return categories.map((category) => {
-        console.log(category);
         this.categorizedProducts$.set(
           category,
           this.getProductsByCategory(category.toLowerCase())
