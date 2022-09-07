@@ -30,7 +30,7 @@ export class AccountApiService {
     return this._httpClient.get<IUserApi[]>(`${this._apiUrl}/users`)
       .pipe(
         map(users => {
-          users = users.filter(user => user.username == username);
+          users = users.filter(user => user.username === username);
           return users[0];
         })
       );
