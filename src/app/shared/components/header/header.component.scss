@@ -97,12 +97,10 @@ app-searchbar {
     position: right;
     margin-top: 5px;
     padding: 0px;
-
+    pointer-events: none;
     &:hover {
       border-radius: 1px 1px 1px 1px;
-      // background: transparent;
-      display: none;
-
+      background: transparent;
       opacity: 100%;
     }
   }
@@ -124,11 +122,13 @@ input[type="search"] {
   @include response(sm) {
     flex-grow: 1;
     transition: width 300ms ease-in-out;
-    width: 10%;
+    width: 0px;
     border: none;
+    cursor: pointer;
     &:focus-within {
       width: 200px;
       border: 1px solid #005eb8;
+      cursor: text;
     }
   }
 }
