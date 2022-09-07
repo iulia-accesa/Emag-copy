@@ -119,8 +119,10 @@ const filterAndOrderProducts = (
  */
 export const productReducer = createReducer(
   initialState,
-  on(ProductListPageActions.enter, (state) => {
-    // For now there's no change needed on entering the page
+  on(ProductListPageActions.enterWithCategory, (state) => {
+    return { ...state };
+  }),
+  on(ProductListPageActions.enterWithSearch, (state) => {
     return { ...state };
   }),
   on(ProductListPageActions.addProductToFavorites, (state, action) => {

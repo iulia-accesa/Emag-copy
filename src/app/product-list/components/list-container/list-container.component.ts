@@ -13,7 +13,7 @@ export class ListContainerComponent implements OnInit {
   @Input() productCount: number = 0;
   @Input() searchKey = '';
 
-  constructor(store: Store) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

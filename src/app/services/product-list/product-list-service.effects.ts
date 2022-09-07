@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { IProduct } from '../../shared/models/product.interface';
 import * as ProductListPageActions from './product-list.actions';
 import * as ProductServiceActions from './product-list-service.actions';
@@ -15,37 +16,28 @@ export class ProductListServiceEffects {
     private actions$: Actions
   ) {}
 
-  initProducts$ = createEffect(() => {
+  onEnterWithCategory$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(ProductListPageActions.enter),
+      ofType(ProductListPageActions.enterWithCategory),
       exhaustMap((action) => {
-        const { category, searchQuery } = action;
+        return this.productService
+          .getByCategory(action.category)
+          .pipe(
+            map((products) => ProductServiceActions.productsInit({ products }))
+          );
+      })
+    );
+  });
 
-        if (category && !searchQuery) {
-          return this.productService
-            .getByCategory(category)
-            .pipe(
-              map((products) =>
-                ProductServiceActions.productsInit({ products })
-              )
-            );
-        }
-        if (searchQuery && !category) {
-          return this.productService
-            .getBySearch(searchQuery)
-            .pipe(
-              map((products) =>
-                ProductServiceActions.productsInit({ products })
-              )
-            );
-        }
-        /**
-         * In case no category and no query was supplied
-         */
-
-        return new Observable<IProduct[]>().pipe(
-          map((products) => ProductServiceActions.productsInit({ products }))
-        );
+  onEnterWithSearch$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductListPageActions.enterWithSearch),
+      exhaustMap((action) => {
+        return this.productService
+          .getBySearch(action.key)
+          .pipe(
+            map((products) => ProductServiceActions.productsInit({ products }))
+          );
       })
     );
   });

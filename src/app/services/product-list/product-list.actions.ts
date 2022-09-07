@@ -2,9 +2,14 @@ import { IFilterGroup } from '../../product-list/models/filter-group.interface';
 import { createAction, props } from '@ngrx/store';
 import { IOrderGroup } from '../../product-list/models/order-group.interface';
 
-export const enter = createAction(
-  '[Product List Page] Enter',
-  props<{ category: string | undefined; searchQuery: string | undefined }>()
+export const enterWithSearch = createAction(
+  '[Product List Page] Enter With Search',
+  props<{ key: string }>()
+);
+
+export const enterWithCategory = createAction(
+  '[Product List Page] Enter With Category',
+  props<{ category: string }>()
 );
 
 export const addProductToFavorites = createAction(

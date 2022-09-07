@@ -24,22 +24,19 @@ export class ProductListPageComponent implements OnInit {
 
   constructor(
     private productService: ProductListService,
-    private store: Store,
-    private router: Router
+    private store: Store
   ) {
-    const category = this.getCategoryName();
-    const key = this.getSearchKey();
-
-    if ((category && key) || (!category && !key)) {
-      this.router.navigateByUrl('');
-    }
-
     this.productList$ = this.store.select(selectAllProducts);
   }
 
+  getPagePath(): string {
+    const path = decodeURI(window.location.pathname).split('/')[1];
+
+    return path;
+  }
+
   getCategoryName(): string {
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
+    const category = decodeURI(window.location.pathname).split('/')[2];
 
     return category;
   }
@@ -60,15 +57,24 @@ export class ProductListPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /**
-     * Call the enter action with either a query param or a category
-     */
-    this.store.dispatch(
-      ProductListPageActions.enter({
-        category: this.getCategoryName(),
-        searchQuery: this.getSearchKey(),
-      })
-    );
+    const pagePath = this.getPagePath();
+
+    switch (pagePath) {
+      case 'category':
+        this.store.dispatch(
+          ProductListPageActions.enterWithCategory({
+            category: this.getCategoryName(),
+          })
+        );
+        break;
+      case 'search':
+        this.store.dispatch(
+          ProductListPageActions.enterWithSearch({
+            key: this.getSearchKey(),
+          })
+        );
+        break;
+    }
 
     this.getCartItemList();
   }
