@@ -2,10 +2,12 @@
   padding: 1rem 0;
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 500;
   }
   .category-title {
-    padding: 1rem 2rem;
+    padding: 1.2rem 2rem;
     background-color: white;
     border-radius: 0.6rem;
     margin-bottom: 1rem;
@@ -13,6 +15,7 @@
 
   .category-title__count {
     font-size: 1.6rem;
+    white-space: nowrap;
   }
 
   .item-card-container {
@@ -36,11 +39,5 @@
 
   @media only screen and (min-width: 1279.9px) {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.product-card {
-  // width: 100%;
-  @media only screen and (min-width: 599.9px) {
   }
 }
