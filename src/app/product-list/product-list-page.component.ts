@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 import * as ProductListPageActions from '../services/product-list/product-list.actions';
 import * as ProductServiceActions from '../services/product-list/product-list-service.actions';
 import { selectAllProducts } from '../services/product-list/product-list.selector';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'product-list-page',
@@ -19,6 +20,7 @@ import { selectAllProducts } from '../services/product-list/product-list.selecto
   styleUrls: ['./product-list-page.component.scss'],
 })
 export class ProductListPageComponent implements OnInit {
+  pagePath: string;
   protected productList$: Observable<IProduct[]>;
   protected cartItemList$: Observable<number[]>;
 
@@ -27,6 +29,31 @@ export class ProductListPageComponent implements OnInit {
     private store: Store
   ) {
     this.productList$ = this.store.select(selectAllProducts);
+    this.pagePath = this.getPagePath();
+
+    switch (this.pagePath) {
+      case 'category':
+        this.setPageTitle(this.toTitleCase(this.getCategoryName()));
+        break;
+      case 'search':
+        this.setPageTitle(`Cautare '${this.getSearchKey()}'`);
+        break;
+    }
+  }
+
+  toTitleCase(text: string): string {
+    console.log(
+      text
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    );
+
+    return text;
+  }
+
+  setPageTitle(title: string): void {
+    document.title = title;
   }
 
   getPagePath(): string {
@@ -57,9 +84,7 @@ export class ProductListPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const pagePath = this.getPagePath();
-
-    switch (pagePath) {
+    switch (this.pagePath) {
       case 'category':
         this.store.dispatch(
           ProductListPageActions.enterWithCategory({
