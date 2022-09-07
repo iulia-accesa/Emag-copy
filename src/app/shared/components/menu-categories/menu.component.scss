@@ -6,8 +6,6 @@ $nav-gradient: linear-gradient(
   #4359c7 55%,
   #0082e6 70%
 );
-
-$breaking-point-big: 1387px;
 ////////////////////// Menu ///////////////////////////
 .menu-container {
   background-image: $nav-gradient;
@@ -19,33 +17,33 @@ $breaking-point-big: 1387px;
   box-sizing: border-box;
   list-style: none;
   display: flex;
-  margin: 0 11.6rem;
+  margin: 0 116px;
 }
 
 .burgermenu-icon {
-  height: 1.2rem;
+  height: 12px;
 }
 
 .btn-account {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 12px;
 }
 
 .btn-account:hover {
   box-shadow: 0 0 0 1px #fff;
-  border-radius: 10rem;
+  border-radius: 100px;
 }
 
 .btn-products,
 .btn-account {
   padding: 6px 10px;
-  margin: 0.5rem 1rem 0 1rem;
+  margin: 5px 10px 0 10px;
 }
 
 .btn-dropdown {
   background-color: #fff;
   border-radius: 5px 5px 0px 0px;
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 500;
   display: block;
   color: #222222;
@@ -54,28 +52,30 @@ $breaking-point-big: 1387px;
 }
 
 mat-icon {
-  padding: 0rem 0.2rem;
+  padding: 0 2px;
 }
 
 // //////////////////////Products Category Menu ////////////////////
 .content {
   display: flex;
   justify-content: center;
-  margin: 0 10rem;
+  margin: 0 100px;
 }
 
 .product-category {
   display: flex;
   flex-direction: column;
-  width: 25rem;
-  padding: 0.5rem 0 0 0;
+  list-style: none;
+  width: 250px;
+  margin: 0;
+  padding: 5px 0 0 0;
   background-color: #fff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.09);
 }
 
 .category-list {
   list-style: none;
-  padding: 0rem;
+  padding: 0;
 }
 
 .list-group-item {
@@ -83,10 +83,10 @@ mat-icon {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  padding-left: 1rem;
+  padding-left: 10px;
   color: #333;
   text-transform: capitalize;
-  width: 25rem;
+  width: 250px;
 }
 
 .list-group-item:hover,
@@ -95,7 +95,7 @@ mat-icon {
 }
 
 .phone-icon {
-  height: 2rem;
+  height: 20px;
 }
 
 
@@ -103,7 +103,7 @@ mat-icon {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  width: 140rem;
+  width: 1400px;
   background-color: #fff;
   box-shadow: #333;
   height: max-content;
@@ -118,8 +118,8 @@ mat-icon {
 .open {
   position: absolute;
   top: 0;
-  width: 140rem;
-  height: 67rem;
+  width: 1400px;
+  height: 670px;
   z-index: 1;
   display: block;
   background-color: #fff;
@@ -133,7 +133,7 @@ mat-icon {
 }
 
 .prod-list-item{
-  width: 50rem;
+  width: 500px;
   padding: 3px 5px;
 }
 
@@ -149,33 +149,27 @@ mat-icon {
 
 @media screen and (max-width: 1440px) {
   .menu-list {
-    margin: 0 9rem;
+    margin: 0 90px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 830px) {
   .content {
     margin: 0;
   }
   .product-category {
-    margin-left: 5rem;
+    margin-left: 50px;
   }
   .list-group-item {
-    width: 15rem;
+    width: 150px;
   }
 
   .side-container {
-    margin-right: 5rem;
+    margin-right: 50px;
   }
 
   .menu-list {
-    margin: 0 4rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .list-group-item {
-    width: 15rem;
+    margin: 0 40px;
   }
 }
 
@@ -186,7 +180,7 @@ mat-icon {
   }
 
   .product-category {
-    margin-left: 0rem;
+    margin-left: 0;
   }
 
   .menu-list {

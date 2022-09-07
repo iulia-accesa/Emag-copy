@@ -13,7 +13,6 @@ app-carousel {
 
   .owl-nav.ng-star-inserted {
     display: flex;
-    justify-content: space-between;
   }
 
   .owl-carousel {
@@ -23,7 +22,7 @@ app-carousel {
         position: absolute;
         top: 45%;
         background: transparent;
-        height: 5rem;
+        height: 50px;
       }
     }
   }
