@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable, take } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProductApi } from './../shared/models/product-api.interface';
@@ -22,11 +22,22 @@ export class HomepageComponent implements OnInit {
   constructor(public productService: ProductApiService) {}
 
   ngOnInit(): void {
+
+    this.categories$ = this.categories$.pipe(
+      map((categories) => {
+        for (let i = 0; i < categories.length; i++) {
+          categories[i] = categories[i].charAt(0).toUpperCase() + categories[i].slice(1);
+        }
+        return categories
+      })
+    );
+
     this.categories$.subscribe((categories) => {
-      categories.map((category) => {
+      return categories.map((category) => {
+        console.log(category)
         this.categorizedProducts$.set(
           category,
-          this.getProductsByCategory(category)
+          this.getProductsByCategory(category.toLowerCase())
         );
       });
     });
@@ -41,8 +52,7 @@ export class HomepageComponent implements OnInit {
             return p1.rating.rate > p2.rating.rate ? -1 : 1;
           })
           .slice(0, 5)
-      ),
-      take(1)
+      )
     );
   }
 }
