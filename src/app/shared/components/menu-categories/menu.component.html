@@ -17,20 +17,18 @@
   </div>
   <div class="content">
     <span class="product-category">
-      <a
+        <a class="list-group-item"
         *ngFor="let categ of categories; let i = index"
-        class="list-group-item"
         [id]="categ"
-        (mouseover)="onHover(i, $event)"
-      >
-        <img
-          src="./assets/smartphone.png"
-          alt=""
-          id="{{ categ }}"
-          class="phone-icon"
-        />
-        {{ categ }}
-      </a>
+        (mouseover)="onHover(i, $event)">
+          <img
+            src="./assets/smartphone.png"
+            alt=""
+            [id]="categ"
+            class="phone-icon"
+          />
+          {{ categ }}
+        </a>
     </span>
 
     <div class="side-container">

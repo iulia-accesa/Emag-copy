@@ -36,6 +36,10 @@ import { LoginComponent } from './account/login/login.component';
 import { AppInterceptor } from './app.interceptor';
 import { AccountService } from './services/account/account.service';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
+import { SearchEffects } from './services/search/search.effects';
+import { ProductApiService } from './services/product-api.service';
+import { SearchBarService } from './services/search/search.service';
 
 @NgModule({
   declarations: [

@@ -46,6 +46,12 @@ app-carousel {
   .owl-nav.ng-star-inserted {
     margin: 0;
   }
+
+  @media screen and (max-width: 500px) {
+    .owl-dots.ng-star-inserted {
+      top: 85%;
+      left: 40%
+    }
+  
+  }
 }
-
-
