@@ -61,14 +61,12 @@ mat-icon {
 .content {
   display: flex;
   justify-content: center;
-  // gap: 0;
   margin: 0 10rem;
 }
 
 .product-category {
   display: flex;
   flex-direction: column;
-  // margin-left: 11rem;
   width: 25rem;
   padding: 0.5rem 0 0 0;
   background-color: #fff;
@@ -93,7 +91,6 @@ mat-icon {
 
 .list-group-item:hover,
 .list-group-item:active {
-  // outline: 0;
   box-shadow: 0 0 0 2px #f3f3f3;
 }
 
@@ -101,21 +98,16 @@ mat-icon {
   height: 2rem;
 }
 
-.list-group-a {
-  text-decoration: none;
-  line-height: 3.5;
-  font-size: 1.3rem;
-}
 
 .side-container {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  // margin-right: 10rem;
   width: 140rem;
   background-color: #fff;
   box-shadow: #333;
-  box-shadow: 2px 7px 27px rgba(0, 0, 0, 0.08);
+  height: max-content;
+  box-shadow: 0 2px 10px -2px rgb(0 0 0 / 15%);
 }
 
 .menu-details {
@@ -127,7 +119,7 @@ mat-icon {
   position: absolute;
   top: 0;
   width: 140rem;
-  height: 70rem;
+  height: 67rem;
   z-index: 1;
   display: block;
   background-color: #fff;
@@ -135,7 +127,14 @@ mat-icon {
 
 .menu-products {
   list-style: none;
-  line-height: 2.5;
+  line-height: 1.5;
+  overflow: hidden;
+  height: inherit;
+}
+
+.prod-list-item{
+  width: 50rem;
+  padding: 3px 5px;
 }
 
 .prod {
@@ -150,11 +149,14 @@ mat-icon {
 
 @media screen and (max-width: 1440px) {
   .menu-list {
-    margin: 0 10rem;
+    margin: 0 9rem;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .content {
+    margin: 0;
+  }
   .product-category {
     margin-left: 5rem;
   }
