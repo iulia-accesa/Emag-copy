@@ -70,8 +70,8 @@
                 matInput
                 type="number"
                 formControlName="minVal"
-                min="{{ priceRange.min }}"
-                max="{{ priceRange.max }}"
+                [min]="priceRange.min"
+                [max]="priceRange.max"
               />
             </mat-form-field>
             <div class="dash">-</div>
@@ -81,47 +81,14 @@
                 matInput
                 type="number"
                 formControlName="maxVal"
-                min="{{ priceRange.min }}"
-                max="{{ priceRange.max }}"
+                [min]="priceRange.min"
+                [max]="priceRange.max"
               />
             </mat-form-field>
           </div>
         </form>
       </mat-expansion-panel>
     </mat-accordion>
-
-    <!-- <mat-accordion>
-      <mat-expansion-panel [expanded]="false">
-        <mat-expansion-panel-header class="disable-hover-bg">
-          <mat-panel-title> Brand </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <form class="filters__filter-by-brand" [formGroup]="brandsForm">
-          <div fxLayout="column">
-            <mat-checkbox formControlName="brand1">
-              <span class="brand">Brand</span>
-              <span class="count">(123)</span></mat-checkbox
-            >
-            <mat-checkbox formControlName="brand1">
-              <span class="brand">Brand</span>
-              <span class="count">(123)</span></mat-checkbox
-            >
-            <mat-checkbox formControlName="brand1">
-              <span class="brand">Brand</span>
-              <span class="count">(123)</span></mat-checkbox
-            >
-            <mat-checkbox formControlName="brand1">
-              <span class="brand">Brand</span>
-              <span class="count">(123)</span></mat-checkbox
-            >
-            <mat-checkbox formControlName="brand1">
-              <span class="brand">Brand</span>
-              <span class="count">(123)</span></mat-checkbox
-            >
-          </div>
-        </form>
-      </mat-expansion-panel>
-    </mat-accordion> -->
 
     <mat-accordion>
       <mat-expansion-panel>

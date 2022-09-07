@@ -7,7 +7,6 @@ import { FiltersComponent } from './product-list/components/filters/filters.comp
 import { ListContainerComponent } from './product-list/components/list-container/list-container.component';
 import { BreadcrumbNavComponent } from './product-list/components/breadcrumb-nav/breadcrumb-nav.component';
 import { ProductListPageComponent } from './product-list/product-list-page.component';
-import { ProductListCardComponent } from './product-list/components/product-card/product-card.component';
 import { ProductApiService } from './services/product-api.service';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -63,7 +62,6 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BreadcrumbNavComponent,
     ListContainerComponent,
     FiltersComponent,
-    ProductListCardComponent,
     HeaderComponent,
   ],
 

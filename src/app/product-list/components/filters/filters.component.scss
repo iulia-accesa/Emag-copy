@@ -6,7 +6,7 @@
   }
 
   .mat-expansion-panel {
-    margin: 1rem 0;
+    margin: 10px 0;
     box-shadow: none;
   }
 
@@ -35,20 +35,20 @@
   // Custom slider -- start --
   .ngx-slider .ngx-slider-bar {
     background: #adadad;
-    height: 0.6rem;
+    height: 6px;
   }
 
   .ngx-slider .ngx-slider-pointer {
-    top: -0.8rem;
+    top: -8px;
     border-radius: 100%;
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 22px;
+    height: 22px;
     background-color: #adadad;
   }
 
   .ngx-slider .ngx-slider-pointer::after {
-    top: 0.66rem;
-    left: 0.67rem;
+    top: 6.66px;
+    left: 6.67px;
   }
 
   .ngx-slider .ngx-slider-pointer.ngx-slider-active::after {
@@ -56,33 +56,33 @@
   }
   // Custom slider -- end --
   .filter-by-price__inputs {
-    margin-top: 2rem;
+    margin-top: 20px;
     .dash {
-      padding: 0 2rem;
+      padding: 0 20px;
     }
   }
 
   .filters__filter-by-brand {
     mat-checkbox {
-      margin: 0.6rem 0;
+      margin: 6px 0;
 
       .count {
         color: #999;
-        margin-left: 0.6rem;
+        margin-left: 6px;
       }
     }
   }
 
   .filters__filter-by-rating {
     mat-checkbox {
-      margin: 0.6rem 0;
+      margin: 6px 0;
     }
   }
 
   .stars {
     mat-icon {
-      transform: scale(0.8) translateY(0.4rem);
-      margin-right: -0.4rem;
+      transform: scale(0.8) translateY(4px);
+      margin-right: -4px;
 
       &.empty {
         color: #adadad;
@@ -97,17 +97,17 @@
   .count {
     position: relative;
     top: 0;
-    transform: translateY(0.5rem);
+    transform: translateY(5px);
   }
 
   mat-panel-title {
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 600;
   }
 
   mat-form-field .mat-form-field-flex {
     padding-top: 0;
-    border-radius: 0.4rem;
+    border-radius: 4px;
   }
 
   mat-form-field .mat-select-arrow-wrapper {

@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'breadcrumb-nav',
   templateUrl: './breadcrumb-nav.component.html',
   styleUrls: ['./breadcrumb-nav.component.scss'],
 })
-export class BreadcrumbNavComponent implements OnInit {
+export class BreadcrumbNavComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

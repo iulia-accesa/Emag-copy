@@ -166,42 +166,4 @@ export class FiltersComponent implements OnInit {
     this.store.dispatch(orderProducts({ orderGroup }));
     this.store.dispatch(filterProducts({ filterGroup }));
   }
-
-  // onOrderChange(changes: any) {
-  //   const nameOrder =
-  //     changes.nameOrder.length > 0 ? changes.nameOrder : undefined;
-  //   const priceOrder =
-  //     changes.priceOrder.length > 0 ? changes.priceOrder : undefined;
-
-  //   const orderGroup: IOrderGroup = {
-  //     price: priceOrder,
-  //     title: nameOrder,
-  //   };
-
-  //   this.store.dispatch(orderProducts({ orderGroup }));
-  // }
-
-  // onFilterChange(changes: any) {
-  //   const min = changes.priceSlider.priceSlider[0];
-  //   const max = changes.priceSlider.priceSlider[1];
-  //   const ratings = [
-  //     changes.ratingsForm.rating1,
-  //     changes.ratingsForm.rating2,
-  //     changes.ratingsForm.rating3,
-  //     changes.ratingsForm.rating4,
-  //     changes.ratingsForm.rating5,
-  //   ];
-
-  //   const priceRange: IPriceRange = {
-  //     min,
-  //     max,
-  //   };
-
-  //   const filterGroup: IFilterGroup = {
-  //     priceRange,
-  //     ratings,
-  //   };
-
-  //   this.store.dispatch(filterProducts({ filterGroup }));
-  // }
 }
