@@ -4,3 +4,8 @@ import * as fromCart from './cart.reducer';
 export const selectCartState = createFeatureSelector<fromCart.State>(
   fromCart.cartFeatureKey
 );
+
+export const getProductList = createSelector(
+  selectCartState,
+  (cart) => cart.activeCart.products
+);

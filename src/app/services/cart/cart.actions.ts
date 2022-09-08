@@ -1,25 +1,29 @@
 import { ICart } from './../../shared/models/cart.interface';
 import { createAction, props } from '@ngrx/store';
-import { ICartProduct } from 'src/app/shared/models/cart-product.interface';
 
-export const loadCarts = createAction('[Cart] Load Carts');
+export const loadCart = createAction('[Cart] Load Cart');
 
-export const loadCartsSuccess = createAction(
-  '[Cart] Load Carts Success',
-  props<{ userID: number; carts: ICart[] }>()
+export const addProduct = createAction(
+  '[Cart] Product Added',
+  props<{ productId: number }>()
 );
 
-export const loadCartsFailure = createAction(
-  '[Cart] Load Carts Failure',
-  props<{ error: any }>()
+export const removeProduct = createAction(
+  '[Cart] Product Removed',
+  props<{ productId: number }>()
 );
 
-export const addProductToCartSuccess = createAction(
-  '[Cart] Add To Cart Success',
-  props<{ cartProduct: ICartProduct }>()
+export const placeOrder = createAction(
+  '[Cart] Place Order',
+  props<{ order: ICart }>()
 );
 
-export const addProductToCartFailure = createAction(
-  '[Cart] Add To Cart Failed',
-  props<{ error: any }>()
+export const placeOrderSuccess = createAction(
+  '[Cart] Place Order Success',
+  props<{ order: ICart }>()
+);
+
+export const placeOrderFailure = createAction(
+  '[Cart] Place Order Failure',
+  props<{ error: string }>()
 );

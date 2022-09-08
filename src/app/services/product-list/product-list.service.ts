@@ -1,11 +1,10 @@
 import { ProductApiService } from '../product-api.service';
 
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { IPriceRange } from '../../product-list/models/price-range.interface';
 import { IProduct } from '../../shared/models/product.interface';
-import { IBrand } from '../../product-list/models/brand.interface';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Injectable()
@@ -92,23 +91,5 @@ export class ProductListService {
         return ratingCount;
       })
     );
-  }
-
-  getFavoriteProductIds(): Observable<number[]> {
-    const storageFavList = localStorage.getItem('favoriteItemList');
-    const productIds: number[] = storageFavList
-      ? JSON.parse(storageFavList)
-      : [];
-
-    return of(productIds);
-  }
-
-  getCartItemIds(): Observable<number[]> {
-    const storageCartItemList = localStorage.getItem('cartItemList');
-    const productIds: number[] = storageCartItemList
-      ? JSON.parse(storageCartItemList)
-      : [];
-
-    return of(productIds);
   }
 }

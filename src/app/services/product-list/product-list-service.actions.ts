@@ -8,11 +8,6 @@ export const productsInit = createAction(
   }>()
 );
 
-export const favoriteProductsLoaded = createAction(
-  '[Product Service] Favorite Products Loaded Success',
-  props<{ productIds: number[] }>()
-);
-
 export const cartItemsLoaded = createAction(
   '[Product Service] Cart Items Loaded Success',
   props<{ productIds: number[] }>()
