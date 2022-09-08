@@ -12,7 +12,6 @@ import { Store } from '@ngrx/store';
 import * as ProductListPageActions from '../services/product-list/product-list.actions';
 import * as ProductServiceActions from '../services/product-list/product-list-service.actions';
 import { selectAllProducts } from '../services/product-list/product-list.selector';
-import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'product-list-page',
