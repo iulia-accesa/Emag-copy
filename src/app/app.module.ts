@@ -17,27 +17,30 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchEffects } from 'src/app/services/search/search.effects';
-import { ProductApiService } from './services/product-api.service';
+import { environment } from '../environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { AccountApiService } from './services/account/account-api.service';
-import { AccountService } from './services/account/account.service';
-import { AppInterceptor } from './app.interceptor';
-import { LoginComponent } from './account/login/login.component';
-import { UserAccountComponent } from './account/user-account/user-account.component';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
-import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
-import { SearchBarService } from './services/search/search.service';
-import { HomepageComponent } from './homepage/homepage.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
 import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { AccountApiService } from './services/account/account-api.service';
+import { MenuComponent } from './shared/components/menu-categories/menu.component';
+import { CarouselComponent } from './shared/components/menu-categories/carousel/carousel.component';
+import { LoginComponent } from './account/login/login.component';
+import { AppInterceptor } from './app.interceptor';
+import { AccountService } from './services/account/account.service';
+import { HomepageComponent } from './homepage/homepage.component';
+import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
+import { SearchEffects } from './services/search/search.effects';
+import { ProductApiService } from './services/product-api.service';
+import { SearchBarService } from './services/search/search.service';
+import { UserAccountComponent } from './account/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -48,11 +51,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProductCardComponent,
     UserAccountComponent,
     HomepageComponent, 
-    HeaderComponent,
     HomepageComponent,
+    MenuComponent,
+    CarouselComponent,
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
+    HeaderComponent
   ],
 
   imports: [
@@ -77,6 +82,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    CarouselModule,
     MatIconModule,
     MatAutocompleteModule,
     MatMenuModule,
