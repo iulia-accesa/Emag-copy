@@ -1,3 +1,5 @@
+@import "/src/app/shared/styles/mixins";
+
 $nav-gradient: linear-gradient(
   to right,
   #ff1d25 5%,
@@ -18,6 +20,17 @@ $nav-gradient: linear-gradient(
   list-style: none;
   display: flex;
   margin: 0 116px;
+  @include response(xxl) {
+    margin: 0 90px;
+  }
+
+  @include response(md) {
+    margin: 0 40px;
+  }
+
+  @include response(xs) {
+    margin: 0;
+  }
 }
 
 .burgermenu-icon {
@@ -61,6 +74,16 @@ mat-icon {
   justify-content: center;
   margin: 0 100px;
   height: max-content;
+  @include response(md) {
+    margin: 0;
+    height: max-content;
+  }
+
+  @include response(md-sm) {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
 }
 
 .product-category {
@@ -72,6 +95,18 @@ mat-icon {
   padding: 5px 0 0 0;
   background-color: #fff;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.09);
+  @include response(xxl) {
+    width: 200px;
+  }
+
+  @include response(md) {
+    width: 200px;
+    margin-left: 50px;
+  }
+
+  @include response(xs) {
+    margin-left: 0;
+  }
 }
 
 .category-list {
@@ -88,6 +123,13 @@ mat-icon {
   color: #333;
   text-transform: capitalize;
   width: 250px;
+  @include response(md) {
+    width: 150px;
+  }
+
+  @include response(md-sm) {
+    width: auto;
+  }
 }
 
 .list-group-item:hover,
@@ -99,16 +141,30 @@ mat-icon {
   height: 20px;
 }
 
-
 .side-container {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
   width: 1400px;
+  height: auto;
   background-color: #fff;
   box-shadow: #333;
   height: max-content;
   box-shadow: 0 2px 10px -2px rgb(0 0 0 / 15%);
+  @include response(md) {
+    margin-right: 50px;
+  }
+
+  @include response(md-sm) {
+    width: auto;
+    padding: 0;
+    margin: 0;
+  }
+
+  @include response(xs) {
+    width: auto;
+    height: 400px;
+  }
 }
 
 .menu-details {
@@ -131,11 +187,21 @@ mat-icon {
   line-height: 1.5;
   overflow: hidden;
   height: inherit;
+  @include response(xs) {
+    padding: 2px;
+  }
 }
 
-.prod-list-item{
+.prod-list-item {
   width: 500px;
   padding: 5px;
+  @include response(md) {
+    width: 400px;
+  }
+
+  @include response(xs) {
+    width: 320px;
+  }
 }
 
 .prod {
@@ -146,96 +212,4 @@ mat-icon {
 
 .prod:hover {
   text-decoration: underline;
-}
-
-@media screen and (max-width: 1440px) {
-  .menu-list {
-    margin: 0 90px;
-  }
-
-  .product-category  {
-    width: 200px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .menu-list {
-    margin: 0 90px;
-  }
-
-  .content {
-    margin: 0;
-    height: max-content;
-  }
-
-  .side-container{
-    height: auto;
-  }
-
-  .product-category {
-    width: 200px;
-    margin-left: 50px;
-  }
-  .list-group-item {
-    width: 150px;
-  }
-
-  .prod-list-item{
-    width: 400px;
-  }
-
-  .side-container {
-    margin-right: 50px;
-  }
-
-  .menu-list {
-    margin: 0 40px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: max-content;
-    
-  }
-
-  .list-group-item{
-    width: auto;
-  }
-  
-  .side-container{
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .product-category {
-    margin-left: 0;
-  }
-
-  .menu-list {
-    margin: 0;
-  }
-
-  .side-container {
-    width: auto;
-    height: 400px;
-  }
-
-  .menu-products{
-    padding: 2px;
-  }
-
-  .list-group-item{
-    width: auto;
-  }
-
-  .prod-list-item{
-    width: 320px;
-  }
 }
