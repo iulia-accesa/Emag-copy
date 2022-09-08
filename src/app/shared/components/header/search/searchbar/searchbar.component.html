@@ -14,9 +14,13 @@
     (keyup.enter)="onEnter()"
   />
 
-  <mat-autocomplete #auto="matAutocomplete" >
-    <mat-option  *ngFor="let option of options$ | async"  (onSelectionChange)="onSelectedOption(option)"  [value]="option.title" >
-    {{ option.title }}
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let option of options$ | async"
+      (onSelectionChange)="onSelectedOption(option)"
+      [value]="option.title"
+    >
+      {{ option.title }}
     </mat-option>
   </mat-autocomplete>
 

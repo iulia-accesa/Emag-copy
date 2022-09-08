@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -30,11 +29,14 @@ import { AccountService } from './services/account/account.service';
 import { AppInterceptor } from './app.interceptor';
 import { LoginComponent } from './account/login/login.component';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
 import { SearchBarService } from './services/search/search.service';
 import { HomepageComponent } from './homepage/homepage.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
+import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     HomepageComponent, 
     HeaderComponent,
     HomepageComponent,
+    ProductDetailComponent,
+    ProductPhotosComponent,
+    AddToCartBoxComponent,
   ],
 
   imports: [
@@ -65,7 +70,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 
     BrowserAnimationsModule,
     FormsModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

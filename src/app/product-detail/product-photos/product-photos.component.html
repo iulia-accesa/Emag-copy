@@ -1,0 +1,24 @@
+<mat-card class="containerLeftSide" *ngIf="_product">
+  <section>
+    <div>
+      <img
+        class="mainPhoto"
+        [src]="_product.image"
+        alt=""
+        datalabel="mainImg"
+      />
+    </div>
+    <div class="listSecondaryPhoto">
+      <div *ngFor="let dummy of [0, 1, 2, 3, 4]; let i = index">
+        <img
+          class="secondaryPhoto"
+          [src]="_product.image"
+          alt=""
+          (click)="image = _product.image"
+          datalabel="secondaryImg"
+          [class.imageSelected]="_product.image === image"
+        />
+      </div>
+    </div>
+  </section>
+</mat-card>

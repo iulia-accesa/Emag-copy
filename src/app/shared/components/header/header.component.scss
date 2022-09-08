@@ -3,19 +3,21 @@
 
 header {
   background-color: #f5f5f5;
-  padding: 10px 30px 10px 30px;
   @include flexCenter();
+  padding: 10px 0px 0px 20px;
   .btn {
+    margin-top: -5px;
+    display: flex;
     background: transparent;
     border: none;
     outline: none;
     text-align: center;
-    padding-left: 20px;
     cursor: pointer;
     .button-descriptions {
       font-size: 14px;
       font-weight: 500;
-      padding-left: 10px;
+      margin-top: 4px;
+      padding-left: 5px;
     }
   }
 
@@ -43,10 +45,8 @@ header {
   .button-icons {
     padding-right: 5px;
     color: #3382dc;
-    // margin-bottom: -5px;
     @include response(sm) {
       padding-right: 0px;
-      margin-top: -5px;
     }
   }
 
@@ -56,7 +56,10 @@ header {
   }
 
   .navbar-brand {
-    padding: 0px 20px 0px 0px;
+    padding: 0px 25px 0px 0px;
+    @include response(sm) {
+      padding: 0px 5px 0px 0px;
+    }
   }
 
   input[type="search"]::-webkit-search-decoration,
@@ -64,6 +67,13 @@ header {
   input[type="search"]::-webkit-search-results-button,
   input[type="search"]::-webkit-search-results-decoration {
     display: none;
+  }
+}
+
+app-searchbar {
+  width: 100%;
+  @include response(sm) {
+    margin-right: 20px;
   }
 }
 
@@ -83,14 +93,15 @@ header {
     background: #b2d7ff;
   }
   @include response(sm) {
-    height: 24px;
+    height: 16px;
     position: right;
-    margin-top: -14px;
-
+    margin-top: 5px;
+    padding: 0px;
+    pointer-events: none;
     &:hover {
-      background: #f5f5f5;
+      border-radius: 1px 1px 1px 1px;
+      background: transparent;
       opacity: 100%;
-      border-radius: 20px 20px 20px 20px;
     }
   }
 }
@@ -101,23 +112,37 @@ header {
 }
 
 input[type="search"] {
+  float: right;
   background: transparent;
   width: 100%;
   padding: 10px 10px 10px 15px;
   border: 1px solid #005eb8;
   outline: none;
   border-radius: 26px;
+  @include response(sm) {
+    flex-grow: 1;
+    transition: width 300ms ease-in-out;
+    width: 0px;
+    border: none;
+    cursor: pointer;
+    &:focus-within {
+      width: 200px;
+      border: 1px solid #005eb8;
+      cursor: text;
+    }
+  }
+}
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
 }
 
 @include response(sm) {
-  .dropdown {
-    display: flex;
-    flex-direction: row;
-  }
   .header {
     min-width: 100%;
   }
   .navbar-brand {
-    margin-right: 30px;
+    margin-right: 20px;
   }
 }
