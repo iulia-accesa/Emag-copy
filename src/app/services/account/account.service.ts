@@ -9,13 +9,15 @@ import * as AccountReducer from './account.reducer';
 import * as AccountActions from './account.actions';
 import * as AccountSelectors from './account.selectors';
 import { IUser } from './user.interface';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AccountService {
 
   constructor(
     private store: Store<AccountReducer.State>,
-    private actionsSubject$: ActionsSubject
+    private actionsSubject$: ActionsSubject,
+    private _router: Router
   ) {
   }
 
@@ -59,5 +61,10 @@ export class AccountService {
         return of(action.user)
       })
     )
+  }
+
+  logout$() {
+    this.store.dispatch(AccountActions.logout());
+    window.location.reload();
   }
 }
