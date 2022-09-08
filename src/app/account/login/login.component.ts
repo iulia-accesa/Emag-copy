@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   errors: string = '';
 
   constructor(
-    private accountService: AccountService,
-    private router: Router,
+    private _accountService: AccountService,
+    private _router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.accountService.login$(
+    this._accountService.login$(
       this.loginForm.value.username,
       this.loginForm.value.password
     )
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         finalize(() => this.isLoading = false)
       )
       .subscribe({
-        next: () => this.router.navigate(['/']),
+        next: () => this._router.navigate(['/']),
         error: (error: string) => {
           this.errors = (error === 'username or password is incorrect') ?
             'Username-ul sau parola sunt incorecte' : 'Eroare necunoscuta!';

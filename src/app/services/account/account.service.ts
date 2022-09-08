@@ -63,7 +63,7 @@ export class AccountService {
     )
   }
 
-  logout$() {
+  logout() {
     this.store.dispatch(AccountActions.logout());
     window.location.reload();
   }

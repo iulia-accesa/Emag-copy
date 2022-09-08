@@ -33,7 +33,6 @@ export class UserAccountComponent implements OnInit {
       .subscribe({
         next: (user) => this.user = user,
         error: (error: string) => {
-          console.log(error)
           if (error === 'Error getting user data')
             this._router.navigate(['/login']);
           else
@@ -43,6 +42,6 @@ export class UserAccountComponent implements OnInit {
   }
 
   onLogout() {
-    this._accountService.logout$()
+    this._accountService.logout()
   }
 }
