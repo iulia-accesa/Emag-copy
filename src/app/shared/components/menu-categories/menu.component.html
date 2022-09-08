@@ -3,12 +3,13 @@
     <div class="menu-list">
       <li>
         <div class="btn-products btn-dropdown">
-          <img
-            src="./assets/burgermenu.png"
-            alt="burger menu icon"
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="menu"
             class="burgermenu-icon"
-          />
-          Products
+          ></mat-icon>
+          <span>Products</span>
         </div>
       </li>
 
@@ -17,18 +18,20 @@
   </div>
   <div class="content">
     <span class="product-category">
-        <a class="list-group-item"
+      <a
+        class="list-group-item"
         *ngFor="let categ of categories; let i = index"
         [id]="categ"
-        (mouseover)="onHover(i, $event)">
-          <img
-            src="./assets/smartphone.png"
-            alt=""
-            [id]="categ"
+        (mouseover)="onHover(i, $event)"
+      >
+        <mat-icon
+            aria-hidden="false"
+            aria-label="phone icon"
+            fontIcon="phone_iphone"
             class="phone-icon"
-          />
-          {{ categ }}
-        </a>
+          ></mat-icon>
+         <span>{{ categ }}</span>
+      </a>
     </span>
 
     <div class="side-container">
@@ -43,7 +46,7 @@
             *ngFor="let prod of products; let i = index"
             class="prod-list-item"
           >
-            <a href="" class="prod">{{ prod }}</a>
+            <a href="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
           </li>
         </ul>
       </div>
