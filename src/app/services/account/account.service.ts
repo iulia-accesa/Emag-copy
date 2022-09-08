@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { switchMap, of, Observable, take } from 'rxjs';
+import { switchMap, of, Observable, take, map, exhaustMap, tap } from 'rxjs';
 import { throwError } from 'rxjs';
 import { ofType } from '@ngrx/effects';
 import { ActionsSubject, select, Store } from '@ngrx/store';
@@ -46,19 +46,17 @@ export class AccountService {
   }
 
   loadUser$(): Observable<IUser | undefined> {
-    return this.getUsername$().pipe(
-      take(1),
-      switchMap(usernameStore => {
-        this.store.dispatch(AccountActions.loadAccountStart({ username: usernameStore}))
-        return this.actionsSubject$.pipe(
-          ofType(AccountActions.loadAccountSucces, AccountActions.loadAccountFail),
-          switchMap(action => {
-            if (action.type === AccountActions.loadAccountFail.type) 
-              return throwError(() => action.accountError);
-            
-            return of(action.user)
-          })
-        )
+    this.getUsername$()
+      .pipe(take(1))
+      .subscribe(usernameStore => this.store.dispatch(AccountActions.loadAccountStart({ username: usernameStore })))
+
+    return this.actionsSubject$.pipe(
+      ofType(AccountActions.loadAccountSucces, AccountActions.loadAccountFail),
+      switchMap(action => {
+        if (action.type === AccountActions.loadAccountFail.type) 
+          return throwError(() => action.accountError);
+        
+        return of(action.user)
       })
     )
   }
