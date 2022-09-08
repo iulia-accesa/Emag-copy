@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="menu-container">
+    <div class="menu-list">
+      <li>
+        <div class="btn-products btn-dropdown">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="menu"
+            class="burgermenu-icon"
+          ></mat-icon>
+          <span>Products</span>
+        </div>
+      </li>
+
+      <a class="btn-account">Account</a>
+    </div>
+  </div>
+  <div class="content">
+    <span class="product-category">
+      <a
+        class="list-group-item"
+        *ngFor="let categ of categories; let i = index"
+        [id]="categ"
+        (mouseover)="onHover(i, $event)"
+      >
+        <mat-icon
+            aria-hidden="false"
+            aria-label="phone icon"
+            fontIcon="phone_iphone"
+            class="phone-icon"
+            [id]="categ"
+          ></mat-icon>
+         <span [id]="categ">{{ categ }}</span>
+      </a>
+    </span>
+
+    <div class="side-container">
+      <app-carousel></app-carousel>
+      <div
+        class="menu-details"
+        [ngClass]="{ open: isOpen }"
+        (mouseleave)="isOpen = false"
+      >
+        <ul class="menu-products">
+          <li
+            *ngFor="let prod of products; let i = index"
+            class="prod-list-item"
+          >
+            <a href="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

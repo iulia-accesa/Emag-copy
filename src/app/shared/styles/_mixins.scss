@@ -1,9 +1,15 @@
 @mixin response($breakpoint) {
-  @if ($breakpoint == xl) {
-    @media (max-width: 1300px) {
-      @content;
+    @if($breakpoint == xxl) {
+        @media (max-width: 1440px) {
+            @content;
+        }
     }
-  }
+
+    @if($breakpoint == xl) {
+        @media (max-width: 1300px) {
+            @content;
+        }
+    }
 
   @if ($breakpoint == lg) {
     @media (max-width: 1030px) {

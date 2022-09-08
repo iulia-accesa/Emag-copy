@@ -1,0 +1,57 @@
+app-carousel {
+  .owl-carousel.owl-theme.owl-loaded.owl-responsive {
+    position: relative;
+  }
+
+  .owl-dots.ng-star-inserted {
+    position: absolute;
+    top: 93%;
+    left: 46%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .owl-nav.ng-star-inserted {
+    display: flex;
+  }
+
+  .owl-carousel {
+    .owl-nav {
+      .owl-next,
+      .owl-prev {
+        position: absolute;
+        top: 45%;
+        background: transparent;
+        height: 50px;
+      }
+    }
+  }
+
+  .owl-carousel {
+    .owl-nav {
+      .owl-next:hover,
+      .owl-prev:hover {
+        position: absolute;
+        top: 45%;
+        background: #cecccc31;
+        
+      }
+    }
+  }
+
+  .owl-next {
+    right: 0%;
+  }
+
+  .owl-nav.ng-star-inserted {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    .owl-dots.ng-star-inserted {
+      top: 85%;
+      left: 40%
+    }
+  
+  }
+}
