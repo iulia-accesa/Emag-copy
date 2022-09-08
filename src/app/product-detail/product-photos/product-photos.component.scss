@@ -16,32 +16,29 @@
   max-width: 68px;
   max-height: 68px;
   padding: 5px;
-  @include response(xs){
+  @include response(xs) {
     max-width: 45px;
     max-height: 45px;
   }
 }
 
-
 .mainPhoto {
   border-radius: 5px;
-  width:100%;
+  width: 100%;
   height: 100%;
   @include response(lg) {
-
-}
+  }
   @include response(md) {
-    width:80%;
-    height:80%;
-}
+    width: 80%;
+    height: 80%;
+  }
   @include response(xs) {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
+  }
 }
 
-}
-
-.mainPosition{
+.mainPosition {
   display: flex;
   justify-content: center;
 }
@@ -53,7 +50,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   gap: 8px;
-  @include response(lg){
+  @include response(lg) {
     gap: 0;
   }
   @include response(md-sm) {
@@ -61,10 +58,10 @@
   }
 }
 
-.imageSelected{
-    border-color: rgb(4, 0, 255);
-  }
+.imageSelected {
+  border-color: rgb(4, 0, 255);
+}
 
-img{
-  border: 2px solid transparent
+img {
+  border: 2px solid transparent;
 }

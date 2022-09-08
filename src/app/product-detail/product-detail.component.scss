@@ -15,7 +15,7 @@
 .simProdTitle {
   font-size: 35px;
   line-height: 50px;
-  @include response(sm){
+  @include response(sm) {
     font-size: 20px;
     line-height: 25px;
   }
@@ -89,7 +89,7 @@ hr {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: $nav-gradient $background-color;
-  @include response(xl){
+  @include response(xl) {
     justify-content: space-between;
   }
   @include response(lg) {

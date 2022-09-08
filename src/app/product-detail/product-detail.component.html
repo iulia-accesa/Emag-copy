@@ -7,19 +7,20 @@
       <hr />
       <section class="heroSection">
         <app-product-photos [product]="product"></app-product-photos>
-            <div class="detailsContainer">
-            <section class="productDescription">
-              <div class="descriptionItem"></div>
-              <div class="descriptionItem">
-                Category : {{ product.category }}
-              </div>
-              <div class="descriptionItem">Sold By :</div>
-              <div class="descriptionItem">
-                Description : {{ product.description }}
-              </div>
-            </section>
-            <app-add-to-cart-box class="addToCartBox" [product]="product"></app-add-to-cart-box>
-          </div>
+        <div class="detailsContainer">
+          <section class="productDescription">
+            <div class="descriptionItem"></div>
+            <div class="descriptionItem">Category : {{ product.category }}</div>
+            <div class="descriptionItem">Sold By :</div>
+            <div class="descriptionItem">
+              Description : {{ product.description }}
+            </div>
+          </section>
+          <app-add-to-cart-box
+            class="addToCartBox"
+            [product]="product"
+          ></app-add-to-cart-box>
+        </div>
       </section>
     </div>
   </div>
