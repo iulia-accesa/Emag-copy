@@ -24,9 +24,6 @@ export class MenuComponent implements OnInit {
   onHover(index: number | undefined, event: any) {
     this.service.getByCategory(event.target.id).subscribe((response: Array<IProductApi>) => {
       this.products = response;
-      this.products = this.products.map((product: any) => {
-        return product.title;
-      });
       this.isOpen = true;
       this.hoverIndex = index;
     });
