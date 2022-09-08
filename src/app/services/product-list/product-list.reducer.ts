@@ -4,7 +4,7 @@ import { Order } from '../../product-list/models/order.type';
 import { IPriceRange } from '../../product-list/models/price-range.interface';
 import { IProduct } from '../../shared/models/product.interface';
 
-import { createReducer, on, Action, ActionReducerMap } from '@ngrx/store';
+import { createReducer, on, ActionReducerMap } from '@ngrx/store';
 
 import * as ProductListPageActions from './product-list.actions';
 import * as ProductServiceActions from './product-list-service.actions';
@@ -17,8 +17,6 @@ export const FEATURE_KEY = 'product_list';
 export interface State {
   productListConstant: IProduct[];
   productList: IProduct[];
-  favoriteIdList: number[];
-  cartIdList: number[];
   filterGroup: IFilterGroup;
   orderGroup: IOrderGroup;
 }
@@ -26,8 +24,6 @@ export interface State {
 export const initialState: State = {
   productListConstant: [],
   productList: [],
-  favoriteIdList: [],
-  cartIdList: [],
   filterGroup: {
     priceRange: undefined,
     ratings: undefined,
@@ -124,21 +120,6 @@ export const productReducer = createReducer(
   }),
   on(ProductListPageActions.enterWithSearch, (state) => {
     return { ...state };
-  }),
-  on(ProductListPageActions.addProductToFavorites, (state, action) => {
-    return {
-      ...state,
-      favoriteIdList: [...state.favoriteIdList, action.productId],
-    };
-  }),
-  on(ProductListPageActions.removeProductFromFavorites, (state, action) => {
-    return {
-      ...state,
-      favoriteIdList: removeFromFavorites(
-        state.favoriteIdList,
-        action.productId
-      ),
-    };
   }),
   on(ProductListPageActions.filterProducts, (state, action) => {
     console.log(action);

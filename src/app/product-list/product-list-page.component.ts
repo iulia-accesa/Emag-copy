@@ -1,3 +1,4 @@
+import { CartService } from './../services/cart/cart.service';
 import { Router } from '@angular/router';
 import { IFilterGroup } from './models/filter-group.interface';
 import { IOrderGroup } from './models/order-group.interface';
@@ -25,7 +26,8 @@ export class ProductListPageComponent implements OnInit {
 
   constructor(
     private productService: ProductListService,
-    private store: Store
+    private store: Store,
+    private cartService: CartService
   ) {
     this.productList$ = this.store.select(selectAllProducts);
     this.pagePath = this.getPagePath();
@@ -95,32 +97,6 @@ export class ProductListPageComponent implements OnInit {
         );
         break;
     }
-
-    this.getCartItemList();
-  }
-
-  getCartItemList(): void {
-    this.productService.getCartItemIds().subscribe((productIds) => {
-      this.store.dispatch(
-        ProductServiceActions.cartItemsLoaded({ productIds })
-      );
-    });
-  }
-
-  addProductToFavorites(productId: number) {
-    this.store.dispatch(
-      ProductListPageActions.addProductToFavorites({
-        productId,
-      })
-    );
-  }
-
-  removeProductFromFavorites(productId: number) {
-    this.store.dispatch(
-      ProductListPageActions.removeProductFromFavorites({
-        productId,
-      })
-    );
   }
 
   orderItems(orderGroup: IOrderGroup) {

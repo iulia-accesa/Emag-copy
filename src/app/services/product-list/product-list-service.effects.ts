@@ -7,7 +7,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductListService } from './product-list.service';
 import { Injectable } from '@angular/core';
 
-import { map, exhaustMap, Observable } from 'rxjs';
+import { map, exhaustMap } from 'rxjs';
 
 @Injectable()
 export class ProductListServiceEffects {

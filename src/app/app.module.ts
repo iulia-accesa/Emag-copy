@@ -1,3 +1,5 @@
+import { CartApiService } from './services/cart/cart-api.service';
+import { CartService } from './services/cart/cart.service';
 import { ProductListService } from './services/product-list/product-list.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
@@ -116,6 +118,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ProductListService,
     ProductApiService,
     SearchBarService,
+    CartApiService,
+    CartService,
   ],
   bootstrap: [AppComponent],
 })
