@@ -11,7 +11,7 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AccountGuard] },
   { path: 'my-account', component: UserAccountComponent, canActivate: [AccountGuard] },
   // { path: 'products', component: ProductListPageComponent },
    { path: 'products/:id', component: ProductDetailComponent }
