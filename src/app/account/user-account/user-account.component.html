@@ -1,0 +1,45 @@
+<app-header></app-header>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Datele contului</mat-card-title>
+    </mat-card-header>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-error  *ngIf="error && !isLoading" class="final-error">
+        {{ error }}
+    </mat-error>
+    <mat-card-content *ngIf="!error && !isLoading">
+        <div class="avatar-container">
+            <div class="thumbnail">
+                <span>{{ user?.initials }}</span>
+            </div>
+        </div>
+        <div class="user-data-container">
+            <p>
+                    <span class="field-name">Nume:</span>
+                    <span class="field-value">{{ user?.name }}</span>
+            </p>
+            <p>
+                <span class="field-name">Username:</span>
+                <span class="field-value">{{ user?.username }}</span>
+            </p>
+            <p>
+                <span class="field-name">Email:</span>
+                <span class="field-value">{{ user?.email }}</span>
+            </p>
+            <p>
+                <span class="field-name">Adresa:</span>
+                <span class="field-value">{{ user?.address }}</span>
+            </p>
+            <p>
+                <span class="field-name">Telefon:</span>
+                <span class="field-value">{{ user?.phone }}</span>
+            </p>
+        </div>
+        <div class="info-client-container">
+            <span>Multumim ca esti clientul nostru</span>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button>Logout</button>
+    </mat-card-actions>
+</mat-card>
