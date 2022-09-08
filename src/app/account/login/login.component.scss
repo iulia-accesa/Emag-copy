@@ -28,7 +28,7 @@ app-login {
       max-height: 36px;
       vertical-align: middle;
 
-      @include response(sm) {
+      @include response(xs) {
         font-size: 30px;
         width: 100px;
       }
@@ -44,7 +44,7 @@ app-login {
     display: inline-block;
     border-radius: 5px;
 
-    @include response(sm) {
+    @include response(xs) {
       width: 380px;
       margin: 30px auto;
     }
@@ -70,7 +70,7 @@ app-login {
       font-size: 30px;
       margin-bottom: 30px;
 
-      @include response(md) {
+      @include response(sm) {
         font-size: 25px;
       }
   }
@@ -90,7 +90,7 @@ app-login {
   mat-form-field {
     width: 100%;
 
-    @include response(sm) {
+    @include response(xs) {
       width: 90%;
     }
 
@@ -118,7 +118,7 @@ app-login {
     width: 100%;
     height: 40px;
 
-    @include response(sm) {
+    @include response(xs) {
       width: 90%;
     }
   }

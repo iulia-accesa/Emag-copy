@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,13 +22,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchEffects } from 'src/app/services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
 import { AccountApiService } from './services/account/account-api.service';
 import { AccountService } from './services/account/account.service';
 import { AppInterceptor } from './app.interceptor';
 import { LoginComponent } from './account/login/login.component';
+import { UserAccountComponent } from './account/user-account/user-account.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
 import { SearchBarService } from './services/search/search.service';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -45,6 +45,8 @@ import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-c
     LoginComponent,
     SearchBarComponent,
     ProductCardComponent,
+    UserAccountComponent,
+    HomepageComponent, 
     HeaderComponent,
     HomepageComponent,
     ProductDetailComponent,
