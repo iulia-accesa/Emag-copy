@@ -40,6 +40,7 @@ import { SearchBarComponent } from './shared/components/header/search/searchbar/
 import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
+import { UserAccountComponent } from './account/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { SearchBarService } from './services/search/search.service';
     ProductCardComponent,
     UserAccountComponent,
     HomepageComponent, 
-    HomepageComponent
+    HomepageComponent,
     MenuComponent,
     CarouselComponent,
     ProductDetailComponent,
