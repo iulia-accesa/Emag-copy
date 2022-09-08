@@ -7,9 +7,39 @@
 
 .categoryContainer {
   display: block;
+  margin-top: 20px;
 }
 
 .categoryTitle {
   font-size: 30px;
   font-weight: 400;
+}
+
+.scrollbox {
+  width: auto;
+  height: auto;
+  overflow: auto;
+  visibility: hidden;
+}
+
+.productsContainer {
+  display: block;
+  margin-top: 20px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $nav-gradient $background-color;
+  visibility: visible;
+}
+
+.productsContainer::-webkit-scrollbar {
+  height: 15px;
+}
+
+.productsContainer::-webkit-scrollbar-thumb {
+  background: $nav-gradient;
+  border-radius: 20px;
 }
