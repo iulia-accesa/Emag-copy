@@ -1,8 +1,9 @@
 @import "/src/variables.scss";
+@import "/src/app/shared/styles/mixins";
 
 .containerBackgr {
   background-color: #fff;
-  width: 100%;
+  background-size: auto;
 }
 
 .containerWidth {
@@ -11,9 +12,13 @@
   padding: 0 25px;
 }
 
-.simProdTitle{
+.simProdTitle {
   font-size: 35px;
   line-height: 50px;
+  @include response(sm){
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .componentContainer {
@@ -25,6 +30,13 @@
   display: flex;
   max-width: 1520px;
   justify-content: space-between;
+  @include response(xl) {
+    justify-content: space-around;
+  }
+  @include response(md) {
+    justify-content: space-around;
+    flex-direction: column;
+  }
 }
 
 .mainTitle {
@@ -40,46 +52,67 @@ hr {
   padding: 0 10px;
   max-width: 550px;
   margin: 30px 0 0 15px;
+  @include response(xl) {
+    order: 2;
+    max-width: 480px;
+  }
+  @include response(md) {
+    margin: 9px 0 0 15px;
+    max-width: 100%;
+  }
 }
 
 .detailsContainer {
   display: flex;
   flex-direction: row;
+  @include response(xl) {
+    flex-direction: column;
+  }
 }
 
 .descriptionItem {
   margin-bottom: 15px;
 }
 
-.listSimProd{
+.addToCartBox {
+  @include response(md) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.listSimProd {
   display: flex;
-  flex-direction: row;
-  gap: 50px;
-  justify-content: center;
+  justify-content: space-evenly;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: $nav-gradient $background-color;
+  @include response(xl){
+    justify-content: space-between;
+  }
+  @include response(lg) {
+    gap: 20px;
+  }
+}
+
+.listSimProd::-webkit-scrollbar {
+  height: 15px;
+}
+
+.listSimProd::-webkit-scrollbar-thumb {
+  background: $nav-gradient;
+
+  border-radius: 20px;
 }
 
 .simProdItem {
-  gap: 35px;
-}
-
-@media screen and (max-width: 1198px) {
-  .detailsContainer {
-    display: flex;
-    flex-flow: column;
-  }
-  .product_description {
-    order: 2;
-  }
-  .detailsContainer {
-    order: 4;
-  }
-  .hero_section {
-    justify-content: space-around;
+  @include response(xl) {
+    gap: 35px;
   }
 }
 
-@media screen and (max-width: 930px) {
-  .product_price_goToCart {
-    width: 260px;
-  }
+.categTtile {
+  padding: 8px 0;
 }

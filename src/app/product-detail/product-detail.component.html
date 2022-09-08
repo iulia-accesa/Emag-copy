@@ -1,26 +1,26 @@
+<app-header></app-header>
 <div class="containerBackgr" *ngIf="product">
   <div class="containerWidth">
     <div class="componentContainer">
-      <div>{{ product.category }}/{{ product.title }}</div>
+      <div class="categTtile">{{ product.category }}/{{ product.title }}</div>
       <h1 class="mainTitle">{{ product.title }}</h1>
       <hr />
-        <section class="heroSection">
-          <div class="detailsContainer">
-            <app-product-photos [product]="product"></app-product-photos>
-
+      <section class="heroSection">
+        <app-product-photos [product]="product"></app-product-photos>
+            <div class="detailsContainer">
             <section class="productDescription">
               <div class="descriptionItem"></div>
               <div class="descriptionItem">
                 Category : {{ product.category }}
               </div>
-              <div class="descriptionItem">Sold By : </div>
+              <div class="descriptionItem">Sold By :</div>
               <div class="descriptionItem">
                 Description : {{ product.description }}
               </div>
             </section>
-            <app-add-to-cart-box [product]="product"></app-add-to-cart-box>
+            <app-add-to-cart-box class="addToCartBox" [product]="product"></app-add-to-cart-box>
           </div>
-        </section>
+      </section>
     </div>
   </div>
 </div>

@@ -1,9 +1,13 @@
+@import "/src/app/shared/styles/mixins";
 
 .containerLeftSide {
   display: flex;
   flex-direction: row;
   padding: 0;
   margin-bottom: 30px;
+  @include response(md) {
+    justify-content: center;
+  }
 }
 
 .secondaryPhoto {
@@ -12,21 +16,49 @@
   max-width: 68px;
   max-height: 68px;
   padding: 5px;
+  @include response(xs){
+    max-width: 45px;
+    max-height: 45px;
+  }
 }
 
 
 .mainPhoto {
   border-radius: 5px;
-  width: 475px;
-  height: 475px;
+  width:100%;
+  height: 100%;
+  @include response(lg) {
+
+}
+  @include response(md) {
+    width:80%;
+    height:80%;
+}
+  @include response(xs) {
+    width:100%;
+    height:100%;
+}
+
+}
+
+.mainPosition{
+  display: flex;
+  justify-content: center;
 }
 
 .listSecondaryPhoto {
   margin-top: 15px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: 8px;
+  @include response(lg){
+    gap: 0;
+  }
+  @include response(md-sm) {
+    justify-content: center;
+  }
 }
 
 .imageSelected{
