@@ -37,6 +37,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
 import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-c
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
+    FlexLayoutModule,
     StoreModule.forRoot(APP_REDUCERS, {
       metaReducers: [localStorageSyncWrapper],
     }),
