@@ -1,0 +1,38 @@
+<div class="containerBackgr" *ngIf="product">
+  <div class="containerWidth">
+    <div class="componentContainer">
+      <div>{{ product.category }}/{{ product.title }}</div>
+      <h1 class="mainTitle">{{ product.title }}</h1>
+      <hr />
+        <section class="heroSection">
+          <div class="detailsContainer">
+            <app-product-photos [product]="product"></app-product-photos>
+
+            <section class="productDescription">
+              <div class="descriptionItem"></div>
+              <div class="descriptionItem">
+                Category : {{ product.category }}
+              </div>
+              <div class="descriptionItem">Sold By : </div>
+              <div class="descriptionItem">
+                Description : {{ product.description }}
+              </div>
+            </section>
+            <app-add-to-cart-box [product]="product"></app-add-to-cart-box>
+          </div>
+        </section>
+    </div>
+  </div>
+</div>
+
+<div class="containerWidth" *ngIf="productSimilar">
+  <h1 class="simProdTitle">Similar Products</h1>
+  <div class="listSimProd">
+    <div *ngFor="let item of productSimilar">
+      <product-card-component
+        class="simProdItem"
+        [product]="item"
+      ></product-card-component>
+    </div>
+  </div>
+</div>

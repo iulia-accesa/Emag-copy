@@ -21,8 +21,8 @@ export class ProductApiService {
     );
   }
 
-  getById(id: number): Observable<IProductApi[]> {
-    return this._httpClient.get<IProductApi[]>(
+  getById(id: number): Observable<IProductApi> {
+    return this._httpClient.get<IProductApi>(
       `${this._apiUrl}/products/${id}`
     );
   }
