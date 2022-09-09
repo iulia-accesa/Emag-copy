@@ -41,6 +41,7 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
+import { IsVisible } from './product-detail/add-to-cart-box/add-to-cart-box.component'; 
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
-    HeaderComponent
+    HeaderComponent,
+    IsVisible
   ],
 
   imports: [

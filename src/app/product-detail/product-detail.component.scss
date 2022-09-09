@@ -75,6 +75,7 @@ hr {
 }
 
 .addToCartBox {
+max-height: 270px;
   @include response(md) {
     display: flex;
     justify-content: center;
@@ -82,6 +83,7 @@ hr {
 }
 
 .listSimProd {
+padding: 20px ;
   display: flex;
   justify-content: space-evenly;
   overflow-x: scroll;
@@ -115,4 +117,14 @@ hr {
 
 .categTtile {
   padding: 8px 0;
+}
+
+.stickComp{
+  position: fixed;
+  
+}
+
+.reviewSection{
+  width: 100%;
+  height: 340px;
 }
