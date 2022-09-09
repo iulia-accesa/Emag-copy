@@ -1,8 +1,11 @@
 <mat-card class="cardElement" *ngIf="_product">
-  <img class="simCartImg" [src]="_product.image" alt="" />
+  <a href="products/{{ _product.id }}" target="_self">
+    <img class="simCartImg" [src]="_product.image" alt="" />
+  </a>
+  <a href="products/{{ _product.id }}" target="_self" class="prodTitle">{{
+    _product.title
+  }}</a>
   <div class="productPrice">Rs. {{ _product.price }}</div>
-  <div class="prodTitle">{{ _product.title }}</div>
-  <div>Category: {{ _product.category }}</div>
   <div class="ratingStars">
     <div
       *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
