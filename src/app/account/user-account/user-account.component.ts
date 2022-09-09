@@ -1,3 +1,4 @@
+import { AccountErrors } from './../../services/account/account.effects';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
@@ -33,15 +34,15 @@ export class UserAccountComponent implements OnInit {
       .subscribe({
         next: (user) => this.user = user,
         error: (error: string) => {
-          if (error === 'Error getting user data')
+          if (error === AccountErrors.NO_USER_LOGGED)
             this._router.navigate(['/login']);
           else
-            this.error = error
+            this.error = error;
         }
       });
   }
 
-  onLogout() {
-    this._accountService.logout()
+  onLogout(): void {
+    this._accountService.logout();
   }
 }

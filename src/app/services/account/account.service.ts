@@ -48,7 +48,7 @@ export class AccountService {
   loadUser$(): Observable<IUser | undefined> {
     this.getUsername$()
       .pipe(take(1))
-      .subscribe(usernameStore => this._store.dispatch(AccountActions.loadAccountStart({ username: usernameStore })))
+      .subscribe(usernameStore => this._store.dispatch(AccountActions.loadAccountStart({ username: usernameStore })));
 
     return this._actionsSubject$.pipe(
       ofType(AccountActions.loadAccountSucces, AccountActions.loadAccountFail),
@@ -56,12 +56,12 @@ export class AccountService {
         if (action.type === AccountActions.loadAccountFail.type) 
           return throwError(() => action.accountError);
         
-        return of(action.user)
+        return of(action.user);
       })
-    )
+    );
   }
 
-  logout() {
+  logout(): void {
     this._store.dispatch(AccountActions.logout());
     window.location.reload();
   }

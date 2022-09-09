@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 
-import { take } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 
 import { AccountService } from 'src/app/services/account/account.service';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AccountGuard implements CanActivate{
-
+export class AccountGuard implements CanActivate {
   constructor(
     private _accountService: AccountService,
     private _router: Router
   ) {}
 
-  canActivate(): boolean {
-    let isLogged = true;
-    this._accountService.getIsLoggedIn$()
-        .pipe(take(1))
-        .subscribe(isLoggedIn => {
-            isLogged = isLoggedIn;
-            if (!isLogged)
-                this._router.navigate(['/login']);
-        }
-    )
-    return isLogged;
+  canActivate(): Observable<boolean | UrlTree> {
+    return this._accountService.getIsLoggedIn$().pipe(
+      take(1),
+      map((isLoggedIn) => {
+        return isLoggedIn ? true : this._router.createUrlTree(['/login']);
+      })
+    );
   }
 }

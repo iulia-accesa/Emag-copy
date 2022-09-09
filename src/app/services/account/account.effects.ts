@@ -6,6 +6,9 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import * as AccountActions from './account.actions';
 import { AccountApiService } from './account-api.service';
 
+export enum AccountErrors {
+    NO_USER_LOGGED = 'Error getting user data'
+};
 
 @Injectable()
 export class AccountEffects {
@@ -48,7 +51,7 @@ export class AccountEffects {
                                     address: `${resultData?.address.street} ${resultData?.address.number}, ${resultData?.address.city}`,
                                     phone: resultData?.phone
                                 }}))
-                        return of(AccountActions.loadAccountFail({ accountError: 'Error getting user data' }))
+                        return of(AccountActions.loadAccountFail({ accountError: AccountErrors.NO_USER_LOGGED }))
                     }),
                     catchError(errorResult => of(AccountActions.loadAccountFail({ accountError: errorResult.error })))
                 )
