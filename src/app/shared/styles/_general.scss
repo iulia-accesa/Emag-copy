@@ -1,0 +1,16 @@
+.containerScrollbar {
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: $nav-gradient $background-color;
+}
+
+.containerScrollbar::-webkit-scrollbar {
+  height: 15px;
+}
+
+.containerScrollbar::-webkit-scrollbar-thumb {
+  background: $nav-gradient;
+  border-radius: 20px;
+}
