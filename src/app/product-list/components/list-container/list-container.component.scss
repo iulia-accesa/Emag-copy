@@ -1,5 +1,28 @@
+@import "../../../shared/styles/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
 .list-container {
-  padding: 10px 0;
+  width: 940px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  @include response(xl) {
+    width: 710px;
+  }
+
+  @include response(lg) {
+    width: 480px;
+  }
+
+  @include response(xs) {
+    width: calc(100vw - 20px);
+  }
 
   h1 {
     font-size: 22px;
@@ -7,7 +30,8 @@
     font-weight: 500;
   }
   .category-title {
-    padding: 12px 20px;
+    width: 100%;
+    padding: 20px;
     background-color: white;
     border-radius: 6px;
     margin-bottom: 10px;
@@ -17,27 +41,19 @@
     font-size: 16px;
     white-space: nowrap;
   }
-
-  .item-card-container {
-    width: 100%;
-  }
 }
 
 .product-cards-container {
+  * {
+    margin: 0;
+  }
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 
-  @media only screen and (min-width: 380px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media only screen and (min-width: 959.9px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media only screen and (min-width: 1279.9px) {
-    grid-template-columns: repeat(4, 1fr);
+  product-card-component {
+    margin: auto;
   }
 }

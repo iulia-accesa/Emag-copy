@@ -1,16 +1,8 @@
 <app-header></app-header>
-<main class="product-list-page" fxLayoutAlign="center center">
+<main class="product-list-page">
   <div class="page-container">
     <breadcrumb-nav> </breadcrumb-nav>
-    <div
-      class="main-container"
-      fxLayout.lt-sm="column"
-      fxLayout.gt-sm="row"
-      fxLayoutAlign.lt-sm="start stretch"
-      fxLayoutAlign.gt-sm="center start"
-      fxLayoutGap.lt-sm="0"
-      fxLayoutGap.gt-sm="1rem"
-    >
+    <div class="main-container">
       <filters></filters>
       <list-container
         [productList]="productList$ | async"

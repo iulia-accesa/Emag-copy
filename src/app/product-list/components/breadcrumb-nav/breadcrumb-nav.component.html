@@ -1,7 +1,11 @@
 <div class="breadcrumb">
   <a href="/" class="breadcrumb__el">Toate produsele</a>
   <span class="breadcrumb__slash">/</span>
-  <a [href]="'/category/' + categoryPath" class="breadcrumb__el el--active">{{
-    categoryPath | titlecase
-  }}</a>
+  <a
+    *ngIf="categoryPath"
+    [href]="'/category/' + categoryPath"
+    class="breadcrumb__el el--link el--active"
+    >{{ categoryPath | titlecase }}</a
+  >
+  <span class="breadcrumb__search" *ngIf="!categoryPath">Search</span>
 </div>
