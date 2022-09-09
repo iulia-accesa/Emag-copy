@@ -1,10 +1,6 @@
 @import '/src/variables.scss';
 @import '/src/app/shared/styles/mixins';
 
-app-header {
-  display: none;
-}
-
 app-login {
   background: $background-color;
   font-weight: 400;

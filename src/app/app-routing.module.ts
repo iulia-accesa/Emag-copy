@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './account/login/login.component';
-import { AccountGuard } from './services/account/guards/account.guard';
+import { AccountGuard } from './guards/account.guard';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-import { LoginGuard } from './services/account/guards/login.guard';
+import { LoginGuard } from './guards/login.guard';
 
 
 

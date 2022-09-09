@@ -17,12 +17,12 @@ export class AccountGuard implements CanActivate{
   ) {}
 
   canActivate(): boolean {
-    let isLogged = false;
+    let isLogged = true;
     this._accountService.getIsLoggedIn$()
         .pipe(take(1))
         .subscribe(isLoggedIn => {
             isLogged = isLoggedIn;
-            if (isLogged)
+            if (!isLogged)
                 this._router.navigate(['/login']);
         }
     )
