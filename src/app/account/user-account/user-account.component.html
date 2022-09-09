@@ -1,4 +1,3 @@
-<app-header></app-header>
 <mat-card>
     <mat-card-header>
         <mat-card-title>Datele contului</mat-card-title>
@@ -40,6 +39,6 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-flat-button>Logout</button>
+        <button mat-flat-button (click)="onLogout()">Logout</button>
     </mat-card-actions>
 </mat-card>

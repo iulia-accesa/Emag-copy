@@ -1,3 +1,5 @@
+import { AccountErrors } from './../../services/account/account.effects';
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { finalize, take } from 'rxjs';
@@ -17,7 +19,8 @@ export class UserAccountComponent implements OnInit {
   error: string = '';
 
   constructor(
-    private _accountService: AccountService
+    private _accountService: AccountService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +33,16 @@ export class UserAccountComponent implements OnInit {
       )
       .subscribe({
         next: (user) => this.user = user,
-        error: (error: string) => this.error = error
+        error: (error: string) => {
+          if (error === AccountErrors.NO_USER_LOGGED)
+            this._router.navigate(['/login']);
+          else
+            this.error = error;
+        }
       });
+  }
+
+  onLogout(): void {
+    this._accountService.logout();
   }
 }
