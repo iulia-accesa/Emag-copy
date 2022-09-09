@@ -5,9 +5,11 @@
     <h2 class="categoryTitle">
       {{ category }}
     </h2>
-    <product-card-component
-      *ngFor="let product of categorizedProducts$.get(category) | async"
-      [product]="product"
-    ></product-card-component>
+    <div class="productsContainer">
+      <product-card-component
+        *ngFor="let product of categorizedProducts$.get(category) | async"
+        [product]="product"
+      ></product-card-component>
+    </div>
   </div>
 </div>
