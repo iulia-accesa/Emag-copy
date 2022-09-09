@@ -12,24 +12,7 @@
     <img class="img_emag" src="/assets/logo.png" alt="eMAG" />
   </a>
 
-  <div
-    class="navbar-searchbox"
-    matAutocompleteOrigin
-    #origin="matAutocompleteOrigin"
-  >
-    <input
-      #search
-      type="search"
-      name="query"
-      class="searchbox"
-      placeholder="Începe o nouă căutare"
-      fxHide.lt-sm
-    />
-
-    <button class="search-button">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
+  <app-searchbar></app-searchbar>
 
   <div class="dropdown">
     <button mat-button [matMenuTriggerFor]="menu" class="btn">

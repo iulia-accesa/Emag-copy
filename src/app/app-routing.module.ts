@@ -1,14 +1,23 @@
 import { CanActivateCategory } from './shared/guards/can-activate-category.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './account/login/login.component';
+import { AccountGuard } from './services/account/account.guard';
+import { UserAccountComponent } from './account/user-account/user-account.component';
 import { ProductListPageComponent } from './product-list/product-list-page.component';
 import { CanActivateSearchKey } from './shared/guards/can-activate-search-key.guard';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'my-account',
+    component: UserAccountComponent,
+    canActivate: [AccountGuard],
+  },
   {
     path: 'category/:categoryName',
     component: ProductListPageComponent,
@@ -19,7 +28,7 @@ const routes: Routes = [
     component: ProductListPageComponent,
     canActivate: [CanActivateSearchKey],
   },
-  // { path: 'products/:id', component: DetailsPageComponent }
+  { path: 'products/:id', component: ProductDetailComponent },
 ];
 
 @NgModule({

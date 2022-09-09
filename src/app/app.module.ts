@@ -9,10 +9,8 @@ import { FiltersComponent } from './product-list/components/filters/filters.comp
 import { ListContainerComponent } from './product-list/components/list-container/list-container.component';
 import { BreadcrumbNavComponent } from './product-list/components/breadcrumb-nav/breadcrumb-nav.component';
 import { ProductListPageComponent } from './product-list/product-list-page.component';
-import { ProductApiService } from './services/product-api.service';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,21 +29,29 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchEffects } from 'src/app/services/search/search.effects';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { environment } from '../environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { AccountApiService } from './services/account/account-api.service';
-import { AccountService } from './services/account/account.service';
-import { AppInterceptor } from './app.interceptor';
-import { LoginComponent } from './account/login/login.component';
-import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
-import { SearchBarService } from './services/search/search.service';
-import { HomepageComponent } from './homepage/homepage.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
+import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { AccountApiService } from './services/account/account-api.service';
+import { MenuComponent } from './shared/components/menu-categories/menu.component';
+import { CarouselComponent } from './shared/components/menu-categories/carousel/carousel.component';
+import { LoginComponent } from './account/login/login.component';
+import { AppInterceptor } from './app.interceptor';
+import { AccountService } from './services/account/account.service';
+import { HomepageComponent } from './homepage/homepage.component';
+import { SearchBarComponent } from './shared/components/header/search/searchbar/searchbar.component';
+import { SearchEffects } from './services/search/search.effects';
+import { ProductApiService } from './services/product-api.service';
+import { SearchBarService } from './services/search/search.service';
+import { UserAccountComponent } from './account/user-account/user-account.component';
 
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -59,7 +65,15 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     LoginComponent,
     SearchBarComponent,
     ProductCardComponent,
+    UserAccountComponent,
     HomepageComponent,
+    HomepageComponent,
+    MenuComponent,
+    CarouselComponent,
+    ProductDetailComponent,
+    ProductPhotosComponent,
+    AddToCartBoxComponent,
+    HeaderComponent,
     ProductListPageComponent,
     BreadcrumbNavComponent,
     ListContainerComponent,
@@ -71,7 +85,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
+    FlexLayoutModule,
     StoreModule.forRoot(APP_REDUCERS, {
       metaReducers: [localStorageSyncWrapper],
     }),
@@ -87,17 +101,13 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
     BrowserAnimationsModule,
     FormsModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatExpansionModule,
-    MatSelectModule,
-    MatSliderModule,
-    MatCheckboxModule,
+    CarouselModule,
     MatIconModule,
     CommonModule,
     FlexLayoutModule,
@@ -105,6 +115,10 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     MatToolbarModule,
     MatAutocompleteModule,
     MatMenuModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

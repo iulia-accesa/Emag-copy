@@ -1,0 +1,271 @@
+@import '/src/variables.scss';
+@import '/src/app/shared/styles/mixins';
+
+app-user-account {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    background: $background-color;
+    font-weight: 400;
+    line-height: 1.42857;
+    text-align: center;
+    display: block;
+
+    
+
+    .mat-card {
+        width: 1200px;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        @include response(xl) {
+            width: 1000px;
+        }
+    
+        @include response(lg) {
+            width: 800px;
+        }
+    
+        @include response(md) {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    .mat-card:not([class*=mat-elevation-z]) {
+        font-family: "Open Sans",Helvetica,Arial,sans-serif;
+        box-shadow: 0 2px 12px -4px rgb(0 0 0 / 10%);
+        color: #222;
+        padding: 0;
+        margin: 20px auto;
+
+        @include response(md-sm) {
+            width: 100%;
+            margin: 20px auto;
+        }
+    }
+
+    .mat-card-header {
+        padding: 20px 30px 0 30px;
+        vertical-align: center;
+
+        @include response(md-sm) {
+            padding: 20px 10px 0 10px;
+        }
+
+        @include response(sm) {
+            margin: 0 auto;
+        }
+
+        .mat-card-header-text {
+            @include response(sm) {
+                margin: 0 auto;
+            }
+        }
+
+        .mat-card-title {
+            @include response(md-sm) {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .mat-card-content>:first-child {
+        margin: 10px 10px 10px 0;
+        @include response(sm) {
+            margin: 0 auto;
+        }
+    }
+
+    .mat-card-content {
+        display: flex;
+        float: left;
+        width: 100%;
+        margin: 0;
+        padding: 0 30px 20px 30px;
+        border-bottom: 1px solid #eee;
+
+        @include response(md-sm) {
+            padding: 0 10px 10px 10px;
+        }
+
+        @include response(sm) {
+            display: inline-block;
+            padding: 0 10px;
+        }
+    }
+
+    .avatar-container {
+        width: 20%;
+        padding: 0;
+        text-align: center;
+        font-size: 3.2rem;
+        
+        @include response(lg) {
+            font-size: 3rem;
+        }
+
+        @include response(md-sm) {
+            font-size: 25px
+        }
+
+        @include response(sm) {
+            width: 100%;
+        }
+
+        .thumbnail {
+            margin: 0 20px;
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            background-color: #2196f3;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include response(xl) {
+                width: 95px;
+                height: 95px;
+            }
+
+            @include response(md-sm) {
+                width: 90px;
+                height: 90px;
+            }
+
+            @include response(sm) {
+                margin: auto;
+            }
+        }
+    }
+
+    .user-data-container {
+        width: 55%;
+        line-height: 22px;
+        padding: 0;
+        text-align: left;
+
+        @include response(sm) {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        p {
+            margin: 0 0 10px;
+            position: relative;
+            display: flex;
+
+            @include response(md-sm) {
+                margin: 0 0 5px;
+                line-height: 20px;
+            }
+            
+            @include response(xs) {
+                display: flexbox;
+            }
+
+            span {
+                display: block;
+            }
+        }
+
+        .field-name {
+            color: #666;
+            width: 100px;
+            left: 0;
+
+            @include response(sm) {
+                margin-left: 140px;
+            }
+
+            @include response(xs) {
+                margin-left: 130px;
+                width: 80px;
+            }
+
+            @include response(xxs) {
+                margin-left: 30px;
+            }
+        }
+
+        .field-value {
+            text-align: left;
+            display: inline-block;
+            word-wrap: break-word;
+
+            @include response(sm) {
+                width: auto;
+            }
+
+        }
+    }
+
+    .info-client-container {
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        padding: 0 40px;
+        border: 1px solid #eee;
+        border-radius: 6px;
+
+        @include response(xl) {
+            font-size: 18px;
+            padding: 0 20px;
+        }
+
+        @include response(lg) {
+            font-size: 16px;
+        }
+
+        @include response(sm) {
+            display: none;
+        }
+    }
+
+    .mat-card-content>:last-child:not(.mat-card-footer) {
+        margin-bottom: 10px;
+    }
+
+    .mat-card-actions {
+        margin-right: 0;
+    }
+
+    .mat-flat-button.mat-flat-button {
+        margin: 20px 0 25px;
+        border-radius: 21px;
+        background-color: #2196f3;
+        color: #fff;
+        font-weight: 500;
+        width: 200px;
+    
+        &:hover {
+          background-color: #0082e6;
+        }
+
+        @include response(lg) {
+            margin: 15px 0 20px;
+        }
+
+        @include response(md-sm) {
+            margin: 10px 0 15px;
+        }
+    }
+
+    .mat-progress-spinner {
+        margin: auto;
+    }
+    
+    .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #0082e6;
+    }
+
+    .mat-error {
+        font-size: 18px;
+    }
+}

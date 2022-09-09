@@ -1,0 +1,85 @@
+@import "/src/variables.scss";
+
+.containerBackgr {
+  background-color: #fff;
+  width: 100%;
+}
+
+.containerWidth {
+  margin: 0 auto 40px auto;
+  max-width: 1520px;
+  padding: 0 25px;
+}
+
+.simProdTitle{
+  font-size: 35px;
+  line-height: 50px;
+}
+
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroSection {
+  display: flex;
+  max-width: 1520px;
+  justify-content: space-between;
+}
+
+.mainTitle {
+  font-size: 28px;
+}
+
+hr {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.productDescription {
+  padding: 0 10px;
+  max-width: 550px;
+  margin: 30px 0 0 15px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.descriptionItem {
+  margin-bottom: 15px;
+}
+
+.listSimProd{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+}
+
+.simProdItem {
+  gap: 35px;
+}
+
+@media screen and (max-width: 1198px) {
+  .detailsContainer {
+    display: flex;
+    flex-flow: column;
+  }
+  .product_description {
+    order: 2;
+  }
+  .detailsContainer {
+    order: 4;
+  }
+  .hero_section {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .product_price_goToCart {
+    width: 260px;
+  }
+}

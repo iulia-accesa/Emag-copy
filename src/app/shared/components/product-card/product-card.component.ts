@@ -8,13 +8,14 @@ import { IProductApi } from '../../models/product-api.interface';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent {
-
-  @Input() product: IProductApi | undefined;
-
-
-  constructor() {}
-
-  calcRating(rat: number) {
-    return Math.round(rat);
+  @Input() set product(value: IProductApi) {
+    if (value) {
+      this._product = value;
+      this.prodRating = Math.round(this._product.rating.rate);
+    }
   }
+  public _product: IProductApi | undefined;
+  public prodRating = 0;
+  
+  constructor() {}
 }

@@ -49,7 +49,7 @@ export class SearchBarComponent {
   }
 
   onEnter(): void {
-    this._router.navigate(['products'], {
+    this._router.navigate(['search'], {
       queryParams: { key: this._searchInput },
     });
   }
