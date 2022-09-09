@@ -41,8 +41,8 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-import { MainTemplateComponent } from './shared/components/main-template/main-template.component';
-import { LoginTemplateComponent } from './shared/components/login-template/login-template.component';
+import { MainTemplateComponent } from './main-template/main-template.component';
+import { LoginTemplateComponent } from './login-template/login-template.component';
 
 @NgModule({
   declarations: [
