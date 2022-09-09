@@ -19,5 +19,5 @@ export const getToken = createSelector(
 
 export const getIsLoggedIn = createSelector(
     selectAccountState,
-    account => account.token != undefined
+    account => account.token !== undefined && account.token !== ''
 )

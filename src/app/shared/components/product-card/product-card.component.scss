@@ -1,4 +1,10 @@
 @import "/src/variables.scss";
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .cardElement {
   transition: box-shadow 0.3s;
   border-radius: 10px;
@@ -20,9 +26,9 @@
 }
 
 .simCartImg {
-  width: 90%;
+  width: 100%;
   height: 60%;
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
 .ratingStar {
@@ -41,8 +47,13 @@
 }
 
 .prodTitle {
+  height: 40px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: initial;
   text-overflow: ellipsis;
 }
 

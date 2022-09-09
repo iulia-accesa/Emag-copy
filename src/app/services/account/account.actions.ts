@@ -8,7 +8,8 @@ export enum AccountActionType {
     AUTHENTICATE_FAIL = '[Account] Authenticate Fail',
     LOAD_ACCOUNT_START = '[Account] Load Acount Page Start',
     LOAD_ACCOUNT_SUCCES = '[Account] Load Acount Page Succes',
-    LOAD_ACCOUNT_FAIL = '[Account] Load Acount Page Fail'
+    LOAD_ACCOUNT_FAIL = '[Account] Load Acount Page Fail',
+    LOGOUT = '[Account] Logout'
 }
 
 export const loginStart = createAction(
@@ -54,3 +55,7 @@ export const loadAccountFail = createAction(
         accountError: string
     }>()
 );
+
+export const logout = createAction(
+    AccountActionType.LOGOUT
+)

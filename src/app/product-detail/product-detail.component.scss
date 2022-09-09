@@ -83,13 +83,9 @@ max-height: 270px;
 }
 
 .listSimProd {
-padding: 20px ;
+  padding: 20px ;
   display: flex;
   justify-content: space-evenly;
-  overflow-x: scroll;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
   scrollbar-color: $nav-gradient $background-color;
   @include response(xl) {
     justify-content: space-between;
@@ -97,16 +93,6 @@ padding: 20px ;
   @include response(lg) {
     gap: 20px;
   }
-}
-
-.listSimProd::-webkit-scrollbar {
-  height: 15px;
-}
-
-.listSimProd::-webkit-scrollbar-thumb {
-  background: $nav-gradient;
-
-  border-radius: 20px;
 }
 
 .simProdItem {

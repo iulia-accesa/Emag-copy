@@ -28,7 +28,13 @@ export const reducer = createReducer(
             ...state,
             username: '',
             token: '',
-    })
+        })
+    ),
+    on (AccountActions.logout, state => ({
+            ...state,
+            username: '',
+            token: ''
+        })
     )
 );
 

@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="containerBackgr" *ngIf="product">
   <div class="containerWidth">
     <div class="componentContainer">
@@ -29,7 +28,7 @@
 <div class="containerWidth" *ngIf="productSimilar">
   <h1 class="simProdTitle">Similar Products</h1>
   <hr>
-  <div class="listSimProd">
+  <div class="listSimProd containerScrollbar">
     <div *ngFor="let item of productSimilar">
       <product-card-component
         class="simProdItem"
