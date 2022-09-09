@@ -18,6 +18,8 @@ export class CartService {
     private CartApiService: CartApiService
   ) {
     this.store.dispatch(CartActions.loadCart());
+
+    this.removeProduct(1);
   }
 
   addProduct(productId: number) {
@@ -40,7 +42,10 @@ export class CartService {
     );
   }
 
-  placeOrder(order: ICart) {
-    this.store.dispatch(CartActions.placeOrder({ order }));
-  }
+  /**
+   * To be implemented if it's neccessary
+   */
+  // placeOrder(order: ICart) {
+  //   this.store.dispatch(CartActions.placeOrder({ order }));
+  // }
 }
