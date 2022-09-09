@@ -11,15 +11,15 @@ import { AccountApiService } from './account-api.service';
 export class AccountEffects {
 
     constructor (
-        private actions$: Actions,
-        private accountApiService: AccountApiService
+        private _actions$: Actions,
+        private _accountApiService: AccountApiService
     ) {}
 
     accountLogin$ = createEffect(() => 
-        this.actions$.pipe(
+        this._actions$.pipe(
             ofType(AccountActions.loginStart),
             switchMap((accountData) => 
-                this.accountApiService.login(
+                this._accountApiService.login(
                         accountData.username,
                         accountData.password
                 )
@@ -32,10 +32,10 @@ export class AccountEffects {
     );
 
     accountLoad$ = createEffect(() =>
-        this.actions$.pipe(
+        this._actions$.pipe(
             ofType(AccountActions.loadAccountStart),
             switchMap(({ username }) => 
-                this.accountApiService.getUserByUsername(username)
+                this._accountApiService.getUserByUsername(username)
                 .pipe(
                     switchMap(resultData => {
                         if (resultData)
