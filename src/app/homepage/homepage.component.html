@@ -5,7 +5,7 @@
     <h2 class="categoryTitle">
       {{ category }}
     </h2>
-    <div class="productsContainer">
+    <div class="productsContainer containerScrollbar">
       <product-card-component
         *ngFor="let product of categorizedProducts$.get(category) | async"
         [product]="product"
