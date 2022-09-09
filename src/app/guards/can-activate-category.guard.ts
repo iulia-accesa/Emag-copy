@@ -1,4 +1,4 @@
-import { ProductApiService } from '../../services/product-api.service';
+import { ProductApiService } from '../services/product-api.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, UrlTree } from '@angular/router';
 import { Observable, map } from 'rxjs';
