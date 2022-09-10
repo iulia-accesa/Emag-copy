@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  
+} from '@angular/core';
 import { IProductApi } from '../shared/models/product-api.interface';
 import { ProductApiService } from '../services/product-api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,16 +16,26 @@ import { forkJoin } from 'rxjs';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
+  @ViewChild('addToCartBox', { read: ElementRef }) set addToCartBox(
+    content: ElementRef
+  ) {
+    if (content) {
+      this.setIntersectionObserver(content);
+    }
+  }
+  showAddToCart: boolean = false;
   product: IProductApi | undefined;
   productSimilar: IProductApi[] | undefined;
   productId: number = 0;
   prodCategory: string | undefined;
+  private observer:IntersectionObserver | undefined;
 
   constructor(
     private _productService: ProductApiService,
     private route: ActivatedRoute
   ) {}
+
 
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
@@ -32,6 +49,18 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  setIntersectionObserver(content: ElementRef) {
+    const observedElement = content?.nativeElement;
+    this.observer = new IntersectionObserver(([entry]) => {
+      this.renderContents(entry.isIntersecting);
+    });
+    this.observer.observe(observedElement);
+  }
+
+  renderContents(isIntersecting: boolean) {
+    this.showAddToCart = !isIntersecting;
+  }
+
   getSameCategory(productList: IProductApi[]): void {
     this.productSimilar = productList
       .filter((item: IProductApi) => {
@@ -39,4 +68,9 @@ export class ProductDetailComponent implements OnInit {
       })
       .slice(0, 5);
   }
+  ngOnDestroy(): void {
+    this.observer?.disconnect
+  }
 }
+
+

@@ -16,6 +16,7 @@
             </div>
           </section>
           <app-add-to-cart-box
+          #addToCartBox
             class="addToCartBox"
             [product]="product"
           ></app-add-to-cart-box>
@@ -42,3 +43,5 @@
   <h1 class="simProdTitle">User reviews</h1>
   <hr>
 </section>
+
+  <app-add-to-cart-button *ngIf="showAddToCart" class="stickComp"></app-add-to-cart-button>

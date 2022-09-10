@@ -19,34 +19,3 @@ export class AddToCartBoxComponent {
   constructor() {}
 }
 
-@Directive({
-  selector: '[isVisible]',
-})
-
-export class IsVisible implements AfterViewInit {
-
-  constructor(private vcRef: ViewContainerRef, private tplRef: TemplateRef<any>) {
-  }
-  
-  ngAfterViewInit() {
-    const observedElement = this.vcRef.element.nativeElement.parentElement
-    console.log(this.vcRef.element.nativeElement.parentElement.secondChild)
-    const observer = new IntersectionObserver(([entry]) => {
-      this.renderContents(entry.isIntersecting)
-    })
-    observer.observe(observedElement)
-  }
-  
-  renderContents(isIntersecting: boolean) {
-    
-    this.vcRef.clear()
-    
-    if (!isIntersecting) {
-      this.vcRef.createEmbeddedView(this.tplRef)
-      console.log("i'm here")
-    } else{
-      console.log("i'm not anymore here")
-      
-    }
-  }
-}

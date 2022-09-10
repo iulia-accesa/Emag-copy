@@ -83,6 +83,7 @@ max-height: 270px;
 }
 
 .listSimProd {
+  max-width: 1520px;
   padding: 20px ;
   display: flex;
   justify-content: space-evenly;
@@ -107,10 +108,17 @@ max-height: 270px;
 
 .stickComp{
   position: fixed;
-  
+  top: 0px;
+  margin: 0;
+  padding: 0;
+  @include response(md){
+    top:unset;
+    bottom: 0;
+  }
+
 }
 
 .reviewSection{
-  width: 100%;
+  max-width: 1520px;
   height: 340px;
 }
