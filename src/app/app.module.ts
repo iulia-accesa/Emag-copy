@@ -50,14 +50,14 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
     SearchBarComponent,
     ProductCardComponent,
     UserAccountComponent,
-    HomepageComponent, 
+    HomepageComponent,
     HomepageComponent,
     MenuComponent,
     CarouselComponent,
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
 
   imports: [
