@@ -15,8 +15,6 @@ export class HeaderComponent implements OnInit {
   user: IUser | undefined;
   error: string = '';
   isLogged: boolean = false;
-  btn1 = document.getElementById('buttonIfLoggedIn') as HTMLElement;
-  btn2 = document.getElementById('buttonIfNotLoggedIn') as HTMLElement;
 
   constructor(
     private _router: Router,
