@@ -13,6 +13,7 @@ header {
     outline: none;
     text-align: center;
     cursor: pointer;
+    z-index: 1050;
 
     .button-descriptions {
       font-size: 14px;
@@ -20,6 +21,10 @@ header {
       margin-top: 4px;
       padding-left: 5px;
     }
+  }
+
+  .mat-button-focus-overlay {
+    background-color: transparent !important;
   }
 
   .disabled {
