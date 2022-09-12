@@ -42,7 +42,6 @@ import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
-import { LoginTemplateComponent } from './login-template/login-template.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { LoginTemplateComponent } from './login-template/login-template.componen
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
-    LoginTemplateComponent,
     MainTemplateComponent
   ],
 
