@@ -1,6 +1,6 @@
 import { Order } from './order.type';
 
 export interface IOrderGroup {
-  price: Order;
-  title: Order;
+  price?: Order;
+  title?: Order;
 }

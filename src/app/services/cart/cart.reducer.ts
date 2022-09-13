@@ -1,12 +1,12 @@
-import { ICartProduct } from './../../shared/models/cart-product.interface';
-import { ICart } from './../../shared/models/cart.interface';
+import { ICartProduct } from './cart-product.interface';
+import { ICart } from './cart.interface';
 import { Action, createReducer, on, ActionReducerMap } from '@ngrx/store';
 import * as CartActions from './cart.actions';
 
 export const cartFeatureKey = 'cart';
 
 export interface State {
-  activeCart: ICart;
+  activeCart: ICart | undefined;
 }
 
 export const initialState: State = {
@@ -22,55 +22,8 @@ const loadCartHelper = (activeCart: ICart): ICart => {
     userId: undefined,
     date: undefined,
     products: [],
-  };
-};
-
-const addProductSuccessHelper = (cart: ICart, productId: number): ICart => {
-  let updatedProducts = [...cart.products];
-  const productPosition = updatedProducts.findIndex(
-    (cart) => cart.productId === productId
-  );
-
-  if (productPosition !== -1) {
-    let product = {
-      ...updatedProducts[productPosition],
-    };
-    product.quantity++;
-    updatedProducts[productPosition] = product;
-  } else {
-    updatedProducts.push({
-      productId: productId,
-      quantity: 1,
-    });
-  }
-
-  return {
-    ...cart,
-    products: updatedProducts,
-  };
-};
-
-const removeProductSuccessHelper = (cart: ICart, productId: number): ICart => {
-  let updatedProducts = [...cart.products];
-  const productPosition = updatedProducts.findIndex(
-    (cart) => cart.productId === productId
-  );
-
-  if (productPosition !== -1) {
-    let product = {
-      ...updatedProducts[productPosition],
-    };
-    if (product.quantity > 1) {
-      product.quantity--;
-      updatedProducts[productPosition] = product;
-    } else {
-      updatedProducts.splice(productPosition, 1);
-    }
-  }
-
-  return {
-    ...cart,
-    products: updatedProducts,
+    discountPercentage: 0,
+    shipping: 15,
   };
 };
 
@@ -85,16 +38,35 @@ export const reducer = createReducer(
   on(CartActions.addProduct, (state, action) => {
     return {
       ...state,
-      activeCart: addProductSuccessHelper(state.activeCart, action.productId),
+      activeCart: {
+        ...state.activeCart,
+        products: [...state.activeCart?.products!, action.product],
+      },
     };
   }),
   on(CartActions.removeProduct, (state, action) => {
+    let productState = [...state.activeCart?.products!];
+    productState.splice(action.productPosition, 1);
+
     return {
       ...state,
-      activeCart: removeProductSuccessHelper(
-        state.activeCart,
-        action.productId
-      ),
+      activeCart: {
+        ...state.activeCart,
+        products: productState,
+      },
+    };
+  }),
+  on(CartActions.setProductQuantity, (state, action) => {
+    console.log(state, action);
+    let productState = [...state.activeCart?.products!];
+    productState.splice(action.productPosition, 1, action.product);
+
+    return {
+      ...state,
+      activeCart: {
+        ...state.activeCart,
+        products: productState,
+      },
     };
   })
 );

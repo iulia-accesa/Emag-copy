@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ICart } from './../../shared/models/cart.interface';
+import { ICart } from './cart.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

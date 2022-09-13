@@ -37,9 +37,6 @@ export const initialState: State = {
 /**
  * Helper functions for the reducers
  */
-const removeFromFavorites = (favoriteIdList: number[], favId: number) => {
-  return favoriteIdList.filter((id) => id !== favId);
-};
 
 const orderByPrice = (products: IProduct[], order: Order | ''): IProduct[] => {
   if (order) {
@@ -102,10 +99,12 @@ const filterAndOrderProducts = (
   filterGroup: IFilterGroup,
   orderGroup: IOrderGroup
 ): IProduct[] => {
-  products = filterByPrice(products, filterGroup.priceRange);
-  products = filterByRating(products, filterGroup.ratings);
-  products = orderByPrice(products, orderGroup.price);
-  products = orderByTitle(products, orderGroup.title);
+  if (filterGroup.priceRange)
+    products = filterByPrice(products, filterGroup.priceRange);
+  if (filterGroup.ratings)
+    products = filterByRating(products, filterGroup.ratings);
+  if (orderGroup.price) products = orderByPrice(products, orderGroup.price);
+  if (orderGroup.title) products = orderByTitle(products, orderGroup.title);
 
   return products;
 };

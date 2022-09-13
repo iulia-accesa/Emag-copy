@@ -1,16 +1,23 @@
-import { ICart } from './../../shared/models/cart.interface';
+import { ICartProduct } from './cart-product.interface';
+import { IProduct } from 'src/app/shared/models/product.interface';
+import { ICart } from './cart.interface';
 import { createAction, props } from '@ngrx/store';
 
 export const loadCart = createAction('[Cart] Load Cart');
 
 export const addProduct = createAction(
   '[Cart] Product Added',
-  props<{ productId: number }>()
+  props<{ product: ICartProduct }>()
 );
 
 export const removeProduct = createAction(
   '[Cart] Product Removed',
-  props<{ productId: number }>()
+  props<{ productPosition: number }>()
+);
+
+export const setProductQuantity = createAction(
+  '[Cart] Product Quantity Set',
+  props<{ productPosition: number; product: ICartProduct }>()
 );
 
 export const placeOrder = createAction(

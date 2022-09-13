@@ -31,11 +31,11 @@ export class ProductListService {
 
   getAll(): Observable<IProduct[]> {
     return this.productApiService.getAll().pipe(
-      map((products: IProduct[]) => {
+      map((products: IProductApi[]) => {
         return products.map((product) => {
           return {
             ...product,
-            favorite: false,
+            favourite: false,
           };
         });
       })
@@ -44,11 +44,11 @@ export class ProductListService {
 
   getByCategory(category: string): Observable<IProduct[]> {
     return this.productApiService.getByCategory(category).pipe(
-      map((products: IProduct[]) => {
+      map((products: IProductApi[]) => {
         return products.map((product) => {
           return {
             ...product,
-            favorite: false,
+            favourite: false,
           };
         });
       })
@@ -56,15 +56,20 @@ export class ProductListService {
   }
 
   getBySearch(searchKey: string): Observable<IProduct[]> {
-    return this.productApiService
-      .getAll()
-      .pipe(
-        map((products: IProduct[]) =>
-          products.filter((product) =>
+    return this.productApiService.getAll().pipe(
+      map((products: IProductApi[]) =>
+        products
+          .filter((product) =>
             this.productsMatchesSearchKey(product, searchKey)
           )
-        )
-      );
+          .map((product) => {
+            return {
+              ...product,
+              favourite: false,
+            };
+          })
+      )
+    );
   }
 
   getPriceRange(): Observable<IPriceRange> {

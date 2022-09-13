@@ -3,13 +3,7 @@ import { IFilterGroup } from './../../models/filter-group.interface';
 import { IOrderGroup } from './../../models/order-group.interface';
 import { Store } from '@ngrx/store';
 import { ProductListService } from '../../../services/product-list/product-list.service';
-import {
-  Component,
-  Input,
-  OnInit,
-  ViewEncapsulation,
-  OnChanges,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 

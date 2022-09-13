@@ -7,13 +7,7 @@ import { Observable, map } from 'rxjs';
 export class CanActivateCategory implements CanActivate {
   constructor(private productApiService: ProductApiService) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot
-  ):
-    | boolean
-    | UrlTree
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.productApiService.getAllCategories().pipe(
       map((categories) => {
         return categories.includes(route.params['categoryName']);

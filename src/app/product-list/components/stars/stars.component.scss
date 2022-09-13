@@ -1,0 +1,14 @@
+.stars {
+  mat-icon {
+    transform: scale(0.8) translateY(4px);
+    margin-right: -4px;
+
+    &.empty {
+      color: #adadad;
+    }
+
+    &.filled {
+      color: rgba(207, 160, 31, 0.897);
+    }
+  }
+}

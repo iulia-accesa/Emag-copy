@@ -6,13 +6,7 @@ import { Observable } from 'rxjs';
 export class CanActivateSearchKey implements CanActivate {
   constructor() {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot
-  ):
-    | boolean
-    | UrlTree
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     return !!route.queryParams['key'];
   }
 }

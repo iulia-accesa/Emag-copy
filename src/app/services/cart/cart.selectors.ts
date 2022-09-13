@@ -7,5 +7,15 @@ export const selectCartState = createFeatureSelector<fromCart.State>(
 
 export const getProductList = createSelector(
   selectCartState,
-  (cart) => cart.activeCart.products
+  (cart) => cart?.activeCart?.products
+);
+
+export const getDiscountPercentage = createSelector(
+  selectCartState,
+  (cart) => cart?.activeCart?.discountPercentage
+);
+
+export const getShipping = createSelector(
+  selectCartState,
+  (cart) => cart.activeCart?.shipping
 );

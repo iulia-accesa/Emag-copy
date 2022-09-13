@@ -57,6 +57,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductListServiceEffects } from './services/product-list/product-list-service.effects';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { StarsComponent } from './product-list/components/stars/stars.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ListContainerComponent,
     FiltersComponent,
     HeaderComponent,
+    StarsComponent,
   ],
 
   imports: [

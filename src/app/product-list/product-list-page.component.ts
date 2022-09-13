@@ -1,3 +1,4 @@
+import { CartService } from './../services/cart/cart.service';
 import { IFilterGroup } from './models/filter-group.interface';
 import { IOrderGroup } from './models/order-group.interface';
 import { IProduct } from './../shared/models/product.interface';
@@ -17,11 +18,18 @@ import { selectAllProducts } from '../services/product-list/product-list.selecto
 export class ProductListPageComponent implements OnInit {
   pagePath: string;
   protected productList$: Observable<IProduct[]>;
-  protected cartItemList$: Observable<number[]>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private cartService: CartService) {
     this.productList$ = this.store.select(selectAllProducts);
     this.pagePath = this.getPagePath();
+
+    this.cartService.addProduct(3);
+    this.cartService.addProduct(3);
+    this.cartService.addProduct(6);
+    this.cartService.addProduct(7);
+    this.cartService.addProduct(11);
+    this.cartService.getProductList$().subscribe((l) => console.log(l));
+    this.cartService.getDiscountPercentage$;
 
     switch (this.pagePath) {
       case 'category':
@@ -60,7 +68,7 @@ export class ProductListPageComponent implements OnInit {
     const urlParams = new URLSearchParams(window.location.search);
     const key = urlParams.get('key');
 
-    return key;
+    return key ? key : '';
   }
 
   getProductCount(): Observable<number> {
@@ -81,11 +89,15 @@ export class ProductListPageComponent implements OnInit {
         );
         break;
       case 'search':
-        this.store.dispatch(
-          ProductListPageActions.enterWithSearch({
-            key: this.getSearchKey(),
-          })
-        );
+        {
+          const key = this.getSearchKey();
+
+          this.store.dispatch(
+            ProductListPageActions.enterWithSearch({
+              key: key ? key : '',
+            })
+          );
+        }
         break;
     }
   }

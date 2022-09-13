@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumb-nav.component.scss'],
 })
 export class BreadcrumbNavComponent {
-  categoryPath: string;
+  categoryPath: string | null;
 
   constructor(route: ActivatedRoute) {
-    this.categoryPath = route.snapshot.paramMap['params'].categoryName;
+    this.categoryPath = route.snapshot.paramMap.get('categoryName');
   }
 }
