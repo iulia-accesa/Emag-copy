@@ -4,13 +4,13 @@ import {
   ViewChild,
   ElementRef,
   OnDestroy,
-  
 } from '@angular/core';
 import { IProductApi } from '../shared/models/product-api.interface';
 import { ProductApiService } from '../services/product-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { getPercentage } from '../shared/function/functionTest';
+import { DiscoutPersentageService } from '../services/discout-persentage.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -30,14 +30,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productSimilar: IProductApi[] | undefined;
   productId: number = 0;
   prodCategory: string | undefined;
-  private observer:IntersectionObserver | undefined;
-  discountPers: number = 0
+  private observer: IntersectionObserver | undefined;
+  discountPers: number = 0;
 
   constructor(
     private _productService: ProductApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private shared: DiscoutPersentageService
   ) {}
-
 
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
@@ -48,7 +48,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.product = res[0];
       this.prodCategory = this.product.category;
       this.getSameCategory(res[1]);
-      this.discountPers = getPercentage(this.product.rating.rate)
+      this.discountPers = this.shared.getPercentage(this.product.rating.rate)      
     });
   }
 
@@ -72,8 +72,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       .slice(0, 5);
   }
   ngOnDestroy(): void {
-    this.observer?.disconnect
+    this.observer?.disconnect;
   }
 }
-
-
