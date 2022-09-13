@@ -1,6 +1,11 @@
 <mat-card class="productPriceGoToCart" *ngIf="_product">
-  <div class="newPrice">Rs. {{ _product.price }}</div>
-  <div>Stock :</div>
+  <div class="priceCard">
+    <div *ngIf="discountPers > 10" class="discPers">
+      ({{ discountPers }}% off)
+    </div>
+    <div class="newPrice">{{ _product.price }}$</div>
+    <div *ngIf="discountPers > 10" class="oldPrice">{{ oldPrice }}$</div>
+  </div>
   <div class="ratings">
     <div
       *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
@@ -11,7 +16,7 @@
     {{ _product.rating.rate }}
   </div>
 
-  <app-add-to-cart-button ></app-add-to-cart-button>
+  <app-add-to-cart-button></app-add-to-cart-button>
 
   <button class="myFavorite">
     <img class="favIcon" src="./assets/images/favIcon.svg" alt="" />

@@ -10,6 +10,7 @@ import { IProductApi } from '../shared/models/product-api.interface';
 import { ProductApiService } from '../services/product-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { getPercentage } from '../shared/function/functionTest';
 
 @Component({
   selector: 'app-product-detail',
@@ -30,6 +31,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productId: number = 0;
   prodCategory: string | undefined;
   private observer:IntersectionObserver | undefined;
+  discountPers: number = 0
 
   constructor(
     private _productService: ProductApiService,
@@ -46,6 +48,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.product = res[0];
       this.prodCategory = this.product.category;
       this.getSameCategory(res[1]);
+      this.discountPers = getPercentage(this.product.rating.rate)
     });
   }
 

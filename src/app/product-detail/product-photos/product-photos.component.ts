@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { getPercentage } from 'src/app/shared/function/functionTest';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Component({
@@ -12,8 +13,15 @@ export class ProductPhotosComponent {
       this._product = value;
     }
   }
-  public _product: IProductApi | undefined;
-  public image: string | undefined;
+  _product: IProductApi | undefined;
+  image: string | undefined;
+  discountPers:number = 0;
 
   constructor() {}
+
+  ngOnInit(){
+    if(this._product){
+      this.discountPers = getPercentage(this._product.rating.rate)
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { getPercentage } from '../../function/functionTest';
 
 import { IProductApi } from '../../models/product-api.interface';
 
@@ -14,8 +15,14 @@ export class ProductCardComponent {
       this.prodRating = Math.round(this._product.rating.rate);
     }
   }
-  public _product: IProductApi | undefined;
-  public prodRating = 0;
-  
+  _product: IProductApi | undefined;
+  prodRating = 0;
+  discountPers: number = 0;
   constructor() {}
+
+  ngOnInit() {
+    if (this._product) {
+      this.discountPers = getPercentage(this._product.rating.rate);
+    }
+  }
 }

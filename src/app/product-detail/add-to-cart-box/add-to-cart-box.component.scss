@@ -1,5 +1,5 @@
-@import "/src/variables.scss";
-@import "/src/app/shared/styles/mixins";
+@import "variables";
+@import "mixins";
 
 .productPriceGoToCart {
   margin-left: 30px;
@@ -19,16 +19,12 @@
   }
 }
 
-.newPrice {
-  line-height: 40px;
-  font-size: 24px;
-  color: $price-color;
-}
-
 .ratings {
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
+  align-items: center;
+  gap: 5px;
 }
 
 .blueQuad {
@@ -120,4 +116,32 @@
   transform: translate(-5px, -33px);
   left: 8px;
   transition: 1s;
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.newPrice {
+  font-size: 24px;
+  color: $price-color;
+  font-weight: bold;
+}
+
+.discPers {
+  font-size: 14px;
+}
+
+.oldPrice {
+  text-decoration-line: line-through;
+  font-size: 22px;
+  color: #222222;
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
 }

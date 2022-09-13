@@ -9,10 +9,9 @@
         <div class="detailsContainer">
           <section class="productDescription">
             <div class="descriptionItem"></div>
-            <div class="descriptionItem">Category : {{ product.category }}</div>
-            <div class="descriptionItem">Sold By :</div>
+            <div class="descriptionItem"> <b>Category</b> : {{ product.category }}</div>
             <div class="descriptionItem">
-              Description : {{ product.description }}
+              <b>Description</b> :<br> {{ product.description }}
             </div>
           </section>
           <app-add-to-cart-box
@@ -32,6 +31,7 @@
   <div class="listSimProd containerScrollbar">
     <div *ngFor="let item of productSimilar">
       <product-card-component
+      
         class="simProdItem"
         [product]="item"
       ></product-card-component>
@@ -44,4 +44,13 @@
   <hr>
 </section>
 
-  <app-add-to-cart-button *ngIf="showAddToCart" class="stickComp"></app-add-to-cart-button>
+  
+<div class="stickContainer" *ngIf="showAddToCart && product">
+  <div  class="stickBox" >
+    <img [src]="product.image" alt="" class="mainImgStickComp">
+    <div class="titleStickComp">{{product.title}} </div>
+    <div class="priceStickComp">{{product.price}} $ </div>
+    <app-add-to-cart-button  class="stickComp"></app-add-to-cart-button>
+    <img src="./../../assets/images/favorite-4-128.png" alt="" class="favIconStickComp">
+  </div>
+</div>

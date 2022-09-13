@@ -1,4 +1,4 @@
-@import "/src/variables.scss";
+@import "variables";
 
 a {
   color: inherit;
@@ -72,4 +72,18 @@ a {
   height: 35px;
   width: 35px;
   transform: translate(-2px, 3px);
+}
+
+.discountIcon {
+  position: absolute;
+  width: 67px;
+  height: 25px;
+  color: #fff;
+  background-image: linear-gradient(287deg, #f0280a 0%, #bc2610 100%);
+  top: 20px;
+  left: 0px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
