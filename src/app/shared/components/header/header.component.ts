@@ -34,6 +34,9 @@ export class HeaderComponent implements OnInit {
       this._router.navigate(['/login']);
     }
   }
+  btnMyCart(): void {
+    this._router.navigate(['/cart-overview']);
+  }
   onLogout(): void {
     this._accountService.logout();
   }
