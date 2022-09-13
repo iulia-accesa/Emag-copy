@@ -7,15 +7,16 @@ import { LoginComponent } from './account/login/login.component';
 import { AccountGuard } from './guards/account.guard';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { LoginGuard } from './guards/login.guard';
-
-
+import { MainTemplateComponent } from './main-template/main-template.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-  { path: 'my-account', component: UserAccountComponent, canActivate: [AccountGuard] },
-  // { path: 'products', component: ProductListPageComponent },
-   { path: 'products/:id', component: ProductDetailComponent }
+  { path: '', component: MainTemplateComponent, children: [
+    { path: '', component: HomepageComponent },
+    { path: 'my-account', component: UserAccountComponent, canActivate: [AccountGuard] },
+    { path: 'products/:id', component: ProductDetailComponent },
+    // { path: 'products', component: ProductListPageComponent },
+  ] }
 ];
 
 @NgModule({
