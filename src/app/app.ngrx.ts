@@ -2,9 +2,10 @@ import { ActionReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { accountReducers } from './services/account/account.reducer';
+import { historyReducer } from './services/navigation-history/history.reducer';
 import { searchReducers } from './services/search/search.reducer';
 
-export const APP_REDUCERS = { ...accountReducers,...searchReducers };
+export const APP_REDUCERS = { ...accountReducers, ...searchReducers, ...historyReducer };
 
 const SyncLocalStorage = localStorageSync({
   keys: ['account'], rehydrate: true, storage: localStorage

@@ -44,6 +44,8 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
 import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
+import { NavigationHistoryComponent } from './shared/components/navigation-history/navigation-history.component';
+import { HistoryService } from './services/navigation-history/history.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { CartOverviewComponent } from './cart-overview/cart-overview.component';
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
-    MainTemplateComponent,
+    MainTemplateComponent,,
+    NavigationHistoryComponent
 
     CartOverviewComponent,
 
@@ -106,6 +109,7 @@ import { CartOverviewComponent } from './cart-overview/cart-overview.component';
     AccountService,
     ProductApiService,
     SearchBarService,
+    HistoryService,
   ],
   bootstrap: [AppComponent],
 })

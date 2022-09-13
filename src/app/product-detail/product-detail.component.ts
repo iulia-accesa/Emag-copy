@@ -7,9 +7,10 @@ import {
 } from '@angular/core';
 import { IProductApi } from '../shared/models/product-api.interface';
 import { ProductApiService } from '../services/product-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, forkJoin } from 'rxjs';
 import { DiscoutPercentageService } from '../services/discout-percentage.service';
+import { HistoryService } from '../services/navigation-history/history.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -34,22 +35,28 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private _productService: ProductApiService,
+    private historyService: HistoryService,
     private route: ActivatedRoute,
-    private discoutPercentageService: DiscoutPercentageService
+    private discoutPercentageService: DiscoutPercentageService,
   ) {}
 
   ngOnInit() {
-    this.productId = this.route.snapshot.params['id'];
-    forkJoin([
-      this._productService.getById(this.productId),
-      this._productService.getAll(),
-    ]).subscribe((res) => {
-      this.product = res[0];
-      this.prodCategory = this.product.category;
-      this.getSameCategory(res[1]);
+    this.route.url.subscribe(url =>{
+      console.log(url);
+      this.productId = this.route.snapshot.params['id'];
+      forkJoin([
+        this._productService.getById(this.productId),
+        this._productService.getAll(),
+      ]).subscribe((res) => {
+        this.product = res[0];
+        this.prodCategory = this.product.category;
+        this.getSameCategory(res[1]);
       this.discountPers = this.discoutPercentageService.getPercentage(
         this.product.rating.rate
       );
+        console.log('test');
+        this.historyService.updateHistory$(this.product.image, this.product.category);
+      });
     });
   }
 
