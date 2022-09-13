@@ -1,17 +1,16 @@
 @import "/src/variables.scss";
 @import "/src/app/shared/styles/mixins";
 
-.header-wrapper {
-  width: 100%;
-  background: #ffffff;
-}
-
 header {
   max-width: 1520px;
   margin: 0 auto;
   background-color: #ffffff;
   @include flexCenter();
   padding: 10px 0px 0px 20px;
+  &:host {
+    width: 100% !important;
+    background: #ffffff !important;
+  }
   .btn {
     margin-top: -5px;
     display: flex;
@@ -20,8 +19,6 @@ header {
     outline: none;
     text-align: center;
     cursor: pointer;
-    z-index: 1050;
-
     .button-descriptions {
       font-size: 14px;
       font-weight: 500;
@@ -42,7 +39,6 @@ header {
     display: flex;
     flex-direction: row;
   }
-
   .navbar-button-group {
     @include flexCenter();
   }
@@ -58,6 +54,9 @@ header {
   .img_emag {
     width: 177px;
     height: 46.75px;
+    @include response(sm) {
+      width: 120px;
+    }
   }
 
   .navbar-brand {
@@ -112,7 +111,6 @@ app-searchbar {
 }
 
 .navbar-searchbox {
-  min-width: 200px;
   text-align: right;
   position: relative;
   flex: 1;
