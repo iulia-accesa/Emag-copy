@@ -146,12 +146,6 @@ input[type="search"] {
   display: flex;
   flex-direction: row;
   white-space: nowrap;
-  &:focus {
-    background: transparent;
-  }
-  &:active {
-    background: transparent;
-  }
 }
 
 @include response(sm) {

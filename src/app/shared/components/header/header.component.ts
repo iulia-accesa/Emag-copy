@@ -2,8 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account/account.service';
 import { take } from 'rxjs';
-import { IUser } from 'src/app/services/account/user.interface';
-import { getIsLoggedIn } from 'src/app/services/account/account.selectors';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +10,6 @@ import { getIsLoggedIn } from 'src/app/services/account/account.selectors';
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
-  user: IUser | undefined;
   error: string = '';
   isLogged: boolean = false;
 
