@@ -18,7 +18,10 @@
     align-items: center;
     margin-left: 0 auto;
     background: #e4f1f9;
-    min-width: 700px;
+    min-width: 600px;
+    @include response(sm) {
+      min-width: 100%;
+    }
     .products {
       width: 90%;
       display: flex;
@@ -26,6 +29,9 @@
       box-shadow: 1px 1px 2px #bbc6cc;
       padding: 30px 25px 20px 25px;
       border-radius: 5px;
+      @include response(sm) {
+        width: 80%;
+      }
     }
   }
   .cost-detail {
@@ -124,7 +130,7 @@
     flex-direction: column !important;
     padding: 48px 15px 0 15px;
     @include response(md) {
-      padding: 48px 30px 0 15px;
+      padding: 48px 0px 0px 0px;
       min-width: 220px;
     }
   }
