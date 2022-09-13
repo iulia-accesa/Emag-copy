@@ -1,3 +1,5 @@
+@import "../shared/styles/mixins";
+
 .homepageCategoriesContainer {
   width: 95%;
   padding: 2.5%;
@@ -15,5 +17,29 @@
 
 .productsContainer {
   display: block;
-  margin-top: 20px;
+}
+
+.productsContainer,
+.categoryTitle {
+  margin: 20px 70px 0px 3%;
+
+  @include response(xxl) {
+    margin: 20px 65px 0px 60px;
+  }
+
+  @include response(xl) {
+    margin: 20px 70px 0px 65px;
+  }
+
+  @include response(lg) {
+    margin: 20px 75px 0px 70px;
+  }
+
+  @include response(md) {
+    margin: 20px 30px 0px 30px;
+  }
+
+  @include response(md-sm) {
+    margin: 15px auto 0px auto;
+  }
 }
