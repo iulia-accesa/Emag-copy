@@ -1,10 +1,11 @@
-@import "/app/shared/styles/mixins";
+@import "mixins";
 
 .containerLeftSide {
   display: flex;
   flex-direction: row;
   padding: 0;
   margin-bottom: 30px;
+  overflow: hidden;
   @include response(md) {
     justify-content: center;
   }
@@ -26,6 +27,8 @@
   border-radius: 5px;
   width: 100%;
   height: 100%;
+  max-width: 650px;
+  max-height: 800px;
   @include response(lg) {
   }
   @include response(md) {
@@ -41,6 +44,7 @@
 .mainPosition {
   display: flex;
   justify-content: center;
+  margin: 15px;
 }
 
 .listSecondaryPhoto {
@@ -64,4 +68,19 @@
 
 img {
   border: 2px solid transparent;
+}
+
+.badge{
+  position: absolute;
+  width: 107px;
+  height: 37px;
+  color: #fff;
+  background-image: linear-gradient(287deg, #f0280a 0%, #bc2610 100%);
+  top: 27px;
+  left: 0px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 }
