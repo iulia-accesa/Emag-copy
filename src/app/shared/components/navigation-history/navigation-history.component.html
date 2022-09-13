@@ -5,19 +5,14 @@
       class="history-product"
       *ngFor="let prod of productsHistory"
       [id]="prod.category"
-      (click)="openSimilar()"
+      (click)="getSameCategory(prod.category)"
     >
       <img [src]="prod.image" alt="Product image" class="prod-img" />
     </a>
   </div>
 
-  <h3 class="subtitle">Other users also liked:</h3>
-  <div class="similar-products">
-    <product-card-component
-      class="product-card"
-      *ngFor="let prod of products"
-      [product]="prod"
-      (click)="productRedirect(prod.id)"
-    ></product-card-component>
+  <div *ngIf="similarProducts" >
+    <h3 class="subtitle">Other users also liked:</h3>
+    <app-similar-products [products]="similarProducts"></app-similar-products>
   </div>
 </div>

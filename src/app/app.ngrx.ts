@@ -8,7 +8,7 @@ import { searchReducers } from './services/search/search.reducer';
 export const APP_REDUCERS = { ...accountReducers, ...searchReducers, ...historyReducer };
 
 const SyncLocalStorage = localStorageSync({
-  keys: ['account'], rehydrate: true, storage: localStorage
+  keys: ['account', 'history'], rehydrate: true, storage: localStorage
 });
 
 export function localStorageSyncWrapper(reducer: any): ActionReducer<any, any> {

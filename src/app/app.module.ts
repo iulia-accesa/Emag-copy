@@ -46,6 +46,7 @@ import { MainTemplateComponent } from './main-template/main-template.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { NavigationHistoryComponent } from './shared/components/navigation-history/navigation-history.component';
 import { HistoryService } from './services/navigation-history/history.service';
+import { SimilarProductsComponent } from './shared/components/similar-products/similar-products.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +64,9 @@ import { HistoryService } from './services/navigation-history/history.service';
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
-    MainTemplateComponent,,
-    NavigationHistoryComponent
+    MainTemplateComponent,
+    NavigationHistoryComponent,
+    SimilarProductsComponent
 
     CartOverviewComponent,
 

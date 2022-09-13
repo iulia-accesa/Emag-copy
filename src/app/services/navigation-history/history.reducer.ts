@@ -19,11 +19,15 @@ export const reducer = createReducer(
     initialState,
 
     on (HistoryActions.updateHistory, (state, action) => {
-        let newState: any[] = state.productHistory ? [...state.productHistory] : [];
+        // let newState: any[] = state.productHistory ? [...state.productHistory] : [];
         const newProduct = {
             image: action.image,
             category: action.category
         };
+        let newState:  {
+            image: string,
+            category: string
+        }[] = state.productHistory ? [...state.productHistory.filter(item => item.image !== newProduct.image || item.category !== newProduct.category)] : [];
         newState.unshift(newProduct);
         newState = newState.slice(0, 5);
         return {productHistory: newState};
