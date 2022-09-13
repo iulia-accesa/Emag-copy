@@ -51,7 +51,7 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     SearchBarComponent,
     ProductCardComponent,
     UserAccountComponent,
-    HomepageComponent, 
+    HomepageComponent,
     HomepageComponent,
     MenuComponent,
     CarouselComponent,
@@ -59,7 +59,7 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
-    MainTemplateComponent
+    MainTemplateComponent,
   ],
 
   imports: [
