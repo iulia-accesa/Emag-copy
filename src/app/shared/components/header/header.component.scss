@@ -38,18 +38,6 @@ header {
     display: none;
   }
 
-  mat-toolbar {
-    display: flex;
-    background: #ffffff !important;
-    flex: 0;
-    position: relative;
-    padding: 0px 0px 0px 0px;
-    .toolbar-icon {
-      background: #ffffff;
-      border: 0;
-      cursor: pointer;
-    }
-  }
   .input-group {
     display: flex;
     flex-direction: row;
@@ -124,6 +112,8 @@ app-searchbar {
 }
 
 .navbar-searchbox {
+  min-width: 200px;
+  text-align: right;
   position: relative;
   flex: 1;
 }
@@ -141,6 +131,7 @@ input[type="search"] {
     width: 0px;
     border: none;
     cursor: pointer;
+    right: 0px;
     &:focus-within {
       width: 200px;
       border: 1px solid #005eb8;
