@@ -54,9 +54,6 @@ header {
   .img_emag {
     width: 177px;
     height: 46.75px;
-    @include response(sm) {
-      width: 120px;
-    }
   }
 
   .navbar-brand {
