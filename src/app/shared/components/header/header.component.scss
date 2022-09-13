@@ -1,7 +1,14 @@
 @import "/src/variables.scss";
 @import "/src/app/shared/styles/mixins";
 
+.header-wrapper {
+  width: 100%;
+  background: #ffffff;
+}
+
 header {
+  max-width: 1520px;
+  margin: 0 auto;
   background-color: #ffffff;
   @include flexCenter();
   padding: 10px 0px 0px 20px;
@@ -33,16 +40,16 @@ header {
 
   mat-toolbar {
     display: flex;
+    background: #ffffff !important;
     flex: 0;
     position: relative;
     padding: 0px 0px 0px 0px;
     .toolbar-icon {
-      background: transparent;
+      background: #ffffff;
       border: 0;
       cursor: pointer;
     }
   }
-
   .input-group {
     display: flex;
     flex-direction: row;
