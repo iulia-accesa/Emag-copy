@@ -12,22 +12,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
 import { AddToCartBoxComponent } from './product-detail/add-to-cart-box/add-to-cart-box.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { AccountApiService } from './services/account/account-api.service';
 import { MenuComponent } from './shared/components/menu-categories/menu.component';
@@ -41,6 +41,7 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
+import { MainTemplateComponent } from './main-template/main-template.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
+    MainTemplateComponent,
   ],
 
   imports: [
