@@ -19,13 +19,9 @@ $nav-gradient: linear-gradient(
   box-sizing: border-box;
   list-style: none;
   display: flex;
-  margin: 0 116px;
+  margin: 0 90px;
   @include response(4k) {
-    margin: 0 444px;
-  }
-
-  @include response(xxxl) {
-    margin: 0 90px;
+    margin: 0 385px;
   }
 
   @include response(md) {
@@ -152,7 +148,7 @@ mat-icon {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  width: 1400px;
+  width: 1520px;
   height: auto;
   background-color: #fff;
   box-shadow: #333;
