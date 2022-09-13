@@ -8,28 +8,35 @@ import { LoginComponent } from './account/login/login.component';
 import { AccountGuard } from './guards/account.guard';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { LoginGuard } from './guards/login.guard';
+import { MainTemplateComponent } from './main-template/main-template.component';
 import { ProductListPageComponent } from './product-list/product-list-page.component';
 import { CanActivateSearchKey } from './guards/can-activate-search-key.guard';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   {
-    path: 'my-account',
-    component: UserAccountComponent,
-    canActivate: [AccountGuard],
+    path: '',
+    component: MainTemplateComponent,
+    children: [
+      { path: '', component: HomepageComponent },
+      {
+        path: 'my-account',
+        component: UserAccountComponent,
+        canActivate: [AccountGuard],
+      },
+      { path: 'products/:id', component: ProductDetailComponent },
+      {
+        path: 'category/:categoryName',
+        component: ProductListPageComponent,
+        canActivate: [CanActivateCategory],
+      },
+      {
+        path: 'search',
+        component: ProductListPageComponent,
+        canActivate: [CanActivateSearchKey],
+      },
+    ],
   },
-  {
-    path: 'category/:categoryName',
-    component: ProductListPageComponent,
-    canActivate: [CanActivateCategory],
-  },
-  {
-    path: 'search',
-    component: ProductListPageComponent,
-    canActivate: [CanActivateSearchKey],
-  },
-  { path: 'products/:id', component: ProductDetailComponent },
 ];
 
 @NgModule({

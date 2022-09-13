@@ -121,7 +121,6 @@ export const productReducer = createReducer(
     return { ...state };
   }),
   on(ProductListPageActions.filterProducts, (state, action) => {
-    console.log(action);
     return {
       ...state,
       filterGroup: action.filterGroup,

@@ -1,3 +1,4 @@
+import { ProductListServiceEffects } from './services/product-list/product-list-service.effects';
 import { CartApiService } from './services/cart/cart-api.service';
 import { CartService } from './services/cart/cart.service';
 import { ProductListService } from './services/product-list/product-list.service';
@@ -24,17 +25,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { APP_REDUCERS, localStorageSyncWrapper } from './app.ngrx';
 import { AccountEffects } from './services/account/account.effects';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductPhotosComponent } from './product-detail/product-photos/product-photos.component';
@@ -52,12 +54,10 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProductListServiceEffects } from './services/product-list/product-list-service.effects';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { MainTemplateComponent } from './main-template/main-template.component';
 import { StarsComponent } from './product-list/components/stars/stars.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,6 @@ import { StarsComponent } from './product-list/components/stars/stars.component'
     SearchBarComponent,
     ProductCardComponent,
     UserAccountComponent,
-    HomepageComponent,
     HomepageComponent,
     MenuComponent,
     CarouselComponent,
@@ -79,8 +78,8 @@ import { StarsComponent } from './product-list/components/stars/stars.component'
     BreadcrumbNavComponent,
     ListContainerComponent,
     FiltersComponent,
-    HeaderComponent,
     StarsComponent,
+    MainTemplateComponent,
   ],
 
   imports: [
