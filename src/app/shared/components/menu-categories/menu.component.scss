@@ -20,7 +20,11 @@ $nav-gradient: linear-gradient(
   list-style: none;
   display: flex;
   margin: 0 116px;
-  @include response(xxl) {
+  @include response(4k) {
+    margin: 0 444px;
+  }
+
+  @include response(xxxl) {
     margin: 0 90px;
   }
 
@@ -143,10 +147,6 @@ mat-icon {
 .list-group-item:active {
   box-shadow: 0 0 0 2px #f3f3f3;
 }
-
-// .phone-icon {
-//   height: 20px;
-// }
 
 .side-container {
   position: relative;
