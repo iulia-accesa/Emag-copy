@@ -1,5 +1,4 @@
 import { ICartProduct } from './cart-product.interface';
-import { IProduct } from 'src/app/shared/models/product.interface';
 import { ICart } from './cart.interface';
 import { createAction, props } from '@ngrx/store';
 
@@ -12,12 +11,17 @@ export const addProduct = createAction(
 
 export const removeProduct = createAction(
   '[Cart] Product Removed',
-  props<{ productPosition: number }>()
+  props<{ productId: number }>()
 );
 
 export const setProductQuantity = createAction(
   '[Cart] Product Quantity Set',
-  props<{ productPosition: number; product: ICartProduct }>()
+  props<{ product: ICartProduct }>()
+);
+
+export const setDiscountPercentage = createAction(
+  '[Cart] Discount Percentage Set',
+  props<{ discountPercentage: number }>()
 );
 
 export const placeOrder = createAction(

@@ -23,14 +23,6 @@ export class ProductListPageComponent implements OnInit {
     this.productList$ = this.store.select(selectAllProducts);
     this.pagePath = this.getPagePath();
 
-    this.cartService.addProduct(3);
-    this.cartService.addProduct(3);
-    this.cartService.addProduct(6);
-    this.cartService.addProduct(7);
-    this.cartService.addProduct(11);
-    this.cartService.getProductList$().subscribe((l) => console.log(l));
-    this.cartService.getDiscountPercentage$;
-
     switch (this.pagePath) {
       case 'category':
         this.setPageTitle(this.toTitleCase(this.getCategoryName()));

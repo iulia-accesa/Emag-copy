@@ -1,6 +1,4 @@
-import { ICart } from './cart.interface';
-import { CartApiService } from './cart-api.service';
-import { Observable, map, take } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ICartProduct } from './cart-product.interface';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -36,55 +34,30 @@ export class CartService {
   }
 
   addProduct(productId: number): void {
-    this.store
-      .select(CartSelectors.getProductList)
-      .pipe(take(1))
-      .subscribe((products) => {
-        const productPosition = products?.findIndex(
-          (cart) => cart.productId === productId
-        );
-        if (productPosition && productPosition === -1) {
-          const product: ICartProduct = {
-            productId,
-            quantity: 1,
-          };
-          this.store.dispatch(CartActions.addProduct({ product }));
-        }
-      });
+    const product = {
+      productId,
+      quantity: 1,
+    };
+
+    this.store.dispatch(CartActions.addProduct({ product }));
   }
 
   removeProduct(productId: number): void {
-    this.store
-      .select(CartSelectors.getProductList)
-      .pipe(take(1))
-      .subscribe((products) => {
-        const productPosition = products?.findIndex(
-          (cart) => cart.productId === productId
-        );
-
-        if (productPosition !== undefined && productPosition >= 0) {
-          this.store.dispatch(CartActions.removeProduct({ productPosition }));
-        }
-      });
+    this.store.dispatch(CartActions.removeProduct({ productId }));
   }
 
   setProductQuantity(productId: number, quantity: number): void {
-    this.store
-      .select(CartSelectors.getProductList)
-      .pipe(take(1))
-      .subscribe((products) => {
-        const productPosition = products?.findIndex(
-          (cart) => cart.productId === productId
-        );
-        if (productPosition !== undefined && productPosition >= 0) {
-          const product: ICartProduct = {
-            productId,
-            quantity,
-          };
-          this.store.dispatch(
-            CartActions.setProductQuantity({ productPosition, product })
-          );
-        }
-      });
+    const product = {
+      productId,
+      quantity,
+    };
+
+    this.store.dispatch(CartActions.setProductQuantity({ product }));
+  }
+
+  setDiscountPercentage(discountPercentage: number) {
+    this.store.dispatch(
+      CartActions.setDiscountPercentage({ discountPercentage })
+    );
   }
 }
