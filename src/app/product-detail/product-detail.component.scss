@@ -1,8 +1,9 @@
-@import "/src/variables.scss";
+@import 'variables';
+@import 'mixins';
 
 .containerBackgr {
   background-color: #fff;
-  width: 100%;
+  background-size: auto;
 }
 
 .containerWidth {
@@ -11,9 +12,13 @@
   padding: 0 25px;
 }
 
-.simProdTitle{
+.simProdTitle {
   font-size: 35px;
   line-height: 50px;
+  @include response(sm) {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .componentContainer {
@@ -25,6 +30,13 @@
   display: flex;
   max-width: 1520px;
   justify-content: space-between;
+  @include response(xl) {
+    justify-content: space-around;
+  }
+  @include response(md) {
+    justify-content: space-around;
+    flex-direction: column;
+  }
 }
 
 .mainTitle {
@@ -40,46 +52,147 @@ hr {
   padding: 0 10px;
   max-width: 550px;
   margin: 30px 0 0 15px;
+  @include response(xl) {
+    order: 2;
+    max-width: 480px;
+  }
+  @include response(md) {
+    margin: 9px 0 0 15px;
+    max-width: 100%;
+  }
 }
 
 .detailsContainer {
   display: flex;
   flex-direction: row;
+  @include response(xl) {
+    flex-direction: column;
+  }
 }
 
 .descriptionItem {
   margin-bottom: 15px;
 }
 
-.listSimProd{
+.addToCartBox {
+  max-height: 270px;
+  @include response(md) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.listSimProd {
+  max-width: 1520px;
+  padding: 20px;
   display: flex;
-  flex-direction: row;
-  gap: 50px;
-  justify-content: center;
+  justify-content: space-evenly;
+  scrollbar-color: $nav-gradient $background-color;
+  @include response(xl) {
+    justify-content: space-between;
+  }
+  @include response(lg) {
+    gap: 20px;
+  }
 }
 
 .simProdItem {
-  gap: 35px;
-}
-
-@media screen and (max-width: 1198px) {
-  .detailsContainer {
-    display: flex;
-    flex-flow: column;
-  }
-  .product_description {
-    order: 2;
-  }
-  .detailsContainer {
-    order: 4;
-  }
-  .hero_section {
-    justify-content: space-around;
+  @include response(xl) {
+    gap: 35px;
   }
 }
 
-@media screen and (max-width: 930px) {
-  .product_price_goToCart {
-    width: 260px;
+.categTtile {
+  padding: 8px 0;
+}
+
+.reviewSection {
+  max-width: 1520px;
+  height: 340px;
+}
+
+.stickComp {
+  min-width: 170px;
+}
+
+.stickContainer {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+  @include response(md) {
+    top: unset;
+    bottom: 0;
   }
 }
+
+.stickBox {
+  max-width: 1520px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-direction: row;
+  width: 100%;
+  padding: 5px;
+  z-index: 5;
+}
+
+.favIconStickComp {
+  width: 33px;
+  height: 32px;
+  background-color: transparent;
+  padding: 2.5px;
+  border: solid 1.5px #005eb8;
+  margin: 0 10px;
+  border-radius: 7px;
+}
+
+.favIconStickComp:hover{
+  background-color: #ebf5ff;
+  transition: 0.2s;
+}
+
+.mainImgStickComp {
+  width: 38px;
+  height: 38px;
+  margin: 10px 25px 10px 10px;
+}
+
+.titleStickComp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.priceStickComp {
+  color: $price-color;
+  font-size: 20px;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+@include response(md-sm) {
+  .priceStickComp{
+    display: none;
+  }
+  .titleStickComp{
+    margin-right: 15px;
+  }
+}
+
+@include response(xs) {
+  .titleStickComp, .mainImgStickComp{
+    display: none;
+  }
+}
+
