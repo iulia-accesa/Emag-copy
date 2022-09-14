@@ -11,12 +11,20 @@ import { MainTemplateComponent } from './main-template/main-template.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-  { path: '', component: MainTemplateComponent, children: [
-    { path: '', component: HomepageComponent },
-    { path: 'my-account', component: UserAccountComponent, canActivate: [AccountGuard] },
-    { path: 'products/:id', component: ProductDetailComponent },
-    // { path: 'products', component: ProductListPageComponent },
-  ] }
+  {
+    path: '',
+    component: MainTemplateComponent,
+    children: [
+      { path: '', component: HomepageComponent },
+      {
+        path: 'my-account',
+        component: UserAccountComponent,
+        canActivate: [AccountGuard],
+      },
+      { path: 'products/:id', component: ProductDetailComponent },
+      // { path: 'products', component: ProductListPageComponent },
+    ],
+  },
 ];
 
 @NgModule({
