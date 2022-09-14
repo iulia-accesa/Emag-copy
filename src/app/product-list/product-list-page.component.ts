@@ -1,14 +1,10 @@
 import { ProductListService } from './../services/product-list/product-list.service';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
-import { CartService } from './../services/cart/cart.service';
 import { IFilterGroup } from './models/filter-group.interface';
 import { IOrderGroup } from './models/order-group.interface';
 
 import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-
-import { Store } from '@ngrx/store';
-import { selectAllProducts } from '../services/product-list/product-list.selector';
 
 @Component({
   selector: 'product-list-page',
@@ -19,11 +15,8 @@ export class ProductListPageComponent implements OnInit {
   pagePath: string;
   protected productList$: Observable<IProductApi[]>;
 
-  constructor(
-    private store: Store,
-    private productListService: ProductListService
-  ) {
-    this.productList$ = this.store.select(selectAllProducts);
+  constructor(private productListService: ProductListService) {
+    this.productList$ = this.productListService.getProductList();
     this.pagePath = this.getPagePath();
 
     switch (this.pagePath) {

@@ -33,6 +33,36 @@ export class CartService {
     );
   }
 
+  setProductQuantity(productId: number, quantity: number): void {
+    this.store
+      .select(CartSelectors.selectProductList)
+      .pipe(take(1))
+      .subscribe((productList) => {
+        const updatedProductList = [...productList];
+        const productIndex = productList.findIndex(
+          (p) => p.productId === productId
+        );
+        if (productIndex !== undefined && productIndex >= 0) {
+          const product = {
+            productId,
+            quantity,
+          };
+
+          updatedProductList.splice(productIndex, 1, product);
+        }
+
+        this.store.dispatch(
+          CartActions.updateProductList({ productList: updatedProductList })
+        );
+      });
+  }
+
+  setDiscountPercentage(discountPercentage: number) {
+    this.store.dispatch(
+      CartActions.setDiscountPercentage({ discountPercentage })
+    );
+  }
+
   addProduct(productId: number): void {
     this.store
       .select(CartSelectors.selectProductList)
@@ -74,35 +104,5 @@ export class CartService {
           CartActions.updateProductList({ productList: updatedProductList })
         );
       });
-  }
-
-  setProductQuantity(productId: number, quantity: number): void {
-    this.store
-      .select(CartSelectors.selectProductList)
-      .pipe(take(1))
-      .subscribe((productList) => {
-        const updatedProductList = [...productList];
-        const productIndex = productList.findIndex(
-          (p) => p.productId === productId
-        );
-        if (productIndex !== undefined && productIndex >= 0) {
-          const product = {
-            productId,
-            quantity,
-          };
-
-          updatedProductList.splice(productIndex, 1, product);
-        }
-
-        this.store.dispatch(
-          CartActions.updateProductList({ productList: updatedProductList })
-        );
-      });
-  }
-
-  setDiscountPercentage(discountPercentage: number) {
-    this.store.dispatch(
-      CartActions.setDiscountPercentage({ discountPercentage })
-    );
   }
 }
