@@ -1,12 +1,12 @@
 @mixin response($breakpoint) {
   @if ($breakpoint == 4k) {
-    @media (min-width: 2560px) {
+    @media (max-width: 2560px) {
       @content;
     }
   }
 
   @if ($breakpoint == xxxl) {
-    @media (max-width: 1850px) {
+    @media (max-width: 1920px) {
       @content;
     }
   }
