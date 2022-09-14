@@ -13,7 +13,6 @@ import { ProductApiService } from '../product-api.service';
 export class ProductListServiceEffects {
   constructor(
     private productApiService: ProductApiService,
-    private productService: ProductListService,
     private actions$: Actions
   ) {}
 

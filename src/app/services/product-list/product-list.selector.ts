@@ -16,12 +16,7 @@ export const selectAllProducts = createSelector(
   (productsState) => productsState.productList
 );
 
-export const selectOrderGroup = createSelector(
+export const selectAllInitialProducts = createSelector(
   selectProductsState,
-  (productsState) => productsState.orderGroup
-);
-
-export const selectFilterGroup = createSelector(
-  selectProductsState,
-  (productsState) => productsState.filterGroup
+  (productState) => productState.productListConstant
 );

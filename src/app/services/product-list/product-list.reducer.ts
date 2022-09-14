@@ -14,21 +14,11 @@ export const FEATURE_KEY = 'product_list';
 export interface State {
   productListConstant: IProductApi[];
   productList: IProductApi[];
-  filterGroup: IFilterGroup;
-  orderGroup: IOrderGroup;
 }
 
 export const initialState: State = {
   productListConstant: [],
   productList: [],
-  filterGroup: {
-    priceRange: undefined,
-    ratings: undefined,
-  },
-  orderGroup: {
-    price: undefined,
-    title: undefined,
-  },
 };
 
 export const productReducer = createReducer(
@@ -46,17 +36,9 @@ export const productReducer = createReducer(
   on(ProductListPageActions.enterWithSearch, (state) => {
     return { ...state };
   }),
-  on(ProductListPageActions.filterProducts, (state, action) => {
+  on(ProductListPageActions.orderAndFilterProducts, (state, action) => {
     return {
       ...state,
-      filterGroup: action.filterGroup,
-      productList: action.products,
-    };
-  }),
-  on(ProductListPageActions.orderProducts, (state, action) => {
-    return {
-      ...state,
-      orderGroup: action.orderGroup,
       productList: action.products,
     };
   })

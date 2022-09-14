@@ -8,7 +8,6 @@ import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import * as ProductListActions from '../services/product-list/product-list.actions';
 import { selectAllProducts } from '../services/product-list/product-list.selector';
 
 @Component({
@@ -22,7 +21,6 @@ export class ProductListPageComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private cartService: CartService,
     private productListService: ProductListService
   ) {
     this.productList$ = this.store.select(selectAllProducts);
@@ -87,11 +85,7 @@ export class ProductListPageComponent implements OnInit {
     }
   }
 
-  orderItems(orderGroup: IOrderGroup) {
-    this.productListService.orderItems(orderGroup);
-  }
-
-  filterItems(filterGroup: IFilterGroup) {
-    this.productListService.filterItems(filterGroup);
+  filterAndOrderProducts(filterGroup: IFilterGroup, orderGroup: IOrderGroup) {
+    this.productListService.filterAndOrderProducts(filterGroup, orderGroup);
   }
 }

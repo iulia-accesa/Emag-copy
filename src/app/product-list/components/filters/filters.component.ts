@@ -1,13 +1,12 @@
 import { IPriceRange } from './../../models/price-range.interface';
 import { IFilterGroup } from './../../models/filter-group.interface';
 import { IOrderGroup } from './../../models/order-group.interface';
-import { Store } from '@ngrx/store';
 import { ProductListService } from '../../../services/product-list/product-list.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 
-import { forkJoin } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'filters',
@@ -46,7 +45,7 @@ export class FiltersComponent implements OnInit {
   });
 
   constructor(private productService: ProductListService) {
-    forkJoin({
+    combineLatest({
       priceRange: this.productService.getPriceRange(),
       ratingList: this.productService.getRatingCount(),
     }).subscribe((result) => {
@@ -76,9 +75,9 @@ export class FiltersComponent implements OnInit {
         ratingsForm: this.ratingsForm,
       });
 
-      this.filterForm.valueChanges.subscribe((changes) =>
-        this.onFormChange(changes)
-      );
+      this.filterForm.valueChanges.subscribe((changes) => {
+        this.onFormChange(changes);
+      });
     });
   }
 
@@ -135,14 +134,14 @@ export class FiltersComponent implements OnInit {
       changes.ratingsForm.rating5,
     ];
 
-    const orderGroup: IOrderGroup = {
-      price: priceOrder,
-      title: nameOrder,
-    };
-
     const priceRange: IPriceRange = {
       min,
       max,
+    };
+
+    const orderGroup: IOrderGroup = {
+      price: priceOrder,
+      title: nameOrder,
     };
 
     const filterGroup: IFilterGroup = {
@@ -150,7 +149,6 @@ export class FiltersComponent implements OnInit {
       ratings,
     };
 
-    this.productService.orderItems(orderGroup);
-    this.productService.filterItems(filterGroup);
+    this.productService.filterAndOrderProducts(filterGroup, orderGroup);
   }
 }

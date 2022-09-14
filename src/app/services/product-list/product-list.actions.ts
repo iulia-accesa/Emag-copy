@@ -20,12 +20,9 @@ export const enterWithCategory = createAction(
   props<{ category: string }>()
 );
 
-export const orderProducts = createAction(
-  '[Prodict List Page] Products Ordered',
-  props<{ products: IProductApi[]; orderGroup: IOrderGroup }>()
-);
-
-export const filterProducts = createAction(
-  '[Prodict List Page] Products Filtered',
-  props<{ products: IProductApi[]; filterGroup: IFilterGroup }>()
+export const orderAndFilterProducts = createAction(
+  '[Product List Page] Products Ordered And Filtered',
+  props<{
+    products: IProductApi[];
+  }>()
 );
