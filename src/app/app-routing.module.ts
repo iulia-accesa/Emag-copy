@@ -8,6 +8,7 @@ import { AccountGuard } from './guards/account.guard';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { LoginGuard } from './guards/login.guard';
 import { MainTemplateComponent } from './main-template/main-template.component';
+import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
@@ -23,6 +24,7 @@ const routes: Routes = [
       },
       { path: 'products/:id', component: ProductDetailComponent },
       // { path: 'products', component: ProductListPageComponent },
+      { path: 'cart-overview', component: CartOverviewComponent },
     ],
   },
 ];
