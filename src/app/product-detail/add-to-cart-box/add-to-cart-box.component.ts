@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DiscoutPersentageService } from 'src/app/services/discout-persentage.service';
+import { DiscoutPercentageService } from 'src/app/services/discout-percentage.service';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Component({
@@ -11,6 +11,9 @@ export class AddToCartBoxComponent {
   @Input() set product(value: IProductApi) {
     if (value) {
       this._product = value;
+      this.discountPers = this.discoutPercentageService.getPercentage(this._product.rating.rate);
+      this.prodRating = this.discoutPercentageService.getRating(this._product.rating.rate);
+      this.oldPrice = this.getOldPrice(this._product.price);
     }
   }
   discountPers: number = 0;
@@ -18,17 +21,9 @@ export class AddToCartBoxComponent {
   _product: IProductApi | undefined;
   prodRating = 0;
 
-  constructor(private shared: DiscoutPersentageService) {}
+  constructor(private discoutPercentageService: DiscoutPercentageService) {}
 
-  ngOnInit() {
-    if (this._product) {
-      this.discountPers = this.shared.getPercentage(this._product.rating.rate);
-      this.prodRating = this.shared.getRating(this._product?.rating.rate);
-      this.calcOldPrice(this._product.price)
-    }
-  }
-
-  calcOldPrice(price:number):void{
-    this.oldPrice = Math.round((1 + this.discountPers / 100) * price)
+  getOldPrice(price: number): number {
+   return Math.round((1 + this.discountPers / 100) * price);
   }
 }

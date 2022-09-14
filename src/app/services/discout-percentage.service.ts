@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class DiscoutPersentageService {
+export class DiscoutPercentageService {
 
   constructor() {}
   getPercentage(rating:number): number {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DiscoutPersentageService } from 'src/app/services/discout-persentage.service';
+import { DiscoutPercentageService } from 'src/app/services/discout-percentage.service';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 @Component({
@@ -11,17 +11,12 @@ export class ProductPhotosComponent {
   @Input() set product(value: IProductApi) {
     if (value) {
       this._product = value;
+      this.discountPers = this.discoutPercentageService.getPercentage(this._product.rating.rate);
     }
   }
   _product: IProductApi | undefined;
   image: string | undefined;
   discountPers: number = 0;
 
-  constructor(private shared: DiscoutPersentageService) {}
-
-  ngOnInit() {
-    if (this._product) {
-      this.discountPers = this.shared.getPercentage(this._product?.rating.rate);
-    }
-  }
+  constructor(private discoutPercentageService: DiscoutPercentageService) {}
 }

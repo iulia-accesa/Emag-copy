@@ -9,8 +9,7 @@ import { IProductApi } from '../shared/models/product-api.interface';
 import { ProductApiService } from '../services/product-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { getPercentage } from '../shared/function/functionTest';
-import { DiscoutPersentageService } from '../services/discout-persentage.service';
+import { DiscoutPercentageService } from '../services/discout-percentage.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -36,7 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private _productService: ProductApiService,
     private route: ActivatedRoute,
-    private shared: DiscoutPersentageService
+    private discoutPercentageService: DiscoutPercentageService
   ) {}
 
   ngOnInit() {
@@ -48,7 +47,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.product = res[0];
       this.prodCategory = this.product.category;
       this.getSameCategory(res[1]);
-      this.discountPers = this.shared.getPercentage(this.product.rating.rate)      
+      this.discountPers = this.discoutPercentageService.getPercentage(
+        this.product.rating.rate
+      );
     });
   }
 
