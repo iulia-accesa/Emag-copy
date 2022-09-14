@@ -1,40 +1,20 @@
 import { ICartProduct } from './cart-product.interface';
-import { ICart } from './cart.interface';
 import { createAction, props } from '@ngrx/store';
 
-export const loadCart = createAction('[Cart] Load Cart');
+export enum CartActionTypes {
+  LOAD_CART = '[Cart] Load Cart',
+  UPDATE_PRODUCT_LIST = '[Cart] Product List Updated',
+  SET_DISCOUNT_PERCENTAGE = '[Cart] Discount Percentage Set',
+}
 
-export const addProduct = createAction(
-  '[Cart] Product Added',
-  props<{ product: ICartProduct }>()
-);
+export const loadCart = createAction(CartActionTypes.LOAD_CART);
 
-export const removeProduct = createAction(
-  '[Cart] Product Removed',
-  props<{ productId: number }>()
-);
-
-export const setProductQuantity = createAction(
-  '[Cart] Product Quantity Set',
-  props<{ product: ICartProduct }>()
+export const updateProductList = createAction(
+  CartActionTypes.UPDATE_PRODUCT_LIST,
+  props<{ productList: ICartProduct[] }>()
 );
 
 export const setDiscountPercentage = createAction(
-  '[Cart] Discount Percentage Set',
+  CartActionTypes.SET_DISCOUNT_PERCENTAGE,
   props<{ discountPercentage: number }>()
-);
-
-export const placeOrder = createAction(
-  '[Cart] Place Order',
-  props<{ order: ICart }>()
-);
-
-export const placeOrderSuccess = createAction(
-  '[Cart] Place Order Success',
-  props<{ order: ICart }>()
-);
-
-export const placeOrderFailure = createAction(
-  '[Cart] Place Order Failure',
-  props<{ error: string }>()
 );

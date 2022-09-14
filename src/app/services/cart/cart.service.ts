@@ -1,4 +1,4 @@
-import { Observable, map } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { ICartProduct } from './cart-product.interface';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -14,15 +14,15 @@ export class CartService {
   }
 
   getProductList$(): Observable<ICartProduct[] | undefined> {
-    return this.store.select(CartSelectors.getProductList);
+    return this.store.select(CartSelectors.selectProductList);
   }
 
   getDiscountPercentage$(): Observable<number | undefined> {
-    return this.store.select(CartSelectors.getDiscountPercentage);
+    return this.store.select(CartSelectors.selectDiscountPercentage);
   }
 
   getShipping$(): Observable<number | undefined> {
-    return this.store.select(CartSelectors.getShipping);
+    return this.store.select(CartSelectors.selectShipping);
   }
 
   getProductCount$(): Observable<number> {
@@ -34,25 +34,70 @@ export class CartService {
   }
 
   addProduct(productId: number): void {
-    const product = {
-      productId,
-      quantity: 1,
-    };
+    this.store
+      .select(CartSelectors.selectProductList)
+      .pipe(take(1))
+      .subscribe((productList) => {
+        const updatedProductList = [...productList];
+        const productIndex = productList.findIndex(
+          (p) => p.productId === productId
+        );
+        if (productIndex !== undefined && productIndex === -1) {
+          const product = {
+            productId,
+            quantity: 1,
+          };
 
-    this.store.dispatch(CartActions.addProduct({ product }));
+          updatedProductList.push(product);
+        }
+
+        this.store.dispatch(
+          CartActions.updateProductList({ productList: updatedProductList })
+        );
+      });
   }
 
   removeProduct(productId: number): void {
-    this.store.dispatch(CartActions.removeProduct({ productId }));
+    this.store
+      .select(CartSelectors.selectProductList)
+      .pipe(take(1))
+      .subscribe((productList) => {
+        const updatedProductList = [...productList];
+        const productIndex = productList.findIndex(
+          (p) => p.productId === productId
+        );
+        if (productIndex !== undefined && productIndex >= 0) {
+          updatedProductList.splice(productIndex, 1);
+        }
+
+        this.store.dispatch(
+          CartActions.updateProductList({ productList: updatedProductList })
+        );
+      });
   }
 
   setProductQuantity(productId: number, quantity: number): void {
-    const product = {
-      productId,
-      quantity,
-    };
+    this.store
+      .select(CartSelectors.selectProductList)
+      .pipe(take(1))
+      .subscribe((productList) => {
+        const updatedProductList = [...productList];
+        const productIndex = productList.findIndex(
+          (p) => p.productId === productId
+        );
+        if (productIndex !== undefined && productIndex >= 0) {
+          const product = {
+            productId,
+            quantity,
+          };
 
-    this.store.dispatch(CartActions.setProductQuantity({ product }));
+          updatedProductList.splice(productIndex, 1, product);
+        }
+
+        this.store.dispatch(
+          CartActions.updateProductList({ productList: updatedProductList })
+        );
+      });
   }
 
   setDiscountPercentage(discountPercentage: number) {

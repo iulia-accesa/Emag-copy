@@ -1,16 +1,19 @@
-import { ICart } from './cart.interface';
+import { ICartProduct } from './cart-product.interface';
 import { createReducer, on, ActionReducerMap } from '@ngrx/store';
 import * as CartActions from './cart.actions';
-import * as CartUtils from './cart.utils';
 
 export const cartFeatureKey = 'cart';
 
 export interface State {
-  activeCart: ICart | undefined;
+  products?: ICartProduct[];
+  discountPercentage?: number;
+  shipping?: number;
 }
 
 export const initialState: State = {
-  activeCart: undefined,
+  products: [],
+  discountPercentage: undefined,
+  shipping: 15,
 };
 
 export const reducer = createReducer(
@@ -18,52 +21,18 @@ export const reducer = createReducer(
   on(CartActions.loadCart, (state) => {
     return {
       ...state,
-      activeCart: CartUtils.loadCartHelper({ ...state.activeCart }),
     };
   }),
-  on(CartActions.addProduct, (state, action) => {
+  on(CartActions.updateProductList, (state, action) => {
     return {
       ...state,
-      activeCart: {
-        ...state.activeCart,
-        products: CartUtils.addProductHelper(
-          action.product,
-          state.activeCart?.products!
-        ),
-      },
-    };
-  }),
-  on(CartActions.removeProduct, (state, action) => {
-    return {
-      ...state,
-      activeCart: {
-        ...state.activeCart,
-        products: CartUtils.removeProductHelper(
-          action.productId,
-          state.activeCart?.products!
-        ),
-      },
-    };
-  }),
-  on(CartActions.setProductQuantity, (state, action) => {
-    return {
-      ...state,
-      activeCart: {
-        ...state.activeCart,
-        products: CartUtils.setProductQuantityHelper(
-          action.product,
-          state.activeCart?.products!
-        ),
-      },
+      products: action.productList,
     };
   }),
   on(CartActions.setDiscountPercentage, (state, action) => {
     return {
       ...state,
-      activeCart: {
-        ...state.activeCart,
-        discountPercentage: action.discountPercentage,
-      },
+      discountPercentage: action.discountPercentage,
     };
   })
 );

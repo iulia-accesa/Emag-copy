@@ -1,80 +1,25 @@
-import { ProductApiService } from '../product-api.service';
+import { Store } from '@ngrx/store';
 
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, forkJoin, filter } from 'rxjs';
 
 import { IPriceRange } from '../../product-list/models/price-range.interface';
-import { IProduct } from '../../shared/models/product.interface';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
+
+import * as ProductListSelectors from './product-list.selector';
+import * as ProductListActions from './product-list.actions';
+
+import { IOrderGroup } from 'src/app/product-list/models/order-group.interface';
+import { IFilterGroup } from 'src/app/product-list/models/filter-group.interface';
+import { Order } from 'src/app/product-list/models/order.type';
 
 @Injectable()
 export class ProductListService {
-  constructor(private productApiService: ProductApiService) {}
-
-  private productsMatchesSearchKey(
-    product: IProductApi,
-    searchKey: string
-  ): boolean {
-    return (
-      searchKey !== '' &&
-      (product.title.toLowerCase().startsWith(searchKey.toLowerCase()) ||
-        product.title
-          .toLowerCase()
-          .split(' ')
-          .includes(searchKey.toLowerCase()) ||
-        product.description
-          .toLowerCase()
-          .split(' ')
-          .includes(searchKey.toLowerCase()))
-    );
-  }
-
-  getAll(): Observable<IProduct[]> {
-    return this.productApiService.getAll().pipe(
-      map((products: IProductApi[]) => {
-        return products.map((product) => {
-          return {
-            ...product,
-            favourite: false,
-          };
-        });
-      })
-    );
-  }
-
-  getByCategory(category: string): Observable<IProduct[]> {
-    return this.productApiService.getByCategory(category).pipe(
-      map((products: IProductApi[]) => {
-        return products.map((product) => {
-          return {
-            ...product,
-            favourite: false,
-          };
-        });
-      })
-    );
-  }
-
-  getBySearch(searchKey: string): Observable<IProduct[]> {
-    return this.productApiService.getAll().pipe(
-      map((products: IProductApi[]) =>
-        products
-          .filter((product) =>
-            this.productsMatchesSearchKey(product, searchKey)
-          )
-          .map((product) => {
-            return {
-              ...product,
-              favourite: false,
-            };
-          })
-      )
-    );
-  }
+  constructor(private store: Store) {}
 
   getPriceRange(): Observable<IPriceRange> {
-    return this.getAll().pipe(
-      map((products: IProduct[]) => {
+    return this.store.select(ProductListSelectors.selectAllProducts).pipe(
+      map((products: IProductApi[]) => {
         return {
           min: Math.min(...products.map((product) => product.price)),
           max: Math.max(...products.map((product) => product.price)),
@@ -84,8 +29,8 @@ export class ProductListService {
   }
 
   getRatingCount(): Observable<number[]> {
-    return this.getAll().pipe(
-      map((products: IProduct[]) => {
+    return this.store.select(ProductListSelectors.selectAllProducts).pipe(
+      map((products: IProductApi[]) => {
         let ratingCount = [0, 0, 0, 0, 0];
 
         products.forEach((product) => {
@@ -96,5 +41,128 @@ export class ProductListService {
         return ratingCount;
       })
     );
+  }
+
+  enterWithCategory(category: string) {
+    this.store.dispatch(
+      ProductListActions.enterWithCategory({
+        category,
+      })
+    );
+  }
+
+  enterWithSearch(key: string) {
+    this.store.dispatch(ProductListActions.enterWithSearch({ key }));
+  }
+
+  orderByPrice(products: IProductApi[], order: Order | ''): IProductApi[] {
+    if (order) {
+      const mark = order === 'asc' ? 1 : -1;
+      return [...products].sort((a: IProductApi, b: IProductApi) => {
+        if (a.price < b.price) {
+          return -1 * mark;
+        } else if (a.price > b.price) {
+          return 1 * mark;
+        }
+        return 0;
+      });
+    }
+
+    return [...products];
+  }
+
+  orderByTitle = (products: IProductApi[], order: Order): IProductApi[] => {
+    if (order) {
+      const mark = order === 'asc' ? 1 : -1;
+      return [...products].sort((a: IProductApi, b: IProductApi) => {
+        if (a.title < b.title) {
+          return -1 * mark;
+        } else if (a.title > b.title) {
+          return 1 * mark;
+        }
+        return 0;
+      });
+    }
+    return [...products];
+  };
+
+  filterByPrice(
+    products: IProductApi[],
+    priceRange: IPriceRange
+  ): IProductApi[] {
+    if (priceRange) {
+      return [...products].filter((product) => {
+        return (
+          product.price >= priceRange.min && product.price < priceRange.max
+        );
+      });
+    }
+    return products;
+  }
+
+  filterByRating(products: IProductApi[], ratings: any[]): IProductApi[] {
+    let filteredProducts = [...products];
+    if (ratings) {
+      filteredProducts = products.filter((product) => {
+        let i = Math.round(product.rating.rate);
+        i--;
+        if (i <= 0) i++;
+        return ratings[i] === true;
+      });
+    }
+    return filteredProducts.length > 0 ? filteredProducts : [...products];
+  }
+
+  filterAndOrderProducts(
+    products: IProductApi[],
+    filterGroup: IFilterGroup,
+    orderGroup: IOrderGroup
+  ): IProductApi[] {
+    if (filterGroup.priceRange)
+      products = this.filterByPrice(products, filterGroup.priceRange);
+    if (filterGroup.ratings)
+      products = this.filterByRating(products, filterGroup.ratings);
+    if (orderGroup.price)
+      products = this.orderByPrice(products, orderGroup.price);
+    if (orderGroup.title)
+      products = this.orderByTitle(products, orderGroup.title);
+
+    return products;
+  }
+
+  orderItems(orderGroup: IOrderGroup) {
+    forkJoin({
+      productList: this.store.select(ProductListSelectors.selectAllProducts),
+      filterGroup: this.store.select(ProductListSelectors.selectFilterGroup),
+    }).subscribe((result) => {
+      const { productList, filterGroup } = result;
+      const products = this.filterAndOrderProducts(
+        productList,
+        filterGroup,
+        orderGroup
+      );
+
+      this.store.dispatch(
+        ProductListActions.orderProducts({ products, orderGroup })
+      );
+    });
+  }
+
+  filterItems(filterGroup: IFilterGroup) {
+    forkJoin({
+      productList: this.store.select(ProductListSelectors.selectAllProducts),
+      orderGroup: this.store.select(ProductListSelectors.selectOrderGroup),
+    }).subscribe((result) => {
+      const { productList, orderGroup } = result;
+      const products = this.filterAndOrderProducts(
+        productList,
+        filterGroup,
+        orderGroup
+      );
+
+      this.store.dispatch(
+        ProductListActions.filterProducts({ products, filterGroup })
+      );
+    });
   }
 }

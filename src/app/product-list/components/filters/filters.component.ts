@@ -8,10 +8,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 
 import { forkJoin } from 'rxjs';
-import {
-  orderProducts,
-  filterProducts,
-} from '../../../services/product-list/product-list.actions';
 
 @Component({
   selector: 'filters',
@@ -49,10 +45,7 @@ export class FiltersComponent implements OnInit {
     ratingsForm: this.ratingsForm,
   });
 
-  constructor(
-    private productService: ProductListService,
-    private store: Store
-  ) {
+  constructor(private productService: ProductListService) {
     forkJoin({
       priceRange: this.productService.getPriceRange(),
       ratingList: this.productService.getRatingCount(),
@@ -157,7 +150,7 @@ export class FiltersComponent implements OnInit {
       ratings,
     };
 
-    this.store.dispatch(orderProducts({ orderGroup }));
-    this.store.dispatch(filterProducts({ filterGroup }));
+    this.productService.orderItems(orderGroup);
+    this.productService.filterItems(filterGroup);
   }
 }

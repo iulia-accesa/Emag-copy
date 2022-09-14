@@ -1,4 +1,4 @@
-import { IProduct } from 'src/app/shared/models/product.interface';
+import { IProductApi } from 'src/app/shared/models/product-api.interface';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./list-container.component.scss'],
 })
 export class ListContainerComponent {
-  @Input() productList: IProduct[] | null = null;
+  @Input() productList: IProductApi[] | null = null;
   @Input() categoryName: string = '';
   @Input() productCount: number | null = null;
   @Input() searchKey = '';
