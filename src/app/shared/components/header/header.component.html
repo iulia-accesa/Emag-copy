@@ -42,12 +42,12 @@
       <span (mouseleave)="menuTrigger2.closeMenu()">
         <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
         <button mat-menu-item>Favourites</button>
-        <button mat-menu-item (click)="onMyCartClick()">Cart</button>
+        <button mat-menu-item [routerLink]="['/cart-overview']">Cart</button>
         <button mat-menu-item (click)="onLogout()">Logout</button>
       </span>
     </mat-menu>
 
-    <button mat-button class="btn" (click)="onMyCartClick()">
+    <button mat-button class="btn" [routerLink]="['/cart-overview']">
       <mat-icon class="button-icons"> shopping_cart </mat-icon
       ><span class="button-text" fxHide.lt-md>My Cart</span>
       <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
