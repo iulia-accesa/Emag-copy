@@ -1,58 +1,56 @@
-<div class="header-wrapper">
-  <header>
-    <a class="navbar-brand" href="/" title="Căutarea nu se oprește niciodată">
-      <img class="img_emag" src="/assets/logo.png" alt="eMAG" />
-    </a>
+<header>
+  <a class="navbar-brand" href="/" title="Căutarea nu se oprește niciodată">
+    <img class="img_emag" src="/assets/logo.png" alt="eMAG" />
+  </a>
 
-    <app-searchbar></app-searchbar>
+  <app-searchbar></app-searchbar>
 
-    <div class="dropdown">
-      <button
-        [ngClass]="{ disabled: isLogged }"
-        mat-button
-        [matMenuTriggerFor]="menu"
-        class="btn"
-        #menuTrigger="matMenuTrigger"
-        (mouseover)="menuTrigger.openMenu()"
-      >
-        <mat-icon class="button-icons">person</mat-icon>
-        <span class="button-text" fxHide.lt-md>My Account</span>
-        <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
-      </button>
+  <div class="dropdown">
+    <button
+      [ngClass]="{ disabled: isLogged }"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      class="btn"
+      #menuTrigger="matMenuTrigger"
+      (mouseover)="menuTrigger.openMenu()"
+    >
+      <mat-icon class="button-icons">person</mat-icon>
+      <span class="button-text" fxHide.lt-md>My Account</span>
+      <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
+    </button>
 
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTrigger.closeMenu()">
-          <button mat-menu-item (click)="btnMyAccount()">Login</button>
-        </span>
-      </mat-menu>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger.closeMenu()">
+        <button mat-menu-item (click)="btnMyAccount()">Login</button>
+      </span>
+    </mat-menu>
 
-      <button
-        [ngClass]="{ disabled: !isLogged }"
-        mat-button
-        [matMenuTriggerFor]="menu2"
-        class="btn"
-        #menuTrigger2="matMenuTrigger"
-        (mouseover)="menuTrigger2.openMenu()"
-      >
-        <mat-icon class="button-icons">person</mat-icon>
-        <span class="button-text" fxHide.lt-md>My Account</span>
-        <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
-      </button>
+    <button
+      [ngClass]="{ disabled: !isLogged }"
+      mat-button
+      [matMenuTriggerFor]="menu2"
+      class="btn"
+      #menuTrigger2="matMenuTrigger"
+      (mouseover)="menuTrigger2.openMenu()"
+    >
+      <mat-icon class="button-icons">person</mat-icon>
+      <span class="button-text" fxHide.lt-md>My Account</span>
+      <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
+    </button>
 
-      <mat-menu #menu2="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTrigger2.closeMenu()">
-          <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
-          <button mat-menu-item>Favourites</button>
-          <button mat-menu-item [routerLink]="['/cart-overview']">Cart</button>
-          <button mat-menu-item (click)="onLogout()">Logout</button>
-        </span>
-      </mat-menu>
+    <mat-menu #menu2="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger2.closeMenu()">
+        <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
+        <button mat-menu-item>Favourites</button>
+        <button mat-menu-item [routerLink]="['/cart-overview']">Cart</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </span>
+    </mat-menu>
 
-      <button mat-button class="btn" [routerLink]="['/cart-overview']">
-        <mat-icon class="button-icons"> shopping_cart </mat-icon
-        ><span class="button-text" fxHide.lt-md>My Cart</span>
-        <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
-      </button>
-    </div>
-  </header>
-</div>
+    <button mat-button class="btn" [routerLink]="['/cart-overview']">
+      <mat-icon class="button-icons"> shopping_cart </mat-icon
+      ><span class="button-text" fxHide.lt-md>My Cart</span>
+      <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
+    </button>
+  </div>
+</header>
