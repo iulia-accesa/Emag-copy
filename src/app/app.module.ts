@@ -66,10 +66,8 @@ import { SimilarProductsComponent } from './shared/components/similar-products/s
     HeaderComponent,
     MainTemplateComponent,
     NavigationHistoryComponent,
-    SimilarProductsComponent
-
+    SimilarProductsComponent,
     CartOverviewComponent,
-
     AddToCartButtonComponent,
   ],
 

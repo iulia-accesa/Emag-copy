@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { take } from 'rxjs';
-import { ProductApiService } from 'src/app/services/product-api.service';
+import { Component, Input } from '@angular/core';
 import { IProductApi } from '../../models/product-api.interface';
 
 @Component({
@@ -8,10 +6,8 @@ import { IProductApi } from '../../models/product-api.interface';
   templateUrl: './similar-products.component.html',
   styleUrls: ['./similar-products.component.scss'],
 })
-export class SimilarProductsComponent implements OnInit {
+export class SimilarProductsComponent  {
   @Input() products: IProductApi[] | undefined;
 
-  constructor(private _productService: ProductApiService) {}
-
-  ngOnInit(): void {}
+  constructor() {}
 }

@@ -1,14 +1,14 @@
 <div class="container">
   <h2 class="title">Navigation History</h2>
   <div class="history-img">
-    <a
+    <button
       class="history-product"
       *ngFor="let prod of productsHistory"
       [id]="prod.category"
       (click)="getSameCategory(prod.category)"
     >
       <img [src]="prod.image" alt="Product image" class="prod-img" />
-    </a>
+    </button>
   </div>
 
   <div *ngIf="similarProducts" >

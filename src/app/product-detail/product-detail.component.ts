@@ -41,8 +41,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.route.url.subscribe(url =>{
-      console.log(url);
+    this.route.url.subscribe(() =>{
       this.productId = this.route.snapshot.params['id'];
       forkJoin([
         this._productService.getById(this.productId),
@@ -54,7 +53,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.discountPers = this.discoutPercentageService.getPercentage(
         this.product.rating.rate
       );
-        console.log('test');
         this.historyService.updateHistory$(this.product.image, this.product.category);
       });
     });
