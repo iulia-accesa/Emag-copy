@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-
-import { IProductApi } from '../../models/product-api.interface';
+import { DiscoutPercentageService } from 'src/app/services/discout-percentage.service';
+import { IProductApi } from '../../models/product-api.interface'; 
 
 @Component({
   selector: 'product-card-component',
@@ -12,10 +12,12 @@ export class ProductCardComponent {
     if (value) {
       this._product = value;
       this.prodRating = Math.round(this._product.rating.rate);
+      this.discountPers = this.discoutPercentageService.getPercentage(this._product.rating.rate);
     }
   }
-  public _product: IProductApi | undefined;
-  public prodRating = 0;
+  _product: IProductApi | undefined;
+  prodRating = 0;
+  discountPers: number = 0;
+  constructor(private discoutPercentageService: DiscoutPercentageService) {}
   
-  constructor() {}
 }

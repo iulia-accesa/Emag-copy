@@ -55,5 +55,11 @@
 
   product-card-component {
     margin: auto;
+
+    .simCartImg {
+      width: calc(220px - 32px);
+      height: calc(220px - 32px);
+      object-fit: contain;
+    }
   }
 }

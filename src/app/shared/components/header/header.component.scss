@@ -1,10 +1,21 @@
 @import "/src/variables.scss";
 @import "/src/app/shared/styles/mixins";
 
+.header_wrapper {
+  width: 100%;
+  background: #ffffff;
+}
+
 header {
-  background-color: #f5f5f5;
+  max-width: 1520px;
+  margin: 0 auto;
+  background-color: #ffffff;
   @include flexCenter();
   padding: 10px 0px 0px 20px;
+  &:host {
+    width: 100% !important;
+    background: #ffffff !important;
+  }
   .btn {
     margin-top: -5px;
     display: flex;
@@ -13,8 +24,6 @@ header {
     outline: none;
     text-align: center;
     cursor: pointer;
-    z-index: 1050;
-
     .button-descriptions {
       font-size: 14px;
       font-weight: 500;
@@ -31,23 +40,10 @@ header {
     display: none;
   }
 
-  mat-toolbar {
-    display: flex;
-    flex: 0;
-    position: relative;
-    padding: 0px 0px 0px 0px;
-    .toolbar-icon {
-      background: transparent;
-      border: 0;
-      cursor: pointer;
-    }
-  }
-
   .input-group {
     display: flex;
     flex-direction: row;
   }
-
   .navbar-button-group {
     @include flexCenter();
   }
@@ -117,12 +113,12 @@ app-searchbar {
 }
 
 .navbar-searchbox {
+  text-align: right;
   position: relative;
   flex: 1;
 }
 
 input[type="search"] {
-  float: right;
   background: transparent;
   width: 100%;
   padding: 10px 10px 10px 15px;
@@ -135,6 +131,7 @@ input[type="search"] {
     width: 0px;
     border: none;
     cursor: pointer;
+    right: 0px;
     &:focus-within {
       width: 200px;
       border: 1px solid #005eb8;

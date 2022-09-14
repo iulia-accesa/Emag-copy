@@ -54,7 +54,9 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
+import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
+import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { StarsComponent } from './product-list/components/stars/stars.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
@@ -80,6 +82,10 @@ import { CommonModule } from '@angular/common';
     FiltersComponent,
     StarsComponent,
     MainTemplateComponent,
+
+    CartOverviewComponent,
+
+    AddToCartButtonComponent,
   ],
 
   imports: [
