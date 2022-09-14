@@ -12,10 +12,7 @@ header {
   background-color: #ffffff;
   @include flexCenter();
   padding: 10px 0px 0px 20px;
-  &:host {
-    width: 100% !important;
-    background: #ffffff !important;
-  }
+
   .btn {
     margin-top: -5px;
     display: flex;
@@ -76,6 +73,22 @@ header {
   }
 }
 
+.closebtn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: rgb(255, 93, 93);
+  @include response(sm) {
+    display: flex;
+    &:hover {
+      color: #ccc;
+    }
+  }
+}
+
 app-searchbar {
   width: 100%;
   @include response(sm) {
@@ -133,7 +146,8 @@ input[type="search"] {
     cursor: pointer;
     right: 0px;
     &:focus-within {
-      width: 200px;
+      z-index: 1000;
+      width: 100%;
       border: 1px solid #005eb8;
       cursor: text;
     }
