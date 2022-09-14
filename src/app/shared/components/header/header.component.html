@@ -1,13 +1,4 @@
 <header>
-  <mat-toolbar fxHide.gt-sm>
-    <button
-      mat-icon-button
-      class="toolbar-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
   <a class="navbar-brand" href="/" title="Căutarea nu se oprește niciodată">
     <img class="img_emag" src="/assets/logo.png" alt="eMAG" />
   </a>
@@ -15,28 +6,51 @@
   <app-searchbar></app-searchbar>
 
   <div class="dropdown">
-    <button mat-button [matMenuTriggerFor]="menu" class="btn">
+    <button
+      [ngClass]="{ disabled: isLogged }"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      class="btn"
+      #menuTrigger="matMenuTrigger"
+      (mouseover)="menuTrigger.openMenu()"
+    >
       <mat-icon class="button-icons">person</mat-icon>
       <span class="button-text" fxHide.lt-md>My Account</span>
       <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="subMenu">Item 1</button>
-      <button mat-menu-item>Item 2</button>
+
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger.closeMenu()">
+        <button mat-menu-item (click)="btnMyAccount()">Login</button>
+      </span>
     </mat-menu>
-    <mat-menu #subMenu="matMenu">
-      <button mat-menu-item>Item 3</button>
-      <button mat-menu-item>Item 4</button>
+
+    <button
+      [ngClass]="{ disabled: !isLogged }"
+      mat-button
+      [matMenuTriggerFor]="menu2"
+      class="btn"
+      #menuTrigger2="matMenuTrigger"
+      (mouseover)="menuTrigger2.openMenu()"
+    >
+      <mat-icon class="button-icons">person</mat-icon>
+      <span class="button-text" fxHide.lt-md>My Account</span>
+      <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-menu #menu2="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger2.closeMenu()">
+        <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
+        <button mat-menu-item>Favourites</button>
+        <button mat-menu-item [routerLink]="['/cart-overview']">Cart</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </span>
     </mat-menu>
-    <button mat-button [matMenuTriggerFor]="cartmenu" class="btn">
+
+    <button mat-button class="btn" [routerLink]="['/cart-overview']">
       <mat-icon class="button-icons"> shopping_cart </mat-icon
       ><span class="button-text" fxHide.lt-md>My Cart</span>
       <mat-icon class="caret" fxHide.lt-md>arrow_drop_down</mat-icon>
     </button>
-
-    <mat-menu #cartmenu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
   </div>
 </header>

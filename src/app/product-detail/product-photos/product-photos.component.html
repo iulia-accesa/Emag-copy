@@ -1,6 +1,6 @@
 <mat-card class="containerLeftSide" *ngIf="_product">
   <section>
-    <div>
+    <div class="mainPosition">
       <img
         class="mainPhoto"
         [src]="_product.image"
@@ -20,5 +20,6 @@
         />
       </div>
     </div>
+    <div *ngIf="discountPers>10" class="badge">-{{discountPers}}% </div>
   </section>
 </mat-card>

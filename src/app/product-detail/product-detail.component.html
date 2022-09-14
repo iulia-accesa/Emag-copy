@@ -1,38 +1,56 @@
 <div class="containerBackgr" *ngIf="product">
   <div class="containerWidth">
     <div class="componentContainer">
-      <div>{{ product.category }}/{{ product.title }}</div>
+      <div class="categTtile">{{ product.category }}/{{ product.title }}</div>
       <h1 class="mainTitle">{{ product.title }}</h1>
       <hr />
-        <section class="heroSection">
-          <div class="detailsContainer">
-            <app-product-photos [product]="product"></app-product-photos>
-
-            <section class="productDescription">
-              <div class="descriptionItem"></div>
-              <div class="descriptionItem">
-                Category : {{ product.category }}
-              </div>
-              <div class="descriptionItem">Sold By : </div>
-              <div class="descriptionItem">
-                Description : {{ product.description }}
-              </div>
-            </section>
-            <app-add-to-cart-box [product]="product"></app-add-to-cart-box>
-          </div>
-        </section>
+      <section class="heroSection">
+        <app-product-photos [product]="product"></app-product-photos>
+        <div class="detailsContainer">
+          <section class="productDescription">
+            <div class="descriptionItem"></div>
+            <div class="descriptionItem"> <b>Category</b> : {{ product.category }}</div>
+            <div class="descriptionItem">
+              <b>Description</b> :<br> {{ product.description }}
+            </div>
+          </section>
+          <app-add-to-cart-box
+          #addToCartBox
+            class="addToCartBox"
+            [product]="product"
+          ></app-add-to-cart-box>
+        </div>
+      </section>
     </div>
   </div>
 </div>
 
 <div class="containerWidth" *ngIf="productSimilar">
   <h1 class="simProdTitle">Similar Products</h1>
-  <div class="listSimProd">
+  <hr>
+  <div class="listSimProd containerScrollbar">
     <div *ngFor="let item of productSimilar">
       <product-card-component
+      
         class="simProdItem"
         [product]="item"
       ></product-card-component>
     </div>
+  </div>
+</div>
+
+<section class="reviewSection containerWidth">
+  <h1 class="simProdTitle">User reviews</h1>
+  <hr>
+</section>
+
+  
+<div class="stickContainer" *ngIf="showAddToCart && product">
+  <div  class="stickBox" >
+    <img [src]="product.image" alt="" class="mainImgStickComp">
+    <div class="titleStickComp">{{product.title}} </div>
+    <div class="priceStickComp">{{product.price}} $ </div>
+    <app-add-to-cart-button  class="stickComp"></app-add-to-cart-button>
+    <img src="./assets/images/favorite-4-128.png" alt="" class="favIconStickComp">
   </div>
 </div>
