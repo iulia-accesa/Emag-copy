@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { SearchBarService } from 'src/app/services/search/search.service';
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SearchBarComponent {
   options$: Observable<SearchBarProduct[]>;

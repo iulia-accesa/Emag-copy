@@ -70,12 +70,14 @@ header {
   }
 }
 
-app-searchbar {
-  width: 100%;
-  @include response(sm) {
-    margin-right: 20px;
-  }
-}
+// app-searchbar {
+//   width: 100%;
+  
+ 
+//   @include response(sm) {
+//     margin-right: 20px;
+//   }
+// }
 
 .search-button {
   color: #3382dc;
@@ -143,6 +145,15 @@ input[type="search"] {
     min-width: 100%;
   }
   .navbar-brand {
+    margin-right: 20px;
+  }
+}
+app-searchbar {
+  width: 100%;
+  ;
+  
+ 
+  @include response(sm) {
     margin-right: 20px;
   }
 }
