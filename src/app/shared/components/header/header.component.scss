@@ -1,7 +1,7 @@
 @import "/src/variables.scss";
 @import "/src/app/shared/styles/mixins";
 
-.header_wrapper {
+.header-wrapper {
   width: 100%;
   background: #ffffff;
 }
@@ -62,7 +62,7 @@ header {
     }
   }
 
-  .img_emag {
+  .img-emag {
     width: 177px;
     height: 46.75px;
     @include response(sm) {
@@ -86,7 +86,7 @@ header {
   }
 }
 
-.extra_line {
+.extra-line {
   display: none;
   @include response(sm) {
     display: flex;
