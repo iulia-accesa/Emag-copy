@@ -9,13 +9,16 @@
         <div class="detailsContainer">
           <section class="productDescription">
             <div class="descriptionItem"></div>
-            <div class="descriptionItem"> <b>Category</b> : {{ product.category }}</div>
             <div class="descriptionItem">
-              <b>Description</b> :<br> {{ product.description }}
+              <b>Category</b> : {{ product.category }}
+            </div>
+            <div class="descriptionItem">
+              <b>Description</b> :<br />
+              {{ product.description }}
             </div>
           </section>
           <app-add-to-cart-box
-          #addToCartBox
+            #addToCartBox
             class="addToCartBox"
             [product]="product"
           ></app-add-to-cart-box>
@@ -24,15 +27,13 @@
     </div>
   </div>
 </div>
-<app-navigation-history></app-navigation-history>
 
 <div class="containerWidth" *ngIf="productSimilar">
   <h1 class="simProdTitle">Similar Products</h1>
-  <hr>
+  <hr />
   <div class="listSimProd containerScrollbar">
     <div *ngFor="let item of productSimilar">
       <product-card-component
-      
         class="simProdItem"
         [product]="item"
       ></product-card-component>
@@ -40,19 +41,21 @@
   </div>
 </div>
 <app-navigation-history></app-navigation-history>
-
 <section class="reviewSection containerWidth">
   <h1 class="simProdTitle">User reviews</h1>
-  <hr>
+  <hr />
 </section>
 
-  
 <div class="stickContainer" *ngIf="showAddToCart && product">
-  <div  class="stickBox" >
-    <img [src]="product.image" alt="" class="mainImgStickComp">
-    <div class="titleStickComp">{{product.title}} </div>
-    <div class="priceStickComp">{{product.price}} $ </div>
-    <app-add-to-cart-button  class="stickComp"></app-add-to-cart-button>
-    <img src="./assets/images/favorite-4-128.png" alt="" class="favIconStickComp">
+  <div class="stickBox">
+    <img [src]="product.image" alt="" class="mainImgStickComp" />
+    <div class="titleStickComp">{{ product.title }}</div>
+    <div class="priceStickComp">{{ product.price }} $</div>
+    <app-add-to-cart-button class="stickComp"></app-add-to-cart-button>
+    <img
+      src="./assets/images/favorite-4-128.png"
+      alt=""
+      class="favIconStickComp"
+    />
   </div>
 </div>
