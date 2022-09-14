@@ -1,6 +1,11 @@
 @import "/src/variables.scss";
 @import "/src/app/shared/styles/mixins";
 
+.header_wrapper {
+  width: 100%;
+  background: #ffffff;
+}
+
 header {
   max-width: 1520px;
   margin: 0 auto;
