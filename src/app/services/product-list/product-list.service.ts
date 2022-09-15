@@ -74,16 +74,14 @@ export class ProductListService {
 
   private filterByRating(
     products: IProductApi[],
-    ratings: any[]
+    minRating: number
   ): IProductApi[] {
     let filteredProducts = [...products];
-    if (ratings) {
-      filteredProducts = products.filter((product) => {
-        let i = Math.round(product.rating.rate);
-        i--;
-        if (i <= 0) i++;
-        return ratings[i] === true;
-      });
+    console.log(filteredProducts);
+    if (minRating) {
+      filteredProducts = products.filter(
+        (product) => Math.round(product.rating.rate) >= minRating
+      );
     }
     return filteredProducts.length > 0 ? filteredProducts : [...products];
   }
@@ -153,8 +151,8 @@ export class ProductListService {
       .subscribe((products) => {
         if (filterGroup.priceRange)
           products = this.filterByPrice(products, filterGroup.priceRange);
-        if (filterGroup.ratings)
-          products = this.filterByRating(products, filterGroup.ratings);
+        if (filterGroup.minRating)
+          products = this.filterByRating(products, filterGroup.minRating);
         if (orderGroup.price)
           products = this.orderByPrice(products, orderGroup.price);
         if (orderGroup.title)

@@ -126,13 +126,13 @@ export class FiltersComponent implements OnInit {
       changes.priceOrder.length > 0 ? changes.priceOrder : undefined;
     const min = changes.priceSlider.priceSlider[0];
     const max = changes.priceSlider.priceSlider[1];
-    const ratings = [
-      changes.ratingsForm.rating1,
-      changes.ratingsForm.rating2,
-      changes.ratingsForm.rating3,
-      changes.ratingsForm.rating4,
-      changes.ratingsForm.rating5,
-    ];
+    const ratings = Object.keys(changes.ratingsForm).map((key) => {
+      if (changes.ratingsForm[key] === true) {
+        return Number.parseInt(key.charAt(key.length - 1));
+      }
+      return 6;
+    });
+    const minRating = Math.min(...ratings);
 
     const priceRange: IPriceRange = {
       min,
@@ -146,7 +146,7 @@ export class FiltersComponent implements OnInit {
 
     const filterGroup: IFilterGroup = {
       priceRange,
-      ratings,
+      minRating,
     };
 
     this.productService.filterAndOrderProducts(filterGroup, orderGroup);
