@@ -12,7 +12,6 @@ a {
   display: inline-block;
   height: 350px;
   width: 220px;
-  margin: 0px 10px 10px 0px;
 }
 
 .checked {
@@ -40,6 +39,7 @@ a {
   font-size: 24px;
   color: $price-color;
   line-height: 30px;
+  margin-top: 7px;
 }
 
 .cardElement:hover {
@@ -57,7 +57,7 @@ a {
   text-overflow: ellipsis;
 }
 
-.addToCartfromCard {
+.addToCartfromCart {
   position: absolute;
   background: -webkit-linear-gradient(left, #4a60c1 10%, #3985e0);
   height: 45px;
@@ -68,6 +68,13 @@ a {
   border-radius: 7px;
 }
 
+.removeFromCart {
+  background: linear-gradient(90deg, #d74151 6.12%, #ff363d 96.28%);
+}
+
+.addToCartfromCard:hover {
+  cursor: pointer;
+}
 .cartIcon {
   height: 35px;
   width: 35px;
@@ -82,7 +89,6 @@ a {
   background-image: linear-gradient(287deg, #f0280a 0%, #bc2610 100%);
   top: 20px;
   left: 0px;
-  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
