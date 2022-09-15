@@ -18,8 +18,12 @@ export class ProductCardComponent {
     }
   }
   _product: IProductApi | undefined;
-  isWideButton:boolean = false;
+  isWideButton: boolean = false;
   prodRating = 0;
+  path: string | undefined;
   discountPers: number = 0;
   constructor(private discoutPercentageService: DiscoutPercentageService) {}
+  ngOnInit() {
+    this.path = decodeURI(window.location.pathname).split('/')[1];
+  }
 }

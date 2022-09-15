@@ -15,7 +15,11 @@
     </div>
     {{ _product.rating.rate }}
   </div>
-  <button *ngIf="!isWideButton" class="addToCartfromCart" [class.removeFromCart]="">
+  <button
+    *ngIf="!isWideButton"
+    class="addToCartfromCart"
+    [class.removeFromCart]=""
+  >
     <img class="cartIcon" src="./assets/images/shoppingCart.svg" alt="" />
   </button>
   <div class="discountIcon" *ngIf="discountPers > 10">
