@@ -2,7 +2,7 @@ import { Subject, Subscription } from 'rxjs';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 import { Component, Input } from '@angular/core';
 
-import { ProductListUiService } from './../../../services/product-list/product-list-ui.service';
+import { ProductListUiService } from '../../../services/product-list/product-list-ui.service';
 
 @Component({
   selector: 'list-container',

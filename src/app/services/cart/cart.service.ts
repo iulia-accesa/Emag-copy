@@ -13,6 +13,16 @@ export class CartService {
     this.store.dispatch(CartActions.loadCart());
   }
 
+  getProduct$(productId: number): Observable<ICartProduct | undefined> {
+    return this.store
+      .select(CartSelectors.selectProductList)
+      .pipe(
+        map((products) =>
+          products.find((product) => product.productId === productId)
+        )
+      );
+  }
+
   getProductList$(): Observable<ICartProduct[] | undefined> {
     return this.store.select(CartSelectors.selectProductList);
   }
@@ -72,13 +82,18 @@ export class CartService {
         const productIndex = productList.findIndex(
           (p) => p.productId === productId
         );
-        if (productIndex !== undefined && productIndex === -1) {
+        if (productIndex === -1) {
           const product = {
             productId,
             quantity: 1,
           };
-
           updatedProductList.push(product);
+        } else {
+          const product = {
+            productId,
+            quantity: updatedProductList[productIndex].quantity + 1,
+          };
+          updatedProductList.splice(productIndex, 1, product);
         }
 
         this.store.dispatch(
