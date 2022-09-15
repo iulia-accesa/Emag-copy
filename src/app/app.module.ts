@@ -61,6 +61,9 @@ import { StarsComponent } from './product-list/components/stars/stars.component'
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
 import { ProductListUiService } from './services/product-list/product-list-ui.service';
+import { NavigationHistoryComponent } from './shared/components/navigation-history/navigation-history.component';
+import { HistoryService } from './services/navigation-history/history.service';
+import { SimilarProductsComponent } from './shared/components/similar-products/similar-products.component';
 
 @NgModule({
   declarations: [
@@ -83,9 +86,9 @@ import { ProductListUiService } from './services/product-list/product-list-ui.se
     FiltersComponent,
     StarsComponent,
     MainTemplateComponent,
-
+    NavigationHistoryComponent,
+    SimilarProductsComponent,
     CartOverviewComponent,
-
     AddToCartButtonComponent,
   ],
 
@@ -143,6 +146,7 @@ import { ProductListUiService } from './services/product-list/product-list-ui.se
     CartApiService,
     CartService,
     ProductListUiService,
+    HistoryService,
   ],
   bootstrap: [AppComponent],
 })

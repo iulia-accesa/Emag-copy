@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 
 @Injectable()
 export class CanActivateSearchKey implements CanActivate {
-  constructor() {}
+  constructor(private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    return !!route.queryParams['key'];
+    let keyFound = !!route.queryParams['key'];
+    if (!keyFound) this.router.navigateByUrl('/');
+
+    return keyFound;
   }
 }
