@@ -23,6 +23,23 @@ justify-content: center;
   margin: 0 auto;
   box-sizing: border-box;
   list-style: none;
+  display: flex;
+  margin: 0 90px;
+  @include response(4k) {
+    margin: 0 385px;
+  }
+
+  @include response(xxxl) {
+    margin: 0 90px;
+  }
+
+  @include response(md) {
+    margin: 0 40px;
+  }
+
+  @include response(xs) {
+    margin: 0;
+  }
 }
 
 .burgermenu-icon {
@@ -32,6 +49,7 @@ justify-content: center;
 .btn-account {
   color: #fff;
   font-size: 12px;
+  text-decoration: none;
 }
 
 .btn-account:hover {
@@ -136,15 +154,11 @@ mat-icon {
   box-shadow: 0 0 0 2px #f3f3f3;
 }
 
-// .phone-icon {
-//   height: 20px;
-// }
-
 .side-container {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  width: 1250px;
+  width: 1520px;
   height: auto;
   background-color: #fff;
   box-shadow: #333;
@@ -158,6 +172,7 @@ mat-icon {
     width: auto;
     padding: 0;
     margin: 0;
+    width: 1400px;
   }
 
   @include response(xs) {

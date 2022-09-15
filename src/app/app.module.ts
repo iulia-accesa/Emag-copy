@@ -41,8 +41,12 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';  
+import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
+import { CartOverviewComponent } from './cart-overview/cart-overview.component';
+import { NavigationHistoryComponent } from './shared/components/navigation-history/navigation-history.component';
+import { HistoryService } from './services/navigation-history/history.service';
+import { SimilarProductsComponent } from './shared/components/similar-products/similar-products.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,9 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     AddToCartBoxComponent,
     HeaderComponent,
     MainTemplateComponent,
+    NavigationHistoryComponent,
+    SimilarProductsComponent,
+    CartOverviewComponent,
     AddToCartButtonComponent,
   ],
 
@@ -102,6 +109,7 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     AccountService,
     ProductApiService,
     SearchBarService,
+    HistoryService,
   ],
   bootstrap: [AppComponent],
 })

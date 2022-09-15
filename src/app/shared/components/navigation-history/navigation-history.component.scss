@@ -1,0 +1,33 @@
+.container {
+  max-width: 1520px;
+  margin: 50px auto;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.history-product {
+  display: inline-block;
+  height: 85px;
+  margin: 10px;
+  border-radius: 3px;
+  text-align: center;
+  border: 2px solid transparent;
+  background: #fff;
+}
+
+.history-product:hover {
+  box-shadow: 0 0 0 2px black;
+}
+
+.history-product:active {
+  box-shadow: 0 0 0 2px blue;
+}
+
+.prod-img {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+}
