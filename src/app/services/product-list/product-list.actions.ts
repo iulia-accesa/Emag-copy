@@ -1,12 +1,17 @@
-import { IFilterGroup } from '../../product-list/models/filter-group.interface';
 import { createAction, props } from '@ngrx/store';
-import { IOrderGroup } from '../../product-list/models/order-group.interface';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
-export const productsInit = createAction(
+export const productsInitSuccess = createAction(
   '[Product Service] Products Initialized Success',
   props<{
     products: IProductApi[];
+  }>()
+);
+
+export const productsInitFailure = createAction(
+  '[Product Service] Products Initialized Failure',
+  props<{
+    error: string;
   }>()
 );
 

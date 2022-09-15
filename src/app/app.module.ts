@@ -60,6 +60,7 @@ import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 import { StarsComponent } from './product-list/components/stars/stars.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
+import { ProductListUiService } from './services/product-list/product-list-ui.service';
 
 @NgModule({
   declarations: [
@@ -141,6 +142,7 @@ import { CommonModule } from '@angular/common';
     SearchBarService,
     CartApiService,
     CartService,
+    ProductListUiService,
   ],
   bootstrap: [AppComponent],
 })

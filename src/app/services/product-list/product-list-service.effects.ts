@@ -1,11 +1,11 @@
+import { ProductListUiService } from './product-list-ui.service';
 import * as ProductListActions from './product-list.actions';
 import { IProductApi } from 'src/app/shared/models/product-api.interface';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductListService } from './product-list.service';
 import { Injectable } from '@angular/core';
 
-import { map, exhaustMap } from 'rxjs';
+import { map, exhaustMap, catchError, of } from 'rxjs';
 
 import { ProductApiService } from '../product-api.service';
 
@@ -13,7 +13,8 @@ import { ProductApiService } from '../product-api.service';
 export class ProductListServiceEffects {
   constructor(
     private productApiService: ProductApiService,
-    private actions$: Actions
+    private actions$: Actions,
+    private productListUiService: ProductListUiService
   ) {}
 
   private productsMatchesSearchKey(
@@ -37,30 +38,40 @@ export class ProductListServiceEffects {
   onEnterWithCategory$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductListActions.enterWithCategory),
-      exhaustMap((action) => {
-        return this.productApiService
-          .getByCategory(action.category)
-          .pipe(
-            map((products) => ProductListActions.productsInit({ products }))
-          );
-      })
+      exhaustMap((action) =>
+        this.productApiService.getByCategory(action.category).pipe(
+          map((products) => {
+            this.productListUiService.productListLoading.next(false);
+            return ProductListActions.productsInitSuccess({ products });
+          }),
+          catchError((error) => {
+            this.productListUiService.productListError.next(true);
+            return of(ProductListActions.productsInitFailure({ error }));
+          })
+        )
+      )
     );
   });
 
   onEnterWithSearch$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductListActions.enterWithSearch),
-      exhaustMap((action) => {
-        return this.productApiService.getAll().pipe(
+      exhaustMap((action) =>
+        this.productApiService.getAll().pipe(
           map((products) => {
-            return ProductListActions.productsInit({
-              products: products.filter((p) =>
-                this.productsMatchesSearchKey(p, action.key)
+            this.productListUiService.productListLoading.next(false);
+            return ProductListActions.productsInitSuccess({
+              products: products.filter((products) =>
+                this.productsMatchesSearchKey(products, action.key)
               ),
             });
+          }),
+          catchError((error) => {
+            this.productListUiService.productListError.next(true);
+            return of(ProductListActions.productsInitFailure({ error }));
           })
-        );
-      })
+        )
+      )
     );
   });
 }

@@ -12,62 +12,14 @@ import * as ProductListActions from './product-list.actions';
 import { IOrderGroup } from 'src/app/product-list/models/order-group.interface';
 import { IFilterGroup } from 'src/app/product-list/models/filter-group.interface';
 import { Order } from 'src/app/product-list/models/order.type';
+import { ProductListUiService } from './product-list-ui.service';
 
 @Injectable()
 export class ProductListService {
-  constructor(private store: Store) {}
-
-  getProductList(): Observable<IProductApi[]> {
-    return this.store.select(ProductListSelectors.selectAllProducts);
-  }
-
-  getPriceRange(): Observable<IPriceRange> {
-    return this.store
-      .select(ProductListSelectors.selectAllInitialProducts)
-      .pipe(
-        map((products: IProductApi[]) => {
-          if (products.length === 0)
-            return {
-              min: 1,
-              max: 999999,
-            };
-
-          return {
-            min: Math.min(...products.map((product) => product.price)),
-            max: Math.max(...products.map((product) => product.price)),
-          };
-        })
-      );
-  }
-
-  getRatingCount(): Observable<number[]> {
-    return this.store
-      .select(ProductListSelectors.selectAllInitialProducts)
-      .pipe(
-        map((products: IProductApi[]) => {
-          let ratingCount = [0, 0, 0, 0, 0];
-
-          products.forEach((product) => {
-            let i = Math.round(product.rating.rate);
-            if (i > 0) i--;
-            ratingCount[i]++;
-          });
-          return ratingCount;
-        })
-      );
-  }
-
-  enterWithCategory(category: string) {
-    this.store.dispatch(
-      ProductListActions.enterWithCategory({
-        category,
-      })
-    );
-  }
-
-  enterWithSearch(key: string) {
-    this.store.dispatch(ProductListActions.enterWithSearch({ key }));
-  }
+  constructor(
+    private store: Store,
+    private productListUiService: ProductListUiService
+  ) {}
 
   private orderByPrice(
     products: IProductApi[],
@@ -134,6 +86,62 @@ export class ProductListService {
       });
     }
     return filteredProducts.length > 0 ? filteredProducts : [...products];
+  }
+
+  getProductList(): Observable<IProductApi[]> {
+    return this.store.select(ProductListSelectors.selectAllProducts);
+  }
+
+  getPriceRange(): Observable<IPriceRange> {
+    return this.store
+      .select(ProductListSelectors.selectAllInitialProducts)
+      .pipe(
+        map((products: IProductApi[]) => {
+          if (products.length === 0)
+            return {
+              min: 1,
+              max: 999999,
+            };
+
+          return {
+            min: Math.min(...products.map((product) => product.price)),
+            max: Math.max(...products.map((product) => product.price)),
+          };
+        })
+      );
+  }
+
+  getRatingCount(): Observable<number[]> {
+    return this.store
+      .select(ProductListSelectors.selectAllInitialProducts)
+      .pipe(
+        map((products: IProductApi[]) => {
+          let ratingCount = [0, 0, 0, 0, 0];
+
+          products.forEach((product) => {
+            let i = Math.round(product.rating.rate);
+            if (i > 0) i--;
+            ratingCount[i]++;
+          });
+          return ratingCount;
+        })
+      );
+  }
+
+  enterWithCategory(category: string) {
+    this.productListUiService.productListLoading.next(true);
+    this.productListUiService.productListError.next(false);
+    this.store.dispatch(
+      ProductListActions.enterWithCategory({
+        category,
+      })
+    );
+  }
+
+  enterWithSearch(key: string) {
+    this.productListUiService.productListLoading.next(true);
+    this.productListUiService.productListError.next(false);
+    this.store.dispatch(ProductListActions.enterWithSearch({ key }));
   }
 
   filterAndOrderProducts(
