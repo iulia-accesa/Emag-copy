@@ -37,11 +37,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private _productService: ProductApiService,
     private historyService: HistoryService,
     private route: ActivatedRoute,
-    private discoutPercentageService: DiscoutPercentageService,
+    private discoutPercentageService: DiscoutPercentageService
   ) {}
 
   ngOnInit() {
-    this.route.url.subscribe(() =>{
+    this.route.url.subscribe(() => {
       this.productId = this.route.snapshot.params['id'];
       forkJoin([
         this._productService.getById(this.productId),
@@ -50,10 +50,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.product = res[0];
         this.prodCategory = this.product.category;
         this.getSameCategory(res[1]);
-      this.discountPers = this.discoutPercentageService.getPercentage(
-        this.product.rating.rate
-      );
-        this.historyService.updateHistory$(this.product.image, this.product.category);
+        this.discountPers = this.discoutPercentageService.getPercentage(
+          this.product.rating.rate
+        );
+        this.historyService.updateHistory$(
+          this.product.image,
+          this.product.category
+        );
       });
     });
   }

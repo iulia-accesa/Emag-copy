@@ -1,11 +1,18 @@
+@import "../../styles/mixins";
+
 .container {
   max-width: 1520px;
   margin: 50px auto;
+  padding: 0 25px;
 }
 
 .title {
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 35px;
+  line-height: 50px;
+  @include response(sm) {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .history-product {
