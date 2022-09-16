@@ -6,15 +6,6 @@
   padding: 0 25px;
 }
 
-.title {
-  font-size: 35px;
-  line-height: 50px;
-  @include response(sm) {
-    font-size: 20px;
-    line-height: 25px;
-  }
-}
-
 .history-product {
   display: inline-block;
   height: 85px;

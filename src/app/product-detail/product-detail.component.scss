@@ -1,6 +1,5 @@
 @import "variables";
 @import "mixins";
-@import "general";
 
 .containerBackgr {
   background-color: #fff;
@@ -11,15 +10,6 @@
   margin: 0 auto 40px auto;
   max-width: 1520px;
   padding: 0 25px;
-}
-
-.simProdTitle {
-  font-size: 35px;
-  line-height: 50px;
-  @include response(sm) {
-    font-size: 20px;
-    line-height: 25px;
-  }
 }
 
 .componentContainer {
@@ -85,11 +75,6 @@ hr {
 
 .categTtile {
   padding: 8px 0;
-}
-
-.reviewSection {
-  max-width: 1520px;
-  height: 340px;
 }
 
 .stickComp {
