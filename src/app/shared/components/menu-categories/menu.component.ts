@@ -31,6 +31,11 @@ export class MenuComponent implements OnInit {
     this.service.getAllCategories().subscribe((response) => {
       this.categories = response;
     });
+    if (window.innerWidth < 830) {
+      this.belowWidth = false;
+    } else {
+      this.belowWidth = true;
+    }
   }
   onHover(index: number | undefined, event: any) {
     this.service
