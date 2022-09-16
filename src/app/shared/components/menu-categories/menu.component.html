@@ -39,6 +39,7 @@
     <div class="side-container" >
       <app-carousel></app-carousel>
       <div
+      *ngIf="belowWidth"
         class="menu-details"
         [ngClass]="{ open: isOpen }"
         (mouseleave)="isOpen = false"

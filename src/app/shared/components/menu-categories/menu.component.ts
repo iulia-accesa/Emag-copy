@@ -42,7 +42,7 @@ export class MenuComponent implements OnInit {
       .getByCategory(event.target.id)
       .subscribe((response: Array<IProductApi>) => {
         this.products = response;
-        this.isOpen = false;
+        this.isOpen = true;
         this.hoverIndex = index;
       });
   }
