@@ -1,0 +1,41 @@
+<div class="list-container">
+  <div class="category-title">
+    <!-- If list is based on category -->
+    <h1 *ngIf="categoryName">
+      <div *ngIf="productCount">
+        {{ categoryName }}
+        <span class="category-title__count"
+          ><span>{{ productCount }}</span> produse</span
+        >
+      </div>
+    </h1>
+    <!-- If list is based on search -->
+    <h1 *ngIf="searchKey">
+      <span class="category-title__count">
+        <span>{{ productCount }}</span>
+        rezultate pentru:
+      </span>
+      "{{ searchKey }}"
+    </h1>
+  </div>
+
+  <div
+    *ngIf="!productListLoading && !productListError"
+    class="product-cards-container"
+  >
+    <product-card-component
+      class="product-card"
+      style="margin: auto"
+      *ngFor="let product of productList"
+      [product]="product"
+    >
+    </product-card-component>
+  </div>
+
+  <div *ngIf="productListLoading" class="product-list-status">
+    <mat-spinner *ngIf="!productListError"></mat-spinner>
+    <span *ngIf="productListError"
+      >Failed to load products. Please try refreshing your page</span
+    >
+  </div>
+</div>

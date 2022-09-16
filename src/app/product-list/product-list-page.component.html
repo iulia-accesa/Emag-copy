@@ -1,0 +1,14 @@
+<main class="product-list-page">
+  <div class="page-container">
+    <breadcrumb-nav> </breadcrumb-nav>
+    <div class="main-container">
+      <filters></filters>
+      <list-container
+        [productList]="productList$ | async"
+        [categoryName]="getCategoryName() | titlecase"
+        [productCount]="getProductCount() | async"
+        [searchKey]="getSearchKey()"
+      ></list-container>
+    </div>
+  </div>
+</main>
