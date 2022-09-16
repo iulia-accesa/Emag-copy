@@ -1,5 +1,5 @@
 import { Observable, map, take } from 'rxjs';
-import { ICartProduct } from './cart-product.interface';
+import { ICartProduct } from '../../shared/models/cart-product.interface';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 

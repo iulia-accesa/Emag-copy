@@ -1,4 +1,4 @@
-import { ICartProduct } from './cart-product.interface';
+import { ICartProduct } from '../../shared/models/cart-product.interface';
 import { createAction, props } from '@ngrx/store';
 
 export enum CartActionTypes {

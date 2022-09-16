@@ -1,4 +1,4 @@
-import { ICartProduct } from './cart-product.interface';
+import { ICartProduct } from '../../shared/models/cart-product.interface';
 import { createReducer, on, ActionReducerMap } from '@ngrx/store';
 import * as CartActions from './cart.actions';
 

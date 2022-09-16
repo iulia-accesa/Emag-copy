@@ -77,7 +77,6 @@ export class ProductListService {
     minRating: number
   ): IProductApi[] {
     let filteredProducts = [...products];
-    console.log(filteredProducts);
     if (minRating) {
       filteredProducts = products.filter(
         (product) => Math.round(product.rating.rate) >= minRating
