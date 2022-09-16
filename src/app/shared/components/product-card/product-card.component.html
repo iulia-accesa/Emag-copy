@@ -5,7 +5,7 @@
   <a href="products/{{ _product.id }}" target="_self" class="prodTitle">{{
     _product.title
   }}</a>
-  <div class="productPrice">{{ _product.price }}$</div>
+  <div class="productPrice">${{ _product.price }}</div>
   <div class="ratingStars">
     <div
       *ngFor="let item of [0, 1, 2, 3, 4]; let i = index"
