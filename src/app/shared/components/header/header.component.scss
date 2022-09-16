@@ -7,8 +7,10 @@
 }
 .cdk-overlay-container {
   pointer-events: auto;
+  &:active {
+    pointer-events: none;
+  }
 }
-
 header {
   max-width: 1520px;
   margin: 0 auto;
