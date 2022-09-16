@@ -1,0 +1,115 @@
+<div class="product-list-filters">
+  <form [formGroup]="filterForm">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ordoneaza dupa </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="order-container" fxLayout="column" fxLayoutGap="2rem">
+          <mat-form-field
+            fxFlex="100%"
+            class="filters__order-by-price"
+            appearance="fill"
+          >
+            <mat-select
+              fxFlex="100%"
+              formControlName="priceOrder"
+              placeholder="Pret"
+            >
+              <mat-option value="asc"> Pret crescator </mat-option>
+              <mat-option value="desc"> Pret descrescator </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field
+            fxFlex="100%"
+            class="filters__order-by-name"
+            appearance="fill"
+          >
+            <mat-select
+              fxFlex="100%"
+              formControlName="nameOrder"
+              placeholder="Nume"
+            >
+              <mat-option value="asc"> A - Z </mat-option>
+              <mat-option value="desc"> Z - A </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="disable-hover-bg">
+          <mat-panel-title> Pret </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form
+          fxFlex="100%"
+          fxLayout="column"
+          class="filters__filter-by-price"
+          [formGroup]="sliderForm"
+        >
+          <ngx-slider
+            fxFlex="100%"
+            [options]="priceFilterOptions"
+            (value)="(priceRange.min)"
+            (highValue)="(priceRange.max)"
+            (userChange)="onSliderChange()"
+            formControlName="priceSlider"
+          ></ngx-slider>
+          <div
+            class="filter-by-price__inputs"
+            fxLayout="column"
+            fxLayout.gt-xs="row"
+            fxLayoutAlign="center center"
+          >
+            <mat-form-field appearance="fill">
+              <input
+                (change)="onSliderInput()"
+                matInput
+                type="number"
+                formControlName="minVal"
+                [min]="priceRange.min"
+                [max]="priceRange.max"
+              />
+            </mat-form-field>
+            <div class="dash">-</div>
+            <mat-form-field appearance="fill">
+              <input
+                (change)="onSliderInput()"
+                matInput
+                type="number"
+                formControlName="maxVal"
+                [min]="priceRange.min"
+                [max]="priceRange.max"
+              />
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="disable-hover-bg">
+          <mat-panel-title> Rating minimum </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <form class="filters__filter-by-rating" [formGroup]="ratingsForm">
+          <div fxLayout="column">
+            <mat-checkbox
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              *ngFor="let i of [5, 4, 3, 2, 1]"
+              formControlName="{{ 'rating' + i }}"
+            >
+              <stars [starCount]="i"></stars>
+              <span class="count">({{ ratingList[i - 1] }})</span>
+            </mat-checkbox>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>

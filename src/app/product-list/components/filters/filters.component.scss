@@ -1,0 +1,135 @@
+@import "../../../../variables.scss";
+@import "../../../shared/styles/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+.product-list-filters {
+  width: 300px;
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #005691 !important;
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #005691;
+  }
+
+  @include response(md) {
+    width: 480px;
+    padding: 0 10px;
+  }
+
+  @include response(xs) {
+    width: calc(100vw - 20px);
+  }
+
+  .mat-expansion-panel {
+    margin: 10px 0;
+    box-shadow: none;
+  }
+
+  .order-container {
+    width: 100%;
+  }
+
+  .filters__filter-by-price {
+    padding: 0;
+  }
+
+  .filter-by-price__inputs {
+    mat-form-field {
+      width: 100px;
+
+      @include response(sm) {
+        width: 100%;
+      }
+    }
+  }
+
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  // Custom slider -- start --
+  .ngx-slider .ngx-slider-bar {
+    background: #adadad;
+    height: 6px;
+  }
+
+  .ngx-slider .ngx-slider-pointer {
+    top: -8px;
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+    background-color: #adadad;
+  }
+
+  .ngx-slider .ngx-slider-pointer::after {
+    top: 6.66px;
+    left: 6.67px;
+  }
+
+  .ngx-slider .ngx-slider-pointer.ngx-slider-active::after {
+    background-color: white;
+  }
+  // Custom slider -- end --
+  .filter-by-price__inputs {
+    margin-top: 20px;
+    .dash {
+      padding: 0 20px;
+    }
+  }
+
+  .filters__filter-by-brand {
+    mat-checkbox {
+      margin: 6px 0;
+
+      .count {
+        color: #999;
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .filters__filter-by-rating {
+    mat-checkbox {
+      margin: 6px 0;
+    }
+  }
+
+  .count {
+    position: relative;
+    top: 0;
+    transform: translateY(5px);
+  }
+
+  mat-panel-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  mat-form-field .mat-form-field-flex {
+    padding-top: 0;
+    border-radius: 4px;
+  }
+
+  mat-form-field .mat-select-arrow-wrapper {
+    transform: translateY(0);
+  }
+
+  mat-form-field .mat-form-field-underline {
+    display: none;
+  }
+
+  mat-expansion-panel-header.mat-expansion-panel-header {
+    background-color: white !important;
+  }
+
+  mat-expansion-panel-header.mat-expansion-panel-header:hover {
+    background-color: white !important;
+  }
+}
