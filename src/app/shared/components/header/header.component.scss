@@ -5,6 +5,9 @@
   width: 100%;
   background: #ffffff;
 }
+.cdk-overlay-container {
+  pointer-events: auto;
+}
 
 header {
   max-width: 1520px;
@@ -44,6 +47,7 @@ header {
   }
   .disabled {
     display: none;
+    overflow: hidden;
   }
 
   .input-group {
