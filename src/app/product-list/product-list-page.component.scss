@@ -13,7 +13,11 @@
 }
 
 .page-container {
-  width: 1240px;
+  width: 1490px;
+
+  @include response(xxl-xxxl) {
+    width: 1240px;
+  }
 
   @include response(xl) {
     width: 1010px;
