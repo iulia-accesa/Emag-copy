@@ -18,6 +18,7 @@
           type="text"
           formControlName="username"
           placeholder="Username"
+          name="username"
           />
           <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
             Campul este obligatoriu
@@ -30,6 +31,8 @@
           type="password"
           formControlName="password"
           placeholder="Parola"
+          name="password"
+          autocomplete="false"
           />
           <mat-error *ngIf="loginForm.get('password')?.invalid">
             {{ !loginForm.get('password')?.hasError('pattern') ?
