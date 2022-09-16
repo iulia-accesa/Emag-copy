@@ -11,30 +11,20 @@ $nav-gradient: linear-gradient(
 ////////////////////// Menu ///////////////////////////
 .menu-container {
   background-image: $nav-gradient;
+  display: flex;
+  justify-content: center;
 }
 
 .menu-list {
   display: flex;
+  width: 1520px;
+
   align-items: center;
+  margin: 0 auto;
   box-sizing: border-box;
   list-style: none;
   display: flex;
-  margin: 0 90px;
-  @include response(4k) {
-    margin: 0 385px;
-  }
-
-  @include response(xxxl) {
-    margin: 0 90px;
-  }
-
-  @include response(md) {
-    margin: 0 40px;
-  }
-
-  @include response(xs) {
-    margin: 0;
-  }
+  margin: 0 auto;
 }
 
 .burgermenu-icon {
@@ -55,7 +45,7 @@ $nav-gradient: linear-gradient(
 .btn-products,
 .btn-account {
   padding: 6px 10px;
-  margin: 5px 10px 0 10px;
+  margin: 5px 20px 0 0px;
 }
 
 .btn-dropdown {
@@ -81,7 +71,6 @@ mat-icon {
 .content {
   display: flex;
   justify-content: center;
-  margin: 0 100px;
   height: max-content;
   @include response(md) {
     margin: 0;
@@ -105,16 +94,11 @@ mat-icon {
   background-color: #fff;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.09);
   @include response(xxl) {
-    width: 200px;
+    min-width: 203px;
   }
 
   @include response(md) {
-    width: 200px;
-    margin-left: 50px;
-  }
-
-  @include response(xs) {
-    margin-left: 0;
+    min-width: 203px;
   }
 }
 
@@ -153,7 +137,7 @@ mat-icon {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  width: 1520px;
+  width: 1270px;
   height: auto;
   background-color: #fff;
   box-shadow: #333;
@@ -185,8 +169,7 @@ mat-icon {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
-
+  height: 670px;
   z-index: 1;
   display: block;
   background-color: #fff;

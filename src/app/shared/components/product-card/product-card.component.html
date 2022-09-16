@@ -15,10 +15,15 @@
     </div>
     {{ _product.rating.rate }}
   </div>
-  <button class="addToCartfromCard">
+  <button mat-button
+    *ngIf="!isWideButton"
+    class="addToCartfromCart"
+    [class.removeFromCart]=""
+  >
     <img class="cartIcon" src="./assets/images/shoppingCart.svg" alt="" />
   </button>
   <div class="discountIcon" *ngIf="discountPers > 10">
     -{{ this.discountPers }}%
   </div>
+  <app-add-to-cart-button *ngIf="isWideButton"></app-add-to-cart-button>
 </mat-card>

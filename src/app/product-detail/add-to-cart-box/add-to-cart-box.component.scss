@@ -71,20 +71,24 @@
 }
 
 .myFavorite {
-  margin-top: 20px;
   width: 100%;
   height: 40px;
-  color: #005eb8;
-  border-radius: 4px;
-  background-color: #fff;
-  border-color: #005eb8;
-  display: flex;
-  align-items: center;
+  margin-top: 15px;
+
   padding: 0;
 }
 
+.favFlexContainer {
+  display: flex;
+  align-items: center;
+  color: #005eb8;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1.5px #005eb8 solid;
+}
+
 .favIcon {
-  margin-left: 10px;
+  margin: 5px;
   height: 28px;
   width: 28px;
 }
@@ -93,6 +97,10 @@
   font-size: 15px;
   width: 100%;
 }
+.addToFav:hover {
+  cursor: pointer;
+}
+
 .checked {
   color: #f9bf3b;
 }
