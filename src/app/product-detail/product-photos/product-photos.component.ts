@@ -11,7 +11,9 @@ export class ProductPhotosComponent {
   @Input() set product(value: IProductApi) {
     if (value) {
       this._product = value;
-      this.discountPers = this.discoutPercentageService.getPercentage(this._product.rating.rate);
+      this.discountPers = this.discoutPercentageService.getPercentage(
+        this._product.rating.rate
+      );
     }
   }
   _product: IProductApi | undefined;
