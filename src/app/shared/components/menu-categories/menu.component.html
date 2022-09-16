@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" (window:resize)="onResize()">
   <div class="menu-container">
     <div class="menu-list">
-      <li>
-        <div class="btn-products btn-dropdown">
+      <li (click)="toggleDisplay()">
+        <div class="btn-products btn-dropdown"> 
           <mat-icon
             aria-hidden="false"
             aria-label="Example home icon"
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="content">
-    <span class="product-category">
+    <span class="product-category" *ngIf="belowWidth || ( !belowWidth && this.visibleCategory)">
       <a
         class="list-group-item"
         *ngFor="let categ of categories; let i = index"
@@ -35,7 +35,7 @@
       </a>
     </span>
 
-    <div class="side-container">
+    <div class="side-container" >
       <app-carousel></app-carousel>
       <div
         class="menu-details"

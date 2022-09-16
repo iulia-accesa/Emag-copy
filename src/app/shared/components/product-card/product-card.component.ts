@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { DiscoutPercentageService } from 'src/app/services/discout-percentage.service';
 import { IProductApi } from '../../models/product-api.interface';
 
@@ -22,8 +23,12 @@ export class ProductCardComponent {
   prodRating = 0;
   path: string | undefined;
   discountPers: number = 0;
-  constructor(private discoutPercentageService: DiscoutPercentageService) {}
+  constructor(private discoutPercentageService: DiscoutPercentageService, private cartService: CartService) {}
   ngOnInit() {
     this.path = decodeURI(window.location.pathname).split('/')[1];
+  }
+
+  addProductToCart(){
+    this.cartService.addProduct(this._product!.id)
   }
 }

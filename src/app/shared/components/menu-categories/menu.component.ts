@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ProductApiService } from '../../../services/product-api.service';
 import { IProductApi } from '../../models/product-api.interface';
 
@@ -11,10 +11,21 @@ export class MenuComponent implements OnInit {
   @Input() categories: string[] | undefined;
   @Input() products: IProductApi[] | undefined;
   @Input() isRootNode = false;
+
   hoverIndex: number | undefined;
   isOpen = false;
+  visibleCategory = false;
+  belowWidth: boolean | undefined;
 
   constructor(private service: ProductApiService) {}
+  @HostListener('window:resize') onResize() {
+    if (window.innerWidth < 830) {
+      this.belowWidth = false;
+      this.visibleCategory = false;
+    } else {
+      this.belowWidth = true;
+    }
+  }
 
   ngOnInit(): void {
     this.service.getAllCategories().subscribe((response) => {
@@ -22,10 +33,15 @@ export class MenuComponent implements OnInit {
     });
   }
   onHover(index: number | undefined, event: any) {
-    this.service.getByCategory(event.target.id).subscribe((response: Array<IProductApi>) => {
-      this.products = response;
-      this.isOpen = true;
-      this.hoverIndex = index;
-    });
+    this.service
+      .getByCategory(event.target.id)
+      .subscribe((response: Array<IProductApi>) => {
+        this.products = response;
+        this.isOpen = false;
+        this.hoverIndex = index;
+      });
+  }
+  toggleDisplay() {
+    this.visibleCategory = !this.visibleCategory;
   }
 }

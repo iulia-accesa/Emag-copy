@@ -19,6 +19,7 @@
     *ngIf="!isWideButton"
     class="addToCartfromCart"
     [class.removeFromCart]=""
+    (click)="addProductToCart()"
   >
     <img class="cartIcon" src="./assets/images/shoppingCart.svg" alt="" />
   </button>
