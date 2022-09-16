@@ -156,7 +156,7 @@ app-searchbar {
     right: 4%;
     transform: translate(0, 42px);
     width: 93%;
-    position: fixed;
+    position: absolute;
   }
   @include response(xxs) {
     width: 90%;
