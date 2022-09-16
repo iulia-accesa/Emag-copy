@@ -3,8 +3,8 @@
     <div *ngIf="discountPers > 10" class="discPers">
       ({{ discountPers }}% off)
     </div>
-    <div class="newPrice">{{ _product.price }}$</div>
-    <div *ngIf="discountPers > 10" class="oldPrice">{{ oldPrice }}$</div>
+    <div class="newPrice">${{ _product.price }}</div>
+    <div *ngIf="discountPers > 10" class="oldPrice">${{ oldPrice }}</div>
   </div>
   <div class="ratings">
     <div
