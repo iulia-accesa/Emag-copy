@@ -19,6 +19,7 @@
   <div class="content">
     <span class="product-category">
       <a
+        routerLink="/category/{{ categ }}"
         class="list-group-item"
         *ngFor="let categ of categories; let i = index"
         [id]="categ"
@@ -47,7 +48,7 @@
             *ngFor="let prod of products; let i = index"
             class="prod-list-item"
           >
-            <a href="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
+            <a routerLink="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
           </li>
         </ul>
       </div>
