@@ -12,15 +12,6 @@
   padding: 0 25px;
 }
 
-.simProdTitle {
-  font-size: 35px;
-  line-height: 50px;
-  @include response(sm) {
-    font-size: 20px;
-    line-height: 25px;
-  }
-}
-
 .componentContainer {
   display: flex;
   flex-direction: column;
@@ -82,28 +73,8 @@ hr {
   }
 }
 
-.listSimProd {
-  max-width: 1520px;
-  padding: 20px 0;
-  display: flex;
-  gap: 20px;
-  justify-content: space-evenly;
-  scrollbar-color: $nav-gradient $background-color;
-  @include response(xl) {
-    justify-content: space-between;
-  }
-  @include response(lg) {
-    gap: 20px;
-  }
-}
-
 .categTtile {
   padding: 8px 0;
-}
-
-.reviewSection {
-  max-width: 1520px;
-  height: 340px;
 }
 
 .stickComp {

@@ -14,6 +14,7 @@
         class="btn"
         #menuTrigger="matMenuTrigger"
         (mouseover)="menuTrigger.openMenu()"
+        (click)="menuTrigger.openMenu()"
       >
         <mat-icon class="button-icons">person</mat-icon>
         <span class="button-text" fxHide.lt-md>My Account</span>
@@ -21,9 +22,11 @@
       </button>
 
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTrigger.closeMenu()">
-          <button mat-menu-item (click)="btnMyAccount()">Login</button>
-        </span>
+        <ng-template matMenuContent>
+          <span (mouseleave)="menuTrigger.closeMenu()">
+            <button mat-menu-item (click)="btnMyAccount()">Login</button>
+          </span>
+        </ng-template>
       </mat-menu>
 
       <button
@@ -33,6 +36,7 @@
         class="btn"
         #menuTrigger2="matMenuTrigger"
         (mouseover)="menuTrigger2.openMenu()"
+        (click)="menuTrigger2.openMenu()"
       >
         <mat-icon class="button-icons">person</mat-icon>
         <span class="button-text" fxHide.lt-md>My Account</span>
@@ -40,12 +44,16 @@
       </button>
 
       <mat-menu #menu2="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTrigger2.closeMenu()">
-          <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
-          <button mat-menu-item>Favourites</button>
-          <button mat-menu-item [routerLink]="['/cart-overview']">Cart</button>
-          <button mat-menu-item (click)="onLogout()">Logout</button>
-        </span>
+        <ng-template matMenuContent>
+          <span (mouseleave)="menuTrigger2.closeMenu()">
+            <button mat-menu-item (click)="btnMyAccount()">Account Page</button>
+            <button mat-menu-item>Favourites</button>
+            <button mat-menu-item [routerLink]="['/cart-overview']">
+              Cart
+            </button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </span>
+        </ng-template>
       </mat-menu>
 
       <button mat-button class="btn" [routerLink]="['/cart-overview']">

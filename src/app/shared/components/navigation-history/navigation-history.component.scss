@@ -1,11 +1,9 @@
+@import "../../styles/mixins";
+
 .container {
   max-width: 1520px;
   margin: 50px auto;
-}
-
-.title {
-  font-size: 30px;
-  font-weight: 400;
+  padding: 0 25px 25px;
 }
 
 .history-product {

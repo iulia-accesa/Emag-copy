@@ -1,0 +1,13 @@
+@import 'mixins';
+@import 'variables';
+
+.listSimProd {
+    max-width: 1520px;
+    padding: 20px 0;
+    display: flex;
+    gap: 30px;
+    scrollbar-color: $nav-gradient $background-color;
+    @include response(lg) {
+      gap: 20px;
+    }
+  }
