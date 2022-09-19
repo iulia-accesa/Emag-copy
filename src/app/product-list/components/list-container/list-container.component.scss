@@ -1,0 +1,82 @@
+@import "../../../shared/styles/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 1180px;
+
+  @include response(xxl-xxxl) {
+    width: 940px;
+  }
+
+  @include response(xl) {
+    width: 710px;
+  }
+
+  @include response(lg) {
+    width: 480px;
+  }
+
+  @include response(xs) {
+    width: calc(100vw - 10px);
+  }
+
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 500;
+  }
+  .category-title {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .category-title__count {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+
+.product-cards-container {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-gap: 10px 0;
+
+  .addToCartfromCart {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+
+  .mat-button {
+    min-width: 0px;
+  }
+
+  .cartIcon {
+    width: 30px;
+  }
+}
+
+.product-list-status {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 6px;
+}

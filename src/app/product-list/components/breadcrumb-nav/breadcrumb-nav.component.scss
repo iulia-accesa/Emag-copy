@@ -1,0 +1,47 @@
+@import "../../../../variables.scss";
+@import "../../../shared/styles/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 12px;
+
+  @include response(md) {
+    padding: 10px 10px;
+  }
+}
+
+.breadcrumb__el,
+.breadcrumb__slash,
+.breadcrumb__search {
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+}
+
+.breadcrumb__search {
+  color: $rating-color;
+}
+
+.breadcrumb__slash {
+  padding: 0 8px;
+}
+
+.breadcrumb__el {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.el--active {
+    color: $rating-color;
+  }
+}

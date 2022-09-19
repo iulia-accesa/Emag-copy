@@ -1,0 +1,7 @@
+<div class="listSimProd containerScrollbar" *ngIf="products">
+  <product-card-component
+    class="product-card"
+    *ngFor="let prod of products"
+    [product]="prod"
+  ></product-card-component>
+</div>

@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 
 .containerLeftSide {
   display: flex;
@@ -70,8 +70,9 @@ img {
   border: 2px solid transparent;
 }
 
-.badge{
+.badge {
   position: absolute;
+  font-size: 18px;
   width: 107px;
   height: 37px;
   color: #fff;
@@ -83,4 +84,9 @@ img {
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  @include response(sm) {
+    width: 70px;
+    height: 25px;
+    font-size: 14px;
+  }
 }

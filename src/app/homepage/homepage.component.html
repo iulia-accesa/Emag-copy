@@ -8,6 +8,7 @@
       <product-card-component
         *ngFor="let product of categorizedProducts$.get(category) | async"
         [product]="product"
+        class="categoryItem"
       ></product-card-component>
     </div>
   </div>

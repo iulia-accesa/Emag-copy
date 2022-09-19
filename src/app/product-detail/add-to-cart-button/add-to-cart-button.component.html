@@ -1,6 +1,11 @@
-<div class="addBtn">
-    <div class="blueQuad"></div>
-    <div class="redQuad"></div>
-    <img class="cartIconSticky" src="./assets/images/shoppingCart.svg" alt="" />
-    <div class="addToCartBtn">Add To Cart</div>
+<button mat-button class="addBtn" (click)="addProductToCart()">
+  <div class="blueQuad" [class.removeButtonBackgr]="0">
+    <div
+      class="addToCartBtn"
+      [ngClass]="'' ? 'removeContent' : 'addContent'"
+    ></div>
   </div>
+  <div class="redQuad">
+    <img class="cartIconSticky" src="./assets/images/shoppingCart.svg" alt="" />
+  </div>
+</button>

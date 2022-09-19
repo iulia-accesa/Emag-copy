@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 .containerBackgr {
   background-color: #fff;
@@ -10,15 +10,6 @@
   margin: 0 auto 40px auto;
   max-width: 1520px;
   padding: 0 25px;
-}
-
-.simProdTitle {
-  font-size: 35px;
-  line-height: 50px;
-  @include response(sm) {
-    font-size: 20px;
-    line-height: 25px;
-  }
 }
 
 .componentContainer {
@@ -82,33 +73,8 @@ hr {
   }
 }
 
-.listSimProd {
-  max-width: 1520px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-evenly;
-  scrollbar-color: $nav-gradient $background-color;
-  @include response(xl) {
-    justify-content: space-between;
-  }
-  @include response(lg) {
-    gap: 20px;
-  }
-}
-
-.simProdItem {
-  @include response(xl) {
-    gap: 35px;
-  }
-}
-
 .categTtile {
   padding: 8px 0;
-}
-
-.reviewSection {
-  max-width: 1520px;
-  height: 340px;
 }
 
 .stickComp {
@@ -140,7 +106,13 @@ hr {
   flex-direction: row;
   width: 100%;
   padding: 5px;
-  z-index: 5;
+  z-index: 7;
+}
+
+.matButtonFavIconStick {
+  margin: 0 2px 0 8px;
+  padding: 0;
+  max-width: 42px;
 }
 
 .favIconStickComp {
@@ -149,13 +121,11 @@ hr {
   background-color: transparent;
   padding: 2.5px;
   border: solid 1.5px #005eb8;
-  margin: 0 10px;
   border-radius: 7px;
 }
 
-.favIconStickComp:hover{
-  background-color: #ebf5ff;
-  transition: 0.2s;
+.mat-button {
+  min-width: unset;
 }
 
 .mainImgStickComp {
@@ -182,17 +152,17 @@ hr {
 }
 
 @include response(md-sm) {
-  .priceStickComp{
+  .priceStickComp {
     display: none;
   }
-  .titleStickComp{
+  .titleStickComp {
     margin-right: 15px;
   }
 }
 
 @include response(xs) {
-  .titleStickComp, .mainImgStickComp{
+  .titleStickComp,
+  .mainImgStickComp {
     display: none;
   }
 }
-

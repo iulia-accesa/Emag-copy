@@ -3,8 +3,8 @@
     <div *ngIf="discountPers > 10" class="discPers">
       ({{ discountPers }}% off)
     </div>
-    <div class="newPrice">{{ _product.price }}$</div>
-    <div *ngIf="discountPers > 10" class="oldPrice">{{ oldPrice }}$</div>
+    <div class="newPrice">${{ _product.price }}</div>
+    <div *ngIf="discountPers > 10" class="oldPrice">${{ oldPrice }}</div>
   </div>
   <div class="ratings">
     <div
@@ -16,10 +16,12 @@
     {{ _product.rating.rate }}
   </div>
 
-  <app-add-to-cart-button></app-add-to-cart-button>
+  <app-add-to-cart-button [product]="_product"></app-add-to-cart-button>
 
-  <button class="myFavorite">
-    <img class="favIcon" src="./assets/images/favIcon.svg" alt="" />
-    <div class="addToFav">Add To Favorites</div>
+  <button mat-button color="primary" class="myFavorite">
+    <div class="favFlexContainer">
+      <img class="favIcon" src="./assets/images/favIcon.svg" alt="" />
+      <div class="addToFav">Add To Favorites</div>
+    </div>
   </button>
 </mat-card>

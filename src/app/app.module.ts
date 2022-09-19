@@ -1,3 +1,15 @@
+import { ProductListServiceEffects } from './services/product-list/product-list-service.effects';
+import { CartApiService } from './services/cart/cart-api.service';
+import { CartService } from './services/cart/cart.service';
+import { ProductListService } from './services/product-list/product-list.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FiltersComponent } from './product-list/components/filters/filters.component';
+import { ListContainerComponent } from './product-list/components/list-container/list-container.component';
+import { BreadcrumbNavComponent } from './product-list/components/breadcrumb-nav/breadcrumb-nav.component';
+import { ProductListPageComponent } from './product-list/product-list-page.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -41,8 +54,16 @@ import { SearchEffects } from './services/search/search.effects';
 import { ProductApiService } from './services/product-api.service';
 import { SearchBarService } from './services/search/search.service';
 import { UserAccountComponent } from './account/user-account/user-account.component';
-import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';  
+import { AddToCartButtonComponent } from './product-detail/add-to-cart-button/add-to-cart-button.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
+import { CartOverviewComponent } from './cart-overview/cart-overview.component';
+import { StarsComponent } from './product-list/components/stars/stars.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { CommonModule } from '@angular/common';
+import { ProductListUiService } from './services/product-list/product-list-ui.service';
+import { NavigationHistoryComponent } from './shared/components/navigation-history/navigation-history.component';
+import { HistoryService } from './services/navigation-history/history.service';
+import { SimilarProductsComponent } from './shared/components/similar-products/similar-products.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +74,21 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     ProductCardComponent,
     UserAccountComponent,
     HomepageComponent,
-    HomepageComponent,
     MenuComponent,
     CarouselComponent,
     ProductDetailComponent,
     ProductPhotosComponent,
     AddToCartBoxComponent,
     HeaderComponent,
+    ProductListPageComponent,
+    BreadcrumbNavComponent,
+    ListContainerComponent,
+    FiltersComponent,
+    StarsComponent,
     MainTemplateComponent,
+    NavigationHistoryComponent,
+    SimilarProductsComponent,
+    CartOverviewComponent,
     AddToCartButtonComponent,
   ],
 
@@ -76,7 +104,11 @@ import { MainTemplateComponent } from './main-template/main-template.component';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([AccountEffects, SearchEffects]),
+    EffectsModule.forRoot([
+      AccountEffects,
+      SearchEffects,
+      ProductListServiceEffects,
+    ]),
 
     BrowserAnimationsModule,
     FormsModule,
@@ -88,9 +120,16 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     MatProgressSpinnerModule,
     CarouselModule,
     MatIconModule,
+    CommonModule,
+    FlexLayoutModule,
+    NgxSliderModule,
+    MatToolbarModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatToolbarModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatCheckboxModule,
   ],
   providers: [
     {
@@ -101,7 +140,13 @@ import { MainTemplateComponent } from './main-template/main-template.component';
     AccountApiService,
     AccountService,
     ProductApiService,
+    ProductListService,
+    ProductApiService,
     SearchBarService,
+    CartApiService,
+    CartService,
+    ProductListUiService,
+    HistoryService,
   ],
   bootstrap: [AppComponent],
 })

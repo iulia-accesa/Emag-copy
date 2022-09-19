@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" (window:resize)="onResize()">
   <div class="menu-container">
     <div class="menu-list">
-      <li>
-        <div class="btn-products btn-dropdown">
+      <li (click)="toggleDisplay()">
+        <div class="btn-products btn-dropdown"> 
           <mat-icon
             aria-hidden="false"
             aria-label="Example home icon"
@@ -13,31 +13,33 @@
         </div>
       </li>
 
-      <a class="btn-account">Account</a>
+      <a class="btn-account" routerLink="/my-account">Account</a>
     </div>
   </div>
   <div class="content">
-    <span class="product-category">
+    <span class="product-category" *ngIf="belowWidth || ( !belowWidth && this.visibleCategory)">
       <a
+        routerLink="/category/{{ categ }}"
         class="list-group-item"
         *ngFor="let categ of categories; let i = index"
         [id]="categ"
         (mouseover)="onHover(i, $event)"
       >
         <mat-icon
-            aria-hidden="false"
-            aria-label="phone icon"
-            fontIcon="phone_iphone"
-            class="phone-icon"
-            [id]="categ"
-          ></mat-icon>
-         <span [id]="categ">{{ categ }}</span>
+          aria-hidden="false"
+          aria-label="phone icon"
+          fontIcon="phone_iphone"
+          class="phone-icon"
+          [id]="categ"
+        ></mat-icon>
+        <span [id]="categ">{{ categ }}</span>
       </a>
     </span>
 
-    <div class="side-container">
+    <div class="side-container" >
       <app-carousel></app-carousel>
       <div
+      *ngIf="belowWidth"
         class="menu-details"
         [ngClass]="{ open: isOpen }"
         (mouseleave)="isOpen = false"
@@ -47,7 +49,7 @@
             *ngFor="let prod of products; let i = index"
             class="prod-list-item"
           >
-            <a href="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
+            <a routerLink="/products/{{ prod.id }}" class="prod">{{ prod.title }}</a>
           </li>
         </ul>
       </div>
