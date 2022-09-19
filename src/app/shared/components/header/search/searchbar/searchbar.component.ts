@@ -49,8 +49,6 @@ export class SearchBarComponent {
   }
 
   onEnter(): void {
-    this._router.navigate(['search'], {
-      queryParams: { key: this._searchInput },
-    });
+    window.location.href = `search?key=${this._searchInput}`;
   }
 }
